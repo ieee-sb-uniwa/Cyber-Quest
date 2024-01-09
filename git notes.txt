@@ -1,3 +1,0 @@
-
-git checkout <commit-hash> #go back to a previous commit state
-git checkout -b <new-branch-name> #create new branch from current state
