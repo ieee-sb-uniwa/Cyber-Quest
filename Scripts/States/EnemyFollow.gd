@@ -10,13 +10,13 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 
 func  Physics_Update(_delta : float):
-	var direction = player.global_position - enemy.global_position
+	var direction = player.position - enemy.position
 	
-	if direction.length() > 10:
+	if direction.length() > 25:
 		enemy.velocity = direction.normalized() * mov_speed
 	else:
 		enemy.velocity = Vector2()
 	
 	if direction.length() > 50:
-		Transitioned.emit(self, "Idle")
+		Transitioned.emit(self,"EnemyIdle")
 		

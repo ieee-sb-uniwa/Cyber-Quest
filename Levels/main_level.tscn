@@ -5904,4 +5904,5 @@ position = Vector2(564, 595)
 
 [node name="Enemy" parent="." instance=ExtResource("8_ot1ok")]
 position = Vector2(596, 600)
+scale = Vector2(1, 1.08)
 motion_mode = 1

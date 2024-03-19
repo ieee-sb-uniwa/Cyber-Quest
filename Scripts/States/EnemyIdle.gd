@@ -2,7 +2,7 @@ extends State
 class_name EnemyIdle
 
 @export var enemy : CharacterBody2D
-@export var move_speed := 10.0
+@export var move_speed := 30.0
 
 var player : CharacterBody2D
 
@@ -27,6 +27,6 @@ func Physics_Update(_delta : float):
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 		
-	var direction = player.global_position - enemy.global_position
+	var direction = player.position - enemy.position
 	if direction.length() < 30:
-		Transitioned.emit(self, "Follow")
+		Transitioned.emit(self, "EnemyFollow")
