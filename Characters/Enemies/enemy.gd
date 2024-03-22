@@ -1,29 +1,26 @@
 extends CharacterBody2D
 class_name Enemy
-
-var speed = 100
+@export var move_speed : float = 50
 var player_in_area = false
 var player_dead = false
-var player
-var wander_time : float
+var direction : Vector2
 
-func _ready():
-	player_dead  = false
-func randomize_wander():
-	position += Vector2(randf_range(-1,1), randf_range(-1,1)).normalized()
-	velocity += position * speed 
-	wander_time = randf_range(1, 3)
 func _physics_process(_delta):
+	"""
 	if !player_dead :
-		$detetction_area/CollisionShape2D.disabled = false
+		$detection_zone/CollisionShape2D.disabled = false
 		if player_in_area:
-			position += (player.position - position) / speed
+			var direction = global_position.direction_to(player.global_position)
+			velocity = direction * speed
+			move_and_slide()
+			#global_position += (player.global_position - global_position) / speed
 			$AnimatedSprite2D.play("move")
 		else:
 			$AnimatedSprite2D.play("idle")
 	else:
-		$detetction_area/CollisionShape2D.disabled = true;
-
+		$detection_zone/CollisionShape2D.disabled = true;
+	"""
+"""
 func _on_detetction_area_body_entered(body):
 	if body.has_method("player"):
 		player_in_area = true
@@ -32,3 +29,5 @@ func _on_detetction_area_body_entered(body):
 func _on_detetction_area_body_exited(body):
 	if body.has_method("player"):
 		player_in_area = false
+
+"""
