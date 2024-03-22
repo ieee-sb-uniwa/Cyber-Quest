@@ -1,1 +1,8 @@
+res://Characters/Enemies/enemy.tscn
+res://Scripts/States/StateMachine.gd
+res://Characters/MainPlayer/player.gd
+res://Scripts/States/Chase.gd
 res://Levels/main_level.tscn
+res://Characters/MainPlayer/player.tscn
+res://Scripts/States/EnemyIdle.gd
+res://Scripts/States/Patrol.gd
