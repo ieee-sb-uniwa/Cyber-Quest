@@ -3,7 +3,7 @@ extends State
 @onready var sprite : Sprite2D = $"../../Sprite2D"
 @onready var collision : CollisionShape2D = $"../../detection_zone/CollisionShape2D"
 @export var enemy : CharacterBody2D
-@export var starting_direction : Vector2 = Vector2(0, 0)
+@export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
 @export var target : CharacterBody2D 
@@ -12,7 +12,7 @@ var player_in_zone : bool
 func Enter():
 	player_in_zone = true
 	enemy = $"../.."
-	target = get_tree().get_first_node_in_group("Player")
+	target = $"../../../Player"
 	update_animation_parameters(starting_direction)
 func Physics_update(_delta: float) -> void:
 	# moving enemy by position no collisions...
@@ -37,7 +37,8 @@ func pick_new_animation():
 	else:
 		state_machine.travel("Idle")
 func generate_path() -> void:
-	nav_agent.target_position = target.position
+	if target != null:
+		nav_agent.target_position = target.position
 func _on_detection_zone_body_exited(body):
 	if body.has_method("player"):
 		player_in_zone=false
