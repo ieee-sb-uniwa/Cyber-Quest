@@ -159,51 +159,51 @@ _data = {
 "move_up": SubResource("Animation_hkk36")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_awvto"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_71n7r"]
 animation = &"idle_front"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ldboe"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4t6i5"]
 animation = &"idle_back"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ej4l"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxxae"]
 animation = &"idle_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3omq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2hl2g"]
 animation = &"idle_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2oxmp"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_awvto")
+blend_point_0/node = SubResource("AnimationNodeAnimation_71n7r")
 blend_point_0/pos = Vector2(0, 1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_ldboe")
+blend_point_1/node = SubResource("AnimationNodeAnimation_4t6i5")
 blend_point_1/pos = Vector2(0, -1.1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_6ej4l")
+blend_point_2/node = SubResource("AnimationNodeAnimation_qxxae")
 blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_t3omq")
+blend_point_3/node = SubResource("AnimationNodeAnimation_2hl2g")
 blend_point_3/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flhlx"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x62ve"]
 animation = &"move_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1ca4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lrgxa"]
 animation = &"move_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cieqw"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gt2dt"]
 animation = &"move_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kxodx"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i8de6"]
 animation = &"move_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_e41ea"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_flhlx")
+blend_point_0/node = SubResource("AnimationNodeAnimation_x62ve")
 blend_point_0/pos = Vector2(0, 1.1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_r1ca4")
+blend_point_1/node = SubResource("AnimationNodeAnimation_lrgxa")
 blend_point_1/pos = Vector2(0, -1.1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_cieqw")
+blend_point_2/node = SubResource("AnimationNodeAnimation_gt2dt")
 blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_kxodx")
+blend_point_3/node = SubResource("AnimationNodeAnimation_i8de6")
 blend_point_3/pos = Vector2(1, 0)
 min_space = Vector2(-1, -1.1)
 max_space = Vector2(1, 1.1)
@@ -231,7 +231,7 @@ script = ExtResource("1_4ie1l")
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 6
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
