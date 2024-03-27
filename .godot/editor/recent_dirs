@@ -1,3 +1,5 @@
+res://art_assets/NinjaAdventure/Actor/Monsters/Beast
+res://Levels
 res://Scripts/States
 res://art_assets/NinjaAdventure/Actor/Boss/DemonCyclop2
 res://art_assets/NinjaAdventure/Actor/Boss/GiantRacoon
@@ -10,7 +12,6 @@ res://art_assets/NinjaAdventure/Actor/Boss/GiantFrog2
 res://art_assets/NinjaAdventure/Actor/Monsters/Beast2
 res://art_assets/NinjaAdventure/Actor/Monsters/Lizard
 res://art_assets/NinjaAdventure/Actor/Monsters/Eye
-res://Levels
 res://Characters/Enemies
 res://Characters/MainPlayer
 res://Characters
