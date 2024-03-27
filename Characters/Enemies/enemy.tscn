@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://c6eyucd6nmqhi"]
+[gd_scene load_steps=32 format=3 uid="uid://c6eyucd6nmqhi"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/enemy.gd" id="1_eia42"]
+[ext_resource type="Texture2D" uid="uid://qwnir8mepybb" path="res://art_assets/NinjaAdventure/Actor/Monsters/Snake4/Snake4.png" id="2_hhut7"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="3_nrk55"]
 [ext_resource type="Script" path="res://Scripts/States/Patrol.gd" id="4_y6dno"]
 [ext_resource type="Script" path="res://Scripts/States/Chase.gd" id="5_4otw6"]
@@ -224,6 +225,7 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_770a6"]
+radius = 21.5148
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gusw1"]
 radius = 8.61327
@@ -240,9 +242,10 @@ move_speed = 75.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)
 scale = Vector2(0.949, 1)
+texture = ExtResource("2_hhut7")
 hframes = 4
 vframes = 4
-frame = 10
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -259,8 +262,8 @@ parameters/Idle/blend_position = Vector2(0, 1.1)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
-scale = Vector2(0.585919, 0.674513)
+position = Vector2(-2, 0)
+scale = Vector2(0.185919, 0.274513)
 shape = SubResource("CircleShape2D_770a6")
 
 [node name="State Machine" type="Node2D" parent="."]
