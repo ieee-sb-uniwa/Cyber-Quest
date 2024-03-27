@@ -1,11 +1,11 @@
+RemoteTransform2D
+PathFollow2D
+Path2D
+Node2D
 Sprite2D
 NavigationRegion2D
 Timer
 NavigationAgent2D
-PathFollow2D
-Path2D
-RemoteTransform2D
-Node2D
 Label
 Node
 CollisionShape2D
