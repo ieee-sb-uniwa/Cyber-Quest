@@ -1,7 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6eyucd6nmqhi"]
+[gd_scene load_steps=31 format=3 uid="uid://c6eyucd6nmqhi"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/enemy.gd" id="1_eia42"]
-[ext_resource type="Texture2D" uid="uid://qwnir8mepybb" path="res://art_assets/NinjaAdventure/Actor/Monsters/Snake4/Snake4.png" id="2_hhut7"]
+[ext_resource type="Texture2D" uid="uid://cnikl3y5m5ubu" path="res://art_assets/NinjaAdventure/Actor/Characters/Flam/SpriteSheet.png" id="2_vnvco"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="3_nrk55"]
 [ext_resource type="Script" path="res://Scripts/States/Patrol.gd" id="4_y6dno"]
 [ext_resource type="Script" path="res://Scripts/States/Chase.gd" id="5_4otw6"]
@@ -225,12 +225,10 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_770a6"]
-radius = 21.5148
+radius = 38.0001
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gusw1"]
 radius = 8.61327
-
-[sub_resource type="Curve2D" id="Curve2D_rp8ll"]
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(180, 225)
@@ -241,11 +239,11 @@ move_speed = 75.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)
-scale = Vector2(0.949, 1)
-texture = ExtResource("2_hhut7")
+scale = Vector2(1.387, 1)
+texture = ExtResource("2_vnvco")
 hframes = 4
-vframes = 4
-frame = 2
+vframes = 7
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -262,8 +260,8 @@ parameters/Idle/blend_position = Vector2(0, 1.1)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
-scale = Vector2(0.185919, 0.274513)
+position = Vector2(0, 1)
+scale = Vector2(0.185919, 0.194513)
 shape = SubResource("CircleShape2D_770a6")
 
 [node name="State Machine" type="Node2D" parent="."]
@@ -281,17 +279,11 @@ position = Vector2(-2, 0)
 scale = Vector2(-3.70645, 3.49224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_zone"]
-scale = Vector2(4.443, -4)
+scale = Vector2(3.67677, -2.96914)
 shape = SubResource("CircleShape2D_gusw1")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_rp8ll")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -301,4 +293,5 @@ autostart = true
 [connection signal="body_entered" from="detection_zone" to="State Machine/Patrol" method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detection_zone" to="." method="_on_detetction_area_body_exited"]
 [connection signal="body_exited" from="detection_zone" to="State Machine/Chase" method="_on_detection_zone_body_exited"]
+[connection signal="target_reached" from="NavigationAgent2D" to="State Machine/Patrol" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="timeout" from="Timer" to="State Machine/Chase" method="_on_timer_timeout"]
