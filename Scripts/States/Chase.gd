@@ -6,13 +6,11 @@ extends State
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
-@export var target : CharacterBody2D 
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
 var player_in_zone : bool
 func Enter():
 	player_in_zone = true
 	enemy = $"../.."
-	target = $"../../../Player"
 	update_animation_parameters(starting_direction)
 func Physics_update(_delta: float) -> void:
 	# moving enemy by position no collisions...
@@ -20,9 +18,9 @@ func Physics_update(_delta: float) -> void:
 	# moving enemy by velocity supports collisions with move and slide...
 	#var direction = enemy.global_position.direction_to(target.global_position)
 	# get direction with smart pathfinding AStar algorithm
-	var direction = enemy.to_local(nav_agent.get_next_path_position()).normalized()
+	var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
 	update_animation_parameters(direction)
-	enemy.velocity = direction * enemy.move_speed
+	enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
 	enemy.move_and_slide()
 	pick_new_animation()
 	if !player_in_zone:
@@ -37,8 +35,8 @@ func pick_new_animation():
 	else:
 		state_machine.travel("Idle")
 func generate_path() -> void:
-	if target != null:
-		nav_agent.target_position = target.position
+	if enemy.hunting_target != null:
+		nav_agent.target_position = enemy.hunting_target.position
 func _on_detection_zone_body_exited(body):
 	if body.has_method("player"):
 		player_in_zone=false
