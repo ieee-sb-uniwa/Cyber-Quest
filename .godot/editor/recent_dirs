@@ -1,8 +1,11 @@
+res://art_assets/NinjaAdventure/Actor/Characters/Skeleton
+res://art_assets/NinjaAdventure/Actor/Characters/Inspector
+res://art_assets/NinjaAdventure/Actor/Monsters/Skull
+res://art_assets/NinjaAdventure/Actor/Monsters/Snake4
 res://art_assets/NinjaAdventure/Actor/Monsters/Snake
 res://art_assets/NinjaAdventure/Actor/Characters/RedNinja
 res://art_assets/NinjaAdventure/Actor/Characters/BlueSamurai
 res://art_assets/NinjaAdventure/Actor/Characters/Flam
-res://art_assets/NinjaAdventure/Actor/Monsters/Snake4
 res://art_assets/NinjaAdventure/Actor/Monsters/Beast
 res://Levels
 res://Scripts/States
@@ -17,6 +20,3 @@ res://art_assets/NinjaAdventure/Actor/Boss/GiantFrog2
 res://art_assets/NinjaAdventure/Actor/Monsters/Beast2
 res://art_assets/NinjaAdventure/Actor/Monsters/Lizard
 res://art_assets/NinjaAdventure/Actor/Monsters/Eye
-res://Characters/Enemies
-res://Characters/MainPlayer
-res://Characters
