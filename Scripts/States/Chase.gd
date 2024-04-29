@@ -1,9 +1,9 @@
 class_name Chase
 extends State
 @onready var sprite : Sprite2D = $"../../Sprite2D"
-@onready var collision : CollisionShape2D = $"../../detection_zone/Circle"
 @export var enemy : CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@onready var conicalDetectionArea =  $"../../detection_zone/Cone"
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
@@ -21,6 +21,8 @@ func Physics_update(_delta: float) -> void:
 	var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
 	update_animation_parameters(direction)
 	enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
+	#Rotate cone 
+	conicalDetectionArea.rotation = direction.angle()
 	enemy.move_and_slide()
 	pick_new_animation()
 	if !player_in_zone:

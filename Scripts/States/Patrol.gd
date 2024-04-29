@@ -4,6 +4,7 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
+@onready var conicalDetectionArea =  $"../../detection_zone/Cone"
 @export var enemy : CharacterBody2D
 var player_in_zone: bool
 var returns_to_path: bool
@@ -20,7 +21,9 @@ func Physics_update(_delta : float):
 	if returns_to_path == true:
 		generate_path()
 		var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
-		enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
+		enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed, enemy.acceleration * _delta)
+		#Rotate cone to the enemy direction
+		conicalDetectionArea.rotation = direction.angle()
 		update_animation_parameters(direction)
 		enemy.move_and_slide()
 		pick_new_animation()
