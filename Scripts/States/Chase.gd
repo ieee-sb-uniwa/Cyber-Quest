@@ -1,7 +1,7 @@
 class_name Chase
 extends State
 @onready var sprite : Sprite2D = $"../../Sprite2D"
-@onready var collision : CollisionShape2D = $"../../detection_zone/CollisionShape2D"
+@onready var collision : CollisionShape2D = $"../../detection_zone/Circle"
 @export var enemy : CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $"../../AnimationTree"
