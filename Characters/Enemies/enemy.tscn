@@ -294,19 +294,18 @@ scale = Vector2(2.33746, 1)
 polygon = PackedVector2Array(-10.792, -10.8813, 1.10485, 0, -10.553, 11.1676, -11.5919, 6.29968, -12.169, -0.859047, -11.5919, -6.01333)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 30.0
 path_postprocessing = 1
 avoidance_layers = 2
 debug_enabled = true
 debug_use_custom = true
-debug_path_custom_color = Color(0.819608, 0.403922, 0, 0.419608)
+debug_path_custom_color = Color(0.0784314, 0.54902, 0.92549, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
 
-[connection signal="body_entered" from="detection_zone" to="." method="_on_detetction_area_body_entered"]
 [connection signal="body_entered" from="detection_zone" to="State Machine/Patrol" method="_on_detection_zone_body_entered"]
-[connection signal="body_exited" from="detection_zone" to="." method="_on_detetction_area_body_exited"]
 [connection signal="body_exited" from="detection_zone" to="State Machine/Chase" method="_on_detection_zone_body_exited"]
 [connection signal="target_reached" from="NavigationAgent2D" to="State Machine/Patrol" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="timeout" from="Timer" to="State Machine/Chase" method="_on_timer_timeout"]
