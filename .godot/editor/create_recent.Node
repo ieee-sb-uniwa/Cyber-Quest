@@ -1,8 +1,8 @@
+PathFollow2D
+Path2D
 Node2D
 CollisionPolygon2D
 RemoteTransform2D
-PathFollow2D
-Path2D
 Sprite2D
 NavigationRegion2D
 Timer
