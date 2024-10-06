@@ -231,9 +231,11 @@ script = ExtResource("1_4ie1l")
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 2
+frame = 14
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+light_mask = 0
+visibility_layer = 0
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_u7qia")
 
@@ -246,9 +248,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fr0qy")
-}
 tree_root = SubResource("AnimationNodeStateMachine_rtfvl")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 1.1)
