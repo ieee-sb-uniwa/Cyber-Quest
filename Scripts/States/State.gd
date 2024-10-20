@@ -14,5 +14,3 @@ func Update(_delta: float) -> void:
  
 func Physics_update(_delta: float) -> void:
 	pass
-
-

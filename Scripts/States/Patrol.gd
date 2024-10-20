@@ -7,9 +7,11 @@ extends State
 @onready var conicalDetectionArea =  $"../../detection_zone/Cone"
 @export var enemy : CharacterBody2D
 var player_in_zone: bool
+var player_in_cone: bool
 var returns_to_path: bool
 func Enter():
 	player_in_zone = false
+	player_in_cone = false
 	enemy =  $"../.."
 	update_animation_parameters(starting_direction)
 func Exit():
@@ -27,7 +29,7 @@ func Physics_update(_delta : float):
 		update_animation_parameters(direction)
 		enemy.move_and_slide()
 		pick_new_animation()
-	if player_in_zone:
+	if player_in_cone:
 		transitioned.emit("Chase")
 func update_animation_parameters(move_direction : Vector2):
 	if(move_direction != Vector2.ZERO):
@@ -46,6 +48,13 @@ func pick_new_animation():
 func _on_detection_zone_body_entered(body):
 	if body.has_method("player"):
 		player_in_zone = true
+		player_in_cone = true
 		enemy.hunting_target = body
 func _on_navigation_agent_2d_target_reached():
 	returns_to_path=false
+
+
+func _on_chase_range_body_entered(body):
+	if body.has_method("player"):
+		player_in_zone = true
+		player_in_cone = false

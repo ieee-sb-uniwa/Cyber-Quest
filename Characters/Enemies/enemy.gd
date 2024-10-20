@@ -9,6 +9,7 @@ class_name Enemy
 @export var spriteRows : int  
 @export var spriteColumns : int  
 var player_dead = false
+
 func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
@@ -16,6 +17,8 @@ func _ready():
 	hunting_target = $"../../Player"
 func _physics_process(_delta):
 	if !player_dead :
-		$detection_zone/Circle.disabled = false
+		$chase_range/Circle.disabled = false
 	else:
-		$detection_zone/Circle.disabled = true
+		$chase_range/Circle.disabled = true
+func Enemy():
+	pass

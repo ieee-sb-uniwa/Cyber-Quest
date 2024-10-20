@@ -16,6 +16,12 @@ func _physics_process(_delta):
 	update_animation_parameters(input_direction)
 	velocity = input_direction.normalized() * move_speed
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		print(collision.get_collider())
+		if(collision.get_collider().has_method("Enemy")):
+			print("I collided with an enemy")
+			player_died()
 	pick_new_state()
 
 func update_animation_parameters(move_input : Vector2):
@@ -30,3 +36,6 @@ func pick_new_state():
 		state_machine.travel("Idle")
 func player():
 	pass
+
+func player_died():
+	get_tree().reload_current_scene() #Sometimes works sometime crashes

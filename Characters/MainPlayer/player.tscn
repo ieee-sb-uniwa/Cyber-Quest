@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rsflgtkscpot" path="res://art_assets/NinjaAdventure/Actor/Characters/DarkNinja/SpriteSheet.png" id="2_675ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
-size = Vector2(10, 7)
+size = Vector2(10, 12)
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -227,15 +227,14 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4ie1l")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+shape = SubResource("RectangleShape2D_u7qia")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_u7qia")
+frame = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -246,9 +245,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fr0qy")
-}
 tree_root = SubResource("AnimationNodeStateMachine_rtfvl")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 1.1)
