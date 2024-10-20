@@ -1,9 +1,0 @@
-res://Levels/main_level.tscn
-res://Scripts/States/Chase.gd
-res://Scripts/States/Patrol.gd
-res://Scripts/States/StateMachine.gd
-res://Characters/MainPlayer/player.tscn
-res://Characters/Enemies/enemy.tscn
-res://Characters/Enemies/Idle.gd
-res://Scripts/States/State.gd
-res://Characters/Enemies/enemy.gd
