@@ -1,3 +1,4 @@
+Polygon2D
 Area2D
 PathFollow2D
 Path2D
@@ -12,4 +13,3 @@ Label
 Node
 CollisionShape2D
 CharacterBody2D
-AnimationTree

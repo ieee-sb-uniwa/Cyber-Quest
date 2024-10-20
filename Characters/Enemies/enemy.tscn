@@ -244,7 +244,7 @@ scale = Vector2(1.248, 0.9)
 texture = ExtResource("2_phqpm")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -280,9 +280,12 @@ enemy = NodePath("../..")
 scale = Vector2(-3.70645, 3.49224)
 
 [node name="Cone" type="CollisionPolygon2D" parent="detection_zone"]
-position = Vector2(-3.39194, 0)
+position = Vector2(-1.43051e-06, 0)
 scale = Vector2(2.33746, 1)
-polygon = PackedVector2Array(-10.792, -10.8813, 1.45112, 0, -10.553, 11.1676, -11.5919, 6.29968, -12.169, -0.859047, -11.5919, -6.01333)
+polygon = PackedVector2Array(-12.1196, -12.5994, 0, 0, -12.3504, 13.1721, -13.6201, 6.87238, -14.3126, -1.1454, -13.1584, -8.59047)
+
+[node name="Polygon2D" type="Polygon2D" parent="detection_zone/Cone"]
+polygon = PackedVector2Array(0, 0, -12.1196, -12.5994, -13.1584, -8.59047, -14.3126, -1.1454, -13.3892, 8.01778, -12.3504, 13.1721)
 
 [node name="chase_range" type="Area2D" parent="."]
 
