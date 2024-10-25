@@ -8,8 +8,15 @@ class_name Enemy
 @export var input_texture : Texture2D 
 @export var spriteRows : int  
 @export var spriteColumns : int  
-var player_dead = false
+@export var player_in_zone: bool
+@export var player_in_cone: bool
+@export var player_visible: bool
 
+var player_dead = false
+var hit_pos
+
+var target
+var test_color = Color(1, 0, 0, 1)
 func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
@@ -20,5 +27,49 @@ func _physics_process(_delta):
 		$chase_range/Circle.disabled = false
 	else:
 		$chase_range/Circle.disabled = true
+	if target :
+		print("target set")
+		Aim()
+		
+	
 func Enemy():
 	pass
+func Aim():
+	var space_State = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(position, hunting_target.position, 3, [self])
+	var result = space_State.intersect_ray(query)
+	if result:
+		hit_pos = result.position
+		if result.collider.name == "Player":
+			rotation = (target.position - position).angle()
+			player_visible = true
+		else :
+			player_visible = false
+
+func _on_detection_zone_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_zone = true
+		player_in_cone = true
+		hunting_target = body
+	if target:
+		return
+	target = body
+
+func _on_detection_zone_body_exited(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_zone= true
+		player_in_cone= false
+	if body == target:
+		target = null
+	
+
+func _on_chase_range_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_zone = true
+		player_in_cone = false
+
+
+func _on_chase_range_body_exited(body: Node2D) -> void:
+	if body.has_method("player"):
+		player_in_zone=false
+		player_in_cone= false

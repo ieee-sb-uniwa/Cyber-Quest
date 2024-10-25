@@ -225,6 +225,8 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_4ie1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]

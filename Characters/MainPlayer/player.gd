@@ -18,7 +18,6 @@ func _physics_process(_delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		print(collision.get_collider())
 		if(collision.get_collider().has_method("Enemy")):
 			print("I collided with an enemy")
 			player_died()

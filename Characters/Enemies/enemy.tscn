@@ -233,6 +233,8 @@ radius = 8.61327
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(180, 225)
+collision_layer = 4
+collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_eia42")
@@ -261,8 +263,9 @@ parameters/Move/blend_position = Vector2(0, 0)
 scale = Vector2(0.134904, 0.104418)
 shape = SubResource("CircleShape2D_770a6")
 
-[node name="State Machine" type="Node2D" parent="."]
+[node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_nrk55")
+current_state = NodePath("Patrol")
 
 [node name="Patrol" type="Node2D" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_y6dno")
@@ -278,6 +281,8 @@ enemy = NodePath("../..")
 
 [node name="detection_zone" type="Area2D" parent="."]
 scale = Vector2(-3.70645, 3.49224)
+collision_layer = 4
+collision_mask = 2
 
 [node name="Cone" type="CollisionPolygon2D" parent="detection_zone"]
 position = Vector2(-1.43051e-06, 0)
@@ -288,6 +293,8 @@ polygon = PackedVector2Array(-12.1196, -12.5994, 0, 0, -12.3504, 13.1721, -13.62
 polygon = PackedVector2Array(0, 0, -12.1196, -12.5994, -13.1584, -8.59047, -14.3126, -1.1454, -13.3892, 8.01778, -12.3504, 13.1721)
 
 [node name="chase_range" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="Circle" type="CollisionShape2D" parent="chase_range"]
 rotation = 3.14159
@@ -307,9 +314,9 @@ debug_path_custom_color = Color(0.0784314, 0.54902, 0.92549, 0.419608)
 wait_time = 0.2
 autostart = true
 
-[connection signal="body_entered" from="detection_zone" to="State Machine/Patrol" method="_on_detection_zone_body_entered"]
-[connection signal="body_exited" from="detection_zone" to="State Machine/Chase" method="_on_detection_zone_body_exited"]
-[connection signal="body_entered" from="chase_range" to="State Machine/Patrol" method="_on_chase_range_body_entered"]
-[connection signal="body_exited" from="chase_range" to="State Machine/Chase" method="_on_chase_range_body_exited"]
+[connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="detection_zone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="chase_range" to="." method="_on_chase_range_body_entered"]
+[connection signal="body_exited" from="chase_range" to="." method="_on_chase_range_body_exited"]
 [connection signal="target_reached" from="NavigationAgent2D" to="State Machine/Patrol" method="_on_navigation_agent_2d_target_reached"]
 [connection signal="timeout" from="Timer" to="State Machine/Chase" method="_on_timer_timeout"]

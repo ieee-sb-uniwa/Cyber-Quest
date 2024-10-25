@@ -7,11 +7,10 @@ extends State
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
-var player_in_zone : bool
-var player_in_cone : bool
 func Enter():
-	player_in_zone = true
-	player_in_cone = true
+	enemy.player_in_zone = true
+	enemy.player_in_cone = true
+	enemy.player_visible = true
 	enemy = $"../.."
 	update_animation_parameters(starting_direction)
 func Physics_update(_delta: float) -> void:
@@ -27,7 +26,7 @@ func Physics_update(_delta: float) -> void:
 	conicalDetectionArea.rotation = direction.angle()
 	enemy.move_and_slide()
 	pick_new_animation()
-	if !player_in_zone:
+	if !enemy.player_in_zone || !enemy.player_visible:
 		transitioned.emit("Patrol")
 func update_animation_parameters(move_direction : Vector2):
 	if(move_direction != Vector2.ZERO):
@@ -41,17 +40,8 @@ func pick_new_animation():
 func generate_path() -> void:
 	if enemy.hunting_target != null:
 		nav_agent.target_position = enemy.hunting_target.position
-func _on_detection_zone_body_exited(body):
-	if body.has_method("player"):
-		player_in_zone=true
-		player_in_cone= false
+
 
 
 func _on_timer_timeout():
 	generate_path()
-
-
-func _on_chase_range_body_exited(body):
-	if body.has_method("player"):
-		player_in_zone=false
-		player_in_cone= false
