@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://d055khlg5bjcj"]
+[gd_scene load_steps=28 format=3 uid="uid://d055khlg5bjcj"]
 
 [ext_resource type="Script" path="res://Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Texture2D" uid="uid://rsflgtkscpot" path="res://art_assets/NinjaAdventure/Actor/Characters/DarkNinja/SpriteSheet.png" id="2_675ll"]
+[ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
 size = Vector2(10, 7)
@@ -226,12 +227,13 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4ie1l")
+inventory = ExtResource("2_a2323")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 14
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0
