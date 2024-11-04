@@ -246,7 +246,7 @@ scale = Vector2(1.248, 0.9)
 texture = ExtResource("2_phqpm")
 hframes = 4
 vframes = 4
-frame = 10
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -311,7 +311,6 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.0784314, 0.54902, 0.92549, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
 autostart = true
 
 [connection signal="body_entered" from="detection_zone" to="." method="_on_detection_zone_body_entered"]
