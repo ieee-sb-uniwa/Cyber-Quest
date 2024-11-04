@@ -3040,7 +3040,6 @@ rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PatrolPaths/Path2D/PathFollow2D"]
 remote_path = NodePath("../../../../Enemies/Skeleton")
-update_rotation = false
 update_scale = false
 
 [node name="Path2D2" type="Path2D" parent="PatrolPaths"]
