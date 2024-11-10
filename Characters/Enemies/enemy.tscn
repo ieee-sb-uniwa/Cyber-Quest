@@ -244,9 +244,10 @@ move_speed = 75.0
 position = Vector2(1.19209e-07, 0)
 scale = Vector2(1.248, 0.9)
 texture = ExtResource("2_phqpm")
+flip_h = true
 hframes = 4
 vframes = 4
-frame = 2
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
