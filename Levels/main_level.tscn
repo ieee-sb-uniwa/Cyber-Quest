@@ -3010,7 +3010,8 @@ layer_1/tile_data = PackedInt32Array(2162714, 720900, 0, 2228250, 720900, 1, 229
 
 [node name="Inspector" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_ot1ok")]
 position = Vector2(745, 536)
-scale = Vector2(0.999997, 0.999997)
+rotation = -0.0190453
+scale = Vector2(0.999996, 0.999997)
 move_speed = 70.0
 path_follow = NodePath("../../PatrolPaths/Path2D2/PathFollow2D2")
 hunting_target = NodePath("../../Player")
@@ -3020,7 +3021,9 @@ spriteColumns = 4
 
 [node name="Skeleton" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_ot1ok")]
 position = Vector2(318.001, 568)
-scale = Vector2(0.999997, 0.999997)
+rotation = 3.13005
+scale = Vector2(0.999993, 0.999996)
+skew = -0.00012958
 path_follow = NodePath("../../PatrolPaths/Path2D/PathFollow2D")
 hunting_target = NodePath("../../Player")
 input_texture = ExtResource("9_noou3")
@@ -3036,7 +3039,7 @@ curve = SubResource("Curve2D_q5xbg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PatrolPaths/Path2D"]
 position = Vector2(315.593, 566.855)
-rotates = false
+rotation = 3.12999
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PatrolPaths/Path2D/PathFollow2D"]
 remote_path = NodePath("../../../../Enemies/Skeleton")
@@ -3048,12 +3051,11 @@ curve = SubResource("Curve2D_u4kll")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="PatrolPaths/Path2D2"]
 position = Vector2(758, 534)
-rotates = false
+rotation = -0.0190453
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PatrolPaths/Path2D2/PathFollow2D2"]
 scale = Vector2(1.006, 1)
 remote_path = NodePath("../../../../Enemies/Inspector")
-update_rotation = false
 update_scale = false
 
 [node name="Player" parent="." instance=ExtResource("1_7lagd")]
