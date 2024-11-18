@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=19 format=3 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="Texture2D" uid="uid://bb07nu3r0okdr" path="res://art_assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="1_bxsmq"]
 [ext_resource type="Texture2D" uid="uid://c67555qb3w7th" path="res://art_assets/NinjaAdventure/Backgrounds/Tilesets/TilesetRelief.png" id="2_n8ckk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Characters/Enemies/enemy.tscn" id="8_uf234"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="10_7ppus"]
+[ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca5ni"]
 texture = ExtResource("1_bxsmq")
@@ -3005,3 +3006,5 @@ position = Vector2(490, 588)
 
 [node name="Box" parent="boxes" instance=ExtResource("10_7ppus")]
 position = Vector2(508, 557)
+
+[node name="HUD" parent="." instance=ExtResource("11_4fq5f")]

@@ -1,2 +1,11 @@
+res://HUD/scenes/hud.tscn
+res://HUD/Scripts_Resources/inventory.gd
+res://HUD/Scripts_Resources/inventory_item.gd
+res://HUD/scenes/inv_slot.tscn
+res://HUD/Scripts_Resources/inventory_gui.gd
+res://Characters/MainPlayer/player.gd
 res://Characters/MainPlayer/player.tscn
 res://Levels/Level_1.tscn
+res://HUD/scenes/inventory_gui.tscn
+res://HUD/Scripts_Resources/inv_slot.gd
+res://HUD/Scripts_Resources/Player_Inventory.tres

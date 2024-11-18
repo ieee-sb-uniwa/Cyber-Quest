@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
+@export var inventory: Inventory
+
 func _ready():
 	update_animation_parameters(starting_direction)
 	
