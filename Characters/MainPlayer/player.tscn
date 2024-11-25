@@ -233,7 +233,7 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 6
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0

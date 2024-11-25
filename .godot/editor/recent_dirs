@@ -1,5 +1,8 @@
-res://HUD/Scripts_Resources
+res://art_assets/NinjaAdventure/Items/Treasure
+res://art_assets/NinjaAdventure/Items
 res://HUD/Item_example
+res://
+res://HUD/Scripts_Resources
 res://art_assets/NinjaAdventure/Backgrounds/Tilesets
 res://Scripts/Interactions/InteractionManager
 res://Scripts/Interactions
@@ -8,4 +11,3 @@ res://Scripts/States
 res://Characters/Enemies
 res://Characters/MainPlayer
 res://Characters
-res://
