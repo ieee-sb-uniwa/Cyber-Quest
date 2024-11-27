@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Characters/Enemies/enemy.tscn" id="8_uf234"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="10_7ppus"]
+[ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca5ni"]
 texture = ExtResource("1_bxsmq")
@@ -3878,3 +3879,5 @@ position = Vector2(490, 588)
 [node name="Box" parent="Boxes" instance=ExtResource("10_7ppus")]
 visible = false
 position = Vector2(508, 557)
+
+[node name="HUD" parent="." instance=ExtResource("11_4fq5f")]

@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+@export var inventory: Inventory
+@onready var P_sprite = $Sprite2D
+@onready var P_collission = $CollisionShape2D
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -15,7 +17,7 @@ func _physics_process(_delta):
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	)
 	update_animation_parameters(input_direction)
-	velocity = input_direction.normalized() * move_speed
+	velocity = input_direction.normalized() * Global.move_speed
 	move_and_slide()
 	pick_new_state()
 
@@ -29,3 +31,17 @@ func pick_new_state():
 		state_machine.travel("Move")
 	else:
 		state_machine.travel("Idle")
+
+func _input(event):
+	if event.is_action_pressed("Interact"):
+		if Global.Hide_status == 1:
+			P_sprite.visible = false
+			set_collision_layer_value(30,true)
+			set_collision_layer_value(1,false)
+			Global.move_speed = 0
+		else:
+			if Global.Hide_status == 0:
+				P_sprite.visible = true 
+				set_collision_layer_value(1,true)
+				set_collision_layer_value(30,false)
+				Global.move_speed = 100
