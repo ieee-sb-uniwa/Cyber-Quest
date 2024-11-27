@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6eyucd6nmqhi"]
+
+[ext_resource type="Texture2D" uid="uid://g8g2qkj8kjey" path="res://art_assets/NinjaAdventure/Actor/Monsters/Skull/SpriteSheet.png" id="1_c5lax"]
+[ext_resource type="Script" path="res://Characters/Enemies/enemy.gd" id="1_eia42"]
+[ext_resource type="Script" path="res://Scripts/States/State Machine.gd" id="3_3vtuu"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.gd" id="4_11flw"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyChase.gd" id="5_augfe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1r12j"]
+radius = 5.09902
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_eia42")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c5lax")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1r12j")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_3vtuu")
+initial_state = NodePath("EnemyIdle")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_11flw")
+enemy = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_augfe")
+enemy = NodePath("../..")

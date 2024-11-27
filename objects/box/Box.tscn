@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnbdfkg7ur1tq"]
+
+[ext_resource type="Script" path="res://objects/box/Box.gd" id="1_pegqg"]
+[ext_resource type="Texture2D" uid="uid://dteqnk8ll2tos" path="res://art_assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png" id="2_xkvyl"]
+[ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_blx0g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8sa"]
+size = Vector2(14, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p2jdm"]
+radius = 23.0
+
+[node name="Box" type="StaticBody2D"]
+script = ExtResource("1_pegqg")
+
+[node name="Box_Sprite" type="Sprite2D" parent="."]
+position = Vector2(-0.188679, 0)
+scale = Vector2(1.02358, 1)
+texture = ExtResource("2_xkvyl")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ic8sa")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_blx0g")]
+y_sort_enabled = true
+collision_mask = 536870914
+action_name = "hide"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+light_mask = 0
+visibility_layer = 2
+shape = SubResource("CircleShape2D_p2jdm")
