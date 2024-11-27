@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://lki35lbkdsl5"]
-
-[ext_resource type="Script" path="res://HUD/Scripts_Resources/inventory_item.gd" id="1_t0eme"]
-[ext_resource type="Texture2D" uid="uid://135r2qask72e" path="res://art_assets/NinjaAdventure/Items/Potion/EmptyPot.png" id="2_jnq1m"]
-
-[resource]
-script = ExtResource("1_t0eme")
-name = " EmptyBottle"
-texture = ExtResource("2_jnq1m")
