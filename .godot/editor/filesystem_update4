@@ -1,9 +1,1 @@
-res://objects/box/Box.tscn
-res://HUD/Scripts_Resources/Player_Inventory.tres
-res://Levels/Level_1.tscn
-res://Characters/MainPlayer/player.tscn
-res://objects/box/Box.gd
-res://Characters/MainPlayer/player.gd
-res://Global.gd
-res://Scripts/Interactions/InteractionArea/InteractionArea.tscn
 res://Scripts/Interactions/InteractionManager/InteractionManager.tscn
