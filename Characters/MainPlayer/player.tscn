@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://d055khlg5bjcj"]
 
 [ext_resource type="Script" path="res://Characters/MainPlayer/player.gd" id="1_4ie1l"]
-[ext_resource type="Texture2D" uid="uid://6ve1m6vn4mmf" path="res://art_assets/web_safety_assets/Upscale/Player_SpriteSheet.png" id="2_kk7sv"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
+[ext_resource type="Texture2D" uid="uid://6ve1m6vn4mmf" path="res://art_assets/web_safety_assets/Upscale/Player_SpriteSheet.png" id="2_kk7sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
 size = Vector2(10, 7)
@@ -226,6 +226,7 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
 script = ExtResource("1_4ie1l")
 inventory = ExtResource("2_a2323")
 

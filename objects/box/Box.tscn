@@ -25,10 +25,10 @@ shape = SubResource("RectangleShape2D_ic8sa")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_blx0g")]
 y_sort_enabled = true
+collision_layer = 2
 collision_mask = 536870914
 action_name = "hide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-light_mask = 0
 visibility_layer = 2
 shape = SubResource("CircleShape2D_p2jdm")
