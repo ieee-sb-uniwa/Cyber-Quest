@@ -11,6 +11,8 @@ size = Vector2(20, 24)
 radius = 23.0
 
 [node name="Box" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_pegqg")
 
 [node name="Box_Sprite" type="Sprite2D" parent="."]

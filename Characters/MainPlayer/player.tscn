@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://6ve1m6vn4mmf" path="res://art_assets/web_safety_assets/Upscale/Player_SpriteSheet.png" id="2_kk7sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
-size = Vector2(10, 7)
+size = Vector2(10, 15)
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -234,12 +234,12 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("2_kk7sv")
 hframes = 4
 vframes = 4
-frame = 10
+frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(0, 4.5)
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_u7qia")
 
 [node name="Camera2D" type="Camera2D" parent="."]
