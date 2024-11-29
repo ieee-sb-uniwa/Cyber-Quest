@@ -34,13 +34,13 @@ func pick_new_state():
 
 func _input(event):
 	if event.is_action_pressed("Interact"):
-		if Global.Hide_status == 1:
+		if Global.Hide_status == 1 && Global.interacable == true:
 			P_sprite.visible = false
 			set_collision_layer_value(30,true)
 			set_collision_layer_value(1,false)
 			Global.move_speed = 0
 		else:
-			if Global.Hide_status == 0:
+			if Global.Hide_status == 0 && Global.interacable == true:
 				P_sprite.visible = true 
 				set_collision_layer_value(1,true)
 				set_collision_layer_value(30,false)

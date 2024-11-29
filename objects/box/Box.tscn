@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnbdfkg7ur1tq"]
 
 [ext_resource type="Script" path="res://objects/box/Box.gd" id="1_pegqg"]
-[ext_resource type="Texture2D" uid="uid://dteqnk8ll2tos" path="res://art_assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png" id="2_xkvyl"]
+[ext_resource type="Texture2D" uid="uid://b7yy70kks0qpf" path="res://art_assets/web_safety_assets/Upscale/LittleTreasureChest_32x16.png" id="2_sfexs"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_blx0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8sa"]
-size = Vector2(14, 14)
+size = Vector2(20, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2jdm"]
 radius = 23.0
@@ -16,7 +16,7 @@ script = ExtResource("1_pegqg")
 [node name="Box_Sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.188679, 0)
 scale = Vector2(1.02358, 1)
-texture = ExtResource("2_xkvyl")
+texture = ExtResource("2_sfexs")
 hframes = 2
 frame = 1
 
