@@ -44,4 +44,4 @@ func _input(event):
 				P_sprite.visible = true 
 				set_collision_layer_value(1,true)
 				set_collision_layer_value(30,false)
-				Global.move_speed = 100
+				Global.move_speed = 150
