@@ -65,7 +65,20 @@ Interact={
 
 [layer_names]
 
+2d_render/layer_1="Walls & Floors"
+2d_render/layer_2="Player"
+2d_render/layer_3="Enemies"
+2d_render/layer_4="Items"
+2d_physics/layer_1="Walls & Floors"
+2d_navigation/layer_1="Walls & Floors"
+2d_physics/layer_2="Player"
+2d_navigation/layer_2="Player"
+2d_physics/layer_3="Enemies"
+2d_navigation/layer_3="Enemies"
+2d_physics/layer_4="Items"
+2d_navigation/layer_4="Items"
 2d_physics/layer_30="Hidding"
+2d_navigation/layer_30="Hidding"
 
 [rendering]
 

@@ -3857,14 +3857,16 @@ tile_set = SubResource("TileSet_885uv")
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 z_index = 5
 position = Vector2(2103, 911)
-collision_layer = 514
-collision_mask = 527
+collision_layer = 2
+collision_mask = 13
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_uf234")]
 visible = false
 position = Vector2(622, 614)
+collision_layer = 4
+collision_mask = 2
 motion_mode = 1
 
 [node name="Items" type="Node" parent="."]
