@@ -1,7 +1,7 @@
 class_name Chase
 extends State
 @onready var sprite : Sprite2D = $"../../Sprite2D"
-@export var enemy : CharacterBody2D
+@onready var enemy : CharacterBody2D = $"../.."
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var conicalDetectionArea =  $"../../detection_zone/Cone"
 @onready var animation_tree = $"../../AnimationTree"
@@ -11,7 +11,6 @@ func Enter():
 	enemy.player_in_zone = true
 	enemy.player_in_cone = true
 	enemy.player_visible = true
-	enemy = $"../.."
 	update_animation_parameters(starting_direction)
 func Physics_update(_delta: float) -> void:
 	# moving enemy by position no collisions...

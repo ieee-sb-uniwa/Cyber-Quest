@@ -272,9 +272,8 @@ current_state = NodePath("Patrol")
 script = ExtResource("4_y6dno")
 enemy = NodePath("../..")
 
-[node name="Chase" type="Node2D" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="Chase" type="Node2D" parent="State Machine"]
 script = ExtResource("5_4otw6")
-enemy = NodePath("../..")
 
 [node name="Idle" type="Node2D" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_rfhx3")

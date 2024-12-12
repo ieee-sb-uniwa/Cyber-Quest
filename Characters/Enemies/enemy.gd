@@ -13,6 +13,8 @@ class_name Enemy
 @export var player_in_cone: bool
 @export var player_visible: bool
 
+
+
 var player_dead = false
 var hit_pos
 var target
@@ -22,6 +24,21 @@ func _ready():
 	sprite.vframes = spriteRows
 	sprite.hframes = spriteColumns
 	hunting_target = $"../../Player"
+
+func _process(_delta):
+	var test_direction = round(self.get_global_rotation_degrees())
+	if(test_direction<0):
+		test_direction+= 360
+	print(test_direction)
+	if (test_direction>315 || test_direction<45):
+		print("I'm moving right")
+	elif (test_direction>45 && test_direction<136):
+		print("I'm moving down")
+	elif (test_direction>135 && test_direction<226):
+		print("I'm moving left")
+	elif (test_direction>225 && test_direction<316):
+		print("I'm moving up")
+		
 func _physics_process(_delta):
 	if !player_dead :
 		$chase_range/Circle.disabled = false

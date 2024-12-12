@@ -7,7 +7,7 @@ extends State
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
 @onready var conicalDetectionArea =  $"../../detection_zone/Cone"
-
+var direction : Vector2 = starting_direction
 
 var returns_to_path: bool
 
@@ -25,10 +25,13 @@ func Exit():
 func Update(delta : float) -> void:
 	if returns_to_path == false:
 		enemy.path_follow.progress += delta * enemy.move_speed
+
 func Physics_update(_delta : float):
 	if returns_to_path == true:
+		#print("test"+ %direction.aspect()) to be added
+		#Moves the enemies back on the patrol path
 		generate_path()
-		var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
+		direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
 		enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed, enemy.acceleration * _delta)
 		#Rotate cone to the enemy direction
 		conicalDetectionArea.rotation = direction.angle()
