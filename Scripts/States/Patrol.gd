@@ -1,21 +1,27 @@
 class_name Patrol
 extends State
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@export var enemy : CharacterBody2D
+#onready is used for variable that need to access the scene tree
 @onready var animation_tree = $"../../AnimationTree"
 @onready var state_machine = animation_tree.get("parameters/playback")
 @onready var nav_agent := $"../../NavigationAgent2D" as NavigationAgent2D
 @onready var conicalDetectionArea =  $"../../detection_zone/Cone"
-@export var enemy : CharacterBody2D
+
 
 var returns_to_path: bool
+
 func Enter():
 	enemy.player_in_zone = false
 	enemy.player_in_cone = false
 	enemy.player_visible = false
 	enemy =  $"../.."
 	update_animation_parameters(starting_direction)
+
+
 func Exit():
 	returns_to_path = true
+#Updates PathFollow2d progress
 func Update(delta : float) -> void:
 	if returns_to_path == false:
 		enemy.path_follow.progress += delta * enemy.move_speed

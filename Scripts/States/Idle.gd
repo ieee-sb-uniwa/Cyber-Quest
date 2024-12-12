@@ -1,6 +1,8 @@
 class_name Idle
 extends State
 @export var enemy : CharacterBody2D
+#To be developed
+#Enemies don't have an idle state only patrol and chase
 func Enter() -> void:
 	pass
 	

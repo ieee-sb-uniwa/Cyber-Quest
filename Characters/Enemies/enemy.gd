@@ -1,10 +1,11 @@
 extends CharacterBody2D
 class_name Enemy
+@onready var sprite : Sprite2D = $Sprite2D
+
 @export var move_speed : float = 300
 @export var acceleration : float = 7
 @export var path_follow : PathFollow2D 
 @export var hunting_target : CharacterBody2D 
-@onready var sprite : Sprite2D = $Sprite2D
 @export var input_texture : Texture2D 
 @export var spriteRows : int  
 @export var spriteColumns : int  
@@ -14,9 +15,8 @@ class_name Enemy
 
 var player_dead = false
 var hit_pos
-
 var target
-var test_color = Color(1, 0, 0, 1)
+
 func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
@@ -28,12 +28,12 @@ func _physics_process(_delta):
 	else:
 		$chase_range/Circle.disabled = true
 	if target :
-		print("target set")
 		Aim()
-		
 	
+#Used to identify objects of the enemy class
 func Enemy():
 	pass
+#Aim  checks if there are walls between the enemy and the player
 func Aim():
 	var space_State = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(position, hunting_target.position, 3, [self])
@@ -45,7 +45,9 @@ func Aim():
 			player_visible = true
 		else :
 			player_visible = false
-
+#Cone = Detection zone
+#Basically starts chasing player when he enters the cone
+#Stops when player leaves the circle
 func _on_detection_zone_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_zone = true
@@ -62,7 +64,7 @@ func _on_detection_zone_body_exited(body: Node2D) -> void:
 	if body == target:
 		target = null
 	
-
+#chase range= circle
 func _on_chase_range_body_entered(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_zone = true
