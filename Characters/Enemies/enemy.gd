@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var animation_tree = $"AnimationTree"
+@onready var state_machine = animation_tree.get("parameters/playback")
 
 @export var move_speed : float = 300
 @export var acceleration : float = 7
@@ -25,28 +27,32 @@ func _ready():
 	sprite.hframes = spriteColumns
 	hunting_target = $"../../Player"
 
-func _process(_delta):
-	var test_direction = round(self.get_global_rotation_degrees())
-	if(test_direction<0):
-		test_direction+= 360
-	print(test_direction)
-	if (test_direction>315 || test_direction<45):
-		print("I'm moving right")
-	elif (test_direction>45 && test_direction<136):
-		print("I'm moving down")
-	elif (test_direction>135 && test_direction<226):
-		print("I'm moving left")
-	elif (test_direction>225 && test_direction<316):
-		print("I'm moving up")
 		
 func _physics_process(_delta):
+	getCardinalDirection()
 	if !player_dead :
 		$chase_range/Circle.disabled = false
 	else:
 		$chase_range/Circle.disabled = true
 	if target :
 		Aim()
-	
+func getCardinalDirection():
+	var test_direction = round(self.get_global_rotation_degrees())
+	if(test_direction<0):
+		test_direction+= 360
+	print(test_direction)
+	if (test_direction>315 || test_direction<45):
+		print("I'm moving right")
+		update_animation_parameters(Vector2(1, 0))
+	elif (test_direction>45 && test_direction<136):
+		print("I'm moving down")
+		update_animation_parameters(Vector2(0, 1))
+	elif (test_direction>135 && test_direction<226):
+		print("I'm moving left")
+		update_animation_parameters(Vector2(-1, 0))
+	elif (test_direction>225 && test_direction<316):
+		print("I'm moving up")
+		update_animation_parameters(Vector2(0, -1))
 #Used to identify objects of the enemy class
 func Enemy():
 	pass
@@ -92,3 +98,14 @@ func _on_chase_range_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		player_in_zone=false
 		player_in_cone= false
+		
+func update_animation_parameters(move_direction : Vector2):
+	if(move_direction != Vector2.ZERO):
+		animation_tree.set("parameters/Idle/blend_position", move_direction)
+		animation_tree.set("parameters/Move/blend_position", move_direction)
+		
+func pick_new_animation():
+	if(self.velocity != Vector2.ZERO):
+		state_machine.travel("Move")
+	else:
+		state_machine.travel("Idle")

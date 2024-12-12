@@ -3020,8 +3020,10 @@ spriteRows = 7
 spriteColumns = 4
 
 [node name="Skeleton" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_ot1ok")]
-position = Vector2(185.578, 568)
-scale = Vector2(0.999955, 0.999982)
+position = Vector2(318.001, 568)
+rotation = 3.13005
+scale = Vector2(0.999953, 0.999982)
+skew = -0.00012958
 path_follow = NodePath("../../PatrolPaths/Path2D/PathFollow2D")
 hunting_target = NodePath("../../Player")
 input_texture = ExtResource("9_noou3")
@@ -3036,8 +3038,8 @@ scale = Vector2(1.00763, 1.00202)
 curve = SubResource("Curve2D_q5xbg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PatrolPaths/Path2D"]
-position = Vector2(184.173, 566.855)
-progress = 506.405
+position = Vector2(315.593, 566.855)
+rotation = 3.12999
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PatrolPaths/Path2D/PathFollow2D"]
 remote_path = NodePath("../../../../Enemies/Skeleton")
