@@ -32,6 +32,12 @@ func _ready():
 func _physics_process(_delta):
 	direction = getCardinalDirection()
 	update_animation_parameters(direction)
+	if(direction== Vector2.LEFT):
+		sprite.flip_v= true
+		sprite.flip_h=true
+	else:
+		sprite.flip_v= false
+		sprite.flip_h= false
 	velocity = direction.normalized() * move_speed
 	move_and_slide()
 	if !player_dead :
@@ -48,16 +54,16 @@ func getCardinalDirection() -> Vector2:
 	print(test_direction)
 	if (test_direction>315 || test_direction<46):
 		print("I'm moving right")
-		return Vector2(1,0)
+		return Vector2.RIGHT
 	elif (test_direction>45 && test_direction<136):
 		print("I'm moving down")
-		return Vector2(0,1)
+		return Vector2.DOWN
 	elif (test_direction>135 && test_direction<226):
 		print("I'm moving left")
-		return Vector2(-1,0)
+		return Vector2.LEFT
 	elif (test_direction>225 && test_direction<316):
 		print("I'm moving up")
-		return Vector2(0,-1)
+		return Vector2.UP
 	return test_direction #If this is called sth went wrong
 
 #Used to identify objects of the enemy class

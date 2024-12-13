@@ -11,7 +11,7 @@ func Enter():
 	enemy.player_in_zone = true
 	enemy.player_in_cone = true
 	enemy.player_visible = true
-	#update_animation_parameters(starting_direction)
+
 func Physics_update(_delta: float) -> void:
 	# moving enemy by position no collisions...
 	#enemy.position += (target.position - enemy.position) / enemy.move_speed
@@ -19,7 +19,6 @@ func Physics_update(_delta: float) -> void:
 	#var direction = enemy.global_position.direction_to(target.global_position)
 	# get direction with smart pathfinding AStar algorithm
 	var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
-	#update_animation_parameters(direction)
 	#enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
 	#Rotate cone 
 	conicalDetectionArea.rotation = direction.angle()
