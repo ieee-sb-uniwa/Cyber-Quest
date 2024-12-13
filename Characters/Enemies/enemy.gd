@@ -30,15 +30,15 @@ func _ready():
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
-	direction = getCardinalDirection()
+	direction = getCardinalDirection().normalized()
 	update_animation_parameters(direction)
 	if(direction== Vector2.LEFT):
 		sprite.flip_v= true
 		sprite.flip_h=true
 	else:
 		sprite.flip_v= false
-		sprite.flip_h= false
-	velocity = direction.normalized() * move_speed
+		sprite.flip_h=false
+	#velocity = direction.normalized() * move_speed
 	move_and_slide()
 	if !player_dead :
 		$chase_range/Circle.disabled = false

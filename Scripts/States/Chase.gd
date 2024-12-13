@@ -19,7 +19,8 @@ func Physics_update(_delta: float) -> void:
 	#var direction = enemy.global_position.direction_to(target.global_position)
 	# get direction with smart pathfinding AStar algorithm
 	var direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
-	#enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
+	enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed,enemy.acceleration * _delta)
+	#Weird cone bahavior on the y axis
 	#Rotate cone 
 	conicalDetectionArea.rotation = direction.angle()
 	#enemy.move_and_slide()
