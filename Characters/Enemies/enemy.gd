@@ -20,25 +20,22 @@ class_name Enemy
 var player_dead = false
 var hit_pos
 var target
-var direction
+var enemy_direction
 
 func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
 	sprite.hframes = spriteColumns
+	
 	hunting_target = $"../../Player"
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
-	direction = getCardinalDirection().normalized()
-	update_animation_parameters(direction)
-	if(direction== Vector2.LEFT):
-		sprite.flip_v= true
-		sprite.flip_h=true
-	else:
-		sprite.flip_v= false
-		sprite.flip_h=false
-	#velocity = direction.normalized() * move_speed
+	enemy_direction = getCardinalDirection()#.normalized()
+	update_animation_parameters(enemy_direction)
+	velocity = enemy_direction.normalized() * move_speed
+	pick_new_animation()
+	sprite.set_global_rotation(0)
 	move_and_slide()
 	if !player_dead :
 		$chase_range/Circle.disabled = false
@@ -117,8 +114,9 @@ func update_animation_parameters(move_direction : Vector2):
 		animation_tree.set("parameters/Idle/blend_position", move_direction)
 		animation_tree.set("parameters/Move/blend_position", move_direction)
 		
+
 func pick_new_animation():
 	if(self.velocity != Vector2.ZERO):
 		state_machine.travel("Move")
-	else:
-		state_machine.travel("Idle")
+	#else:
+		#state_machine.travel("Idle")

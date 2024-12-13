@@ -27,15 +27,7 @@ func Physics_update(_delta: float) -> void:
 	#pick_new_animation()
 	if !enemy.player_in_zone || !enemy.player_visible:
 		transitioned.emit("Patrol")
-func update_animation_parameters(move_direction : Vector2):
-	if(move_direction != Vector2.ZERO):
-		animation_tree.set("parameters/Idle/blend_position", move_direction)
-		animation_tree.set("parameters/Move/blend_position", move_direction)
-func pick_new_animation():
-	if(enemy.velocity != Vector2.ZERO):
-		state_machine.travel("Move")
-	else:
-		state_machine.travel("Idle")
+
 func generate_path() -> void:
 	if enemy.hunting_target != null:
 		nav_agent.target_position = enemy.hunting_target.position

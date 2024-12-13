@@ -38,19 +38,12 @@ func Physics_update(_delta : float):
 		#pick_new_animation()
 	if enemy.player_in_cone && enemy.player_visible:
 		transitioned.emit("Chase")
-func update_animation_parameters(move_direction : Vector2):
-	if(move_direction != Vector2.ZERO):
-		animation_tree.set("parameters/Idle/blend_position", move_direction)
-		animation_tree.set("parameters/Move/blend_position", move_direction)
+
 # It generates the return path
 func generate_path() -> void:
 	if enemy.path_follow != null:
 		nav_agent.target_position = enemy.path_follow.position
-func pick_new_animation():
-	if(enemy.velocity != Vector2.ZERO):
-		state_machine.travel("Move")
-	else:
-		state_machine.travel("Idle")
+
 
 func _on_navigation_agent_2d_target_reached():
 	returns_to_path=false
