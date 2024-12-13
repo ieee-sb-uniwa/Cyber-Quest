@@ -15,6 +15,7 @@ func Enter():
 	enemy.player_in_zone = false
 	enemy.player_in_cone = false
 	enemy.player_visible = false
+	conicalDetectionArea.visible = true
 	enemy =  $"../.."
 
 func Exit():

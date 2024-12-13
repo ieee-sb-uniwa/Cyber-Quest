@@ -12,4 +12,3 @@ NavigationAgent2D
 Label
 Node
 CollisionShape2D
-CharacterBody2D
