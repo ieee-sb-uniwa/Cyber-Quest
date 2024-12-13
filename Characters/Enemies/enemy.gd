@@ -14,45 +14,52 @@ class_name Enemy
 @export var player_in_zone: bool
 @export var player_in_cone: bool
 @export var player_visible: bool
-
+@export var starting_direction : Vector2 = Vector2(0, 1)
 
 
 var player_dead = false
 var hit_pos
 var target
+var direction
 
 func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
 	sprite.hframes = spriteColumns
 	hunting_target = $"../../Player"
+	update_animation_parameters(starting_direction)
 
-		
 func _physics_process(_delta):
-	getCardinalDirection()
+	direction = getCardinalDirection()
+	update_animation_parameters(direction)
+	velocity = direction.normalized() * move_speed
+	move_and_slide()
 	if !player_dead :
 		$chase_range/Circle.disabled = false
 	else:
 		$chase_range/Circle.disabled = true
 	if target :
 		Aim()
-func getCardinalDirection():
+
+func getCardinalDirection() -> Vector2:
 	var test_direction = round(self.get_global_rotation_degrees())
 	if(test_direction<0):
 		test_direction+= 360
 	print(test_direction)
-	if (test_direction>315 || test_direction<45):
+	if (test_direction>315 || test_direction<46):
 		print("I'm moving right")
-		update_animation_parameters(Vector2(1, 0))
+		return Vector2(1,0)
 	elif (test_direction>45 && test_direction<136):
 		print("I'm moving down")
-		update_animation_parameters(Vector2(0, 1))
+		return Vector2(0,1)
 	elif (test_direction>135 && test_direction<226):
 		print("I'm moving left")
-		update_animation_parameters(Vector2(-1, 0))
+		return Vector2(-1,0)
 	elif (test_direction>225 && test_direction<316):
 		print("I'm moving up")
-		update_animation_parameters(Vector2(0, -1))
+		return Vector2(0,-1)
+	return test_direction #If this is called sth went wrong
+
 #Used to identify objects of the enemy class
 func Enemy():
 	pass

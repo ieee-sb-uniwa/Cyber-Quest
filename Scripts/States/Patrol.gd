@@ -16,8 +16,6 @@ func Enter():
 	enemy.player_in_cone = false
 	enemy.player_visible = false
 	enemy =  $"../.."
-	update_animation_parameters(starting_direction)
-
 
 func Exit():
 	returns_to_path = true
@@ -32,7 +30,7 @@ func Physics_update(_delta : float):
 		#Moves the enemies back on the patrol path
 		generate_path()
 		direction = (nav_agent.get_next_path_position() - enemy.position).normalized()
-		enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed, enemy.acceleration * _delta)
+		#enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed, enemy.acceleration * _delta)
 		#Rotate cone to the enemy direction
 		conicalDetectionArea.rotation = direction.angle()
 		#update_animation_parameters(direction)
