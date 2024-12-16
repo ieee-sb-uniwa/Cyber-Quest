@@ -226,7 +226,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_4ie1l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
@@ -236,7 +236,7 @@ shape = SubResource("RectangleShape2D_u7qia")
 texture = ExtResource("2_675ll")
 hframes = 4
 vframes = 7
-frame = 14
+frame = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
