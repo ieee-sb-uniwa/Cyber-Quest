@@ -3828,7 +3828,6 @@ sources/0 = SubResource("TileSetAtlasSource_hvcbc")
 [node name="Level_1" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
-visible = false
 y_sort_enabled = true
 tile_set = SubResource("TileSet_ck62f")
 format = 2
@@ -3863,8 +3862,7 @@ collision_mask = 13
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_uf234")]
-visible = false
-position = Vector2(622, 614)
+position = Vector2(1846, 392)
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
