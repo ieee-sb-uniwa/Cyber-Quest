@@ -289,6 +289,7 @@ scale = Vector2(2.33746, 1)
 polygon = PackedVector2Array(-12.1196, -12.5994, 0, 0, -12.3504, 13.1721, -13.6201, 6.87238, -14.3126, -1.1454, -13.1584, -8.59047)
 
 [node name="Polygon2D" type="Polygon2D" parent="detection_zone/Cone"]
+modulate = Color(1, 1, 1, 0.525)
 color = Color(0.976043, 0.284845, 0.245648, 1)
 polygon = PackedVector2Array(0, 0, -12.1196, -12.5994, -13.1584, -8.59047, -14.3126, -1.1454, -13.3892, 8.01778, -12.3504, 13.1721)
 
