@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=31 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="Texture2D" uid="uid://bb07nu3r0okdr" path="res://art_assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="1_bxsmq"]
 [ext_resource type="Texture2D" uid="uid://dwl0q6mg4ueej" path="res://art_assets/web_safety_assets/Upscale/TileMap.png" id="1_ur346"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="10_7ppus"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
+[ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca5ni"]
 texture = ExtResource("1_bxsmq")
@@ -3825,6 +3826,9 @@ terrain_set_0/terrain_0/name = "spaceship floor"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.827451, 1)
 sources/0 = SubResource("TileSetAtlasSource_hvcbc")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k21mj"]
+size = Vector2(114, 38)
+
 [node name="Level_1" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
@@ -3856,7 +3860,7 @@ tile_set = SubResource("TileSet_885uv")
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 z_index = 5
-position = Vector2(2103, 911)
+position = Vector2(2103, 912)
 collision_layer = 2
 collision_mask = 13
 
@@ -3864,7 +3868,7 @@ collision_mask = 13
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("8_uf234")]
 visible = false
-position = Vector2(622, 614)
+position = Vector2(862, 672)
 collision_layer = 4
 collision_mask = 2
 motion_mode = 1
@@ -3884,7 +3888,16 @@ position = Vector2(2256, 613)
 [node name="Box" parent="Boxes" instance=ExtResource("10_7ppus")]
 z_index = 4
 position = Vector2(1944, 360)
-collision_layer = 520
-collision_mask = 514
 
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
+
+[node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
+z_index = 1
+position = Vector2(2138, 691)
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue_interaction"]
+z_index = 1
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_k21mj")
