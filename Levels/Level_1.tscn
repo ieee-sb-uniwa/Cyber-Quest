@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=31 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="Texture2D" uid="uid://bb07nu3r0okdr" path="res://art_assets/NinjaAdventure/Backgrounds/Tilesets/TilesetFloor.png" id="1_bxsmq"]
 [ext_resource type="Texture2D" uid="uid://dwl0q6mg4ueej" path="res://art_assets/web_safety_assets/Upscale/TileMap.png" id="1_ur346"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="10_7ppus"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
+[ext_resource type="Texture2D" uid="uid://jal66rkj2t5p" path="res://art_assets/web_safety_assets/Upscale/Enemi_Spritesheet.png" id="12_gc43w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca5ni"]
 texture = ExtResource("1_bxsmq")
@@ -3825,6 +3826,12 @@ terrain_set_0/terrain_0/name = "spaceship floor"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.827451, 1)
 sources/0 = SubResource("TileSetAtlasSource_hvcbc")
 
+[sub_resource type="Curve2D" id="Curve2D_v2wlm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2059, 208, 0, 0, 0, 0, 2055, 631, 0, 0, 0, 0, 2182, 629, 0, 0, 0, 0, 2168, 210, 0, 0, 0, 0, 2059, 208)
+}
+point_count = 5
+
 [node name="Level_1" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
@@ -3861,11 +3868,13 @@ collision_mask = 13
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("8_uf234")]
-position = Vector2(1846, 392)
-collision_layer = 4
+[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_uf234")]
+position = Vector2(2059, 208)
+rotation = 1.58025
 collision_mask = 2
-motion_mode = 1
+path_follow = NodePath("../../Patrol paths/Path2D/PathFollow2D")
+hunting_target = NodePath("../../Player")
+input_texture = ExtResource("12_gc43w")
 
 [node name="Items" type="Node" parent="."]
 
@@ -3886,3 +3895,15 @@ collision_layer = 520
 collision_mask = 514
 
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
+
+[node name="Patrol paths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Patrol paths"]
+curve = SubResource("Curve2D_v2wlm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Patrol paths/Path2D"]
+position = Vector2(2059, 208)
+rotation = 1.58025
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Patrol paths/Path2D/PathFollow2D"]
+remote_path = NodePath("../../../../Enemies/Enemy")

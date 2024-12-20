@@ -34,9 +34,6 @@ func Physics_update(_delta : float):
 		enemy.velocity = enemy.velocity.lerp(direction * enemy.move_speed, enemy.acceleration * _delta)
 		#Rotate cone to the enemy direction
 		conicalDetectionArea.rotation = direction.angle()
-		#update_animation_parameters(direction)
-		#enemy.move_and_slide()
-		#pick_new_animation()
 	if enemy.player_in_cone && enemy.player_visible:
 		transitioned.emit("Chase")
 
