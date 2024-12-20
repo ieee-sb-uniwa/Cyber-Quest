@@ -3871,7 +3871,7 @@ collision_mask = 13
 [node name="Enemy" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_uf234")]
 position = Vector2(2059, 208)
 rotation = 1.58025
-collision_mask = 2
+collision_mask = 3
 path_follow = NodePath("../../Patrol paths/Path2D/PathFollow2D")
 hunting_target = NodePath("../../Player")
 input_texture = ExtResource("12_gc43w")
