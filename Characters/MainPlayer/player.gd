@@ -45,3 +45,7 @@ func _input(event):
 				set_collision_layer_value(1,true)
 				set_collision_layer_value(30,false)
 				Global.move_speed = 150
+
+#Added so they can be identified
+func player():
+	pass

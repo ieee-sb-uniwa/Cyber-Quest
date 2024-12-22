@@ -26,17 +26,17 @@ func _ready():
 	sprite.texture = input_texture
 	sprite.vframes = spriteRows
 	sprite.hframes = spriteColumns
-	
 	hunting_target = $"../../Player"
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):
 	enemy_direction = getCardinalDirection()#.normalized()
 	update_animation_parameters(enemy_direction)
-	velocity = enemy_direction.normalized() * move_speed
+	#velocity = enemy_direction.normalized() * move_speed
 	pick_new_animation()
 	sprite.set_global_rotation(0)
 	move_and_slide()
+	
 	if !player_dead :
 		$chase_range/Circle.disabled = false
 	else:
@@ -48,18 +48,13 @@ func getCardinalDirection() -> Vector2:
 	var test_direction = round(self.get_global_rotation_degrees())
 	if(test_direction<0):
 		test_direction+= 360
-	print(test_direction)
 	if (test_direction>315 || test_direction<46):
-		print("I'm moving right")
 		return Vector2.RIGHT
 	elif (test_direction>45 && test_direction<136):
-		print("I'm moving down")
 		return Vector2.DOWN
 	elif (test_direction>135 && test_direction<226):
-		print("I'm moving left")
 		return Vector2.LEFT
 	elif (test_direction>225 && test_direction<316):
-		print("I'm moving up")
 		return Vector2.UP
 	return test_direction #If this is called sth went wrong
 

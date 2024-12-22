@@ -229,7 +229,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 radius = 66.7141
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gusw1"]
-radius = 8.61327
+radius = 12.2087
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(180, 225)
@@ -281,21 +281,21 @@ enemy = NodePath("../..")
 [node name="detection_zone" type="Area2D" parent="."]
 scale = Vector2(-3.70645, 3.49224)
 collision_layer = 4
-collision_mask = 2
+collision_mask = 15
 
 [node name="Cone" type="CollisionPolygon2D" parent="detection_zone"]
-position = Vector2(-1.43051e-06, 0)
-scale = Vector2(2.33746, 1)
-polygon = PackedVector2Array(-12.1196, -12.5994, 0, 0, -12.3504, 13.1721, -13.6201, 6.87238, -14.3126, -1.1454, -13.1584, -8.59047)
+position = Vector2(-3.55725, 0)
+scale = Vector2(3.16592, 1)
+polygon = PackedVector2Array(-12.4264, -21.4762, 1.03839, 0.286346, -12.1707, 23.1943, -13.7899, 11.454, -14.3126, -1.1454, -13.7899, -11.7403)
 
 [node name="Polygon2D" type="Polygon2D" parent="detection_zone/Cone"]
 modulate = Color(1, 1, 1, 0.525)
 color = Color(0.976043, 0.284845, 0.245648, 1)
-polygon = PackedVector2Array(0, 0, -12.1196, -12.5994, -13.1584, -8.59047, -14.3126, -1.1454, -13.3892, 8.01778, -12.3504, 13.1721)
+polygon = PackedVector2Array(1.03839, 0, -12.4264, -21.4762, -13.7047, -12.0267, -14.3126, -1.1454, -13.7899, 12.0267, -12.1707, 23.4806)
 
 [node name="chase_range" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 15
 
 [node name="Circle" type="CollisionShape2D" parent="chase_range"]
 rotation = 3.14159
@@ -303,9 +303,17 @@ scale = Vector2(14.8258, 12.9964)
 shape = SubResource("CircleShape2D_gusw1")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
+[node name="Polygon2D" type="Polygon2D" parent="chase_range/Circle"]
+position = Vector2(-4.28036e-06, 1.76972)
+scale = Vector2(0.998615, 1.20536)
+color = Color(1, 0.203922, 0.0980392, 0.313726)
+polygon = PackedVector2Array(-1.90735e-05, 8.61777, -3.24211, 8.29859, -6.21402, 7.21338, -8.64559, 5.68133, -10.5368, 3.57476, -11.7526, 1.08517, -12.141, -1.2129, -11.8201, -4.08549, -10.5368, -6.51123, -8.578, -8.61779, -6.07889, -10.2775, -3.19145, -11.235, -0.0844488, -11.618, 3.15764, -11.2988, 6.12955, -10.2775, 8.62866, -8.68158, 10.5874, -6.51118, 11.8032, -4.14927, 12.1409, -1.59585, 11.8032, 1.08523, 10.5874, 3.57481, 8.62862, 5.68137, 6.12951, 7.27725, 4.18768, 7.97943, 3.30961, 8.2986)
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 30.0
+navigation_layers = 15
 path_postprocessing = 1
+simplify_path = true
 avoidance_layers = 2
 debug_enabled = true
 debug_use_custom = true
