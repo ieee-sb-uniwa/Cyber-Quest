@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = null
 @onready var label = $Label
 
 var active_areas = [] #holds all objects the player can currently interact with.
@@ -17,6 +17,7 @@ func unregister_area(area: InteractionArea):
 func _process(delta):
 	if active_areas.size() > 0 && can_interact:
 		#this makes it so that the first element is the interaction area closest to the player
+		player = get_tree().get_first_node_in_group("player")
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = "Press" + active_areas[0].action_key + "to " + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
