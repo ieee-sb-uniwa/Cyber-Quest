@@ -15,34 +15,12 @@ func _ready():
 	update_animation_parameters(starting_direction)
 
 func _physics_process(_delta):	
-	var input_direction = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	)
+	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
 	update_animation_parameters(input_direction)
+	
 	velocity = input_direction.normalized() * Global.move_speed
-	#region Pickup Item Functionality
-	if (abs(Input.get_action_strength("move_right") - Input.get_action_strength("move_left")) >=
-	abs(Input.get_action_strength("move_down") - Input.get_action_strength("move_up"))
-	and velocity != Vector2.ZERO): #Άμα μετακινείται πιο πολύ οριζόντια (controller compatibility και priority από κάθετα)
-		if (Input.get_action_strength("move_right") > Input.get_action_strength("move_left")): #Δεξιά
-			get_node("Marker1").position = Vector2(-18.0,-6.0) #Hardcoded positions του κάθε item που έχουμε κάνει pickup
-			get_node("Marker2").position = Vector2(-18.0,-12.0)
-			get_node("Marker3").position = Vector2(-18.0,-18.0)
-		else: #Αριστερά ☭
-			get_node("Marker1").position = Vector2(18.0,-6.0)
-			get_node("Marker2").position = Vector2(18.0,-12.0)
-			get_node("Marker3").position = Vector2(18.0,-18.0)
-	elif (velocity != Vector2.ZERO): #Άμα μετακινείται πιο πολύ κάθετα
-		if (Input.get_action_strength("move_down") > Input.get_action_strength("move_up")): #Πάνω
-			get_node("Marker1").position = Vector2(0.0,-6.0)
-			get_node("Marker2").position = Vector2(0.0,-12.0)
-			get_node("Marker3").position = Vector2(0.0,-18.0)
-		else: #Κάτω
-			get_node("Marker1").position = Vector2(0.0,6.0)
-			get_node("Marker2").position = Vector2(0.0,0.0)
-			get_node("Marker3").position = Vector2(0.0,-6.0)
-	#endregion
+	pickup_item_positions()
+	
 	move_and_slide()
 	pick_new_state()
 
@@ -58,18 +36,34 @@ func pick_new_state():
 		state_machine.travel("Idle")
 func player(): #Is used to be identified by enemies
 	pass
-func _input(event):
-	if event.is_action_pressed("Interact"):
-		if Global.Hide_status == 1 && Global.interacable == true:
-			self.visible=false
-			P_sprite.visible = false
-			set_collision_layer_value(30,true)
-			set_collision_layer_value(1,false)
-			Global.move_speed = 0
-		else:
-			if Global.Hide_status == 0 && Global.interacable == true:
-				self.visible=true
-				P_sprite.visible = true 
-				set_collision_layer_value(1,true)
-				set_collision_layer_value(30,false)
-				Global.move_speed = 150
+	
+func get_move(move):
+	return Input.get_action_strength(move)
+	
+func get_horizontal_move():
+	return get_move("move_right") - get_move("move_left")
+
+func get_vertical_move():
+	return get_move("move_down") - get_move("move_up")
+	
+func pickup_item_positions():	
+	# If no movement, don't do anything
+	if (velocity == Vector2.ZERO):
+		return
+	# Hardcoded positions του κάθε item που έχουμε κάνει pickup
+	var hard_pos = []
+	
+	#Άμα μετακινείται πιο πολύ οριζόντια (controller compatibility και priority από κάθετα)
+	if (abs(get_horizontal_move()) >= abs(get_vertical_move())):
+		if (get_move("move_right") > get_move("move_left")): #Δεξιά	
+			hard_pos = [Vector2(-18.0, -6.0), Vector2(-18.0, -12.0), Vector2(-18.0, -18.0)]
+		else: #Αριστερά ☭
+			hard_pos = [Vector2(18.0, -6.0), Vector2(18.0, -12.0), Vector2(18.0, -18.0)]
+	else: #Άμα μετακινείται πιο πολύ κάθετα
+		if (get_move("move_down") > get_move("move_up")): #Πάνω
+			hard_pos = [Vector2(0.0, -6.0), Vector2(0.0, -12.0), Vector2(0.0, -18.0)]
+		else: #Κάτω
+			hard_pos = [Vector2(0.0, 6.0), Vector2(0.0, 0.0), Vector2(0.0, -6.0)]
+	# Assign positions to each marker
+	for i in range(3):
+		get_node("Marker%d" % (i + 1)).position = hard_pos[i]

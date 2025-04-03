@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://btssi2ymkf40y"]
+[gd_scene load_steps=9 format=3 uid="uid://btssi2ymkf40y"]
 
 [ext_resource type="Script" path="res://Menu/menu.gd" id="1_e7t8g"]
-[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://art_assets/web_safety_assets/Upscale/Backgrounds/Stars.png" id="2_g6nkl"]
-[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://art_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="3_nb3x8"]
+[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://art_assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_mdafx"]
+[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://art_assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_nb3x8"]
+[ext_resource type="Texture2D" uid="uid://dgiefa6158nuu" path="res://art_assets/web_safety_assets/Backgrounds/Spaceship.png" id="3_p6ysk"]
+[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://art_assets/web_safety_assets/Backgrounds/Stars.png" id="4_vgsdd"]
+[ext_resource type="AudioStream" uid="uid://dgnktfvpjs3oh" path="res://art_assets/web_safety_assets/music/TitleMusic.wav" id="6_cb3ql"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wohcc"]
 
@@ -17,11 +20,32 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e7t8g")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="GameTitle" type="RichTextLabel" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 114.0
+offset_top = 56.0
+offset_right = 545.0
+offset_bottom = 97.0
+theme_override_fonts/normal_font = ExtResource("2_mdafx")
+theme_override_font_sizes/normal_font_size = 30
+text = "Web Safety Game
+"
+
+[node name="Spaceship" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 194.0
+offset_top = 54.0
+offset_right = 450.0
+offset_bottom = 182.0
+texture = ExtResource("3_p6ysk")
+
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 907.0
 offset_bottom = 502.0
-texture = ExtResource("2_g6nkl")
+texture = ExtResource("4_vgsdd")
 expand_mode = 3
 stretch_mode = 2
 
@@ -80,6 +104,10 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../New")
 theme_override_fonts/font = ExtResource("3_nb3x8")
 text = "Quit Game"
+
+[node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cb3ql")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]

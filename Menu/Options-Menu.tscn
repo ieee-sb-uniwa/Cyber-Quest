@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bma6r210yning"]
 
-[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://art_assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_c1mt7"]
-[ext_resource type="Texture2D" uid="uid://kd0yfb5l6qvb" path="res://art_assets/web_safety_assets/Backgrounds/Stars.png" id="1_jt2b4"]
+[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://art_assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="1_c1mt7"]
+[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://art_assets/web_safety_assets/Backgrounds/Stars.png" id="1_jt2b4"]
 [ext_resource type="Script" path="res://Menu/options_menu.gd" id="1_vbrj0"]
-[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://art_assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="4_glnao"]
+[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://art_assets/web_safety_assets/fonts/PixelOperator8.ttf" id="4_glnao"]
 
 [node name="Options Menu" type="Control"]
 layout_mode = 3

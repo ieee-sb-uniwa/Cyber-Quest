@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://c6eyucd6nmqhi"]
 
 [ext_resource type="Script" path="res://Characters/Enemies/enemy.gd" id="1_eia42"]
-[ext_resource type="Texture2D" uid="uid://bfjk4atfd4ab6" path="res://art_assets/NinjaAdventure/Actor/Monsters/Snake/Snake.png" id="2_phqpm"]
+[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemi_Spritesheet.png" id="2_eja4a"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="3_nrk55"]
 [ext_resource type="Script" path="res://Scripts/States/Patrol.gd" id="4_y6dno"]
 [ext_resource type="Script" path="res://Scripts/States/Chase.gd" id="5_4otw6"]
@@ -242,10 +242,10 @@ script = ExtResource("1_eia42")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 0)
 scale = Vector2(1.248, 0.9)
-texture = ExtResource("2_phqpm")
+texture = ExtResource("2_eja4a")
 hframes = 4
 vframes = 4
-frame = 15
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
