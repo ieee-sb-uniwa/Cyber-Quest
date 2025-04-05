@@ -17,7 +17,8 @@ func get_player_marker():
 
 func _input(_event):
 	var bodies = $InteractionArea.get_overlapping_bodies()
-	if bodies.size() == 0: # only check input if there is a body inside area 
+	# only check input if there is a body inside area 
+	if bodies.size() == 0: 
 		return
 	if Input.is_action_just_pressed("drop"):
 		print("press q")
@@ -45,15 +46,32 @@ func _input(_event):
 				disable_collision(true)
 
 func _process(_delta):
+	# If it is picked up 
 	if picked == true:
-		self.position = get_player_marker().global_position # If it is picked up 
+		self.position = get_player_marker().global_position 
 		if get_player().velocity != Vector2.ZERO:
-			self.z_index = get_player().z_index + item_number - max_items_picked_up 
+			# show the block on top of player
 			if (moving_up()):
-				self.z_index = get_player().z_index + item_number # show the block on top of player
+				self.z_index = get_player().z_index + item_number 
+			# show the block behind the player
+			else:
+				self.z_index = get_player().z_index + item_number - max_items_picked_up 
 				
 	# Check if the player moved after the label was shown and then hide it
 	hide_label()
+
+func moving_up():
+	var up_strength = Input.get_action_strength("move_up")
+	var down_strength = Input.get_action_strength("move_down")
+	var left_strength = Input.get_action_strength("move_left")
+	var right_strength = Input.get_action_strength("move_right")
+
+	var vertical = up_strength - down_strength
+	var horizontal = right_strength - left_strength
+
+	# Check if moving mostly up or only up
+	return vertical > 0 and (abs(vertical) > abs(horizontal) 
+	or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 	
 func _ready():
 	# Initialize block number at initialiazation
@@ -74,19 +92,6 @@ func rand_letter(isLowercase: bool):
 	else:
 		block_id = rand_num(65,90)
 		return char(65 + randi() % 26) # 'A' - 'Z' (ASCII code 65-90)
-	
-func moving_up():
-	var up_strength = Input.get_action_strength("move_up")
-	var down_strength = Input.get_action_strength("move_down")
-	var left_strength = Input.get_action_strength("move_left")
-	var right_strength = Input.get_action_strength("move_right")
-
-	var vertical = up_strength - down_strength
-	var horizontal = right_strength - left_strength
-
-	# Check if moving mostly up or only up
-	return vertical > 0 and (abs(vertical) > abs(horizontal) 
-	or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 
 func player_moved():
 	return (
