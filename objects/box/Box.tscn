@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnbdfkg7ur1tq"]
 
 [ext_resource type="Script" path="res://objects/box/Box.gd" id="1_pegqg"]
-[ext_resource type="Texture2D" uid="uid://hu0lgvtj6g7t" path="res://art_assets/web_safety_assets/Tilesets/Objects/Chest.png" id="2_jft18"]
+[ext_resource type="Texture2D" uid="uid://bv0mgi20u0cnn" path="res://art_assets/web_safety_assets/Tilesets/Objects/Chest_Space.png" id="2_1dxfg"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_blx0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8sa"]
@@ -19,7 +19,7 @@ script = ExtResource("1_pegqg")
 [node name="Box_Sprite" type="Sprite2D" parent="."]
 position = Vector2(-0.188679, 0)
 scale = Vector2(1.02358, 1)
-texture = ExtResource("2_jft18")
+texture = ExtResource("2_1dxfg")
 hframes = 2
 frame = 1
 

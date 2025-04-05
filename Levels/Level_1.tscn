@@ -502,7 +502,7 @@ tile_set = SubResource("TileSet_885uv")
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 z_index = 5
-position = Vector2(2860, 144)
+position = Vector2(2843, 1023)
 collision_layer = 2
 collision_mask = 13
 
