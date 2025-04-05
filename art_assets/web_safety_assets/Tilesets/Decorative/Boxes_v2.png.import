@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hoxsnrhaegln"
-path="res://.godot/imported/single-doors-animations.png-9818667ee2e07d1bbb0e2b8eb440ea12.ctex"
+uid="uid://cmihq56qtrxal"
+path="res://.godot/imported/Boxes_v2.png-e90239027c0a586c84d9cac6bd0a1465.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/single-doors-animations.png"
-dest_files=["res://.godot/imported/single-doors-animations.png-9818667ee2e07d1bbb0e2b8eb440ea12.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png"
+dest_files=["res://.godot/imported/Boxes_v2.png-e90239027c0a586c84d9cac6bd0a1465.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33i2b2mcgdjl"
-path="res://.godot/imported/Boxes_v1.png-4284b3480b5d371a7f9ca8a74fff2b05.ctex"
+uid="uid://dbk57j214g6dq"
+path="res://.godot/imported/double_door_animation.png-4818d222dda730c74498b945523d20af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Boxes_v1.png"
-dest_files=["res://.godot/imported/Boxes_v1.png-4284b3480b5d371a7f9ca8a74fff2b05.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Doors/double_door_animation.png"
+dest_files=["res://.godot/imported/double_door_animation.png-4818d222dda730c74498b945523d20af.ctex"]
 
 [params]
 

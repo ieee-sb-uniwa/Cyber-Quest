@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgjkfcebuojvr"
-path="res://.godot/imported/Wall.png-bb2fff2ec0219b38f298ff795390ac78.ctex"
+uid="uid://cmcgnu5ubjtnt"
+path="res://.godot/imported/TileMap.png-910f4dcf2702c206e8a7d26a0fc3a750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Wall.png"
-dest_files=["res://.godot/imported/Wall.png-bb2fff2ec0219b38f298ff795390ac78.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Map/TileMap.png"
+dest_files=["res://.godot/imported/TileMap.png-910f4dcf2702c206e8a7d26a0fc3a750.ctex"]
 
 [params]
 

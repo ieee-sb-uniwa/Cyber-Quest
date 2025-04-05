@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0nlgi5qdxbyy"
-path="res://.godot/imported/LittleTreasureChest_32x16.png-d7885bdd54dee45f4e2ed522321e2641.ctex"
+uid="uid://bjyoydqowsa42"
+path="res://.godot/imported/Wall.png-9e8272935da6e89fae663cd422757c96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/LittleTreasureChest_32x16.png"
-dest_files=["res://.godot/imported/LittleTreasureChest_32x16.png-d7885bdd54dee45f4e2ed522321e2641.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Map/Wall.png"
+dest_files=["res://.godot/imported/Wall.png-9e8272935da6e89fae663cd422757c96.ctex"]
 
 [params]
 

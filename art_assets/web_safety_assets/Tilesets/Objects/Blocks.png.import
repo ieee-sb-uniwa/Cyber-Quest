@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuiiwgmrulwl"
-path="res://.godot/imported/Boxes_v2.png-0c12c69d340119d15cfdc5cc0fa0f1a5.ctex"
+uid="uid://cixjxsku7bv22"
+path="res://.godot/imported/Blocks.png-cb4ec2ee279a22019721d91a0668340c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Boxes_v2.png"
-dest_files=["res://.godot/imported/Boxes_v2.png-0c12c69d340119d15cfdc5cc0fa0f1a5.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks.png"
+dest_files=["res://.godot/imported/Blocks.png-cb4ec2ee279a22019721d91a0668340c.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs5hh8rgdnfr5"]
 
 [ext_resource type="Script" path="res://Levels/pickup_item.gd" id="1_uhymk"]
-[ext_resource type="Texture2D" uid="uid://b7nvvxkwhctcp" path="res://art_assets/web_safety_assets/Tilesets/Blocks.png" id="2_kxkvg"]
+[ext_resource type="Texture2D" uid="uid://cixjxsku7bv22" path="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks.png" id="2_6qxhl"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ahm8"]
@@ -19,7 +19,7 @@ script = ExtResource("1_uhymk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5.0962e-06, 5.54323e-06)
 scale = Vector2(1.11111, 1.09091)
-texture = ExtResource("2_kxkvg")
+texture = ExtResource("2_6qxhl")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
