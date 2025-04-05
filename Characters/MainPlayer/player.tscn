@@ -237,7 +237,7 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 14
+frame = 10
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(10, -2)
@@ -251,6 +251,7 @@ position = Vector2(10, -23)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0
 visibility_layer = 0
+z_index = 5
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_u7qia")
 

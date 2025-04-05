@@ -55,9 +55,9 @@ func pickup_item_positions():
 	
 	#Άμα μετακινείται πιο πολύ οριζόντια (controller compatibility και priority από κάθετα)
 	if (abs(get_horizontal_move()) >= abs(get_vertical_move())):
-		if (get_move("move_right") > get_move("move_left")): #Δεξιά	
+		if (get_move("move_right") > get_move("move_left")): #Δεξιά
 			hard_pos = [Vector2(-18.0, -6.0), Vector2(-18.0, -12.0), Vector2(-18.0, -18.0)]
-		else: #Αριστερά ☭
+		else: #Αριστερά
 			hard_pos = [Vector2(18.0, -6.0), Vector2(18.0, -12.0), Vector2(18.0, -18.0)]
 	else: #Άμα μετακινείται πιο πολύ κάθετα
 		if (get_move("move_down") > get_move("move_up")): #Πάνω

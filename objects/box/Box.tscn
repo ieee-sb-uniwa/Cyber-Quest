@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnbdfkg7ur1tq"]
 
 [ext_resource type="Script" path="res://objects/box/Box.gd" id="1_pegqg"]
-[ext_resource type="Texture2D" uid="uid://hu0lgvtj6g7t" path="res://art_assets/web_safety_assets/Tilesets/Objects/LittleTreasureChest_32x16.png" id="2_jft18"]
+[ext_resource type="Texture2D" uid="uid://hu0lgvtj6g7t" path="res://art_assets/web_safety_assets/Tilesets/Objects/Chest.png" id="2_jft18"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_blx0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8sa"]

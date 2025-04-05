@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ft6bop55g05x"
-path="res://.godot/imported/Enemi_Spritesheet.png-adcf4e997f9420115a4e58e20f611754.ctex"
+path="res://.godot/imported/Enemy_Spritesheet.png-bc1cb93eb34358f8188152c2079428a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Characters/Enemi_Spritesheet.png"
-dest_files=["res://.godot/imported/Enemi_Spritesheet.png-adcf4e997f9420115a4e58e20f611754.ctex"]
+source_file="res://art_assets/web_safety_assets/Characters/Enemy_Spritesheet.png"
+dest_files=["res://.godot/imported/Enemy_Spritesheet.png-bc1cb93eb34358f8188152c2079428a0.ctex"]
 
 [params]
 

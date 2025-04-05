@@ -10,13 +10,11 @@ var interact: Callable = func():
 
 func _on_body_entered(_body):
 	InteractionManager.register_area(self)
-	print("entered area")
 	Global.interacable = true
 	area_label = InteractionManager.get_label()
 
 func _on_body_exited(_body):
 	InteractionManager.unregister_area(self)
-	print("exited area")
 	Global.interacable = false
 	area_label = InteractionManager.get_label()
 	area_label.hide()

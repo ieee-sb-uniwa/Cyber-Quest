@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="15_nop75"]
-[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemi_Spritesheet.png" id="15_yoeg4"]
+[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://objects/pickup_item/pickup_item.tscn" id="20_7qa6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdagk"]
@@ -491,7 +491,7 @@ tile_map_data = PackedByteArray("AAAHABIAAAABAAMAAAAHABMAAAABAAMAAAAHABQAAAABAAM
 tile_set = SubResource("TileSet_veoha")
 
 [node name="DecorationLayer" type="TileMapLayer" parent="TileMap"]
-z_index = 997
+z_index = 3
 tile_map_data = PackedByteArray("AACRAAYAAwAHAAMAAACTAAYAAwAGAAMAAACVAAcAAwAEAAMAAACXAAcAAwAGAAEAAACYACAAAwAHAAMAAACaACAAAwAIAAMAAACDACAAAwAIAAEAAAB8ACAAAwAIAAMAAAB6ACAAAwAFAAMAAAB7AAYAAwAGAAMAAAB9AAYAAwAIAAMAAAB/AAcAAwAHAAEAAACBAAcAAwADAAMAAAB4ACAAAwAHAAEAAAB6ABwAAwACAAMAAADKAA4AAwAAAAMAAADKACEAAAAFAAAAAADLAAoAAQAAAAAAAADLACUAAQAAAAAAAADMACEAAQACAAAAAADNAAgAAAACAAAAAADNAA4AAQAAAAAAAADOAAoAAQACAAAAAADOACUAAQABAAAAAADQAA4AAQABAAAAABDVABYAAQACAAAAAADWABcAAAACAAAAAADWABoAAQAAAAAAAADXABUAAAACAAAAAADYABsAAQACAAAAAADZABcAAQABAAAAAADZACMAAQABAAAAAADaABMAAQAAAAAAAADcACUAAQAAAAAAAADfACUAAQACAAAAAADhAAoAAQABAAAAAADhABkAAQABAAAAAADiACYAAwACAAMAAADjABoAAAAEAAAAAADjACIAAQABAAAAAADkAAgAAAABAAAAAADkAAsAAQAAAAAAAADkABcAAAACAAAAAADmAA4AAQABAAAAABDmABUAAQACAAAAAADmABkAAQAAAAAAAADnAAkAAQACAAAAAADnACEAAQAAAAAAAADnACUAAQABAAAAABDpAAoAAAABAAAAAADpACAAAAACAAAAAADqAAcAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_g52gk")
 
@@ -501,12 +501,13 @@ tile_map_data = PackedByteArray("AAARABoAAAACAAEAAAARABkAAAACAAEAAAARABgAAAACAAE
 tile_set = SubResource("TileSet_885uv")
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
-z_index = 4
-position = Vector2(2840, 1030)
+z_index = 5
+position = Vector2(2860, 144)
 collision_layer = 2
 collision_mask = 13
 
 [node name="Door" parent="." instance=ExtResource("1_pe37q")]
+z_index = 2
 position = Vector2(2846, 83)
 
 [node name="Enemies" type="Node" parent="."]
@@ -537,20 +538,6 @@ remote_path = NodePath("../../../Enemy")
 light_mask = 0
 visibility_layer = 0
 
-[node name="Boxes" type="Node" parent="."]
-
-[node name="Box" parent="Boxes" instance=ExtResource("15_nop75")]
-position = Vector2(3303, 548)
-
-[node name="Box2" parent="Boxes" instance=ExtResource("15_nop75")]
-position = Vector2(2321, 533)
-
-[node name="Box3" parent="Boxes" instance=ExtResource("15_nop75")]
-position = Vector2(2098, 244)
-
-[node name="Box4" parent="Boxes" instance=ExtResource("15_nop75")]
-position = Vector2(3682, 142)
-
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
 visible = false
 
@@ -565,6 +552,20 @@ collision_mask = 2
 z_index = 1
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k21mj")
+
+[node name="Boxes" type="Node" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource("15_nop75")]
+position = Vector2(3303, 548)
+
+[node name="Box2" parent="Boxes" instance=ExtResource("15_nop75")]
+position = Vector2(2321, 533)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("15_nop75")]
+position = Vector2(2098, 244)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("15_nop75")]
+position = Vector2(3682, 142)
 
 [node name="ObjectiveItems" type="Node" parent="."]
 

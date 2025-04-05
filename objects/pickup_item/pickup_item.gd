@@ -21,9 +21,7 @@ func _input(_event):
 	if bodies.size() == 0: 
 		return
 	if Input.is_action_just_pressed("drop"):
-		print("press q")
 		for body in bodies:
-			print("detected a body")
 			if body.name == "Player" and picked == true:
 				picked = false
 				Global.items_picked_up -= 1
@@ -33,10 +31,8 @@ func _input(_event):
 				disable_collision(false)
 				$InteractionArea.get_label().hide()
 	if Input.is_action_just_pressed("ui_accept"):
-		print("press space")
 		show_label()
 		for body in bodies:
-			print("detected a body")
 			if body.name == "Player" and Global.items_picked_up < max_items_picked_up and picked == false:
 				picked = true
 				Global.items_picked_up += 1
@@ -51,7 +47,7 @@ func _process(_delta):
 		self.position = get_player_marker().global_position 
 		if get_player().velocity != Vector2.ZERO:
 			# show the block on top of player
-			if (moving_up()):
+			if (player_moving_up()):
 				self.z_index = get_player().z_index + item_number 
 			# show the block behind the player
 			else:
@@ -60,7 +56,7 @@ func _process(_delta):
 	# Check if the player moved after the label was shown and then hide it
 	hide_label()
 
-func moving_up():
+func player_moving_up():
 	var up_strength = Input.get_action_strength("move_up")
 	var down_strength = Input.get_action_strength("move_down")
 	var left_strength = Input.get_action_strength("move_left")
@@ -77,7 +73,7 @@ func _ready():
 	# Initialize block number at initialiazation
 	randomize()
 	block_id = rand_num(0,9)
-	print(block_id)
+	print("Block id: " + str(block_id))
 	block_sprite.set_frame(block_id)  # depending on randon number assign frame (0-9)
 
 ### Random number 

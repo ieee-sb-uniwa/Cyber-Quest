@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbp54hwu2rd20"
-path="res://.godot/imported/SINGLE_DOOR_frame.png-23697ecf74cd398ec9c6158a35003f2e.ctex"
+path="res://.godot/imported/single_door_frame.png-5f330a75fa282118b81ca24c465344ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Doors/SINGLE_DOOR_frame.png"
-dest_files=["res://.godot/imported/SINGLE_DOOR_frame.png-23697ecf74cd398ec9c6158a35003f2e.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Doors/single_door_frame.png"
+dest_files=["res://.godot/imported/single_door_frame.png-5f330a75fa282118b81ca24c465344ff.ctex"]
 
 [params]
 

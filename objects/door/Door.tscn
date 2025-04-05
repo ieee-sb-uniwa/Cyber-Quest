@@ -120,17 +120,16 @@ size = Vector2(40, 63)
 size = Vector2(64, 30)
 
 [node name="Door" type="StaticBody2D"]
-z_index = 2
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_iex6k")
 
 [node name="DoorFrame" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 6
 texture = ExtResource("2_qp7ks")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 1
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_wt36c")
 
 [node name="Area2D" type="Area2D" parent="."]
