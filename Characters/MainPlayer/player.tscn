@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ngg28ihydbd1" path="res://art_assets/web_safety_assets/Characters/Player_SpriteSheet.png" id="3_ceh3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
-size = Vector2(10, 15)
+size = Vector2(24, 16)
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -237,7 +237,7 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 2
+frame = 14
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(10, -2)
@@ -251,7 +251,7 @@ position = Vector2(10, -23)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0
 visibility_layer = 0
-position = Vector2(0, 8.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_u7qia")
 
 [node name="Camera2D" type="Camera2D" parent="."]

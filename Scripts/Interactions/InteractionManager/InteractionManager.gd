@@ -13,9 +13,6 @@ func get_label() -> Label:
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area) # adds area to available areas
-	# Check which area is closer to player
-	#player = get_tree().get_first_node_in_group("player")
-	#active_areas.sort_custom(_sort_by_distance_to_player) # sort by closer distance
 	show_action_label(area) # prints area label
 
 func unregister_area(area: InteractionArea):
@@ -25,11 +22,12 @@ func unregister_area(area: InteractionArea):
 		label.hide() # hide label when you exit area
 
 func show_action_label(area):
-	label.text = "Press" + area.action_key + "to " + area.action_name
-	label.global_position = area.global_position
-	label.global_position.y -= 36
-	label.global_position.x -= label.size.x / 2
-	label.show()
+	if Global.isTutorial: # If we in tutorial state
+		label.text = "Press" + area.action_key + "to " + area.action_name
+		label.global_position = area.global_position
+		label.global_position.y -= 36
+		label.global_position.x -= label.size.x / 2
+		label.show()
 
 func _sort_by_distance_to_player(area1, area2):
 	var area1_to_player = player.global_position.distance_to(area1.global_position)

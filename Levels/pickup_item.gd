@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 const unpicked_z_index = 1
 const max_items_picked_up = 3
@@ -7,6 +7,7 @@ var item_number : int = 0
 var label_shown = false  
 var block_id 
 @onready var block_sprite: Sprite2D = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func get_player():
 	return get_node("../../Player")
@@ -28,11 +29,10 @@ func _input(_event):
 				self.z_index = unpicked_z_index + item_number
 				item_number = 0
 				print("dropped")
+				disable_collision(false)
 	if Input.is_action_just_pressed("ui_accept"):
 		print("press space")
-		$InteractionArea.get_label().hide()
-		#$InteractionArea.set_label("Press [Q] to drop.")
-		#label_shown = true 
+		show_label()
 		for body in bodies:
 			print("detected a body")
 			if body.name == "Player" and Global.items_picked_up < max_items_picked_up and picked == false:
@@ -41,6 +41,7 @@ func _input(_event):
 				item_number = Global.items_picked_up
 				print("picked up")
 				self.z_index = get_player().z_index + item_number
+				disable_collision(true)
 
 func _process(_delta):
 	if picked == true:
@@ -51,7 +52,7 @@ func _process(_delta):
 		self.z_index = get_player().z_index + item_number - max_items_picked_up
 	
 	# Check if the player moved after the label was shown and then hide it
-	#hide_drop_label()
+	hide_label()
 	
 func _ready():
 	# Initialize block number at initialiazation
@@ -90,7 +91,16 @@ func player_moved():
 		Input.get_action_strength("move_right") > 0
 )
 
-func hide_drop_label():
+func hide_label():
 	if label_shown and player_moved():
 		$InteractionArea.get_label().hide()
 		label_shown = false  
+		
+func show_label():
+	if Global.isTutorial:
+		$InteractionArea.set_label("Press [Q] to drop.")
+		label_shown = true 
+
+# Set collision
+func disable_collision(flag: bool):
+	collision_shape.disabled = flag 
