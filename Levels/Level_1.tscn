@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="15_nop75"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemi_Spritesheet.png" id="15_yoeg4"]
-[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://objects/objective_item.tscn" id="20_7qa6e"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://objects/pickup_item/pickup_item.tscn" id="20_7qa6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdagk"]
 resource_name = "SpaceshipWall"
@@ -568,23 +568,23 @@ shape = SubResource("RectangleShape2D_k21mj")
 
 [node name="ObjectiveItems" type="Node" parent="."]
 
-[node name="ObjectiveItem" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3406, 173)
 
-[node name="ObjectiveItem2" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem2" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3389, 558)
 
-[node name="ObjectiveItem4" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem3" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(1971, 600)
 
-[node name="ObjectiveItem3" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem4" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3709, 477)
 
-[node name="ObjectiveItem5" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem5" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2434, 204)
 
-[node name="ObjectiveItem6" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem6" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2391, 601)
 
-[node name="ObjectiveItem7" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem7" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2012, 186)

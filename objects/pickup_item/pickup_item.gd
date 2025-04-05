@@ -47,11 +47,11 @@ func _input(_event):
 func _process(_delta):
 	if picked == true:
 		self.position = get_player_marker().global_position # If it is picked up 
-	if (show_on_top()):
-		self.z_index = get_player().z_index + item_number # show the block on top of player
-	elif (get_player().velocity != Vector2.ZERO) and picked == true: 
-		self.z_index = get_player().z_index + item_number - max_items_picked_up
-	
+		if get_player().velocity != Vector2.ZERO:
+			self.z_index = get_player().z_index + item_number - max_items_picked_up 
+			if (moving_up()):
+				self.z_index = get_player().z_index + item_number # show the block on top of player
+				
 	# Check if the player moved after the label was shown and then hide it
 	hide_label()
 	
@@ -75,14 +75,18 @@ func rand_letter(isLowercase: bool):
 		block_id = rand_num(65,90)
 		return char(65 + randi() % 26) # 'A' - 'Z' (ASCII code 65-90)
 	
-func show_on_top():
-	return (
-		Input.get_action_strength("move_up") > Input.get_action_strength("move_down") 
-		and Input.get_action_strength("move_right") == 0 
-		and Input.get_action_strength("move_left") == 0 
-		and picked == true 
-		and get_player().velocity != Vector2.ZERO
-)
+func moving_up():
+	var up_strength = Input.get_action_strength("move_up")
+	var down_strength = Input.get_action_strength("move_down")
+	var left_strength = Input.get_action_strength("move_left")
+	var right_strength = Input.get_action_strength("move_right")
+
+	var vertical = up_strength - down_strength
+	var horizontal = right_strength - left_strength
+
+	# Check if moving mostly up or only up
+	return vertical > 0 and (abs(vertical) > abs(horizontal) 
+	or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 
 func player_moved():
 	return (

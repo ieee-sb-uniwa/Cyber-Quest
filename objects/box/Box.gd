@@ -13,7 +13,7 @@ func _process(_delta):
 func _toggle_hide():
 	is_player_hidden = !is_player_hidden  # Toggle the hidden state
 	player.visible = !is_player_hidden  # Hide/Unhide player
-	if is_player_hidden: # Set movement speed to and change frame of box
+	if is_player_hidden: 
 		print("player hidden")
 		box_area.set_label("Press [E] to unhide")
 		player.set_collision_layer_value(30,true)

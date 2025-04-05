@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs5hh8rgdnfr5"]
 
-[ext_resource type="Script" path="res://Levels/pickup_item.gd" id="1_uhymk"]
+[ext_resource type="Script" path="res://objects/pickup_item/pickup_item.gd" id="1_uhymk"]
 [ext_resource type="Texture2D" uid="uid://cixjxsku7bv22" path="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks.png" id="2_6qxhl"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
@@ -10,7 +10,7 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5a3p"]
 radius = 25.02
 
-[node name="ObjectiveItem" type="StaticBody2D"]
+[node name="PickupItem" type="StaticBody2D"]
 z_index = 1
 collision_layer = 8
 collision_mask = 2
