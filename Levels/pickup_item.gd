@@ -30,6 +30,7 @@ func _input(_event):
 				item_number = 0
 				print("dropped")
 				disable_collision(false)
+				$InteractionArea.get_label().hide()
 	if Input.is_action_just_pressed("ui_accept"):
 		print("press space")
 		show_label()
