@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cixjxsku7bv22"
-path="res://.godot/imported/Blocks.png-cb4ec2ee279a22019721d91a0668340c.ctex"
+uid="uid://cnse304nnfye2"
+path="res://.godot/imported/1.png-9a635d7336b92eb205775b75ae5a0b65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks.png"
-dest_files=["res://.godot/imported/Blocks.png-cb4ec2ee279a22019721d91a0668340c.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks/1.png"
+dest_files=["res://.godot/imported/1.png-9a635d7336b92eb205775b75ae5a0b65.ctex"]
 
 [params]
 

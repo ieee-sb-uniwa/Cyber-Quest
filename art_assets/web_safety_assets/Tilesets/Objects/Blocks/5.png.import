@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hteus7pxjkc"
-path="res://.godot/imported/single_door_frame.png-5f330a75fa282118b81ca24c465344ff.ctex"
+uid="uid://dbqi0hd0v81he"
+path="res://.godot/imported/5.png-b42c2e4eec81b084a811a0ec3c472a88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Doors/single_door_frame.png"
-dest_files=["res://.godot/imported/single_door_frame.png-5f330a75fa282118b81ca24c465344ff.ctex"]
+source_file="res://art_assets/web_safety_assets/Tilesets/Objects/Blocks/5.png"
+dest_files=["res://.godot/imported/5.png-b42c2e4eec81b084a811a0ec3c472a88.ctex"]
 
 [params]
 
