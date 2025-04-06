@@ -125,7 +125,7 @@ collision_mask = 2
 script = ExtResource("1_iex6k")
 
 [node name="DoorFrame" type="Sprite2D" parent="."]
-z_index = 6
+z_index = 7
 texture = ExtResource("2_qp7ks")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
