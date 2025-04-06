@@ -567,25 +567,25 @@ position = Vector2(2098, 244)
 [node name="Box4" parent="Boxes" instance=ExtResource("15_nop75")]
 position = Vector2(3682, 142)
 
-[node name="ObjectiveItems" type="Node" parent="."]
+[node name="PickupItems" type="Node" parent="."]
 
-[node name="PickupItem" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3406, 173)
 
-[node name="PickupItem2" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem2" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3389, 558)
 
-[node name="PickupItem3" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem3" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(1971, 600)
 
-[node name="PickupItem4" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem4" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(3709, 477)
 
-[node name="PickupItem5" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem5" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2434, 204)
 
-[node name="PickupItem6" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem6" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2391, 601)
 
-[node name="PickupItem7" parent="ObjectiveItems" instance=ExtResource("20_7qa6e")]
+[node name="PickupItem7" parent="PickupItems" instance=ExtResource("20_7qa6e")]
 position = Vector2(2012, 186)
