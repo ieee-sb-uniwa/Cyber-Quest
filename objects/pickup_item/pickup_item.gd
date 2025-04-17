@@ -32,9 +32,9 @@ func _input(_event):
 				disable_collision(false)
 				$InteractionArea.get_label().hide()
 	if Input.is_action_just_pressed("ui_accept") and Global.items_picked_up < max_items_picked_up:
-		show_label()
 		for body in bodies:
 			if body.name == "Player" and picked == false:
+				show_label()
 				picked = true
 				Global.items_picked_up += 1
 				item_number = Global.items_picked_up
