@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const unpicked_z_index = 5
+var unpicked_z_index : int
 const max_items_picked_up = 3
 var picked = false
 var item_number : int = 0
@@ -72,6 +72,7 @@ func player_moving_up():
 	or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 	
 func _ready():
+	unpicked_z_index = self.z_index # Initialize default z index
 	# Initialize block number at initialiazation
 	randomize()
 	block_id = rand_num(0,9)
