@@ -501,7 +501,6 @@ tile_map_data = PackedByteArray("AAARABoAAAACAAEAAAARABkAAAACAAEAAAARABgAAAACAAE
 tile_set = SubResource("TileSet_885uv")
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
-z_index = 6
 position = Vector2(2843, 1035)
 collision_layer = 2
 collision_mask = 13

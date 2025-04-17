@@ -240,7 +240,7 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_eia42")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 5
+z_index = 10
 position = Vector2(1.19209e-07, 0)
 scale = Vector2(1.248, 0.9)
 texture = ExtResource("2_eja4a")

@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const unpicked_z_index = 1
+const unpicked_z_index = 5
 const max_items_picked_up = 3
 var picked = false
 var item_number : int = 0
@@ -26,19 +26,21 @@ func _input(_event):
 				picked = false
 				Global.items_picked_up -= 1
 				self.z_index = unpicked_z_index + item_number
+				print(self.z_index)
 				item_number = 0
 				print("dropped")
 				disable_collision(false)
 				$InteractionArea.get_label().hide()
-	if Input.is_action_just_pressed("ui_accept") and Global.items_picked_up < 3:
+	if Input.is_action_just_pressed("ui_accept") and Global.items_picked_up < max_items_picked_up:
 		show_label()
 		for body in bodies:
-			if body.name == "Player" and Global.items_picked_up < max_items_picked_up and picked == false:
+			if body.name == "Player" and picked == false:
 				picked = true
 				Global.items_picked_up += 1
 				item_number = Global.items_picked_up
 				print("picked up")
 				self.z_index = get_player().z_index + item_number
+				print(self.z_index)
 				disable_collision(true)
 
 func _process(_delta):
