@@ -7,6 +7,7 @@ extends StaticBody2D
 var is_player_hidden = false 
 
 func _process(_delta):
+	box_area.set_object_type("box")
 	if Input.is_action_just_pressed("Interact") and (box_area.has_overlapping_bodies() or is_player_hidden):
 		_toggle_hide()
 
