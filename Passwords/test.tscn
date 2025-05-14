@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8tjkfec3tphw"]
+
+[ext_resource type="Script" uid="uid://cagke0251w4oo" path="res://test.gd" id="1_8igov"]
+[ext_resource type="PackedScene" uid="uid://dpautpp5y7rr6" path="res://Password1.tscn" id="1_q0na5"]
+[ext_resource type="Script" uid="uid://sy3kr3npch85" path="res://confirm.gd" id="2_egpgs"]
+[ext_resource type="Texture2D" uid="uid://btjfexwt64e1s" path="res://Blocks/0.png" id="4_ffnlt"]
+[ext_resource type="Texture2D" uid="uid://bxcilswop00b0" path="res://Blocks/7.png" id="5_sbh2g"]
+[ext_resource type="Texture2D" uid="uid://cs35qwsj8wr41" path="res://Blocks/2.png" id="5_w2poy"]
+[ext_resource type="Texture2D" uid="uid://vyp6kqyassk3" path="res://Blocks/8.png" id="6_higr5"]
+[ext_resource type="Texture2D" uid="uid://cnse304nnfye2" path="res://Blocks/1.png" id="7_l6q67"]
+[ext_resource type="Texture2D" uid="uid://db6qk8at18gl7" path="res://Blocks/4.png" id="9_0sunx"]
+[ext_resource type="Texture2D" uid="uid://1ft0bhmk15tw" path="res://Blocks/3.png" id="10_dk12r"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_8igov")
+
+[node name="Confirm" type="Button" parent="."]
+offset_left = 487.0
+offset_top = 555.0
+offset_right = 636.0
+offset_bottom = 598.0
+text = "Confirm"
+script = ExtResource("2_egpgs")
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 151.0
+offset_right = 41.0
+offset_bottom = 191.0
+
+[node name="Inv" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 242.0
+offset_right = 61.0
+offset_bottom = 302.0
+texture = ExtResource("5_w2poy")
+
+[node name="Inv2" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 158.0
+offset_top = 242.0
+offset_right = 218.0
+offset_bottom = 302.0
+texture = ExtResource("4_ffnlt")
+
+[node name="Inv3" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 316.0
+offset_top = 243.0
+offset_right = 376.0
+offset_bottom = 303.0
+texture = ExtResource("4_ffnlt")
+
+[node name="Inv4" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 469.0
+offset_top = 244.0
+offset_right = 529.0
+offset_bottom = 304.0
+texture = ExtResource("6_higr5")
+
+[node name="Inv5" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 611.0
+offset_top = 245.0
+offset_right = 671.0
+offset_bottom = 305.0
+texture = ExtResource("7_l6q67")
+
+[node name="Inv6" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 768.0
+offset_top = 245.0
+offset_right = 828.0
+offset_bottom = 305.0
+texture = ExtResource("5_sbh2g")
+
+[node name="Inv7" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 926.0
+offset_top = 246.0
+offset_right = 986.0
+offset_bottom = 306.0
+texture = ExtResource("9_0sunx")
+
+[node name="Inv8" parent="Inventory" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 1079.0
+offset_top = 247.0
+offset_right = 1139.0
+offset_bottom = 307.0
+texture = ExtResource("10_dk12r")
+
+[node name="Password" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 18.0
+offset_right = 140.0
+offset_bottom = 133.0
+
+[node name="Pass1" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 242.0
+offset_right = 61.0
+offset_bottom = 302.0
+
+[node name="Pass2" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 158.0
+offset_top = 242.0
+offset_right = 218.0
+offset_bottom = 302.0
+
+[node name="Pass3" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 316.0
+offset_top = 243.0
+offset_right = 376.0
+offset_bottom = 303.0
+
+[node name="Pass4" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 469.0
+offset_top = 244.0
+offset_right = 529.0
+offset_bottom = 304.0
+
+[node name="Pass5" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 611.0
+offset_top = 245.0
+offset_right = 671.0
+offset_bottom = 305.0
+
+[node name="Pass6" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 768.0
+offset_top = 245.0
+offset_right = 828.0
+offset_bottom = 305.0
+
+[node name="Pass7" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 926.0
+offset_top = 246.0
+offset_right = 986.0
+offset_bottom = 306.0
+
+[node name="Pass8" parent="Password" instance=ExtResource("1_q0na5")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 1079.0
+offset_top = 247.0
+offset_right = 1139.0
+offset_bottom = 307.0
+
+[node name="Rules" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 77.0
+offset_top = 19.0
+offset_right = 1092.0
+offset_bottom = 198.0
+
+[node name="Rule1" type="RichTextLabel" parent="Rules"]
+layout_mode = 0
+offset_top = 61.0
+offset_right = 603.0
+offset_bottom = 90.0
+bbcode_enabled = true
+text = "1. No two numbers are the same"
+
+[node name="Rule2" type="RichTextLabel" parent="Rules"]
+layout_mode = 0
+offset_top = 101.0
+offset_right = 603.0
+offset_bottom = 130.0
+bbcode_enabled = true
+text = "2. No two numbers in ascending or descending order"
+
+[node name="Rule3" type="RichTextLabel" parent="Rules"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 140.0
+offset_right = 604.0
+offset_bottom = 169.0
+bbcode_enabled = true
+text = "3. Do not use Date of Birth"
+
+[connection signal="pressed" from="Confirm" to="." method="_on_confirm_pressed"]
