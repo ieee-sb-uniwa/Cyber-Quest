@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=39 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://art_assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Characters/Enemies/enemy.tscn" id="8_uf234"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
+[ext_resource type="PackedScene" uid="uid://dg055qt5juvh0" path="res://objects/bed/bed.tscn" id="14_rgtet"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="15_nop75"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
@@ -565,6 +566,9 @@ position = Vector2(2098, 244)
 
 [node name="Box4" parent="Boxes" instance=ExtResource("15_nop75")]
 position = Vector2(3682, 142)
+
+[node name="Bed" parent="." instance=ExtResource("14_rgtet")]
+position = Vector2(2847, 955)
 
 [node name="PickupItems" type="Node" parent="."]
 
