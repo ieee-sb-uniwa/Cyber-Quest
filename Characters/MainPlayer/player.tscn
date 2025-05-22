@@ -226,7 +226,7 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_egte2"]
-radius = 13.0
+radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 9
@@ -238,7 +238,7 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 10
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(10, -2)
@@ -269,9 +269,10 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 1.1)
 parameters/Move/blend_position = Vector2(0, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_egte2")

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 @export var inventory: Inventory
+@onready var hitbox = $Hitbox
 
 ## Pickup Item Functionality ##
 var items_picked_up : int = 0
@@ -13,6 +14,7 @@ var items_picked_up : int = 0
 
 func _ready():
 	update_animation_parameters(starting_direction)
+	$Hitbox.body_entered.connect(_on_body_entered)
 
 func _physics_process(_delta):	
 	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
@@ -67,3 +69,7 @@ func pickup_item_positions():
 	# Assign positions to each marker
 	for i in range(3):
 		get_node("Marker%d" % (i + 1)).position = hard_pos[i]
+		
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		get_tree().reload_current_scene()
