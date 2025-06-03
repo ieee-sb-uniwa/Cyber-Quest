@@ -23,13 +23,13 @@ script = ExtResource("1_e7t8g")
 [node name="GameTitle" type="RichTextLabel" parent="."]
 z_index = 2
 layout_mode = 0
-offset_left = 114.0
-offset_top = 56.0
-offset_right = 545.0
-offset_bottom = 97.0
+offset_left = 144.0
+offset_top = 55.0
+offset_right = 575.0
+offset_bottom = 96.0
 theme_override_fonts/normal_font = ExtResource("2_mdafx")
 theme_override_font_sizes/normal_font_size = 30
-text = "Web Safety Game
+text = "Cyber - Quest
 "
 
 [node name="Spaceship" type="TextureRect" parent="."]
