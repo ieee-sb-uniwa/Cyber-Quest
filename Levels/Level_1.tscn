@@ -1,19 +1,19 @@
 [gd_scene load_steps=38 format=4 uid="uid://2wvn5u3j1yes"]
 
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://objects/door/Door.tscn" id="1_pe37q"]
-[ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://art_assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
-[ext_resource type="Texture2D" uid="uid://b6um8lvk7njes" path="res://art_assets/web_safety_assets/Tilesets/Decorative/Boxes_v1.png" id="2_oq3u7"]
-[ext_resource type="Texture2D" uid="uid://cmihq56qtrxal" path="res://art_assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png" id="3_06x71"]
-[ext_resource type="Texture2D" uid="uid://c7laj3lj16g1v" path="res://art_assets/web_safety_assets/Tilesets/Decorative/TileSet_Objects.png" id="4_5eky2"]
-[ext_resource type="Texture2D" uid="uid://cmcgnu5ubjtnt" path="res://art_assets/web_safety_assets/Tilesets/Map/TileMap.png" id="5_5jce5"]
-[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Characters/MainPlayer/player.tscn" id="7_3yf3j"]
-[ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Characters/Enemies/enemy.tscn" id="8_uf234"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
+[ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
+[ext_resource type="Texture2D" uid="uid://b6um8lvk7njes" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v1.png" id="2_oq3u7"]
+[ext_resource type="Texture2D" uid="uid://cmihq56qtrxal" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png" id="3_06x71"]
+[ext_resource type="Texture2D" uid="uid://c7laj3lj16g1v" path="res://Assets/web_safety_assets/Tilesets/Decorative/TileSet_Objects.png" id="4_5eky2"]
+[ext_resource type="Texture2D" uid="uid://cmcgnu5ubjtnt" path="res://Assets/web_safety_assets/Tilesets/Map/TileMap.png" id="5_5jce5"]
+[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="7_3yf3j"]
+[ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Scripts/Characters/Enemies/enemy.tscn" id="8_uf234"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
-[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://objects/box/Box.tscn" id="15_nop75"]
-[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://art_assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
-[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://objects/pickup_item/pickup_item.tscn" id="20_7qa6e"]
+[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/box/Box.tscn" id="15_nop75"]
+[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/pickup_item/pickup_item.tscn" id="20_7qa6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdagk"]
 resource_name = "SpaceshipWall"
@@ -538,10 +538,8 @@ light_mask = 0
 visibility_layer = 0
 
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
-visible = false
 
 [node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
-visible = false
 z_index = 1
 position = Vector2(2138, 691)
 collision_layer = 16
