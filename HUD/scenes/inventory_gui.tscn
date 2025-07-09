@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvh6co44shed1"]
 
 [ext_resource type="PackedScene" uid="uid://ccybaubxshghb" path="res://HUD/scenes/inv_slot.tscn" id="1_g8boa"]
-[ext_resource type="Script" path="res://HUD/Scripts_Resources/inventory_gui.gd" id="1_x437w"]
+[ext_resource type="Script" uid="uid://bvlov74gc0np4" path="res://HUD/Scripts_Resources/inventory_gui.gd" id="1_x437w"]
 
 [node name="InventoryGUI" type="Control"]
 custom_minimum_size = Vector2(140, 44)
