@@ -9,7 +9,7 @@ var picked = false
 var block_number : int = 0
 var block_id
 
-# ----- Helper functions -----
+# ----- Helper functions (setter/getter) -----
 func get_player():
 	return get_node("../../Player")
 
@@ -17,27 +17,36 @@ func get_player_marker():
 	return get_node("../../Player/Marker" + str(block_number))
 	
 func set_collision(flag: bool):
-	collision_shape.disabled = flag 
+	collision_shape.call_deferred("set", "disabled", flag)
 
-func disable_interaction_area():
-	passArea.monitoring = false
-	passArea.set_deferred("monitorable", false)
-	passArea.get_node("CollisionShape2D").disabled = true
+func set_interaction_area(flag: bool):
+	passArea.call_deferred("set", "monitoring", flag)
+	passArea.call_deferred("set", "monitorable", flag)
+	passArea.get_node("CollisionShape2D").call_deferred("set", "disabled", !flag)
 
 func interaction_area_is_disabled() -> bool:
 	var area = passArea
 	var shape = area.get_node("CollisionShape2D")
 	return !area.monitoring and !area.monitorable and shape.disabled
 
+# ---- Drop/Pick block ----
 func drop_block():
-	picked = false
+	set_interaction_area(true)
 	set_collision(false)
-	passArea.monitoring = true
-	passArea.set_deferred("monitorable", true)
-	passArea.get_node("CollisionShape2D").disabled = false
+	picked = false
 	remove_from_group("PickedPassBlocks") 
+	Global.blocks_picked += 1
+	self.z_index = unpicked_z_index + block_number
+	
+func pick_block():
+	set_interaction_area(false)
+	set_collision(true)
+	picked = true
+	add_to_group("PickedPassBlocks") 
+	Global.blocks_picked += 1
+	self.z_index = get_player().z_index + block_number
 
-# ------- Pickup logic when pressed "Interact" button ------- 				
+# ------- "Interact" button logic ------- 				
 func _input(_event):
 	# Check if disabled so not to repeat pickup logic for picked up items
 	if interaction_area_is_disabled():
@@ -50,13 +59,9 @@ func _input(_event):
 	if Input.is_action_just_pressed("Interact") and Global.blocks_picked < max_items:
 		for body in bodies:
 			if body.name == "Player" and picked == false:
-				disable_interaction_area()
-				set_collision(true)
-				picked = true
-				Global.blocks_picked += 1
+				pick_block()
 				block_number = Global.blocks_picked
-				self.z_index = get_player().z_index + block_number
-				add_to_group("PickedPassBlocks") 
+				
 				
 # ------ Z.index logic for pickup items while player is moving ------
 func _process(_delta):
