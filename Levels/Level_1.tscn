@@ -591,4 +591,4 @@ position = Vector2(2012, 186)
 
 [node name="PassDropoutZone" parent="." instance=ExtResource("15_uqtfo")]
 z_index = 1
-position = Vector2(3236, 233)
+position = Vector2(3240, 233)
