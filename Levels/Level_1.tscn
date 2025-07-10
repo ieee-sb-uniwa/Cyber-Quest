@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=39 format=4 uid="uid://2wvn5u3j1yes"]
 
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/Door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
 [ext_resource type="Texture2D" uid="uid://b6um8lvk7njes" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v1.png" id="2_oq3u7"]
 [ext_resource type="Texture2D" uid="uid://cmihq56qtrxal" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png" id="3_06x71"]
@@ -11,9 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
-[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/box/Box.tscn" id="15_nop75"]
+[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/Objects/Boxes/HideBox.tscn" id="15_nop75"]
+[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/Objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
-[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/pickup_item/pickup_item.tscn" id="20_7qa6e"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/Objects/PassBlock/PassBlock.tscn" id="20_7qa6e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdagk"]
 resource_name = "SpaceshipWall"
@@ -503,7 +504,7 @@ tile_set = SubResource("TileSet_885uv")
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 position = Vector2(2843, 1035)
 collision_layer = 2
-collision_mask = 13
+collision_mask = 29
 
 [node name="Door" parent="." instance=ExtResource("1_pe37q")]
 z_index = 2
@@ -550,39 +551,43 @@ z_index = 1
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_k21mj")
 
-[node name="Boxes" type="Node" parent="."]
+[node name="HideBoxes" type="Node" parent="."]
 
-[node name="Box" parent="Boxes" instance=ExtResource("15_nop75")]
+[node name="HideBox" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(3303, 548)
 
-[node name="Box2" parent="Boxes" instance=ExtResource("15_nop75")]
+[node name="HideBox2" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2321, 533)
 
-[node name="Box3" parent="Boxes" instance=ExtResource("15_nop75")]
+[node name="HideBox3" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2098, 244)
 
-[node name="Box4" parent="Boxes" instance=ExtResource("15_nop75")]
+[node name="HideBox4" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(3682, 142)
 
-[node name="PickupItems" type="Node" parent="."]
+[node name="PassBlocks" type="Node" parent="."]
 
-[node name="PickupItem" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(3406, 173)
 
-[node name="PickupItem2" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock2" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(3389, 558)
 
-[node name="PickupItem3" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock3" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(1971, 600)
 
-[node name="PickupItem4" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock4" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(3709, 477)
 
-[node name="PickupItem5" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock5" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(2434, 204)
 
-[node name="PickupItem6" parent="PickupItems" instance=ExtResource("20_7qa6e")]
-position = Vector2(2391, 601)
+[node name="PassBlock6" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
+position = Vector2(3275, 382)
 
-[node name="PickupItem7" parent="PickupItems" instance=ExtResource("20_7qa6e")]
+[node name="PassBlock7" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(2012, 186)
+
+[node name="PassDropoutZone" parent="." instance=ExtResource("15_uqtfo")]
+z_index = 1
+position = Vector2(3236, 233)

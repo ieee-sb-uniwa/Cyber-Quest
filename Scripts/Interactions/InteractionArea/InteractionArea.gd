@@ -10,7 +10,7 @@ var interact: Callable = func():
 	pass
 
 func _on_body_entered(_body):
-	if (Global.items_picked_up < 3 or object_type=="box"):
+	if (Global.blocks_picked < 3 or object_type=="box"):
 		InteractionManager.register_area(self)
 	Global.interacable = true
 	area_label = InteractionManager.get_label()
