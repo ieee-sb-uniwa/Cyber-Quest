@@ -35,7 +35,7 @@ func drop_block():
 	set_collision(false)
 	picked = false
 	remove_from_group("PickedPassBlocks") 
-	Global.blocks_picked += 1
+	Global.blocks_picked -= 1
 	self.z_index = unpicked_z_index + block_number
 	
 func pick_block():
