@@ -1,11 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6eyucd6nmqhi"]
+[gd_scene load_steps=32 format=3 uid="uid://ckudgosc6wseb"]
 
-[ext_resource type="Script" uid="uid://d0215cvkpd4lt" path="res://Scripts/Characters/Enemies/enemy.gd" id="1_eia42"]
-[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="2_eja4a"]
-[ext_resource type="Script" uid="uid://bklrlif5j3a6k" path="res://Scripts/States/StateMachine.gd" id="3_nrk55"]
-[ext_resource type="Script" uid="uid://cw7lih5k2644q" path="res://Scripts/States/Patrol.gd" id="4_y6dno"]
-[ext_resource type="Script" uid="uid://brmfgcanlq5lh" path="res://Scripts/States/Chase.gd" id="5_4otw6"]
-[ext_resource type="Script" uid="uid://b3et5etetrbb3" path="res://Scripts/States/Idle.gd" id="6_rfhx3"]
+[ext_resource type="Script" uid="uid://b27xrv4b06p2k" path="res://Scripts/Characters/Enemies/enemy_nav.gd" id="1_k1mvn"]
+[ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="2_rm7rt"]
+[ext_resource type="Script" uid="uid://bklrlif5j3a6k" path="res://Scripts/States/StateMachine.gd" id="3_egj2d"]
+[ext_resource type="Script" uid="uid://cq5hidq7susgj" path="res://Scripts/States/PatrolNav.gd" id="4_th0jn"]
+[ext_resource type="Script" uid="uid://0khklgmtr7ly" path="res://Scripts/States/ChaseNav.gd" id="5_3uu8u"]
+[ext_resource type="Script" uid="uid://b3et5etetrbb3" path="res://Scripts/States/Idle.gd" id="6_3ptsy"]
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -231,21 +231,22 @@ radius = 66.7141
 [sub_resource type="CircleShape2D" id="CircleShape2D_gusw1"]
 radius = 12.2087
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="EnemyNav" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 15
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_eia42")
+script = ExtResource("1_k1mvn")
+input_texture = ExtResource("2_rm7rt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(1.19209e-07, 0)
 scale = Vector2(1.248, 0.9)
-texture = ExtResource("2_eja4a")
+texture = ExtResource("2_rm7rt")
 hframes = 4
 vframes = 4
-frame = 7
+frame = 15
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -263,38 +264,41 @@ scale = Vector2(0.134904, 0.104418)
 shape = SubResource("CircleShape2D_770a6")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("3_nrk55")
-current_state = NodePath("Patrol")
-
-[node name="Patrol" type="Node2D" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("4_y6dno")
-enemy = NodePath("../..")
-
-[node name="Chase" type="Node2D" parent="State Machine"]
-script = ExtResource("5_4otw6")
+script = ExtResource("3_egj2d")
+current_state = NodePath("PatrolNav")
 
 [node name="Idle" type="Node2D" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_rfhx3")
+script = ExtResource("6_3ptsy")
+enemy = NodePath("../..")
+
+[node name="ChaseNav" type="Node2D" parent="State Machine"]
+script = ExtResource("5_3uu8u")
+
+[node name="PatrolNav" type="Node2D" parent="State Machine" node_paths=PackedStringArray("chase_state", "enemy")]
+script = ExtResource("4_th0jn")
+chase_state = NodePath("../ChaseNav")
 enemy = NodePath("../..")
 
 [node name="detection_zone" type="Area2D" parent="."]
 scale = Vector2(-3.70645, 3.49224)
-collision_layer = 4
-collision_mask = 15
+collision_layer = 2
+collision_mask = 2
+monitorable = false
 
 [node name="Cone" type="CollisionPolygon2D" parent="detection_zone"]
 position = Vector2(-3.55725, 0)
 scale = Vector2(3.16592, 1)
-polygon = PackedVector2Array(-12.4264, -21.4762, 1.03839, 0.286346, -12.1707, 23.1943, -13.7899, 11.454, -14.3126, -1.1454, -13.7899, -11.7403)
+polygon = PackedVector2Array(-12.4264, -21.4762, -9.78456, -32.0711, -6.63142, -39.2298, 1.03839, 0.286346, -6.71664, 39.2298, -9.78456, 32.0711, -12.1707, 23.1943, -13.7899, 11.454, -14.3126, -1.1454, -13.7899, -11.7403)
 
 [node name="Polygon2D" type="Polygon2D" parent="detection_zone/Cone"]
 modulate = Color(1, 1, 1, 0.525)
 color = Color(0.976043, 0.284845, 0.245648, 1)
-polygon = PackedVector2Array(1.03839, 0, -12.4264, -21.4762, -13.7047, -12.0267, -14.3126, -1.1454, -13.7899, 12.0267, -12.1707, 23.4806)
+polygon = PackedVector2Array(1.03839, 0, -6.63142, -39.2298, -9.78456, -32.0711, -12.4264, -21.4762, -13.7047, -12.0267, -14.3126, -1.1454, -13.7899, 12.0267, -12.1707, 23.4806, -9.78456, 32.0711, -6.71664, 39.2298)
 
 [node name="chase_range" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 15
+collision_layer = 2
+collision_mask = 2
+monitorable = false
 
 [node name="Circle" type="CollisionShape2D" parent="chase_range"]
 rotation = 3.14159
@@ -309,12 +313,7 @@ color = Color(1, 0.203922, 0.0980392, 0.313726)
 polygon = PackedVector2Array(-1.90735e-05, 8.61777, -3.24211, 8.29859, -6.21402, 7.21338, -8.64559, 5.68133, -10.5368, 3.57476, -11.7526, 1.08517, -12.141, -1.2129, -11.8201, -4.08549, -10.5368, -6.51123, -8.578, -8.61779, -6.07889, -10.2775, -3.19145, -11.235, -0.0844488, -11.618, 3.15764, -11.2988, 6.12955, -10.2775, 8.62866, -8.68158, 10.5874, -6.51118, 11.8032, -4.14927, 12.1409, -1.59585, 11.8032, 1.08523, 10.5874, 3.57481, 8.62862, 5.68137, 6.12951, 7.27725, 4.18768, 7.97943, 3.30961, 8.2986)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 5.0
-target_desired_distance = 5.0
-path_max_distance = 30.0
-navigation_layers = 15
-path_postprocessing = 1
-avoidance_enabled = true
+navigation_layers = 4
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.0784314, 0.54902, 0.0117647, 0.419608)
@@ -326,7 +325,3 @@ autostart = true
 [connection signal="body_exited" from="detection_zone" to="." method="_on_detection_zone_body_exited"]
 [connection signal="body_entered" from="chase_range" to="." method="_on_chase_range_body_entered"]
 [connection signal="body_exited" from="chase_range" to="." method="_on_chase_range_body_exited"]
-[connection signal="target_reached" from="NavigationAgent2D" to="State Machine/Patrol" method="_on_navigation_agent_2d_target_reached"]
-[connection signal="velocity_computed" from="NavigationAgent2D" to="State Machine/Patrol" method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="velocity_computed" from="NavigationAgent2D" to="State Machine/Chase" method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="timeout" from="Timer" to="State Machine/Chase" method="_on_timer_timeout"]
