@@ -230,7 +230,7 @@ radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 9
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_4ie1l")
 inventory = ExtResource("2_a2323")
 
@@ -238,7 +238,7 @@ inventory = ExtResource("2_a2323")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 14
+frame = 10
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(10, -2)

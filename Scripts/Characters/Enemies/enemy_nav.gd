@@ -62,7 +62,7 @@ func Enemy():
 #If we want to not be able to see the player in a box make it so hides-in-boxes changes the players collision
 #layer to anything but 3.
 func Aim():
-	var space_State = get_world_2d().direct_space_state
+	var _space_State = get_world_2d().direct_space_state
 	#var query = PhysicsRayQueryParameters2D.create(global_position, hunting_target.global_position, 0xF,[self])
 	#query.collide_with_areas=false
 	#var result = space_State.intersect_ray(query)

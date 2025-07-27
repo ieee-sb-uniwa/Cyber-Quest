@@ -111,7 +111,6 @@ func is_point_navigatable(point: Vector2) -> bool:
 	print(NavigationServer2D.map_get_regions(nav_map))
 	var start = NavigationServer2D.map_get_closest_point(nav_map, enemy.global_position)
 	var target = NavigationServer2D.map_get_closest_point(nav_map, point)
-	NavigationServer2D.set_debug_enabled(true)
 	print(" from: "+str(enemy.global_position) + " to: "+str(point))
 	print(" from: "+str(start) + " to: "+str(target))
 	var path = NavigationServer2D.map_get_path(nav_map, start, target, false, 3)
