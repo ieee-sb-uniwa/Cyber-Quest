@@ -4,7 +4,7 @@ extends Node
 signal transitioned(new_state_name: StringName)
  
 func Enter() -> void:
-	pass
+	emit_signal("transitioned", "NextState")
 	
 func Exit() -> void:
 	pass
