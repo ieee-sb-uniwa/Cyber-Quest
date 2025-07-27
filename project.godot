@@ -99,19 +99,22 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/dialogue.dialog
 2d_render/layer_2="Player"
 2d_render/layer_3="Enemies"
 2d_render/layer_4="Items"
-2d_physics/layer_1="Walls & Floors"
-2d_navigation/layer_1="Walls & Floors"
 2d_physics/layer_2="Player"
 2d_navigation/layer_2="Player"
 2d_physics/layer_3="Enemies"
 2d_navigation/layer_3="Enemies"
 2d_physics/layer_4="Items"
 2d_navigation/layer_4="Items"
-2d_physics/layer_30="Hidding"
-2d_navigation/layer_30="Hidding"
+2d_physics/layer_5="Enemy Items"
+2d_physics/layer_6="Player Items"
+
+[navigation]
+
+2d/default_cell_size=0.001
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

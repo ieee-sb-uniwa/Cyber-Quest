@@ -9,12 +9,14 @@ func _ready():
 		if child is State:
 			states[child.name] = child
 			child.transitioned.connect(on_child_transitioned)
-		if current_state == null:
+			if current_state == null:
 				current_state = child 
 		else:
 			push_warning("State machine contains child which is not 'State'")
-	
-	current_state.Enter()
+	if current_state == null:
+		push_error("No initial state set for the state machine")
+	else:
+		current_state.Enter()
 			
 func _process(delta):
 	current_state.Update(delta)
