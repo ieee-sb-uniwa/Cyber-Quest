@@ -18,6 +18,8 @@ func Enter():
 	generate_path()
 
 func Physics_update(_delta: float) -> void:
+	if(enemy.hunting_target == null):
+		return
 	var direction_to_player = (enemy.hunting_target.global_position - enemy.global_position).normalized()
 	enemy.rotation = direction_to_player.angle()  # Rotate the enemy to face the player
 	enemy.sprite.set_global_rotation(0)
