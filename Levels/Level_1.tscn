@@ -529,7 +529,6 @@ navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 position = Vector2(2843, 1035)
-collision_layer = 2
 collision_mask = 45
 
 [node name="Door" parent="." instance=ExtResource("1_pe37q")]

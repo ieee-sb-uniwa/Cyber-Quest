@@ -114,7 +114,7 @@ func is_point_navigatable(point: Vector2) -> bool:
 	print(" from: "+str(enemy.global_position) + " to: "+str(point))
 	print(" from: "+str(start) + " to: "+str(target))
 	var path = NavigationServer2D.map_get_path(nav_map, start, target, false, 3)
-	print(path)
+	# print(path)
 	if path.size() > 1:
 		print("✅ Target is reachable!")
 		pathingCompleted = true
