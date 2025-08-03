@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://d055khlg5bjcj"]
+[gd_scene load_steps=30 format=3 uid="uid://d055khlg5bjcj"]
 
 [ext_resource type="Script" uid="uid://croxmnqu7e1ma" path="res://Scripts/Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
 [ext_resource type="Texture2D" uid="uid://ngg28ihydbd1" path="res://Assets/web_safety_assets/Characters/Player_SpriteSheet.png" id="3_ceh3p"]
+[ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
 size = Vector2(24, 16)
@@ -199,15 +200,11 @@ animation = &"move_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_e41ea"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_flhlx")
-blend_point_0/pos = Vector2(0, 1.1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_r1ca4")
-blend_point_1/pos = Vector2(0, -1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_cieqw")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_kxodx")
 blend_point_3/pos = Vector2(1, 0)
-min_space = Vector2(-1, -1.1)
-max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5m6v"]
@@ -219,7 +216,6 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rtfvl"]
 states/End/position = Vector2(882, 95)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_2oxmp")
-states/Idle/position = Vector2(342, 95)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_e41ea")
 states/Move/position = Vector2(516, 95)
 states/Start/position = Vector2(203, 95)
@@ -229,25 +225,44 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 radius = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHodler") groups=["Player"]]
 z_index = 9
 collision_layer = 2
 script = ExtResource("1_4ie1l")
 inventory = ExtResource("2_a2323")
+itemHodler = NodePath("Sprite2D/ItemHolder")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
+<<<<<<< Updated upstream
 frame = 10
+=======
+frame = 8
+>>>>>>> Stashed changes
+
+[node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
+script = ExtResource("4_e0c3b")
+items_available_positions = [NodePath("Marker1"), NodePath("Marker2"), NodePath("Marker3")]
 
 [node name="Marker1" type="Marker2D" parent="."]
 position = Vector2(10, -2)
+[node name="Marker1" type="Marker2D" parent="Sprite2D/ItemHolder"]
+position = Vector2(0, -2)
+gizmo_extents = 20.0
 
 [node name="Marker2" type="Marker2D" parent="."]
 position = Vector2(10, -12)
+[node name="Marker2" type="Marker2D" parent="Sprite2D/ItemHolder"]
+position = Vector2(0, -12)
+gizmo_extents = 20.0
 
 [node name="Marker3" type="Marker2D" parent="."]
 position = Vector2(10, -23)
+[node name="Marker3" type="Marker2D" parent="Sprite2D/ItemHolder"]
+position = Vector2(0, -23)
+gizmo_extents = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 light_mask = 0
@@ -259,6 +274,7 @@ shape = SubResource("RectangleShape2D_u7qia")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+deterministic = true
 libraries = {
 &"": SubResource("AnimationLibrary_fr0qy")
 }
@@ -266,7 +282,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_rtfvl")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0, 1.1)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]

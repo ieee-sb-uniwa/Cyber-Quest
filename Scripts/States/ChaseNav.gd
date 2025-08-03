@@ -56,6 +56,9 @@ func check_lost_target(duration: float) -> void:
 	is_checking_lost_target = true
 	var start_time := Time.get_ticks_msec()
 	while Time.get_ticks_msec() - start_time < int(duration * 1000):
+		if get_tree() == null:
+			print("Tree is null!")
+			return;
 		await get_tree().physics_frame
 		if enemy.hunting_targets.size() > 0:
 				is_checking_lost_target = false

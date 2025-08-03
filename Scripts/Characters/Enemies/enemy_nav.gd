@@ -108,3 +108,5 @@ func pick_new_animation():
 		state_machine.travel("Move")
 	#else:
 		#state_machine.travel("Idle")
+	else:
+		state_machine.travel("Idle")

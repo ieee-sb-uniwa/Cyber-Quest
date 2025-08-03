@@ -1,6 +1,5 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs5hh8rgdnfr5"]
 
-[ext_resource type="Script" uid="uid://db3g287aaue0c" path="res://Scripts/Objects/PassBlock/PassBlock.gd" id="1_uhymk"]
 [ext_resource type="Texture2D" uid="uid://cpbh4ienhxgom" path="res://Assets/web_safety_assets/Tilesets/Objects/Blocks/Blocks.png" id="2_y715i"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
@@ -12,7 +11,12 @@ radius = 25.02
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
+<<<<<<< Updated upstream
 collision_layer = 32
+=======
+z_as_relative = false
+collision_layer = 8
+>>>>>>> Stashed changes
 collision_mask = 2
 script = ExtResource("1_uhymk")
 
@@ -28,6 +32,7 @@ shape = SubResource("RectangleShape2D_2ahm8")
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
 collision_mask = 2
 action_key = "[E]"
+action_key = "[E] or [.]"
 action_name = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]

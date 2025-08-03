@@ -6,3 +6,4 @@ var Hide_status: int = 1
 var move_speed : float = 150
 var interacable = false
 var isTutorial: bool = true
+enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}

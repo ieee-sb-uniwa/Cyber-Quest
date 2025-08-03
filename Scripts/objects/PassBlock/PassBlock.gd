@@ -15,6 +15,11 @@ func get_player():
 
 func get_player_marker():
 	return get_node("../../Player/Marker" + str(block_number))
+#func get_player():
+	#return get_node("../../Player")
+#
+#func get_player_marker():
+	#return get_node("../../Player/Marker" + str(block_number))
 	
 func set_collision(flag: bool):
 	collision_shape.call_deferred("set", "disabled", flag)
@@ -39,12 +44,16 @@ func drop_block():
 	self.z_index = unpicked_z_index + block_number
 	
 func pick_block():
+func pick_block(body: Node2D):
 	set_interaction_area(false)
 	set_collision(true)
 	picked = true
 	add_to_group("PickedPassBlocks") 
 	Global.blocks_picked += 1
 	self.z_index = get_player().z_index + block_number
+	if body.has_method("add_item_to_holder"):
+		body.add_item_to_holder(self)
+	#self.z_index = get_player().z_index + block_number
 
 # ------- "Interact" button logic ------- 				
 func _input(_event):
@@ -57,9 +66,12 @@ func _input(_event):
 		return
 	# Pickup logic for max_items
 	if Input.is_action_just_pressed("Interact") and Global.blocks_picked < max_items:
+	if (Input.is_action_just_pressed("Interact_p1") || Input.is_action_just_pressed("Interact_p2"))and Global.blocks_picked < max_items:
 		for body in bodies:
 			if body.name == "Player" and picked == false:
 				pick_block()
+			if body.has_method("player") and picked == false:
+				pick_block(body)
 				block_number = Global.blocks_picked
 				
 				
@@ -84,10 +96,33 @@ func player_moving_up():
 
 	var vertical = up_strength - down_strength
 	var horizontal = right_strength - left_strength
+#func _process(_delta):
+	## If it is picked up 
+	#if picked == true:
+		#self.position = get_player_marker().global_position 
+		#if get_player().velocity != Vector2.ZERO:
+			## show the block on top of player
+			#if (player_moving_up()):
+				#self.z_index = get_player().z_index + block_number 
+			## show the block behind the player
+			#else:
+				#self.z_index = get_player().z_index + block_number - max_items 
 
 	# Check if moving mostly up or only up
 	return vertical > 0 and (abs(vertical) > abs(horizontal) 
 	or (up_strength > 0 and left_strength == 0 and right_strength == 0))
+#func player_moving_up():
+	#var up_strength = Input.get_action_strength("move_up")
+	#var down_strength = Input.get_action_strength("move_down")
+	#var left_strength = Input.get_action_strength("move_left")
+	#var right_strength = Input.get_action_strength("move_right")
+#
+	#var vertical = up_strength - down_strength
+	#var horizontal = right_strength - left_strength
+#
+	## Check if moving mostly up or only up
+	#return vertical > 0 and (abs(vertical) > abs(horizontal) 
+	#or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 
 # ----- Initialiazation -----
 func _ready():
