@@ -238,11 +238,7 @@ itemHodler = NodePath("Sprite2D/ItemHolder")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-<<<<<<< Updated upstream
-frame = 10
-=======
 frame = 8
->>>>>>> Stashed changes
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")

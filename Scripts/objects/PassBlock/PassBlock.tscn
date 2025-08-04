@@ -12,12 +12,8 @@ radius = 25.02
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
-<<<<<<< Updated upstream
-collision_layer = 32
-=======
 z_as_relative = false
 collision_layer = 8
->>>>>>> Stashed changes
 collision_mask = 2
 script = ExtResource("1_uhymk")
 
