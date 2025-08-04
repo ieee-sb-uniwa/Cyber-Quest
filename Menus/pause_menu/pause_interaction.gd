@@ -13,7 +13,7 @@ func pausemenu():
 	if paused:
 		pause_menu.hide()
 		pause_button.show()
-		get_tree().paused = false
+		get_tree().paused = false 
 		paused = false
 	else:
 		pause_menu.show()

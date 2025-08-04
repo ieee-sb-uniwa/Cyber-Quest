@@ -532,7 +532,6 @@ tile_set = SubResource("TileSet_885uv")
 navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
-process_mode = 1
 position = Vector2(2843, 1035)
 collision_mask = 45
 
@@ -555,7 +554,6 @@ spriteRows = 4
 spriteColumns = 4
 
 [node name="EnemyNav" parent="Enemies" node_paths=PackedStringArray("patrolling_rooms") instance=ExtResource("10_6rttb")]
-process_mode = 1
 position = Vector2(2146, 340)
 collision_layer = 26
 patrolling_rooms = [NodePath("../Room01Collision"), NodePath("../Room02Collision"), NodePath("../Room03Collision")]
@@ -603,7 +601,6 @@ process_mode = 3
 [node name="PauseMenu" type="Node" parent="HUD"]
 
 [node name="Pause_menu" parent="HUD/PauseMenu" instance=ExtResource("13_2hgpn")]
-process_mode = 3
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -615,10 +612,16 @@ offset_top = -75.0
 offset_right = 13.0
 
 [node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("14_c2bb2")]
-process_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -43.0
+offset_top = -31.0
+offset_right = -22.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="pause_interaction" parent="HUD" instance=ExtResource("15_yt1os")]
-process_mode = 3
 
 [node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
 z_index = 1
