@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=45 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
@@ -11,10 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
+[ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="13_2hgpn"]
+[ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="14_c2bb2"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/Boxes/HideBox.tscn" id="15_nop75"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
+[ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="15_yt1os"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="20_7qa6e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6rttb"]
@@ -494,6 +497,7 @@ size = Vector2(605, 609)
 size = Vector2(114, 38)
 
 [node name="Level_1" type="Node2D"]
+process_mode = 1
 
 [node name="TileMap" type="Node" parent="."]
 
@@ -528,6 +532,7 @@ tile_set = SubResource("TileSet_885uv")
 navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
+process_mode = 1
 position = Vector2(2843, 1035)
 collision_mask = 45
 
@@ -539,6 +544,7 @@ collision_layer = 1
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_uf234")]
+process_mode = 1
 position = Vector2(2370, 417)
 rotation = 1.62542
 collision_layer = 26
@@ -549,6 +555,7 @@ spriteRows = 4
 spriteColumns = 4
 
 [node name="EnemyNav" parent="Enemies" node_paths=PackedStringArray("patrolling_rooms") instance=ExtResource("10_6rttb")]
+process_mode = 1
 position = Vector2(2146, 340)
 collision_layer = 26
 patrolling_rooms = [NodePath("../Room01Collision"), NodePath("../Room02Collision"), NodePath("../Room03Collision")]
@@ -591,6 +598,27 @@ light_mask = 0
 visibility_layer = 0
 
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
+process_mode = 3
+
+[node name="PauseMenu" type="Node" parent="HUD"]
+
+[node name="Pause_menu" parent="HUD/PauseMenu" instance=ExtResource("13_2hgpn")]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -75.0
+offset_right = 13.0
+
+[node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("14_c2bb2")]
+process_mode = 3
+
+[node name="pause_interaction" parent="HUD" instance=ExtResource("15_yt1os")]
+process_mode = 3
 
 [node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
 z_index = 1
