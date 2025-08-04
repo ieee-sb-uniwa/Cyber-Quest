@@ -20,10 +20,8 @@ func unregister_area(area: InteractionArea):
 		active_areas.remove_at(index)
 		label.hide() # hide label when you exit area
 
-func show_action_label(area):
 func show_action_label(area: InteractionArea):
 	if Global.isTutorial: # If we in tutorial state
-		label.text = "Press" + area.action_key + "to " + area.action_name
 		label.text = "Press" + area.action_key +" to " + area.action_name
 		label.global_position = area.global_position
 		label.global_position.y -= 36

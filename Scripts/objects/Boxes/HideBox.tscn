@@ -30,7 +30,6 @@ shape = SubResource("RectangleShape2D_ic8sa")
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 536870914
-action_key = "[E]"
 action_key = "[E] or [.]"
 action_name = "hide"
 

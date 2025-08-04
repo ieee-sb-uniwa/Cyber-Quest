@@ -32,7 +32,6 @@ shape = SubResource("RectangleShape2D_2ahm8")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
 collision_mask = 2
-action_key = "[E]"
 action_key = "[E] or [.]"
 action_name = "pick up"
 
