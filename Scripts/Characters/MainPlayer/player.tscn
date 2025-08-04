@@ -200,7 +200,9 @@ animation = &"move_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_e41ea"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_flhlx")
+blend_point_0/pos = Vector2(0, 1)
 blend_point_1/node = SubResource("AnimationNodeAnimation_r1ca4")
+blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_cieqw")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_kxodx")
@@ -216,6 +218,7 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rtfvl"]
 states/End/position = Vector2(882, 95)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_2oxmp")
+states/Idle/position = Vector2(341, 95)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_e41ea")
 states/Move/position = Vector2(516, 95)
 states/Start/position = Vector2(203, 95)
@@ -282,6 +285,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_rtfvl")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(-0.709265, 0.582974)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
