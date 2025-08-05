@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ci2bag2pj25q2"
-path="res://.godot/imported/Blue Striped Bed_Front_Cover.png-e28e36cbc1f940e0184abf640bd036d8.ctex"
+path="res://.godot/imported/Blue Striped Bed_Front_Cover.png-36da57d1f3a7d279ecc0b673eb89fb7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_assets/web_safety_assets/Tilesets/Objects/Blue Striped Bed_Front_Cover.png"
-dest_files=["res://.godot/imported/Blue Striped Bed_Front_Cover.png-e28e36cbc1f940e0184abf640bd036d8.ctex"]
+source_file="res://Assets/web_safety_assets/Tilesets/Objects/Blue Striped Bed_Front_Cover.png"
+dest_files=["res://.godot/imported/Blue Striped Bed_Front_Cover.png-36da57d1f3a7d279ecc0b673eb89fb7f.ctex"]
 
 [params]
 
