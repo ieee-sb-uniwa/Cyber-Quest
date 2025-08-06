@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=4 uid="uid://2wvn5u3j1yes"]
 
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/Door/Door.tscn" id="1_pe37q"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
 [ext_resource type="Texture2D" uid="uid://b6um8lvk7njes" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v1.png" id="2_oq3u7"]
 [ext_resource type="Texture2D" uid="uid://cmihq56qtrxal" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png" id="3_06x71"]
@@ -12,8 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
-[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/Objects/Boxes/HideBox.tscn" id="15_nop75"]
-[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/Objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
+[ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/Boxes/HideBox.tscn" id="15_nop75"]
+[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="17_2hgpn"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="20_7qa6e"]
@@ -529,26 +529,20 @@ navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("7_3yf3j")]
 position = Vector2(2772, 1035)
-collision_layer = 2
-collision_mask = 45
 
 [node name="Player2" parent="." instance=ExtResource("7_3yf3j")]
 position = Vector2(2921, 1035)
-collision_layer = 2
-collision_mask = 29
 playerNum = 2
 
 [node name="Door" parent="." instance=ExtResource("1_pe37q")]
 z_index = 2
 position = Vector2(2856, 83)
-collision_layer = 1
 
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemies" node_paths=PackedStringArray("path_follow", "hunting_target") instance=ExtResource("8_uf234")]
 position = Vector2(2370, 417)
 rotation = 1.62542
-collision_layer = 26
 path_follow = NodePath("../Path2D/PathFollow2D")
 hunting_target = NodePath("../../Player")
 input_texture = ExtResource("15_yoeg4")
@@ -557,7 +551,6 @@ spriteColumns = 4
 
 [node name="EnemyNav" parent="Enemies" node_paths=PackedStringArray("patrolling_rooms") instance=ExtResource("10_6rttb")]
 position = Vector2(2146, 340)
-collision_layer = 26
 patrolling_rooms = [NodePath("../Room01Collision"), NodePath("../Room02Collision"), NodePath("../Room03Collision")]
 spriteRows = 4
 spriteColumns = 4
@@ -617,15 +610,19 @@ position = Vector2(3303, 548)
 
 [node name="HideBox5" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2926, 477)
+collision_layer = 32
 
 [node name="HideBox2" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2321, 533)
+collision_layer = 32
 
 [node name="HideBox3" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2098, 244)
+collision_layer = 32
 
 [node name="HideBox4" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(3682, 142)
+collision_layer = 32
 
 [node name="PassBlocks" type="Node" parent="."]
 
