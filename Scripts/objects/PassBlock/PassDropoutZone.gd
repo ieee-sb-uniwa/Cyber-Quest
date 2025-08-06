@@ -14,10 +14,9 @@ func _drop_and_disable_passblocks(body : Node2D):
 		print("Player doesn't have ItemHolder script")
 		return
 	Global.dropped_passblocks.append_array(body.get_all_items())
+	print(body)
+	for block in Global.dropped_passblocks:
+		block.drop_block(body) 
+		block.set_interaction_area(false)
+	print("Dropped passblocks: ", Global.dropped_passblocks)
 	body.clear_all_items()
-	#var passblocks = get_tree().get_nodes_in_group("PickedPassBlocks")
-	#Global.dropped_passblocks.append_array(passblocks.duplicate()) # Append PickedPassBlocks 
-	#for block in passblocks:
-		#block.drop_block() 
-		#block.set_interaction_area(false)
-	

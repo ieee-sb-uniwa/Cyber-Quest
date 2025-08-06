@@ -623,7 +623,7 @@ position = Vector2(3682, 142)
 [node name="PassBlocks" type="Node" parent="."]
 
 [node name="PassBlock" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
-position = Vector2(3406, 173)
+position = Vector2(3407, 173)
 
 [node name="PassBlock2" parent="PassBlocks" instance=ExtResource("20_7qa6e")]
 position = Vector2(3389, 558)
