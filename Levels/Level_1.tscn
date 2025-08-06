@@ -550,7 +550,7 @@ spriteRows = 4
 spriteColumns = 4
 
 [node name="EnemyNav" parent="Enemies" node_paths=PackedStringArray("patrolling_rooms") instance=ExtResource("10_6rttb")]
-position = Vector2(2146, 340)
+position = Vector2(3339, 380)
 patrolling_rooms = [NodePath("../Room01Collision"), NodePath("../Room02Collision"), NodePath("../Room03Collision")]
 spriteRows = 4
 spriteColumns = 4
