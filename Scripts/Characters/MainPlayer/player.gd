@@ -72,6 +72,7 @@ func pick_new_state():
 		state_machine.travel("Move")
 	else:
 		state_machine.travel("Idle")
+
 func player(): #Is used to be identified by enemies
 	pass
 	

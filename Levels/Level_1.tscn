@@ -527,10 +527,10 @@ tile_map_data = PackedByteArray("AAARABoAAAACAAEAAAARABkAAAACAAEAAAARABgAAAACAAE
 tile_set = SubResource("TileSet_885uv")
 navigation_enabled = false
 
-[node name="Player" parent="." instance=ExtResource("7_3yf3j")]
+[node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("7_3yf3j")]
 position = Vector2(2772, 1035)
 
-[node name="Player2" parent="." instance=ExtResource("7_3yf3j")]
+[node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("7_3yf3j")]
 position = Vector2(2921, 1035)
 playerNum = 2
 
@@ -610,19 +610,15 @@ position = Vector2(3303, 548)
 
 [node name="HideBox5" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2926, 477)
-collision_layer = 32
 
 [node name="HideBox2" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2321, 533)
-collision_layer = 32
 
 [node name="HideBox3" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(2098, 244)
-collision_layer = 32
 
 [node name="HideBox4" parent="HideBoxes" instance=ExtResource("15_nop75")]
 position = Vector2(3682, 142)
-collision_layer = 32
 
 [node name="PassBlocks" type="Node" parent="."]
 
@@ -655,4 +651,5 @@ position = Vector2(2855, 148)
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot"]
 position = Vector2(2864, 1028)
+zoom = Vector2(0.7, 0.7)
 script = ExtResource("17_2hgpn")
