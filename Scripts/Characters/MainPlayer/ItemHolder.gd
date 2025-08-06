@@ -39,7 +39,7 @@ func remove_item_from_character(item:Node2D, pos : Vector2) -> void:
 	if pass_blocks == null:
 		printerr("No passBlocks node found")
 		return
-	pass_blocks.add_child(item)
+	pass_blocks.call_deferred("add_child", item)  
 	item.global_position = pos
 	print("Item "+item.name+ " has been removed from the inventory.")
 
