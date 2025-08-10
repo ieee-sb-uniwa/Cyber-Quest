@@ -23,6 +23,9 @@ func Exit():
 func Physics_update(_delta: float) -> void:
 	var hunting_targets = enemy.hunting_targets
 	if(hunting_targets.size() == 0):
+		if current_target.is_hidden:
+			switch_state("PatrolNav")
+			return
 		check_lost_target(3.0)
 	
 	if current_target != null:
@@ -64,8 +67,11 @@ func check_lost_target(duration: float) -> void:
 				is_checking_lost_target = false
 				return  # Enemy is back, cancel patrol transition
 	is_checking_lost_target = false
-	print("Stop chasing")
-	transitioned.emit("PatrolNav")
+	switch_state("PatrolNav")
+	
+func switch_state(state_name: String) -> void:
+	print("Switching state to " + state_name)
+	transitioned.emit(state_name)
 
 func nav_test():
 	nav_agent.target_position = current_target.global_position

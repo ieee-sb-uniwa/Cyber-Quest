@@ -38,8 +38,13 @@ func Exit():
 func Physics_update(_delta : float):
 	enemy.sprite.set_global_rotation(0)
 	if enemy.hunting_targets.size()>0:
-		transitioned.emit("ChaseNav")
-		return
+		var can_see_target :bool = false
+		for hunting_target in enemy.hunting_targets:
+			var res :bool = can_see_player(hunting_target)
+			can_see_target = res if res == true else can_see_target
+		if can_see_target:
+			transitioned.emit("ChaseNav")
+			return
 	if !roomSelected: #CALLED WHEN NEEDED TO SELECT A NEW ROOM
 		print("Selecting new path")
 		nav_check()
@@ -58,6 +63,21 @@ func Physics_update(_delta : float):
 		#if chase_state:
 			#transitioned.emit(chase_state)
 	
+func can_see_player(player:Node2D) -> bool:
+	var space_state = enemy.get_world_2d().direct_space_state
+	var from_pos = enemy.global_position
+	var to_pos = player.global_position
+	var query = PhysicsRayQueryParameters2D.create(from_pos, to_pos)
+	query.collision_mask = 1 << 0
+	query.exclude = [enemy]
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result.is_empty():
+		return true
+	else:
+		return result.collider == player
+
 func nav_check() -> void:
 	roomSelected = true
 	nav_agent.target_position = await get_random_room()

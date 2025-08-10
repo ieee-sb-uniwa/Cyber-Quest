@@ -11,6 +11,22 @@ func assign_player(player_num: int, node: Node2D) -> void:
 	elif player_num == 2:
 		player2 = node
 
+func get_camera_bounds() -> Rect2:
+	var screen_size = get_viewport_rect().size
+	var zoom = self.zoom
+	var visible_size = screen_size * zoom
+	var top_left = global_position - visible_size * 0.5
+	return Rect2(top_left, visible_size)
+	
+func clamp_player_position(player: Node2D) -> void:
+	var bounds = get_camera_bounds()
+	var sprite_size = Vector2(32, 32)  # adjust to your player's actual size in world units
+
+	# Clamp player's position, offsetting so sprite won't clip out of screen
+	var min_pos = bounds.position + sprite_size * 0.5
+	var max_pos = bounds.position + bounds.size - sprite_size * 0.5
+	player.global_position = player.global_position.clamp(min_pos, max_pos)
+
 func _process(delta: float) -> void:
 	if not player1 or not player2:
 		return
@@ -24,3 +40,6 @@ func _process(delta: float) -> void:
 	else:
 		# Softly ease towards midpoint even if within margin
 		global_position = global_position.lerp(center_pos, delta * (follow_speed * 0.3))
+		
+	clamp_player_position(player1)
+	clamp_player_position(player2)

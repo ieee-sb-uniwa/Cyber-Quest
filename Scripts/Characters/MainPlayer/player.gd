@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @export var itemHodler : ItemHolder
 @export var playerNum: int = 1
+var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
 
@@ -117,5 +118,5 @@ func pickup_item_positions():
 		#get_node("Marker%d" % (i + 1)).position = hard_pos[i]
 		
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") && !is_hidden: 
 		get_tree().call_deferred("reload_current_scene")

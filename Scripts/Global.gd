@@ -7,3 +7,4 @@ var move_speed : float = 150
 var interacable = false
 var isTutorial: bool = true
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
+enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}

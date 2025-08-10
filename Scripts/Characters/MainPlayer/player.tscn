@@ -207,6 +207,8 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_cieqw")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_kxodx")
 blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5m6v"]
@@ -239,6 +241,7 @@ itemHodler = NodePath("Sprite2D/ItemHolder")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
+frame = 8
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")
