@@ -1,21 +1,28 @@
 extends Area2D
 class_name InteractionArea
 
-@export var action_key: String = "Interact"
-@export var action_name: String = "Interact"
+@export var action_key: String 
+@export var action_name: String
 var area_label : Label
 var object_type : String
+var interaction_status:Global.INTERACTION_STATUS = Global.INTERACTION_STATUS.EMPTY
 
 var interact: Callable = func():
 	pass
 
 func _on_body_entered(_body):
-	if (Global.blocks_picked < 3 or object_type=="box"):
-		InteractionManager.register_area(self)
+	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and  interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
+		return
+
+	if (can_pickup(_body) or object_type=="box"):
+		InteractionManager.register_area(self, _body)
+	
 	Global.interacable = true
 	area_label = InteractionManager.get_label()
 
 func _on_body_exited(_body):
+	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
+		return
 	InteractionManager.unregister_area(self)
 	Global.interacable = false
 	area_label = InteractionManager.get_label()
@@ -32,3 +39,11 @@ func set_object_type(text : String):
 func set_label(new_text: String) -> void:
 	if area_label:
 		area_label.text = new_text
+
+func can_pickup(body: Node2D) -> bool:
+	if body.is_in_group("MainPlayer") and Global.player_blocks[0] < Global.max_player_items:
+		return true
+	elif body.is_in_group("SecondPlayer") and Global.player_blocks[1] < Global.max_player_items:
+		return true
+	else:
+		return false

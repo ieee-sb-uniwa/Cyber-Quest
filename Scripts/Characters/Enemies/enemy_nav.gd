@@ -106,5 +106,5 @@ func update_animation_parameters(move_direction : Vector2):
 func pick_new_animation():
 	if(self.velocity != Vector2.ZERO):
 		state_machine.travel("Move")
-	#else:
-		#state_machine.travel("Idle")
+	else:
+		state_machine.travel("Idle")

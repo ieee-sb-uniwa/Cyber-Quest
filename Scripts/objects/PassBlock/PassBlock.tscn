@@ -12,6 +12,7 @@ radius = 25.02
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
+z_as_relative = false
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_uhymk")
@@ -27,7 +28,6 @@ shape = SubResource("RectangleShape2D_2ahm8")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
 collision_mask = 2
-action_key = "[E]"
 action_name = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
