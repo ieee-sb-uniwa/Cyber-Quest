@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://csrq1j1uisabv"]
+
+[ext_resource type="Script" uid="uid://bwsjsblf81aas" path="res://Scripts/objects/Button/button_logic.gd" id="1_bvigm"]
+[ext_resource type="Texture2D" uid="uid://bh1vts8ltug6m" path="res://Assets/butto/Pixel GUI Buttons pack 3.png" id="2_bvigm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g34tc"]
+radius = 12.0
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_bvigm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 8
+visibility_layer = 8
+z_index = 4
+texture = ExtResource("2_bvigm")
+hframes = 12
+vframes = 12
+frame = 14
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_g34tc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_button_pressed"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_button_unpressed"]
