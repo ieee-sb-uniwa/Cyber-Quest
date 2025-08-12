@@ -23,7 +23,7 @@ func Exit():
 func Physics_update(_delta: float) -> void:
 	var hunting_targets = enemy.hunting_targets
 	if(hunting_targets.size() == 0):
-		if current_target.is_hidden:
+		if current_target != null and current_target.is_hidden:
 			switch_state("PatrolNav")
 			return
 		check_lost_target(3.0)

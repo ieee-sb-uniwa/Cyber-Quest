@@ -4,14 +4,9 @@ extends StaticBody2D
 @onready var passArea = $InteractionArea
 
 var unpicked_z_index : int
-const max_player_items = 3
-var player_blocks: Array = [0, 0]  
 var picked = false
 var block_number : int = 0
 var block_id
-
-func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:
-	return Input.is_action_just_pressed(interact_button) and player.is_in_group(player_group)
 	
 func set_collision(flag: bool):
 	collision_shape.call_deferred("set", "disabled", flag)
@@ -32,11 +27,11 @@ func drop_block(body: Node2D):
 	set_collision(false)
 	picked = false
 	Global.blocks_picked -= 1
+	self.z_index = unpicked_z_index + block_number
 	if body.is_in_group("MainPlayer"):
-		player_blocks[0] -= 1
+		Global.player_blocks[0] -= 1
 	elif body.is_in_group("SecondPlayer"):
-		player_blocks[1] -= 1
-
+		Global.player_blocks[1] -= 1
 	
 func pick_block(body: Node2D):
 	set_interaction_area(false)
@@ -44,9 +39,9 @@ func pick_block(body: Node2D):
 	picked = true
 	Global.blocks_picked += 1
 	if body.is_in_group("MainPlayer"):
-		player_blocks[0] += 1
+		Global.player_blocks[0] += 1
 	elif body.is_in_group("SecondPlayer"):
-		player_blocks[1] += 1
+		Global.player_blocks[1] += 1
 	if body.has_method("add_item_to_holder"):
 		body.add_item_to_holder(self)
 
@@ -59,14 +54,15 @@ func _input(_event):
 	# Only check input if there is a body inside area
 	if bodies.size() == 0: 
 		return
-	# Pickup logic for max_player_items
+	# Pickup logic for Global.max_player_items
 	for body in bodies:
 		if body.has_method("player") and picked == false:
-			if player_interacts("Interact_p1", "MainPlayer", body) or player_interacts("Interact_p2", "SecondPlayer", body):
-				if player_blocks[0] >= max_player_items and body.is_in_group("MainPlayer"):
+			if Global.player_interacts("Interact_p1", "MainPlayer", body) or Global.player_interacts("Interact_p2", "SecondPlayer", body):
+				print(Global.max_player_items)
+				if Global.player_blocks[0] >= Global.max_player_items and body.is_in_group("MainPlayer"):
 					print("Max items for player 1 reached")
 					return
-				elif player_blocks[1] >= max_player_items and body.is_in_group("SecondPlayer"):
+				elif Global.player_blocks[1] >= Global.max_player_items and body.is_in_group("SecondPlayer"):
 					print("Max items for player 2 reached")
 					return
 				pick_block(body)
@@ -83,7 +79,7 @@ func _input(_event):
 				#self.z_index = get_player().z_index + block_number 
 			## show the block behind the player
 			#else:
-				#self.z_index = get_player().z_index + block_number - max_player_items 
+				#self.z_index = get_player().z_index + block_number - Global.max_player_items 
 
 #func player_moving_up():
 	#var up_strength = Input.get_action_strength("move_up")

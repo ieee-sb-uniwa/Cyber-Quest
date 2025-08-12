@@ -13,8 +13,7 @@ func assign_player(player_num: int, node: Node2D) -> void:
 
 func get_camera_bounds() -> Rect2:
 	var screen_size = get_viewport_rect().size
-	var zoom = self.zoom
-	var visible_size = screen_size * zoom
+	var visible_size = screen_size * self.zoom
 	var top_left = global_position - visible_size * 0.5
 	return Rect2(top_left, visible_size)
 	

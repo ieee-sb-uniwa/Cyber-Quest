@@ -125,6 +125,10 @@ func get_random_navigable_point(room: Area2D, counter: int) -> Vector2:
 	return await get_random_navigable_point(room, counter)
 		
 func is_point_navigatable(point: Vector2) -> bool:
+	# Wait for the navigation map to synchronize
+	while NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
+		await NavigationServer2D.map_changed
+	
 	await delay_by_frames(3)
 	var nav_map = nav_agent.get_navigation_map()
 	#NavigationServer2D.region_set_map(nav_region.get_region_rid(), nav_map)
