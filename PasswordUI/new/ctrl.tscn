@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl00mtrsvm0nx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnaeo"]
+bg_color = Color(0.11, 0.11, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utqji"]
+bg_color = Color(0.205117, 0.205117, 0.205117, 1)
+
+[node name="Ctrl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 187.0
+offset_top = 98.0
+offset_right = -773.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -7.0
+offset_right = 359.0
+offset_bottom = 178.0
+color = Color(0.678944, 0.678944, 0.678944, 1)
+
+[node name="Panel" type="Panel" parent="Screen"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 374.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnaeo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Screen/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 359.0
+offset_bottom = 166.0
+theme_override_font_sizes/normal_font_size = 12
+text = ">Εισαγωγή Κωδικού:
+>"
+tab_size = 2
+
+[node name="Keyboard" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 166.0
+offset_top = 185.0
+offset_right = 324.0
+offset_bottom = 348.0
+
+[node name="Primary" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.427451)
+self_modulate = Color(0.00291769, 0.250998, 0.936223, 1)
+layout_mode = 0
+offset_left = 365.0
+offset_top = -1.0
+offset_right = 603.0
+offset_bottom = 117.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Primary"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 234.0
+offset_bottom = 114.0
+pivot_offset = Vector2(97, 63)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "> Ο κωδικός πρέπει να έχει μήκος τουλάχιστον 8 ψηφία
+
+> Ο κωδικός δεν πρέπει να είναι η ημερομηνία γέννησής σας"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 124.0
+offset_right = 609.0
+offset_bottom = 347.0
+color = Color(0, 0, 0, 1)
+
+[node name="Secondary" type="Panel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 235.0
+offset_bottom = 217.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_utqji")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/Secondary"]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 220.0
+offset_bottom = 204.0
