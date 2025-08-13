@@ -1,96 +1,216 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl00mtrsvm0nx"]
+[gd_scene load_steps=7 format=3 uid="uid://r21wg5i6yxvu"]
+
+[ext_resource type="Script" uid="uid://ksxx0eqcuvpl" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnaeo"]
-bg_color = Color(0.11, 0.11, 0.11, 1)
+
+[sub_resource type="Theme" id="Theme_lnaeo"]
+
+[sub_resource type="SystemFont" id="SystemFont_utqji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utqji"]
-bg_color = Color(0.205117, 0.205117, 0.205117, 1)
+bg_color = Color(0.552941, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhck8"]
+bg_color = Color(0, 0.5314, 0, 1)
 
 [node name="Ctrl" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 187.0
-offset_top = 98.0
-offset_right = -773.0
-offset_bottom = -441.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Screen" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -23.0
-offset_top = -7.0
-offset_right = 359.0
-offset_bottom = 178.0
-color = Color(0.678944, 0.678944, 0.678944, 1)
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 417.0
+offset_bottom = 204.0
 
 [node name="Panel" type="Panel" parent="Screen"]
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 374.0
-offset_bottom = 178.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 408.0
+offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lnaeo")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Screen/Panel"]
+[node name="RichTextLabel1" type="RichTextLabel" parent="Screen/Panel"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 359.0
-offset_bottom = 166.0
-theme_override_font_sizes/normal_font_size = 12
-text = ">Εισαγωγή Κωδικού:
->"
-tab_size = 2
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 391.0
+offset_bottom = 180.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+bbcode_enabled = true
 
-[node name="Keyboard" type="Panel" parent="."]
+[node name="Primary" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 185.0
-offset_right = 324.0
-offset_bottom = 348.0
+offset_left = 423.0
+offset_top = 3.0
+offset_right = 637.0
+offset_bottom = 101.0
+theme = SubResource("Theme_lnaeo")
+color = Color(0, 0.0641931, 0.208981, 1)
 
-[node name="Primary" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.427451)
-self_modulate = Color(0.00291769, 0.250998, 0.936223, 1)
+[node name="RichTextLabel2" type="RichTextLabel" parent="Primary"]
 layout_mode = 0
-offset_left = 365.0
-offset_top = -1.0
-offset_right = 603.0
-offset_bottom = 117.0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 209.0
+offset_bottom = 93.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_utqji")
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "Θυμήσου!
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Primary"]
+1) Μήκος κωδικού τουλάχιστον 8 χαρακτήρες.
+
+2) Μην βάλεις την ημερομηνία γέννησής σου
+"
+
+[node name="Secondary" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 112.0
+offset_right = 638.0
+offset_bottom = 358.0
+theme = SubResource("Theme_lnaeo")
+color = Color(0.404511, 0.404511, 0.404511, 1)
+
+[node name="Panel" type="Panel" parent="Secondary"]
+self_modulate = Color(0.00784314, 0.00784314, 0.00784314, 0.686275)
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 234.0
-offset_bottom = 114.0
-pivot_offset = Vector2(97, 63)
-theme_override_font_sizes/normal_font_size = 12
+offset_right = 211.0
+offset_bottom = 241.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnaeo")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Secondary/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 203.0
+offset_bottom = 233.0
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "> Ο κωδικός πρέπει να έχει μήκος τουλάχιστον 8 ψηφία
+text = "Χρήσιμες πληροφορίες:
 
-> Ο κωδικός δεν πρέπει να είναι η ημερομηνία γέννησής σας"
+1) 2 συνεχόμενα νούμερα του κωδικού να μην είναι ίδια
 
-[node name="ColorRect" type="ColorRect" parent="."]
+2) 2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα"
+
+[node name="Keyboard" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 367.0
-offset_top = 124.0
-offset_right = 609.0
-offset_bottom = 347.0
-color = Color(0, 0, 0, 1)
+offset_left = 127.0
+offset_top = 207.0
+offset_right = 291.0
+offset_bottom = 359.0
+theme = SubResource("Theme_lnaeo")
+script = ExtResource("1_utqji")
 
-[node name="Secondary" type="Panel" parent="ColorRect"]
+[node name="1" type="Button" parent="Keyboard"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 235.0
-offset_bottom = 217.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_utqji")
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 44.0
+offset_bottom = 36.0
+text = "1"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/Secondary"]
-offset_left = 7.0
-offset_top = 6.0
-offset_right = 220.0
-offset_bottom = 204.0
+[node name="2" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 5.0
+offset_right = 98.0
+offset_bottom = 36.0
+text = "2"
+
+[node name="3" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 5.0
+offset_right = 150.0
+offset_bottom = 36.0
+text = "3"
+
+[node name="4" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 42.0
+offset_right = 44.0
+offset_bottom = 73.0
+text = "4"
+
+[node name="5" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 42.0
+offset_right = 98.0
+offset_bottom = 73.0
+text = "5"
+
+[node name="6" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 42.0
+offset_right = 150.0
+offset_bottom = 73.0
+text = "6"
+
+[node name="7" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 80.0
+offset_right = 44.0
+offset_bottom = 111.0
+text = "7"
+
+[node name="8" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 80.0
+offset_right = 98.0
+offset_bottom = 111.0
+text = "8"
+
+[node name="9" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 80.0
+offset_right = 150.0
+offset_bottom = 111.0
+text = "9"
+
+[node name="0" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 117.0
+offset_right = 98.0
+offset_bottom = 148.0
+text = "0"
+
+[node name="X" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 117.0
+offset_right = 44.0
+offset_bottom = 148.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_utqji")
+text = "X"
+
+[node name="✔" type="Button" parent="Keyboard"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 117.0
+offset_right = 150.0
+offset_bottom = 148.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yhck8")
+text = "✓"
