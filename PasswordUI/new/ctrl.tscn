@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://r21wg5i6yxvu"]
 
-[ext_resource type="Script" uid="uid://ksxx0eqcuvpl" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
+[ext_resource type="Script" uid="uid://de0p7onn3v728" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnaeo"]
 
