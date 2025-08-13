@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=4 uid="uid://2wvn5u3j1yes"]
 
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/door/Door.tscn" id="1_pe37q"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/Door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
 [ext_resource type="Texture2D" uid="uid://b6um8lvk7njes" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v1.png" id="2_oq3u7"]
 [ext_resource type="Texture2D" uid="uid://cmihq56qtrxal" path="res://Assets/web_safety_assets/Tilesets/Decorative/Boxes_v2.png" id="3_06x71"]
@@ -651,4 +651,5 @@ position = Vector2(2855, 148)
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot"]
 position = Vector2(2864, 1028)
+zoom = Vector2(0.7, 0.7)
 script = ExtResource("17_2hgpn")
