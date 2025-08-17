@@ -10,6 +10,8 @@ extends CharacterBody2D
 var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
+var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
+var movement_enabled = true
 
 ## Pickup Item Functionality ##
 var items_picked_up : int = 0
@@ -29,8 +31,8 @@ func _ready():
 func _physics_process(_delta):	
 	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
 	update_animation_parameters(input_direction)
-	
-	velocity = input_direction.normalized() * move_speed
+	if movement_enabled:
+		velocity = input_direction.normalized() * move_speed
 	pickup_item_positions()
 	
 	move_and_slide()
@@ -43,7 +45,7 @@ func update_animation_parameters(move_input : Vector2):
 	var abs_x = abs(move_input.x)
 	var abs_y = abs(move_input.y)
 	var animation_look_location : Vector2 = Vector2(0,0)
-	var move_orientation = Global.MOVE_ORIENTATION.EMPTY
+	move_orientation = Global.MOVE_ORIENTATION.EMPTY
 	
 	if abs_x > abs_y:
 		animation_look_location = Vector2(direction.x, 0)
@@ -76,6 +78,9 @@ func pick_new_state():
 
 func player(): #Is used to be identified by enemies
 	pass
+	
+func get_movement_inputs() -> Vector2:
+	return Vector2(get_horizontal_move(), get_vertical_move())
 	
 func get_move(move):
 	return Input.get_action_strength(move)

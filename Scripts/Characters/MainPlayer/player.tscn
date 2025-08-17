@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://d055khlg5bjcj"]
+[gd_scene load_steps=31 format=3 uid="uid://d055khlg5bjcj"]
 
 [ext_resource type="Script" uid="uid://croxmnqu7e1ma" path="res://Scripts/Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
 [ext_resource type="Texture2D" uid="uid://ngg28ihydbd1" path="res://Assets/web_safety_assets/Characters/Player_SpriteSheet.png" id="3_ceh3p"]
 [ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
+[ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
 size = Vector2(24, 16)
@@ -285,3 +286,9 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(2, 1)
 shape = SubResource("CircleShape2D_egte2")
+
+[node name="Dash" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("5_l57x5")
+player = NodePath("..")
+dash_movement = 600.0
+dash_duration = 0.15
