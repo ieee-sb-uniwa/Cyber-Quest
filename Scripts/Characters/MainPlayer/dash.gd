@@ -9,9 +9,7 @@ var _is_dashing = false
 var _cooldown_timer = 0.0
 var _dash_timer = 0.0
 var _direction := Vector2.ZERO
-
 var direction_dict = {Global.MOVE_ORIENTATION.LEFT:Vector2(-1,0),Global.MOVE_ORIENTATION.UP:Vector2(0,-1), Global.MOVE_ORIENTATION.RIGHT:Vector2(1,0), Global.MOVE_ORIENTATION.DOWN:Vector2(0,1)}
-	
 		
 func _physics_process(_delta):
 	if !player:
@@ -48,9 +46,3 @@ func apply_dash_velocity():
 	
 func is_dashing() -> bool:
 	return _is_dashing
-	
-	
-	
-	
-	
-	
