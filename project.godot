@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 MainPlayer="WASD player"
 player=""
 SecondPlayer=""
+MoveBox=""
 
 [input]
 
