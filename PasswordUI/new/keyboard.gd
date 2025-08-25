@@ -1,29 +1,30 @@
-# Doesn't work from keyboard
-# New try erases screen's old output
-# Hide tablet info until mistake has been made. (When mistake has been made then "unlock" it in the tablet)
-
 extends Control
 
 var current_input := ""
-var welcome1 := "Welcome!\n"
-var welcome2 := "Please enter password:\n >"
+var screen_log := "" # For attempts >1
+var welcome1 := "Καλώς Ήρθατε!\n"
+var welcome2 := "Εισάγετε κωδικό:\n >"
 var label_path := "../Screen/Panel/RichTextLabel1"
 var date_of_birth = "07022008" # Will be set dynamically in intro (02/07/2008 for eg.)
 var input_finalized := false
+var unlocked_rules := []   # List for tablet rules
+var tablet_label := "../Secondary/Panel/RichTextLabel3"
 
 func _ready():
 	var label = get_node(label_path)
-	label.clear()
 	label.bbcode_enabled = true
 	label.scroll_active = true
 
 	await _type_text_animation(welcome1, label)
 	await _type_text_animation(welcome2, label)
 
-	# connect all buttons in keyboard
+	screen_log = welcome1 + welcome2
+
+	# Connect buttons
 	for child in get_children():
 		if child is Button:
 			child.connect("pressed", Callable(self, "_on_button_pressed").bind(child.name))
+
 
 func _type_text_animation(text_to_type: String, label: RichTextLabel) -> void:
 	for i in range(text_to_type.length()):
@@ -34,7 +35,6 @@ func _on_button_pressed(button_name: String):
 	if input_finalized:
 		return
 
-	# Keyboard button pressed
 	match button_name:
 		"X":
 			if current_input.length() > 0:
@@ -45,20 +45,22 @@ func _on_button_pressed(button_name: String):
 		_:
 			current_input += button_name
 
-	# update input display
+	# Keeps old and new input/output on screen
 	var label = get_node(label_path)
-	label.text = welcome1 + welcome2 + current_input
+	label.text = screen_log + current_input
+	label.scroll_to_line(label.get_line_count() - 1)
 
 
 func _on_confirm_pressed():
 	input_finalized = true
 
-	var label = get_node(label_path)
 	var feedback := _generate_rule_feedback()
+	screen_log += current_input + "\n" + feedback
 
-	label.append_text("\n" + feedback + "\n")
+	var label = get_node(label_path)
+	label.text = screen_log
+	label.scroll_to_line(label.get_line_count() - 1)
 
-	# prepare for next input
 	current_input = ""
 	input_finalized = false
 
@@ -73,24 +75,45 @@ func _generate_rule_feedback() -> String:
 	var rule4_failed := _rule_breach_regex(password, "^(?!.*" + date_of_birth + ").*$")  # No DOB
 
 	var errors := []
-	
+	var tablet_rules := []
+
 	if rule1_failed:
 		errors.append("Μήκος κωδικού τουλάχιστον 8 χαρακτήρες.")
+
 	if rule2_failed:
 		errors.append("2 συνεχόμενα νούμερα του κωδικού να μην είναι ίδια")
+		tablet_rules.append("2 συνεχόμενα νούμερα του κωδικού να μην είναι ίδια")
+
 	if rule3_failed:
 		errors.append("2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα")
+		tablet_rules.append("2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα")
+
 	if rule4_failed:
 		errors.append("Μην βάλεις την ημερομηνία γέννησής σου")
 
+	# Updates tablet rules
+	for rule in tablet_rules:
+		if not rule in unlocked_rules:
+			unlocked_rules.append(rule)
+
+	var info_label = get_node(tablet_label)
+
+	if unlocked_rules.size() > 0:
+		var rules_text = "Χρήσιμες πληροφορίες:\n"
+		for rule in unlocked_rules:
+			rules_text += "\n" + rule + "\n"
+		info_label.text = rules_text
+
 	if errors.size() == 0:
-		feedback += "[color=green]✔ Valid Password![/color]\n"
+		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος![/color]\n"
 	else:
 		for error in errors:
 			feedback += "[color=red]✘ " + error + "\n[/color]"
-		feedback += "Input password:\n> "
+		feedback += "Εισάγετε νέο κωδικό:\n> "
 
 	return feedback
+
+
 
 func _rule_breach_regex(password: String, pattern: String) -> bool: # if it matches it returns false
 	var regex := RegEx.new()
