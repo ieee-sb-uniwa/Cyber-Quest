@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/Objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
 [ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="15_yt1os"]
-[ext_resource type="Script" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="17_2hgpn"]
+[ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="17_2hgpn"]
 [ext_resource type="Script" uid="uid://4d26omf8vc51" path="res://Scripts/Objects/Managers/ButtonBridgeConnectionHandler.gd" id="18_uq6m5"]
 [ext_resource type="PackedScene" uid="uid://csrq1j1uisabv" path="res://Scripts/Objects/Button/button.tscn" id="19_kfv6s"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/Objects/PassBlock/PassBlock.tscn" id="20_7qa6e"]
