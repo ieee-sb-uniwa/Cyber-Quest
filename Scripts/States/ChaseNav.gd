@@ -26,7 +26,7 @@ func Physics_update(_delta: float) -> void:
 		if current_target != null and current_target.is_hidden:
 			switch_state("PatrolNav")
 			return
-		check_lost_target(3.0)
+		check_lost_target(enemy.seconds_to_escape)
 	
 	if current_target != null:
 		var direction_to_player = (current_target.global_position - enemy.global_position).normalized()

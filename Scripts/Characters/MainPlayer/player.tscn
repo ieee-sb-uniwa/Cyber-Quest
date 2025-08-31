@@ -242,11 +242,11 @@ itemHodler = NodePath("Sprite2D/ItemHolder")
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 12
+frame = 4
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")
-items_available_positions = [NodePath("Marker1"), NodePath("Marker2"), NodePath("Marker3")]
+items_available_positions = [NodePath("Marker1"), NodePath("Marker2")]
 
 [node name="Marker1" type="Marker2D" parent="Sprite2D/ItemHolder"]
 position = Vector2(0, -2)
@@ -254,10 +254,6 @@ gizmo_extents = 20.0
 
 [node name="Marker2" type="Marker2D" parent="Sprite2D/ItemHolder"]
 position = Vector2(0, -12)
-gizmo_extents = 20.0
-
-[node name="Marker3" type="Marker2D" parent="Sprite2D/ItemHolder"]
-position = Vector2(0, -23)
 gizmo_extents = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
