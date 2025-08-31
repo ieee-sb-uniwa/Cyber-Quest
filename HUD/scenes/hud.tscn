@@ -1,14 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://88i23lrr0po"]
-
-[ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="1_d1wee"]
+[gd_scene format=3 uid="uid://88i23lrr0po"]
 
 [node name="HUD" type="CanvasLayer"]
-
-[node name="InventoryGUI" parent="." instance=ExtResource("1_d1wee")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 140.0
-offset_bottom = 44.0
-grow_horizontal = 1
-grow_vertical = 1
