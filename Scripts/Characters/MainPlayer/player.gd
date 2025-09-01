@@ -5,13 +5,14 @@ extends CharacterBody2D
 @onready var state_machine = animation_tree.get("parameters/playback")
 @export var inventory: Inventory
 @onready var hitbox = $Hitbox
-@export var itemHodler : ItemHolder
+@export var itemHolder : ItemHolder
 @export var playerNum: int = 1
 var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
 var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
+var is_respawning:bool=false
 
 ## Pickup Item Functionality ##
 var items_picked_up : int = 0
@@ -22,13 +23,16 @@ var items_picked_up : int = 0
 func _ready():
 	update_animation_parameters(starting_direction)
 	$Hitbox.body_entered.connect(_on_body_entered)
-	itemHodler.set_player_index(self.z_index)
+	itemHolder.set_player_index(self.z_index)
+	SpawnManager.register_player(playerNum, self)
 	move_speed = Global.move_speed
 	var camera = get_tree().current_scene.get_node("CameraRoot/Camera2D")
 	if camera.has_method("assign_player"):
 		camera.assign_player(playerNum, self)
 
 func _physics_process(_delta):	
+	if is_respawning:
+		return  # Skip movement
 	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
 	update_animation_parameters(input_direction)
 	if movement_enabled:
@@ -68,7 +72,7 @@ func update_animation_parameters(move_input : Vector2):
 	last_animation_look_location = animation_look_location
 	animation_tree.set("parameters/Idle/blend_position", animation_look_location)
 	animation_tree.set("parameters/Move/blend_position", animation_look_location)
-	itemHodler.change_items_orientation(move_orientation)
+	itemHolder.change_items_orientation(move_orientation)
 
 func pick_new_state():
 	if(velocity != Vector2.ZERO):
@@ -92,13 +96,13 @@ func get_vertical_move():
 	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
 	
 func add_item_to_holder(item : Node2D) -> void:
-	itemHodler.add_item(item)
+	itemHolder.add_item(item)
 	
 func get_all_items() -> Array[Node2D]:
-	return itemHodler.get_all_items()
+	return itemHolder.get_all_items()
 
 func clear_all_items() -> void:
-	itemHodler.clear_all_items(self.global_position)
+	itemHolder.clear_all_items(self, true)
 	
 func pickup_item_positions():	
 	# If no movement, don't do anything
@@ -124,5 +128,10 @@ func pickup_item_positions():
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && !is_hidden: 
-		get_tree().call_deferred("reload_current_scene")
-		Global.reset_variables()
+		#get_tree().call_deferred("reload_current_scene")
+		#Global.reset_variables()
+		itemHolder.clear_all_items(self, false)
+		is_respawning = true;
+		#TODO: Implement spawner logic
+		SpawnManager.respawn_players()
+		is_respawning = false;

@@ -30,10 +30,12 @@ func add_item(item:Node2D)->void:
 	change_items_orientation(currDir)
 	print("Item "+item.name+" added!")
 
-func remove_item_from_character(item:Node2D, pos : Vector2) -> void:
+func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDelivered:bool) -> void:
 	if assigned_items.find(item) == -1:
 		print("This item does not excist in the inventory.")
 		return
+	if !isDelivered && item.has_method("drop_block"):
+		item.drop_block(pl)
 	self.remove_child(item)
 	var pass_blocks = get_tree().current_scene.get_node("PassBlocks")
 	if pass_blocks == null:
@@ -46,9 +48,10 @@ func remove_item_from_character(item:Node2D, pos : Vector2) -> void:
 func get_all_items() -> Array[Node2D]:
 	return assigned_items
 
-func clear_all_items(pos : Vector2) -> void:
+func clear_all_items(pl:Node2D, isDelivered:bool) -> void:
+	var pos = pl.global_position
 	for i in assigned_items.size():
-		remove_item_from_character(assigned_items[i], Vector2(pos.x, pos.y + items_available_positions[i].position.y))
+		remove_item_from_character(pl, assigned_items[i], Vector2(pos.x, pos.y + items_available_positions[i].position.y), isDelivered)
 	assigned_items.clear()
 	
 func set_player_index(index : int) -> void:

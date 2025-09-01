@@ -230,19 +230,19 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="CircleShape2D" id="CircleShape2D_egte2"]
 radius = 15.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHodler") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHolder") groups=["Player"]]
 z_index = 9
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_4ie1l")
 inventory = ExtResource("2_a2323")
-itemHodler = NodePath("Sprite2D/ItemHolder")
+itemHolder = NodePath("Sprite2D/ItemHolder")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_ceh3p")
 hframes = 4
 vframes = 4
-frame = 8
+frame = 4
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")

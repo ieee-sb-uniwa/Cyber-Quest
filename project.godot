@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InteractionManager="*res://Scripts/Interactions/InteractionManager/InteractionManager.tscn"
 Global="*res://Scripts/Global.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+SpawnManager="*res://Scripts/Characters/MainPlayer/SpawnManager.gd"
 
 [display]
 

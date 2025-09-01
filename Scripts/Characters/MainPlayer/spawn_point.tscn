@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://byupai31xjffa"]
+
+[ext_resource type="Script" uid="uid://cmgjs5l048vf0" path="res://Scripts/Characters/MainPlayer/player_spawner.gd" id="1_8irk7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixldi"]
+size = Vector2(173, 26)
+
+[node name="SpawnPoint0" type="Area2D" node_paths=PackedStringArray("player1Spawn", "player2Spawn")]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_8irk7")
+player1Spawn = NodePath("SpawnPointPlayer1")
+player2Spawn = NodePath("SpawnPointPlayer2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(76.5, 3)
+shape = SubResource("RectangleShape2D_ixldi")
+
+[node name="SpawnPointPlayer1" type="Node2D" parent="."]
+
+[node name="SpawnPointPlayer2" type="Node2D" parent="."]
+position = Vector2(150, 1)
