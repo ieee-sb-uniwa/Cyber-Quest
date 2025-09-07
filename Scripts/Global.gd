@@ -6,6 +6,7 @@ var max_player_items : int = 2
 var max_passblocks : int = max_player_items * 2
 var player_blocks: Array = [0, 0]  
 var dropped_passblocks: Array = []
+var player_entered_spawn = [false, false]
 var Hide_status: int = 1
 var move_speed : float = 150
 var interacable = false
