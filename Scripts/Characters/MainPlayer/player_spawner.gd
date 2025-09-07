@@ -9,7 +9,12 @@ func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
-	if body.name == "Player":  # Adjust condition as needed
+	if body.is_in_group("MainPlayer"):
+		Global.player_entered_spawn[0] = true
+	elif body.is_in_group("SecondPlayer"):
+		Global.player_entered_spawn[1] = true
+	if Global.player_entered_spawn[0] and Global.player_entered_spawn[1]:
+		Global.player_entered_spawn = [false, false]
 		on_collision()
 
 func on_collision():
