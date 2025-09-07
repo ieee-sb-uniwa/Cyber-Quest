@@ -686,7 +686,7 @@ position = Vector2(2855, 148)
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot"]
 position = Vector2(2864, 1028)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.7, 0.7)
 script = ExtResource("17_2hgpn")
 
 [node name="ButtonBridgePairs" type="Node" parent="."]

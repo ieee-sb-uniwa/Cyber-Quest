@@ -70,7 +70,7 @@ func check_lost_target(duration: float) -> void:
 	switch_state("PatrolNav")
 	
 func switch_state(state_name: String) -> void:
-	print("Switching state to " + state_name)
+	# print("Switching state to " + state_name)
 	transitioned.emit(state_name)
 
 func nav_test():

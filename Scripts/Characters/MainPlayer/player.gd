@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -14,9 +13,6 @@ var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
 var is_respawning:bool=false
 
-## Pickup Item Functionality ##
-var items_picked_up : int = 0
-## ---- ##
 @onready var P_sprite = $Sprite2D
 @onready var P_collission = $CollisionShape2D
 
@@ -37,7 +33,6 @@ func _physics_process(_delta):
 	update_animation_parameters(input_direction)
 	if movement_enabled:
 		velocity = input_direction.normalized() * move_speed
-	pickup_item_positions()
 	
 	move_and_slide()
 	pick_new_state()
@@ -60,12 +55,12 @@ func update_animation_parameters(move_input : Vector2):
 	else:
 		# Equal (diagonal): return vertical OR use last pressed key logic
 		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
-			print(str(abs_x)  + " : " + str(abs_y))
+			# print(str(abs_x)  + " : " + str(abs_y))
 			animation_look_location = Vector2(0.2, direction.y)
 			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
 		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
 			animation_look_location = Vector2(direction.x, 0.2)
-			print(animation_look_location)
+			# print(animation_look_location)
 			move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
 		else:
 			return
@@ -103,28 +98,6 @@ func get_all_items() -> Array[Node2D]:
 
 func clear_all_items() -> void:
 	itemHolder.clear_all_items(self, true)
-	
-func pickup_item_positions():	
-	# If no movement, don't do anything
-	if (velocity == Vector2.ZERO):
-		return
-	# Hardcoded positions του κάθε item που έχουμε κάνει pickup
-	#var hard_pos = []
-	#
-	##Άμα μετακινείται πιο πολύ οριζόντια (controller compatibility και priority από κάθετα)
-	#if (abs(get_horizontal_move()) >= abs(get_vertical_move())):
-		#if (get_move("move_right") > get_move("move_left")): #Δεξιά
-			#hard_pos = [Vector2(-18.0, -6.0), Vector2(-18.0, -12.0), Vector2(-18.0, -18.0)]
-		#else: #Αριστερά
-			#hard_pos = [Vector2(18.0, -6.0), Vector2(18.0, -12.0), Vector2(18.0, -18.0)]
-	#else: #Άμα μετακινείται πιο πολύ κάθετα
-		#if (get_move("move_down") > get_move("move_up")): #Πάνω
-			#hard_pos = [Vector2(0.0, -6.0), Vector2(0.0, -12.0), Vector2(0.0, -18.0)]
-		#else: #Κάτω
-			#hard_pos = [Vector2(0.0, 6.0), Vector2(0.0, 0.0), Vector2(0.0, -6.0)]
-	## Assign positions to each marker
-	#for i in range(3):
-		#get_node("Marker%d" % (i + 1)).position = hard_pos[i]
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && !is_hidden: 

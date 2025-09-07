@@ -58,7 +58,7 @@ func _input(_event):
 	for body in bodies:
 		if body.has_method("player") and picked == false:
 			if Global.player_interacts("Interact_p1", "MainPlayer", body) or Global.player_interacts("Interact_p2", "SecondPlayer", body):
-				print(Global.max_player_items)
+				# print(Global.max_player_items)
 				if Global.player_blocks[0] >= Global.max_player_items and body.is_in_group("MainPlayer"):
 					print("Max items for player 1 reached")
 					return
@@ -67,32 +67,6 @@ func _input(_event):
 					return
 				pick_block(body)
 				block_number = Global.blocks_picked	
-				
-# ------ Z.index logic for pickup items while player is moving ------
-#func _process(_delta):
-	## If it is picked up 
-	#if picked == true:
-		#self.position = get_player_marker().global_position 
-		#if get_player().velocity != Vector2.ZERO:
-			## show the block on top of player
-			#if (player_moving_up()):
-				#self.z_index = get_player().z_index + block_number 
-			## show the block behind the player
-			#else:
-				#self.z_index = get_player().z_index + block_number - Global.max_player_items 
-
-#func player_moving_up():
-	#var up_strength = Input.get_action_strength("move_up")
-	#var down_strength = Input.get_action_strength("move_down")
-	#var left_strength = Input.get_action_strength("move_left")
-	#var right_strength = Input.get_action_strength("move_right")
-#
-	#var vertical = up_strength - down_strength
-	#var horizontal = right_strength - left_strength
-#
-	## Check if moving mostly up or only up
-	#return vertical > 0 and (abs(vertical) > abs(horizontal) 
-	#or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 
 # ----- Initialiazation -----
 func _ready():
@@ -101,7 +75,7 @@ func _ready():
 	# Initialize block number at initialiazation
 	randomize()
 	block_id = rand_num(0,9)
-	print("Block id: " + str(block_id))
+	# print("Block id: " + str(block_id))
 	# depending on randon number assign frame (0-9)
 	block_sprite.set_frame(block_id)  
 

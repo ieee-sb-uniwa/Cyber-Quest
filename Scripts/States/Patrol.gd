@@ -12,7 +12,7 @@ var direction : Vector2 = starting_direction
 var returns_to_path: bool
 
 func Enter():
-	print("Patrolling")
+	# print("Patrolling")
 	#enemy.player_in_zone = false
 	#enemy.player_in_cone = false
 	#enemy.player_visible = false

@@ -22,7 +22,7 @@ func _ready():
 	state_machine = state_machine
 
 func Enter():
-	print("Patrolling Nav")
+	# print("Patrolling Nav")
 	#enemy.player_in_zone = false
 	#enemy.player_in_cone = false
 	#enemy.player_visible = false
@@ -132,18 +132,18 @@ func is_point_navigatable(point: Vector2) -> bool:
 	await delay_by_frames(3)
 	var nav_map = nav_agent.get_navigation_map()
 	#NavigationServer2D.region_set_map(nav_region.get_region_rid(), nav_map)
-	print(NavigationServer2D.map_get_regions(nav_map))
+	# print(NavigationServer2D.map_get_regions(nav_map))
 	var start = NavigationServer2D.map_get_closest_point(nav_map, enemy.global_position)
 	var target = NavigationServer2D.map_get_closest_point(nav_map, point)
-	print(" from: "+str(enemy.global_position) + " to: "+str(point))
-	print(" from: "+str(start) + " to: "+str(target))
+	# print(" from: "+str(enemy.global_position) + " to: "+str(point))
+	# print(" from: "+str(start) + " to: "+str(target))
 	var path = NavigationServer2D.map_get_path(nav_map, start, target, false, 3)
 	# print(path)
 	if path.size() > 1:
-		print("✅ Target is reachable!")
+		print("Target is reachable!")
 		pathingCompleted = true
 		return true;
-	print("❌ Target is NOT reachable.")
+	# print("Target is NOT reachable.")
 	return false;
 	
 func delay_by_frames(frames: int):
