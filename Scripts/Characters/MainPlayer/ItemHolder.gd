@@ -24,6 +24,8 @@ func add_item(item:Node2D)->void:
 		return
 	item.get_parent().remove_child(item)
 	self.add_child(item)
+	item.set_collision_layer_value(6,false)
+	item.set_collision_layer_value(30,true)
 	assigned_items.append(item)
 	var currDir = lastDir
 	lastDir = Global.MOVE_ORIENTATION.EMPTY
@@ -41,6 +43,8 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	if pass_blocks == null:
 		printerr("No passBlocks node found")
 		return
+	item.set_collision_layer_value(6,true)
+	item.set_collision_layer_value(30,false)
 	pass_blocks.call_deferred("add_child", item)  
 	item.global_position = pos
 	print("Item "+item.name+ " has been removed from the inventory.")
