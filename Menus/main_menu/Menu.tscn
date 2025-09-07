@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://btssi2ymkf40y"]
 
-[ext_resource type="Script" uid="uid://bjwfi83g5xfvp" path="res://Menu/menu.gd" id="1_e7t8g"]
+[ext_resource type="Script" uid="uid://bjwfi83g5xfvp" path="res://Menus/main_menu/menu.gd" id="1_e7t8g"]
 [ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_mdafx"]
 [ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_nb3x8"]
 [ext_resource type="Texture2D" uid="uid://dgiefa6158nuu" path="res://Assets/web_safety_assets/Backgrounds/Spaceship.png" id="3_p6ysk"]

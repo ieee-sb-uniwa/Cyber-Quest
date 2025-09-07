@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cknwa5xhy6x6o"]
 
-[ext_resource type="Script" uid="uid://cho5qath817kc" path="res://Scripts/Objects/Bridge/bridge_logic.gd" id="1_ionyk"]
+[ext_resource type="Script" uid="uid://cho5qath817kc" path="res://Scripts/objects/Bridge/bridge_logic.gd" id="1_ionyk"]
 [ext_resource type="Texture2D" uid="uid://bfhcgqn6maelr" path="res://Assets/NinjaAdventure/Backgrounds/Tilesets/TilesetReliefDetail.png" id="2_bled8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ionyk"]
