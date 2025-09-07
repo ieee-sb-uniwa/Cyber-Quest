@@ -13,7 +13,7 @@ func _on_body_entered(body):
 		Global.player_entered_spawn[0] = true
 	elif body.is_in_group("SecondPlayer"):
 		Global.player_entered_spawn[1] = true
-	if Global.player_entered_spawn[0] and Global.player_entered_spawn[1]:
+	if Global.player_entered_spawn[0] or Global.player_entered_spawn[1]:
 		Global.player_entered_spawn = [false, false]
 		on_collision()
 
