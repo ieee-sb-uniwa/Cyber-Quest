@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
-[ext_resource type="PackedScene" uid="uid://dg055qt5juvh0" path="res://objects/bed/bed.tscn" id="14_rgtet"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/Objects/Boxes/HideBox.tscn" id="15_nop75"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/Objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]

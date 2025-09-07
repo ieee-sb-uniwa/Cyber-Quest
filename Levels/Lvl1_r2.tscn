@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=24 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bw2s2jg6qbkeh" path="res://Assets/CyberQuest_Assets/Environment/fan.png" id="6_bfxao"]
 [ext_resource type="Texture2D" uid="uid://do0r1o5iuffsx" path="res://Assets/CyberQuest_Assets/Environment/circuitsNew.png" id="7_o0k03"]
 [ext_resource type="Texture2D" uid="uid://cdv0s8g5tidn7" path="res://Assets/CyberQuest_Assets/Environment/door_no2.png" id="8_bfxao"]
+[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="10_7skwt"]
+[ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="11_jwjn3"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7w2x"]
 texture = ExtResource("1_p0005")
@@ -290,28 +293,56 @@ sources/2 = SubResource("TileSetAtlasSource_l6qtc")
 sources/3 = SubResource("TileSetAtlasSource_54ngp")
 sources/4 = SubResource("TileSetAtlasSource_g3ro0")
 
-[node name="Node2D" type="Node2D"]
+[node name="Lvl1_r2" type="Node2D"]
 
-[node name="Floor Map Layer" type="TileMapLayer" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="Floor Map Layer" type="TileMapLayer" parent="Node"]
 tile_map_data = PackedByteArray("AAD9/wAAAQAAAAEAAAD+/wAAAQABAAEAAAD//wAAAQACAAEAAAAAAAAAAQABAAAAAAABAAAAAQABAAEAAAACAAAAAQABAAIAAAD9////AQABAAIAAAD+////AQACAAEAAAD/////AQABAAIAAAAAAP//AQAAAAEAAAABAP//AQABAAIAAAACAP//AQABAAAAAAD9//7/AQAAAAEAAAD+//7/AQACAAEAAAD///7/AQABAAIAAAAAAP7/AQABAAAAAAABAP7/AQABAAEAAAACAP7/AQACAAEAAAD9//3/AQACAAEAAAD+//3/AQABAAEAAAD///3/AQAAAAEAAAAAAP3/AQABAAEAAAABAP3/AQABAAIAAAACAP3/AQABAAAAAAD8/wAAAQAAAAIAAAD7////AQAAAAIAAAD6//7/AQAAAAIAAAD5//3/AQAAAAIAAAD4//z/AQAAAAIAAAD3//v/AQAAAAIAAAD8//z/AQACAAAAAAD7//v/AQACAAAAAAD6//r/AQACAAAAAAADAAAAAQACAAIAAAAEAP//AQACAAIAAAAFAP7/AQACAAIAAAAGAP3/AQACAAIAAAAHAPz/AQACAAIAAAAIAPv/AQACAAIAAAADAPz/AQAAAAAAAAAEAPv/AQAAAAAAAAAFAPr/AQAAAAAAAAD7//7/AQAAAAEAAAD8//3/AQABAAAAAAD8//7/AQABAAEAAAD8////AQABAAIAAAD5//z/AQAAAAEAAAD6//v/AQABAAAAAAD6//z/AQABAAEAAAD6//3/AQABAAIAAAD7//z/AQACAAEAAAD3//r/AQAAAAEAAAD4//r/AQABAAEAAAD4//v/AQABAAIAAAD5//r/AQACAAEAAAD5//v/AQABAAAAAAD7//3/AQABAAAAAAADAP3/AQABAAAAAAADAP7/AQABAAEAAAADAP//AQABAAIAAAAEAP7/AQACAAEAAAAEAPz/AQAAAAEAAAAFAPv/AQABAAAAAAAFAPz/AQABAAEAAAAFAP3/AQABAAIAAAAGAPz/AQACAAEAAAAGAPr/AQABAAAAAAAGAPv/AQABAAEAAAAHAPv/AQACAAEAAAAEAP3/AQABAAIAAAAHAPr/AQAAAAEAAAAIAPr/AQABAAEAAAA=")
 tile_set = SubResource("TileSet_emdui")
 
-[node name="Wall Map Layer" type="TileMapLayer" parent="."]
+[node name="Wall Map Layer" type="TileMapLayer" parent="Node"]
+z_index = 1
 tile_map_data = PackedByteArray("AAD9//r/AQAFAAIAAAD9//v/AQAFAAIAAAD9//z/AQAFAAMAAAABAPr/AQAEAAYAAAABAPv/AQAJAAIAAAABAPz/AQAJAAMAAAAAAPr/AQABAAYAAAAAAPv/AQABAAYAAAAAAPz/AQABAAcAAAD+//r/AQAEAAYAAAD+//v/AQAEAAYAAAD+//z/AQAEAAYAAAACAPr/AQAHAAIAAAACAPv/AQAEAAIAAAACAPz/AQAHAAMAAAD///r/AQADAAIAAAD///v/AQAHAAIAAAD///z/AQAHAAMAAAADAPn/AAAJAAUAAAADAPr/AAAJAAYAAAADAPv/AAAJAAYAAAADAPz/AAAJAAcAAAAEAPj/AQANAAEAAAAEAPn/AQANAAIAAAAEAPr/AQANAAIAAAAEAPv/AQANAAMAAAAFAPf/AAAKAAUAAAAFAPj/AAAKAAYAAAAFAPn/AAAKAAYAAAAFAPr/AAAKAAcAAAD7//j/AAAMAAUAAAD7//n/AAAMAAYAAAD7//r/AAAMAAYAAAD7//v/AAAMAAcAAAD8//r/AQABAAIAAAD8//v/AQABAAIAAAD8//z/AQABAAMAAAD6//f/AQACAAEAAAD6//j/AQACAAIAAAD6//n/AQACAAIAAAD6//r/AQACAAMAAAD5//j/AQAEAAIAAAD5//n/AQAEAAMAAAAGAPn/AQAIAAMAAAD4//n/AQABAAcAAAD3//j/AQAGAAYAAAD3//n/AQAGAAcAAAAHAPj/AQAGAAIAAAAHAPn/AQAGAAMAAAAIAPj/AQAFAAYAAAAIAPn/AQAFAAcAAAACAPn/AQAHAAEAAAD///n/AQAGAAEAAAD9//n/AQAFAAEAAAD+//n/AQAEAAUAAAAAAPn/AQABAAUAAAABAPn/AQAEAAUAAAADAPj/AAAJAAQAAAAEAPf/AQANAAAAAAAFAPb/AAAKAAQAAAAGAPb/AQAIAAEAAAAHAPb/AQAGAAEAAAAIAPb/AQAFAAUAAAD8//n/AQABAAEAAAD8//j/AQABAAAAAAD7//f/AAAMAAQAAAD6//b/AQACAAAAAAD4//b/AQABAAUAAAD3//b/AQAGAAUAAAD5//b/AQAEAAEAAAD5//f/AQAHAAIAAAD3//f/AQAGAAYAAAD4//f/AQABAAYAAAAGAPf/AQAIAAIAAAAHAPf/AQADAAIAAAAIAPf/AQAFAAYAAAD4//j/AQABAAYAAAAGAPj/AQAIAAIAAAA=")
 tile_set = SubResource("TileSet_5ve6y")
 
-[node name="Wall Decorations" type="TileMapLayer" parent="."]
+[node name="Wall Decorations" type="TileMapLayer" parent="Node"]
+z_index = 2
 tile_map_data = PackedByteArray("AAD9//j/AAABAAMAAAD+//j/AAACAAMAAAD///j/AAABAAMAAAAAAPj/AAACAAMAAAABAPj/AAABAAMAAAACAPj/AAACAAMAAAADAPj/AAADAAMAAAAEAPf/AAADAAMAAAAFAPb/AAADAAMAAAADAPf/AAABAAEAAAAEAPb/AAABAAEAAAAGAPX/AAABAAMAAAAHAPX/AAACAAMAAAD4//X/AAABAAMAAAD5//X/AAACAAMAAAD3//X/AAACAAMAAAAIAPX/AAACAAMAAAAFAPX/AAABAAEAAAD8//j/AAAAAAMAAAD7//f/AAAAAAMAAAD6//b/AAAAAAMAAAD6//X/AAACAAEAAAD7//b/AAACAAEAAAD8//f/AAACAAEAAAD9//v/AQABAAEAAAD9//z/AQAAAAIAAAAIAPf/AQAEAAIAAAAHAPf/AQABAAIAAAAGAPb/AQABAAIAAAAHAPb/AQACAAEAAAAIAPj/AQAAAAMAAAAIAPb/AQADAAEAAAD3//v/AAADAAAAAAD4//z/AAADAAAAAAD5//3/AAADAAAAAAD6//7/AAADAAAAAAD7////AAADAAAAAAD8/wAAAAADAAAAAAD7/wAAAAABAAIAAAD6////AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAABAAIAAAD3//z/AAABAAIAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAD8/wEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAACAAIAAAAHAP3/AAACAAIAAAAGAP7/AAACAAIAAAAFAP//AAACAAIAAAAEAAAAAAACAAIAAAD+//v/AQACAAIAAAD+//r/AQAEAAEAAAD9//r/AQABAAIAAAD9//n/AQAAAAEAAAD///r/AQABAAAAAAAAAPr/AQABAAAAAAABAPr/AQACAAEAAAD5//f/AwAAAAAAAAAGAPf/AgACAAAAAAD3//n/AgAAAAAAAAD+//z/AgACAAAAAAABAPn/AgABAAAAAAD5//b/AwAAAAAAAAA=")
 tile_set = SubResource("TileSet_g3ro0")
 
 [node name="DoorNo4" type="Sprite2D" parent="."]
-position = Vector2(480, -424)
+z_index = 2
+position = Vector2(480, -444)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_bfxao")
 
 [node name="DoorNo3" type="Sprite2D" parent="."]
-position = Vector2(-480, -424)
+z_index = 2
+position = Vector2(-480, -444)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_bfxao")
 
 [node name="DoorNo2" type="Sprite2D" parent="."]
-position = Vector2(-32, -232)
+z_index = 2
+position = Vector2(-19, -251)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_bfxao")
+
+[node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
+position = Vector2(-95, -132)
+
+[node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("10_7skwt")]
+position = Vector2(37, -129)
+playerNum = 2
+
+[node name="CameraRoot" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraRoot"]
+zoom = Vector2(0.7, 0.7)
+script = ExtResource("11_jwjn3")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-85, -285)
+scale = Vector2(4, 4)
+texture = ExtResource("12_l6qtc")
