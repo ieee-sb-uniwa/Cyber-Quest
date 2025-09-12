@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://basdfpi4xk0mn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oweut"]
+content_margin_left = 91.0
+content_margin_right = 142.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5sd0"]
+bg_color = Color(0.352558, 0.663037, 0.639444, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Panel" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oweut")
+
+[node name="Terminal_box" type="Panel" parent="HBoxContainer/VBoxContainer/Panel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y5sd0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "smmassmamassmsamasmas"
