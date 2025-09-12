@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+@onready var P_sprite = $Sprite2D
+@onready var P_collission = $CollisionShape2D
 @export var inventory: Inventory
 @onready var hitbox = $Hitbox
 @export var itemHodler : ItemHolder
@@ -12,12 +14,6 @@ var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
 var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
-
-## Pickup Item Functionality ##
-var items_picked_up : int = 0
-## ---- ##
-@onready var P_sprite = $Sprite2D
-@onready var P_collission = $CollisionShape2D
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -33,7 +29,6 @@ func _physics_process(_delta):
 	update_animation_parameters(input_direction)
 	if movement_enabled:
 		velocity = input_direction.normalized() * move_speed
-	pickup_item_positions()
 	
 	move_and_slide()
 	pick_new_state()
@@ -68,6 +63,7 @@ func update_animation_parameters(move_input : Vector2):
 	last_animation_look_location = animation_look_location
 	animation_tree.set("parameters/Idle/blend_position", animation_look_location)
 	animation_tree.set("parameters/Move/blend_position", animation_look_location)
+	
 	itemHodler.change_items_orientation(move_orientation)
 
 func pick_new_state():
@@ -79,6 +75,12 @@ func pick_new_state():
 func player(): #Is used to be identified by enemies
 	pass
 	
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy") && !is_hidden: 
+		get_tree().call_deferred("reload_current_scene")
+		Global.reset_variables()
+
+# Getters 		
 func get_movement_inputs() -> Vector2:
 	return Vector2(get_horizontal_move(), get_vertical_move())
 	
@@ -91,38 +93,11 @@ func get_horizontal_move():
 func get_vertical_move():
 	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
 	
-func add_item_to_holder(item : Node2D) -> void:
-	itemHodler.add_item(item)
-	
 func get_all_items() -> Array[Node2D]:
 	return itemHodler.get_all_items()
 
+func add_item_to_holder(item : Node2D) -> void:
+	itemHodler.add_item(item)
+
 func clear_all_items() -> void:
 	itemHodler.clear_all_items(self.global_position)
-	
-func pickup_item_positions():	
-	# If no movement, don't do anything
-	if (velocity == Vector2.ZERO):
-		return
-	# Hardcoded positions του κάθε item που έχουμε κάνει pickup
-	#var hard_pos = []
-	#
-	##Άμα μετακινείται πιο πολύ οριζόντια (controller compatibility και priority από κάθετα)
-	#if (abs(get_horizontal_move()) >= abs(get_vertical_move())):
-		#if (get_move("move_right") > get_move("move_left")): #Δεξιά
-			#hard_pos = [Vector2(-18.0, -6.0), Vector2(-18.0, -12.0), Vector2(-18.0, -18.0)]
-		#else: #Αριστερά
-			#hard_pos = [Vector2(18.0, -6.0), Vector2(18.0, -12.0), Vector2(18.0, -18.0)]
-	#else: #Άμα μετακινείται πιο πολύ κάθετα
-		#if (get_move("move_down") > get_move("move_up")): #Πάνω
-			#hard_pos = [Vector2(0.0, -6.0), Vector2(0.0, -12.0), Vector2(0.0, -18.0)]
-		#else: #Κάτω
-			#hard_pos = [Vector2(0.0, 6.0), Vector2(0.0, 0.0), Vector2(0.0, -6.0)]
-	## Assign positions to each marker
-	#for i in range(3):
-		#get_node("Marker%d" % (i + 1)).position = hard_pos[i]
-		
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") && !is_hidden: 
-		get_tree().call_deferred("reload_current_scene")
-		Global.reset_variables()

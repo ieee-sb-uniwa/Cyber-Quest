@@ -6,7 +6,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.has_method("player"):
-		print("Player detected")
+		# print("Player detected")
 		_drop_and_disable_passblocks(body)
 
 func _drop_and_disable_passblocks(body : Node2D):
@@ -18,5 +18,5 @@ func _drop_and_disable_passblocks(body : Node2D):
 	for block in Global.dropped_passblocks:
 		block.drop_block(body) 
 		block.set_interaction_area(false)
-	print("Dropped passblocks: ", Global.dropped_passblocks)
+	# print("Dropped passblocks: ", Global.dropped_passblocks)
 	body.clear_all_items()

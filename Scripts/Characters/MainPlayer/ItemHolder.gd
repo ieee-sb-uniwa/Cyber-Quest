@@ -16,7 +16,7 @@ var item_index := {
 	Global.MOVE_ORIENTATION.LEFT: int(1),
 	Global.MOVE_ORIENTATION.RIGHT: int(1)
 }
-var player_index : int =0
+var player_index : int = 0
 
 func add_item(item:Node2D)->void:
 	if items_available_positions.size() <= assigned_items.size():
@@ -59,7 +59,6 @@ func set_player_index(index : int) -> void:
 	player_index = index
 	
 func change_items_orientation(move_orientation : Global.MOVE_ORIENTATION) -> void:
-	#TODO handle orientaion of items from the rotation of character
 	if lastDir == move_orientation:
 		return
 	lastDir = move_orientation
