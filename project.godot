@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cyber Quest Game"
-run/main_scene="uid://r21wg5i6yxvu"
+run/main_scene="uid://2wvn5u3j1yes"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
