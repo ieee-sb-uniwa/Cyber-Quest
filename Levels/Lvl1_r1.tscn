@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=18 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -8,9 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://bdbab2u7mt50k" path="res://Assets/CyberQuest_Assets/Environment/towers.png" id="4_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://fljtsb4prcpf" path="res://Assets/CyberQuest_Assets/Environment/door_no1.png" id="5_85jq7"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
-[ext_resource type="Texture2D" uid="uid://tfwffws7goao" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
+[ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
+[ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/door/Door.tscn" id="9_xgqtx"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfkql"]
+texture = ExtResource("8_ymyl2")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxrcv"]
 texture = ExtResource("2_ceosy")
@@ -45,24 +59,17 @@ texture_region_size = Vector2i(64, 64)
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgqtx"]
-texture = ExtResource("8_ymyl2")
-texture_region_size = Vector2i(128, 128)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksftt"]
+texture = ExtResource("8_3lskg")
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1ipe4"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_bxrcv")
 sources/2 = SubResource("TileSetAtlasSource_85jq7")
-sources/3 = SubResource("TileSetAtlasSource_xgqtx")
+sources/0 = SubResource("TileSetAtlasSource_cfkql")
+sources/3 = SubResource("TileSetAtlasSource_ksftt")
 
 [node name="Lvl1_r1" type="Node2D"]
 
@@ -106,7 +113,7 @@ texture = ExtResource("5_85jq7")
 
 [node name="Decoration Floor Layer" type="TileMapLayer" parent="TileMap"]
 z_index = 3
-tile_map_data = PackedByteArray("AADy/wIAAgADAAAAAADz/wMAAgABAAAAAAD0/wMAAgACAAAAAAD1/wMAAgABAAAAAADy/wMAAgABAAIAAAD2/wMAAgACAAIAAAD2/wIAAgAAAAAAAAD3/wIAAgABAAAAAAD4/wIAAgACAAAAAAD5/wIAAgABAAAAAAD6/wIAAgACAAAAAAD7/wIAAgABAAAAAAD8/wIAAgACAAAAAAD9/wIAAgABAAAAAAD+/wIAAgACAAAAAAD//wIAAgABAAAAAAAAAAIAAgACAAAAAAABAAIAAgABAAAAAAACAAIAAgACAAAAAAADAAIAAgABAAAAAAAEAAIAAgACAAAAAAAKAAIAAgABAAAAAAALAAIAAgACAAAAAAAMAAIAAgABAAAAAAANAAIAAgACAAAAAAAPAAIAAgACAAAAAAAQAAIAAgABAAAAAAARAAIAAgACAAAAAAASAAIAAgABAAAAAAATAAIAAgACAAAAAAAUAAIAAgABAAAAAAAVAAIAAgACAAAAAAAWAAIAAgABAAAAAAAXAAIAAgACAAAAAAAZAAMAAgABAAAAAAAaAAMAAgACAAAAAAAbAAMAAgABAAAAAAAFAAIAAgADAAAAAAAFAAMAAgABAAIAAAAJAAMAAgACAAIAAAAJAAIAAgAAAAAAAAAYAAIAAgADAAAAAAAYAAMAAgABAAIAAAAcAAIAAgAAAAAAAAAcAAMAAgACAAIAAAAOAAIAAgABAAAAAAAWAAEAAwACAAAAAAAVAAAAAwABAAEAAAASAAAAAwABAAAAAAARAP//AwACAAAAAAAPAAAAAwABAAEAAAAOAAEAAwABAAEAAAA=")
+tile_map_data = PackedByteArray("AADy/wIAAgADAAAAAADz/wMAAgABAAAAAAD0/wMAAgACAAAAAAD1/wMAAgABAAAAAADy/wMAAgABAAIAAAD2/wMAAgACAAIAAAD2/wIAAgAAAAAAAAD3/wIAAgABAAAAAAD4/wIAAgACAAAAAAD5/wIAAgABAAAAAAD6/wIAAgACAAAAAAD7/wIAAgABAAAAAAD8/wIAAgACAAAAAAD9/wIAAgABAAAAAAD+/wIAAgACAAAAAAD//wIAAgABAAAAAAAAAAIAAgACAAAAAAABAAIAAgABAAAAAAACAAIAAgACAAAAAAADAAIAAgABAAAAAAAEAAIAAgACAAAAAAAKAAIAAgABAAAAAAALAAIAAgACAAAAAAAMAAIAAgABAAAAAAANAAIAAgACAAAAAAAPAAIAAgACAAAAAAAQAAIAAgABAAAAAAARAAIAAgACAAAAAAASAAIAAgABAAAAAAATAAIAAgACAAAAAAAUAAIAAgABAAAAAAAVAAIAAgACAAAAAAAWAAIAAgABAAAAAAAXAAIAAgACAAAAAAAZAAMAAgABAAAAAAAaAAMAAgACAAAAAAAbAAMAAgABAAAAAAAFAAIAAgADAAAAAAAFAAMAAgABAAIAAAAJAAMAAgACAAIAAAAJAAIAAgAAAAAAAAAYAAIAAgADAAAAAAAYAAMAAgABAAIAAAAcAAIAAgAAAAAAAAAcAAMAAgACAAIAAAAOAAIAAgABAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAABAAAAAAARAAAAAAACAAAAAAAOAAEAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_1ipe4")
 
 [node name="Floor layer" type="TileMapLayer" parent="TileMap"]
@@ -129,7 +136,7 @@ position = Vector2(585, -137)
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]
 position = Vector2(1472, 4)
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.7, 0.7)
 script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
