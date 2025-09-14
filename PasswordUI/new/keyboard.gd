@@ -106,6 +106,7 @@ func _generate_rule_feedback() -> String:
 
 	if errors.size() == 0:
 		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος![/color]\n"
+		get_tree().change_scene_to_file("res://Levels/Lvl1_r1.tscn")
 	else:
 		for error in errors:
 			feedback += "[color=red]✘ " + error + "\n[/color]"

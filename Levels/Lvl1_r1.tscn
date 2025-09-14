@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/Objects/door/Door.tscn" id="9_xgqtx"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="9_xgqtx"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfkql"]
