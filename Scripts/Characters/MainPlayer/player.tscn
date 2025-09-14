@@ -244,7 +244,6 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_e0c3b")
 hframes = 4
 vframes = 4
-frame = 4
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")
