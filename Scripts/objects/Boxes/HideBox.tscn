@@ -30,7 +30,7 @@ shape = SubResource("RectangleShape2D_ic8sa")
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 536870914
-action_name = "use Terminal"
+action_name = "hide/unhide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 visibility_layer = 2

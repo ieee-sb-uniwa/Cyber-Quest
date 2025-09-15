@@ -5,7 +5,7 @@ var original_slot:TextureRect
 var drag_started:=false
 
 
-func _get_drag_data(at_position): #triggers on click and drag
+func _get_drag_data(_at_position): #triggers on click and drag
 	original_texture=texture
 	original_slot=self
 	drag_started=true
