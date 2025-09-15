@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bu2srngeyjbjn" path="res://Assets/CyberQuest_Assets/Environment/PassBlocks.png" id="2_hlapw"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ahm8"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlapw"]
+size = Vector2(31, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5a3p"]
-radius = 25.02
+radius = 35.0143
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
@@ -24,7 +24,9 @@ texture = ExtResource("2_hlapw")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2ahm8")
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_hlapw")
+disabled = true
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
 collision_mask = 2
