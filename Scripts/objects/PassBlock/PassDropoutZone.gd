@@ -6,7 +6,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.has_method("player"):
-		print("Player detected")
+		# print("Player detected")
 		_drop_and_disable_passblocks(body)
 
 func _drop_and_disable_passblocks(body : Node2D):

@@ -17,14 +17,12 @@ func _on_body_entered(_body):
 	if (can_pickup(_body) or object_type=="box"):
 		InteractionManager.register_area(self, _body)
 	
-	Global.interacable = true
 	area_label = InteractionManager.get_label()
 
 func _on_body_exited(_body):
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
 		return
 	InteractionManager.unregister_area(self)
-	Global.interacable = false
 	area_label = InteractionManager.get_label()
 	area_label.hide()
 
