@@ -17,7 +17,7 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("Player")  and isOpen:
 		close_door()
-		get_tree().change_scene_to_file("res://Levels/Lvl1_r2.tscn")
+		get_tree().call_deferred("change_scene_to_file", "res://Levels/Lvl1_r2.tscn")
 
 func open_door():
 	isOpen = true
