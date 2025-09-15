@@ -237,14 +237,16 @@ z_index = 9
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_4ie1l")
+starting_direction = null
 inventory = ExtResource("2_a2323")
 itemHodler = NodePath("Sprite2D/ItemHolder")
+playerNum = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_l57x5")
 hframes = 4
 vframes = 4
-frame = 8
+frame = 4
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")

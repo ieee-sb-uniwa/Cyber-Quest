@@ -330,10 +330,10 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("8_bfxao")
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
-position = Vector2(-95, -132)
+position = Vector2(-68, 8)
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("10_7skwt")]
-position = Vector2(37, -129)
+position = Vector2(64, 11)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]

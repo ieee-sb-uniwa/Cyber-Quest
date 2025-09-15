@@ -24,7 +24,7 @@ func reset_variables() -> void:
 	isTutorial = true
 
 func can_access_terminal() -> bool:
-    return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
+	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
 
 func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:
 	return Input.is_action_just_pressed(interact_button) and player.is_in_group(player_group)

@@ -422,7 +422,7 @@ playerNum = 2
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]
 position = Vector2(1472, 4)
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.5, 0.5)
 script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
