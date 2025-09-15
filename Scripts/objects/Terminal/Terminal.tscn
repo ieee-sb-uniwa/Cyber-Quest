@@ -16,7 +16,7 @@ texture = ExtResource("1_o2cfe")
 [node name="InteractionArea" parent="." instance=ExtResource("3_003jv")]
 collision_layer = 32
 collision_mask = 2
-action_name = "access terminal"
+action_name = "το ανοίξεις"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 scale = Vector2(1.5, 1.5)

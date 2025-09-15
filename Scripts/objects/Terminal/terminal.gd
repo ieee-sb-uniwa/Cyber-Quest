@@ -13,7 +13,7 @@ func _process(_delta):
 				if Global.can_access_terminal():
 					_open_terminal()
 				else:
-					area.set_label("Drop all PassBlocks to access the terminal.")
+					area.set_label("Πέταξε όλα τα μπλοκ για να το ανοίξεις!")
 					
 func _open_terminal():
 	get_tree().paused = true
