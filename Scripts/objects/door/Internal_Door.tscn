@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://dh5jy6ayih7n4"]
+
+[ext_resource type="Script" uid="uid://rjh6ux0rifwj" path="res://Scripts/objects/door/door.gd" id="1_rfi8h"]
+[ext_resource type="Texture2D" uid="uid://cdv0s8g5tidn7" path="res://Assets/CyberQuest_Assets/Environment/door_no2.png" id="3_yk21r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk21r"]
+atlas = ExtResource("3_yk21r")
+region = Rect2(0, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxnsb"]
+atlas = ExtResource("3_yk21r")
+region = Rect2(0, 0, 96, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unl67"]
+atlas = ExtResource("3_yk21r")
+region = Rect2(0, 0, 96, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wt36c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk21r")
+}],
+"loop": false,
+"name": &"close",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxnsb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unl67")
+}],
+"loop": false,
+"name": &"open",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpo7h"]
+size = Vector2(56, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va378"]
+size = Vector2(56, 173.25)
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_rfi8h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_wt36c")
+animation = &"open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 3
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_lpo7h")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(39, -105)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 3
+position = Vector2(-39, 112.375)
+shape = SubResource("RectangleShape2D_va378")

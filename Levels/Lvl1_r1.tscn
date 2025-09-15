@@ -415,7 +415,7 @@ grow_vertical = 0
 position = Vector2(1625, -4)
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
-position = Vector2(1822, -4)
+position = Vector2(1564, -4)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]

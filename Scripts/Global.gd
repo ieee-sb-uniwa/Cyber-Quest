@@ -22,6 +22,7 @@ func reset_variables() -> void:
 	dropped_passblocks.clear()
 	Hide_status = 1
 	isTutorial = true
+	terminal_unlocked = false
 
 func can_access_terminal() -> bool:
 	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
