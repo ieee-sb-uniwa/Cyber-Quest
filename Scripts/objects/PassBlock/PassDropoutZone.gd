@@ -13,10 +13,13 @@ func _drop_and_disable_passblocks(body : Node2D):
 	if !body.has_method("add_item_to_holder"):
 		print("Player doesn't have ItemHolder script")
 		return
+
+	for block in body.get_all_items():
+		print("Dropping block: ", block)
+		block.drop_block(body)  # Drop the block at player's position
+		# block.visible = false # Set block invisible
+		block.set_interaction_area(false) # Disable interaction area
+	# Add all items from player to global dropped_passblocks
 	Global.dropped_passblocks.append_array(body.get_all_items())
-	print(body)
-	for block in Global.dropped_passblocks:
-		block.drop_block(body) 
-		block.set_interaction_area(false)
-	print("Dropped passblocks: ", Global.dropped_passblocks)
+	# Clear player's items
 	body.clear_all_items()

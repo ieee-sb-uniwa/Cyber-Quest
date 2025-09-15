@@ -1,6 +1,5 @@
 extends StaticBody2D
 @onready var block_sprite: Sprite2D = $Sprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var passArea = $InteractionArea
 
 var unpicked_z_index : int
@@ -9,12 +8,12 @@ var block_number : int = 0
 var block_id
 	
 func set_collision(flag: bool):
-	collision_shape.call_deferred("set", "disabled", flag)
+	print("Setting collision to: ", flag)
+	$CollisionShape2D.set_deferred("disabled", flag)
 
 func set_interaction_area(flag: bool):
 	passArea.call_deferred("set", "monitoring", flag)
 	passArea.call_deferred("set", "monitorable", flag)
-	passArea.get_node("CollisionShape2D").call_deferred("set", "disabled", !flag)
 
 func interaction_area_is_disabled() -> bool:
 	var area = passArea
@@ -24,7 +23,6 @@ func interaction_area_is_disabled() -> bool:
 # ---- Drop/Pick block ----
 func drop_block(body: Node2D):
 	set_interaction_area(true)
-	set_collision(false)
 	picked = false
 	Global.blocks_picked -= 1
 	self.z_index = unpicked_z_index + block_number
@@ -35,7 +33,6 @@ func drop_block(body: Node2D):
 	
 func pick_block(body: Node2D):
 	set_interaction_area(false)
-	set_collision(true)
 	picked = true
 	Global.blocks_picked += 1
 	if body.is_in_group("MainPlayer"):
@@ -48,7 +45,7 @@ func pick_block(body: Node2D):
 # ------- "Interact" button logic ------- 				
 func _input(_event):
 	# Check if disabled so not to repeat pickup logic for picked up items
-	if interaction_area_is_disabled():
+	if interaction_area_is_disabled() or !passArea.monitoring:
 		return
 	var bodies = passArea.get_overlapping_bodies()
 	# Only check input if there is a body inside area
@@ -67,32 +64,6 @@ func _input(_event):
 					return
 				pick_block(body)
 				block_number = Global.blocks_picked	
-				
-# ------ Z.index logic for pickup items while player is moving ------
-#func _process(_delta):
-	## If it is picked up 
-	#if picked == true:
-		#self.position = get_player_marker().global_position 
-		#if get_player().velocity != Vector2.ZERO:
-			## show the block on top of player
-			#if (player_moving_up()):
-				#self.z_index = get_player().z_index + block_number 
-			## show the block behind the player
-			#else:
-				#self.z_index = get_player().z_index + block_number - Global.max_player_items 
-
-#func player_moving_up():
-	#var up_strength = Input.get_action_strength("move_up")
-	#var down_strength = Input.get_action_strength("move_down")
-	#var left_strength = Input.get_action_strength("move_left")
-	#var right_strength = Input.get_action_strength("move_right")
-#
-	#var vertical = up_strength - down_strength
-	#var horizontal = right_strength - left_strength
-#
-	## Check if moving mostly up or only up
-	#return vertical > 0 and (abs(vertical) > abs(horizontal) 
-	#or (up_strength > 0 and left_strength == 0 and right_strength == 0))
 
 # ----- Initialiazation -----
 func _ready():

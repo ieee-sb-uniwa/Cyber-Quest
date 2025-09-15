@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
 [ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
-size = Vector2(24, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l57x5"]
+radius = 15.0
+height = 62.0
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -257,12 +258,9 @@ gizmo_extents = 20.0
 position = Vector2(0, -12)
 gizmo_extents = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-light_mask = 0
-visibility_layer = 0
-z_index = 5
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_u7qia")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 23)
+shape = SubResource("CapsuleShape2D_l57x5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
