@@ -11,12 +11,13 @@ func _ready():
 	anim_sprite.animation_finished.connect(_on_animation_finished)
 
 func _on_body_entered(body):
-	if body.is_in_group("Player") and not isOpen:
+	if Global.terminal_unlocked and body.is_in_group("Player") and not isOpen:
 		open_door()
 
 func _on_body_exited(body):
 	if body.is_in_group("Player")  and isOpen:
 		close_door()
+		get_tree().change_scene_to_file("res://Levels/Lvl1_r2.tscn")
 
 func open_door():
 	isOpen = true

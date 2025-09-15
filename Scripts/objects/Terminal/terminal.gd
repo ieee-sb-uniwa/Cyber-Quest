@@ -16,4 +16,6 @@ func _process(_delta):
 					area.set_label("Drop all PassBlocks to access the terminal.")
 					
 func _open_terminal():
-	get_tree().change_scene_to_file("res://PasswordUI/new/ctrl.tscn")
+	get_tree().paused = true
+	var password_ui = get_node("../HUD/PasswordUI")
+	password_ui.visible = true
