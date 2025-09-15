@@ -611,10 +611,13 @@ script = ExtResource("11_jwjn3")
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("13_54ngp")]
-position = Vector2(-19, -252)
+position = Vector2(-2, -259)
+scale = Vector2(1.5, 1.5)
 
 [node name="Door2" parent="Doors" instance=ExtResource("13_54ngp")]
-position = Vector2(480, -444)
+position = Vector2(481, -451)
+scale = Vector2(1.5, 1.5)
 
 [node name="Door3" parent="Doors" instance=ExtResource("13_54ngp")]
-position = Vector2(-480, -444)
+position = Vector2(-477, -451)
+scale = Vector2(1.5, 1.5)

@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
 [ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="9_6sqsc"]
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="9_xgqtx"]
 [ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="10_g0ryg"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 [ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="11_cjydo"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
+[ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="19_subb7"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
@@ -427,8 +427,9 @@ script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
 
-[node name="Door" parent="." instance=ExtResource("9_xgqtx")]
-position = Vector2(480, -168)
+[node name="Door2" parent="." instance=ExtResource("15_subb7")]
+position = Vector2(478, -195)
+scale = Vector2(1.5, 1.5)
 
 [node name="InteractionManager" parent="." instance=ExtResource("19_subb7")]
 
