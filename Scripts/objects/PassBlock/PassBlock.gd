@@ -22,7 +22,7 @@ func interaction_area_is_disabled() -> bool:
 
 # ---- Drop/Pick block ----
 func drop_block(body: Node2D):
-	set_interaction_area(true)
+	set_interaction_area(false)
 	picked = false
 	Global.blocks_picked -= 1
 	self.z_index = unpicked_z_index + block_number
