@@ -5,7 +5,7 @@ var screen_log := "" # For attempts >1
 var welcome1 := "Καλώς Ήρθατε!\n"
 var welcome2 := "Εισάγετε κωδικό:\n >"
 var label_path := "../Screen/Panel/RichTextLabel1"
-var date_of_birth = "07022008" # Will be set dynamically in intro (02/07/2008 for eg.)
+var date_of_birth := ["07022008", "02072008", "07200802", "02200807", "20080702", "20080207"] # Will be set dynamically in intro (02/07/2008 for eg.)
 var input_finalized := false
 var unlocked_rules := []   # List for tablet rules
 var tablet_label := "../Secondary/Panel/RichTextLabel3"
@@ -72,7 +72,8 @@ func _generate_rule_feedback() -> String:
 	var rule1_failed := _rule_breach_regex(password, "^\\d{8,}$") # Must be at least 8 digits
 	var rule2_failed := _rule_breach_regex(password, "^(?!.*(\\d)\\1).*$") # No two same digits in a row
 	var rule3_failed := _rule_breach_regex(password, "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$")  # No sequences
-	var rule4_failed := _rule_breach_regex(password, "^(?!.*" + date_of_birth + ").*$")  # No DOB
+	var dob_pattern = "(" + String(",").join(date_of_birth).replace(",", "|") + ")"
+	var rule4_failed = _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$")  # No DOB07022008
 
 	var errors := []
 	var tablet_rules := []
