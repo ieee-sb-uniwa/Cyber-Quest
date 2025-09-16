@@ -8,7 +8,7 @@
 size = Vector2(31, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5a3p"]
-radius = 35.0143
+radius = 20.0
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
@@ -29,6 +29,7 @@ shape = SubResource("RectangleShape2D_hlapw")
 disabled = true
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
+collision_layer = 40
 collision_mask = 2
 action_name = "το κουβαλήσεις"
 

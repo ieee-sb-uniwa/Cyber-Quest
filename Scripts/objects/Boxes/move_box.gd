@@ -2,12 +2,11 @@ extends RigidBody2D
 
 @export var speed: float = 120.0
 @export var max_grab_distance: float = 300.0  # 0 = απενεργοποιημένο
+@onready var area = $InteractionArea
 
 var grabbers: Array[CharacterBody2D] = []
 var nearby_players: Array = []
 var velocity: Vector2 = Vector2.ZERO
-
-@onready var area: Area2D = $Area2D
 
 func _ready() -> void:
 	area.body_entered.connect(_on_body_entered)
@@ -62,10 +61,13 @@ func _on_body_exited(body: Node) -> void:
 		_release(body)
 
 func _is_player_interacting(p: CharacterBody2D) -> bool:
-	if p == null: return false
+	if p == null: 
+		return false
 	var action_name := "Interact_p" + str(p.playerNum)
-	if Input.is_action_pressed(action_name): return true
-	if p.has_method("is_interacting") and p.is_interacting(): return true
+	if Input.is_action_pressed(action_name): 
+		return true
+	if p.has_method("is_interacting") and p.is_interacting(): 
+		return true
 	return false
 
 func _grab(p: CharacterBody2D) -> void:

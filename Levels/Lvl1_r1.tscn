@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=33 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="19_subb7"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
+[ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="20_y6a7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfkql"]
 texture = ExtResource("8_ymyl2")
@@ -477,3 +478,17 @@ position = Vector2(1111, 32)
 
 [node name="PassBlock4" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(941, 35)
+
+[node name="MoveBoxes" type="Node" parent="."]
+
+[node name="MoveBox" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(1208, 33)
+
+[node name="MoveBox2" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(481, 286)
+
+[node name="MoveBox3" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(738, 28)

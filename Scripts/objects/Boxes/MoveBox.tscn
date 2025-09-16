@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhb420rocoh88"]
+
+[ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="1_j1mjn"]
+[ext_resource type="Script" uid="uid://bnb7x1sx0nr63" path="res://Scripts/objects/Boxes/move_box.gd" id="1_r7rgx"]
+[ext_resource type="Script" uid="uid://cxoccobhfbs2w" path="res://Scripts/Interactions/InteractionArea/InteractionArea.gd" id="2_u42wh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u42wh"]
+size = Vector2(55, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u42wh"]
+radius = 63.0
+
+[node name="MoveBox" type="RigidBody2D"]
+script = ExtResource("1_r7rgx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j1mjn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_u42wh")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 40
+collision_mask = 6
+script = ExtResource("2_u42wh")
+action_key = "[E]"
+action_name = "μετακινήσεις κουτί"
+metadata/_custom_type_script = "uid://cxoccobhfbs2w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_u42wh")
