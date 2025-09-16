@@ -7,6 +7,7 @@
 [sub_resource type="Theme" id="Theme_lnaeo"]
 
 [sub_resource type="SystemFont" id="SystemFont_utqji"]
+subpixel_positioning = 0
 
 [sub_resource type="InputEventKey" id="InputEventKey_utqji"]
 device = -1

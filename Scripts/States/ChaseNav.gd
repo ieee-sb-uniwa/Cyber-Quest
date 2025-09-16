@@ -23,7 +23,10 @@ func Exit():
 func Physics_update(_delta: float) -> void:
 	var hunting_targets = enemy.hunting_targets
 	if(hunting_targets.size() == 0):
-		check_lost_target(3.0)
+		if current_target != null and current_target.is_hidden:
+			switch_state("PatrolNav")
+			return
+		check_lost_target(enemy.seconds_to_escape)
 	
 	if current_target != null:
 		var direction_to_player = (current_target.global_position - enemy.global_position).normalized()
@@ -56,13 +59,19 @@ func check_lost_target(duration: float) -> void:
 	is_checking_lost_target = true
 	var start_time := Time.get_ticks_msec()
 	while Time.get_ticks_msec() - start_time < int(duration * 1000):
+		if get_tree() == null:
+			print("Tree is null!")
+			return;
 		await get_tree().physics_frame
 		if enemy.hunting_targets.size() > 0:
 				is_checking_lost_target = false
 				return  # Enemy is back, cancel patrol transition
 	is_checking_lost_target = false
-	print("Stop chasing")
-	transitioned.emit("PatrolNav")
+	switch_state("PatrolNav")
+	
+func switch_state(state_name: String) -> void:
+	print("Switching state to " + state_name)
+	transitioned.emit(state_name)
 
 func nav_test():
 	nav_agent.target_position = current_target.global_position

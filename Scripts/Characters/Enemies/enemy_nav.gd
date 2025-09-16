@@ -17,6 +17,7 @@ var hunting_targets :  Array[Node2D] = []
 var player_dead = false
 var hit_pos
 var enemy_direction
+@export var seconds_to_escape : float = 1
 #These are for enemy textures
 @export var input_texture : Texture2D 
 @export var spriteRows : int  
@@ -106,5 +107,5 @@ func update_animation_parameters(move_direction : Vector2):
 func pick_new_animation():
 	if(self.velocity != Vector2.ZERO):
 		state_machine.travel("Move")
-	#else:
-		#state_machine.travel("Idle")
+	else:
+		state_machine.travel("Idle")

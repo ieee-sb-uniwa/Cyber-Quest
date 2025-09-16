@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cugf7rdpr7euj"]
+
+[ext_resource type="Script" uid="uid://ncyp8fx8jit" path="res://Menus/main_menu/load_menu.gd" id="1_ulsya"]
+[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_ccrfn"]
+[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="2_kmes4"]
+[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_6xt81"]
+
+[node name="LoadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ulsya")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 768.0
+offset_bottom = 384.0
+texture = ExtResource("2_kmes4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -58.0
+offset_top = 20.0
+offset_right = 80.0
+offset_bottom = 43.0
+grow_horizontal = 2
+
+[node name="Load Game" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ccrfn")
+text = "Load Game"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = -30.0
+offset_right = 237.0
+offset_bottom = 10.0
+grow_vertical = 0
+
+[node name="BacktoMenu" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6xt81")
+text = "Back to Main Menu"
+
+[connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]

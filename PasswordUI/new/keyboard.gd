@@ -4,30 +4,45 @@ var current_input := ""
 var screen_log := "" # For attempts >1
 var welcome1 := "Καλώς Ήρθατε!\n"
 var welcome2 := "Εισάγετε κωδικό:\n >"
+var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο."
 var label_path := "../Screen/Panel/RichTextLabel1"
 var date_of_birth := ["07022008", "02072008", "07200802", "02200807", "20080702", "20080207"] # Will be set dynamically in intro (02/07/2008 for eg.)
 var input_finalized := false
 var unlocked_rules := []   # List for tablet rules
 var tablet_label := "../Secondary/Panel/RichTextLabel3"
+var success := false
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	var label = get_node(label_path)
-	label.bbcode_enabled = true
-	label.scroll_active = true
-
-	await _type_text_animation(welcome1, label)
-	await _type_text_animation(welcome2, label)
-
-	screen_log = welcome1 + welcome2
+	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 
 	# Connect buttons
 	for child in get_children():
 		if child is Button:
 			child.connect("pressed", Callable(self, "_on_button_pressed").bind(child.name))
-
+		
+# New function to handle visibility change
+func _on_visibility_changed():
+	# print("Password UI visibility changed: ", self.visible)
+	var label = get_node(label_path)
+	label.bbcode_enabled = true
+	label.scroll_active = true
+	# If terminals is not unlocked, show welcome message with typing animation
+	# Else, show exit message directly
+	if !Global.terminal_unlocked:
+		_type_text_animation(welcome1, label)
+		_type_text_animation(welcome2, label)
+		screen_log = welcome1 + welcome2
+	else:
+		label.clear()
+		screen_log = ""
+		current_input = ""
+		input_finalized = false
+		label.append_text(exit_msg)
 
 func _type_text_animation(text_to_type: String, label: RichTextLabel) -> void:
 	for i in range(text_to_type.length()):
+		print("Typing: ", text_to_type[i])
 		label.append_text(text_to_type[i])
 		await get_tree().create_timer(0.05).timeout
 
@@ -106,7 +121,8 @@ func _generate_rule_feedback() -> String:
 		info_label.text = rules_text
 
 	if errors.size() == 0:
-		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος![/color]\n"
+		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
+		success = true
 	else:
 		for error in errors:
 			feedback += "[color=red]✘ " + error + "\n[/color]"
@@ -114,7 +130,14 @@ func _generate_rule_feedback() -> String:
 
 	return feedback
 
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
+		_successful_unlock()
 
+func _successful_unlock():
+	get_tree().paused = false
+	Global.terminal_unlocked = true
+	get_parent().visible = false # hide the control node
 
 func _rule_breach_regex(password: String, pattern: String) -> bool: # if it matches it returns false
 	var regex := RegEx.new()

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg055qt5juvh0"]
+
+[ext_resource type="Texture2D" uid="uid://j5kcbmpkxg1p" path="res://art_assets/web_safety_assets/Tilesets/Objects/Blue Striped Bed_Front.png" id="1_vruwu"]
+[ext_resource type="Texture2D" uid="uid://ci2bag2pj25q2" path="res://art_assets/web_safety_assets/Tilesets/Objects/Blue Striped Bed_Front_Cover.png" id="2_q0p5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qyvk"]
+size = Vector2(38, 18)
+
+[node name="Bed" type="StaticBody2D"]
+
+[node name="BedBase" type="Sprite2D" parent="."]
+z_index = 2
+texture = ExtResource("1_vruwu")
+
+[node name="Cover" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, 9)
+texture = ExtResource("2_q0p5n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_7qyvk")

@@ -1,17 +1,18 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs5hh8rgdnfr5"]
 
-[ext_resource type="Script" uid="uid://db3g287aaue0c" path="res://Scripts/Objects/PassBlock/PassBlock.gd" id="1_uhymk"]
-[ext_resource type="Texture2D" uid="uid://cpbh4ienhxgom" path="res://Assets/web_safety_assets/Tilesets/Objects/Blocks/Blocks.png" id="2_y715i"]
+[ext_resource type="Script" uid="uid://db3g287aaue0c" path="res://Scripts/objects/PassBlock/PassBlock.gd" id="1_uhymk"]
+[ext_resource type="Texture2D" uid="uid://bu2srngeyjbjn" path="res://Assets/CyberQuest_Assets/Environment/PassBlocks.png" id="2_hlapw"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ahm8"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlapw"]
+size = Vector2(31, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5a3p"]
-radius = 25.02
+radius = 35.0143
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5
+z_as_relative = false
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_uhymk")
@@ -19,16 +20,17 @@ script = ExtResource("1_uhymk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5.0962e-06, 5.54323e-06)
 scale = Vector2(1.11111, 1.09091)
-texture = ExtResource("2_y715i")
+texture = ExtResource("2_hlapw")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2ahm8")
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_hlapw")
+disabled = true
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_01e6x")]
 collision_mask = 2
-action_key = "[E]"
-action_name = "pick up"
+action_name = "το κουβαλήσεις"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_e5a3p")
