@@ -4,6 +4,7 @@ var current_input := ""
 var screen_log := "" # For attempts >1
 var welcome1 := "Καλώς Ήρθατε!\n"
 var welcome2 := "Εισάγετε κωδικό:\n >"
+var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο."
 var label_path := "../Screen/Panel/RichTextLabel1"
 var date_of_birth = "07022008" # Will be set dynamically in intro (02/07/2008 for eg.)
 var input_finalized := false
@@ -14,6 +15,7 @@ var success := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
+
 	# Connect buttons
 	for child in get_children():
 		if child is Button:
@@ -21,23 +23,26 @@ func _ready():
 		
 # New function to handle visibility change
 func _on_visibility_changed():
-	print("Password UI visibility changed: ", self.visible)
+	# print("Password UI visibility changed: ", self.visible)
 	var label = get_node(label_path)
 	label.bbcode_enabled = true
 	label.scroll_active = true
+	# If terminals is not unlocked, show welcome message with typing animation
+	# Else, show exit message directly
 	if !Global.terminal_unlocked:
-		await _type_text_animation(welcome1, label)
-		await _type_text_animation(welcome2, label)
+		_type_text_animation(welcome1, label)
+		_type_text_animation(welcome2, label)
 		screen_log = welcome1 + welcome2
 	else:
 		label.clear()
 		screen_log = ""
 		current_input = ""
 		input_finalized = false
-		await _type_text_animation("Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.", get_node(label_path))
+		label.append_text(exit_msg)
 
 func _type_text_animation(text_to_type: String, label: RichTextLabel) -> void:
 	for i in range(text_to_type.length()):
+		print("Typing: ", text_to_type[i])
 		label.append_text(text_to_type[i])
 		await get_tree().create_timer(0.05).timeout
 
