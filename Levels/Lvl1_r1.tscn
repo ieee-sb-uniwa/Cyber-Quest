@@ -353,16 +353,16 @@ texture_region_size = Vector2i(192, 356)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8xicj"]
 texture = ExtResource("3_8exm3")
-texture_region_size = Vector2i(64, 64)
+texture_region_size = Vector2i(103, 120)
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
+0:0/0/z_index = -1
+0:0/0/y_sort_origin = 20
 0:1/0 = 0
+0:1/0/y_sort_origin = -30
+1:0/0 = 0
+1:0/0/z_index = -1
 1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
+1:1/0/y_sort_origin = -60
 
 [sub_resource type="TileSet" id="TileSet_y6a7i"]
 tile_size = Vector2i(64, 64)
@@ -426,7 +426,7 @@ tile_set = SubResource("TileSet_subb7")
 [node name="Collidable Objects Layer" type="TileMapLayer" parent="Environment"]
 z_index = 10
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAaAP7/AAAAAAAAAAD0//7/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD0//7/AAAAAAAAAAAaAP7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_y6a7i")
 
 [node name="Door" parent="Environment" instance=ExtResource("15_subb7")]
@@ -480,7 +480,7 @@ position = Vector2(483, 289)
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(1210, 52)
+position = Vector2(1540, -1)
 starting_direction = Vector2(0, 1)
 playerNum = 1
 
