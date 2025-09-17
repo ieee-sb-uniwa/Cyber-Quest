@@ -1,6 +1,6 @@
 extends Control
 
-@onready var pause_interaction: Node2D = $"../../pause_interaction"
+@onready var pause_interaction: Node2D = $"../pause_interaction"
 
 
 func _on_resume_pressed():

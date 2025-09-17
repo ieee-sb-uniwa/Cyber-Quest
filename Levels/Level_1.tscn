@@ -536,9 +536,12 @@ navigation_enabled = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("7_3yf3j")]
 position = Vector2(2772, 1035)
+starting_direction = Vector2(0, 1)
+playerNum = 1
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("7_3yf3j")]
 position = Vector2(2921, 1035)
+starting_direction = Vector2(0, 1)
 playerNum = 2
 
 [node name="Door" parent="." instance=ExtResource("1_pe37q")]

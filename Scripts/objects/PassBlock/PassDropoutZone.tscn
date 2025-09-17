@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://xy7gn3icim7w"]
+[gd_scene load_steps=3 format=3 uid="uid://xy7gn3icim7w"]
 
 [ext_resource type="Script" uid="uid://bekua6g51ai7n" path="res://Scripts/objects/PassBlock/PassDropoutZone.gd" id="1_xaljh"]
-[ext_resource type="Script" uid="uid://cxoccobhfbs2w" path="res://Scripts/Interactions/InteractionArea/InteractionArea.gd" id="2_7wl4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wt8pr"]
 radius = 97.0
@@ -12,8 +11,6 @@ script = ExtResource("1_xaljh")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("2_7wl4x")
-metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wt8pr")

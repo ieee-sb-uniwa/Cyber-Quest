@@ -51,12 +51,12 @@ func update_animation_parameters(move_input : Vector2):
 	else:
 		# Equal (diagonal): return vertical OR use last pressed key logic
 		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
-			print(str(abs_x)  + " : " + str(abs_y))
+			# print(str(abs_x)  + " : " + str(abs_y))
 			animation_look_location = Vector2(0.2, direction.y)
 			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
 		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
 			animation_look_location = Vector2(direction.x, 0.2)
-			print(animation_look_location)
+			# print(animation_look_location)
 			move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
 		else:
 			return

@@ -15,6 +15,7 @@ var isTutorial: bool = true
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false
+var can_pause_game: bool = true
 
 func reset_variables() -> void:
 	blocks_picked = 0

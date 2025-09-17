@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=30 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -9,16 +9,14 @@
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
-[ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="9_6sqsc"]
-[ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="10_g0ryg"]
+[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
-[ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="11_cjydo"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
-[ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="19_subb7"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
+[ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="20_y6a7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfkql"]
 texture = ExtResource("8_ymyl2")
@@ -407,37 +405,18 @@ process_mode = 3
 [node name="PasswordUI" parent="HUD" instance=ExtResource("19_y6a7i")]
 visible = false
 
-[node name="PauseMenu" type="Node" parent="HUD"]
-
-[node name="Pause_menu" parent="HUD/PauseMenu" instance=ExtResource("9_6sqsc")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -75.0
-offset_right = 13.0
-
-[node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("10_g0ryg")]
-visible = false
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -43.0
-offset_top = -31.0
-offset_right = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="pause_interaction" parent="HUD" instance=ExtResource("11_cjydo")]
+[node name="PauseHud" parent="HUD" instance=ExtResource("10_cjydo")]
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
 position = Vector2(1625, -4)
+starting_direction = Vector2(0, 1)
+playerNum = 1
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
 position = Vector2(1564, -4)
+starting_direction = Vector2(0, 1)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]
@@ -449,11 +428,9 @@ script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
 
-[node name="Door2" parent="." instance=ExtResource("15_subb7")]
+[node name="Door" parent="." instance=ExtResource("15_subb7")]
 position = Vector2(478, -195)
 scale = Vector2(1.5, 1.5)
-
-[node name="InteractionManager" parent="." instance=ExtResource("19_subb7")]
 
 [node name="Terminal" parent="." instance=ExtResource("13_ksftt")]
 z_index = 3
@@ -467,13 +444,27 @@ position = Vector2(544, -145)
 [node name="PassBlocks" type="Node" parent="."]
 
 [node name="PassBlock" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(1027, 20)
+position = Vector2(740, 31)
 
 [node name="PassBlock2" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(1206, 32)
 
 [node name="PassBlock3" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(1111, 32)
+position = Vector2(1449, 37)
 
 [node name="PassBlock4" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(941, 35)
+position = Vector2(483, 289)
+
+[node name="MoveBoxes" type="Node" parent="."]
+
+[node name="MoveBox" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(1208, 33)
+
+[node name="MoveBox2" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(481, 286)
+
+[node name="MoveBox3" parent="MoveBoxes" instance=ExtResource("20_y6a7i")]
+z_index = 5
+position = Vector2(738, 28)

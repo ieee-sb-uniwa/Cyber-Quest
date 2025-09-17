@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhrdf8vsy40kt"]
+
+[ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="1_pwggd"]
+[ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="2_0dy5k"]
+[ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="3_gb06s"]
+
+[node name="PauseHud" type="Node"]
+
+[node name="Pause_menu" parent="." instance=ExtResource("1_pwggd")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -75.0
+offset_right = 13.0
+
+[node name="Pause_button" parent="." instance=ExtResource("2_0dy5k")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -43.0
+offset_top = -31.0
+offset_right = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="pause_interaction" parent="." instance=ExtResource("3_gb06s")]

@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var pause_menu: Control = $"../PauseMenu/Pause_menu"
-@onready var pause_button: Control = $"../PauseMenu/Pause_button"
+@onready var pause_menu: Control = $"../Pause_menu"
+@onready var pause_button: Control = $"../Pause_button"
 
 var paused = false 
 
@@ -10,7 +10,10 @@ func _process(_delta):
 		pausemenu()
 
 func pausemenu():
-	if paused:
+	# When in any UI, disable pausing
+	if !Global.can_pause_game:
+		return
+	if paused: # Unpause
 		pause_menu.hide()
 		pause_button.show()
 		get_tree().paused = false 

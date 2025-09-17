@@ -4,8 +4,12 @@ var curr_player: Node2D
 @onready var box_sprite: Sprite2D = $Box_Sprite  
 var is_player_hidden = false 
 
+func _ready():
+	box_area.set_object_type("hidebox")
+	box_area.interaction_status = Global.INTERACTION_STATUS.AVAILABLE
+	box_sprite.set_frame(1)  # Set to "unhidden" frame initially
+
 func _process(_delta):
-	box_area.set_object_type("box")
 	var bodies = box_area.get_overlapping_bodies()
 	# Only check input if there is a body inside area
 	if bodies.size() == 0: 
