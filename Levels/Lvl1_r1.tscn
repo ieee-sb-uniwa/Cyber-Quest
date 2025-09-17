@@ -441,6 +441,11 @@ y_sort_enabled = true
 position = Vector2(543, -145)
 scale = Vector2(1.5, 1.5)
 
+[node name="PassDropoutZone" parent="Environment" instance=ExtResource("18_1lo17")]
+visible = false
+z_index = 10
+position = Vector2(544, -145)
+
 [node name="MoveBoxes" type="Node2D" parent="Environment"]
 z_index = 5
 y_sort_enabled = true
@@ -504,8 +509,3 @@ zoom = Vector2(0.5, 0.5)
 script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Environment/Player")
 player2 = NodePath("../../Environment/Player2")
-
-[node name="PassDropoutZone" parent="." instance=ExtResource("18_1lo17")]
-visible = false
-z_index = 10
-position = Vector2(544, -145)
