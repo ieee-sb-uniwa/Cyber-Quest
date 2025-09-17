@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var pause_menu: Control = $"../PauseMenu/Pause_menu"
-@onready var pause_button: Control = $"../PauseMenu/Pause_button"
+@onready var pause_menu: Control = $"../Pause_menu"
+@onready var pause_button: Control = $"../Pause_button"
 
 var paused = false 
 

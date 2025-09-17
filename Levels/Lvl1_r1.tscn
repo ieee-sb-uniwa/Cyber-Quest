@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=30 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -9,10 +9,8 @@
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
-[ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="9_6sqsc"]
-[ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="10_g0ryg"]
+[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
-[ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="11_cjydo"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="15_subb7"]
@@ -407,30 +405,7 @@ process_mode = 3
 [node name="PasswordUI" parent="HUD" instance=ExtResource("19_y6a7i")]
 visible = false
 
-[node name="PauseMenu" type="Node" parent="HUD"]
-
-[node name="Pause_menu" parent="HUD/PauseMenu" instance=ExtResource("9_6sqsc")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -75.0
-offset_right = 13.0
-
-[node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("10_g0ryg")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -43.0
-offset_top = -31.0
-offset_right = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="pause_interaction" parent="HUD" instance=ExtResource("11_cjydo")]
+[node name="PauseHud" parent="HUD" instance=ExtResource("10_cjydo")]
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10

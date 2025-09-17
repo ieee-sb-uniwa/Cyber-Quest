@@ -19,5 +19,4 @@ theme_override_colors/font_shadow_color = Color(0.16446, 0.16446, 0.16446, 1)
 theme_override_colors/font_outline_color = Color(0.17881, 0.17881, 0.17881, 1)
 theme_override_fonts/font = ExtResource("2_bo8fs")
 theme_override_font_sizes/font_size = 14
-text = "αααα"
 horizontal_alignment = 1
