@@ -13,6 +13,7 @@ func _ready() -> void:
 	area.body_exited.connect(_on_box_area_body_exited)
 	gravity_scale = 0.0
 	area.set_object_type("movebox")
+	area.interaction_status = Global.INTERACTION_STATUS.AVAILABLE
 
 func _process(_delta: float) -> void:
 	# ελέγχουμε για νέους παίκτες που πατάνε interact
