@@ -16,9 +16,6 @@ var movement_enabled = true
 var is_respawning:bool=false
 var hide_holder = null
 
-@onready var P_sprite = $Sprite2D
-@onready var P_collission = $CollisionShape2D
-
 func _ready():
 	update_animation_parameters(starting_direction)
 	$Hitbox.body_entered.connect(_on_body_entered)
@@ -82,11 +79,6 @@ func pick_new_state():
 
 func player(): #Is used to be identified by enemies
 	pass
-	
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") && !is_hidden: 
-		get_tree().call_deferred("reload_current_scene")
-		Global.reset_variables()
 
 # Getters 		
 func get_movement_inputs() -> Vector2:
@@ -102,13 +94,10 @@ func get_vertical_move():
 	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
 	
 func get_all_items() -> Array[Node2D]:
-	return itemHodler.get_all_items()
+	return itemHolder.get_all_items()
 
 func add_item_to_holder(item : Node2D) -> void:
 	itemHolder.add_item(item)
-	
-func get_all_items() -> Array[Node2D]:
-	return itemHolder.get_all_items()
 
 func clear_all_items() -> void:
 	itemHolder.clear_all_items(self, true)

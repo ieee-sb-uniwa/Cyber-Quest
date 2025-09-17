@@ -603,9 +603,12 @@ process_mode = 3
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
 position = Vector2(-68, 8)
+starting_direction = Vector2(0, 1)
+playerNum = 1
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("10_7skwt")]
 position = Vector2(64, 11)
+starting_direction = Vector2(0, 1)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]

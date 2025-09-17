@@ -481,14 +481,11 @@ position = Vector2(483, 289)
 z_index = 10
 y_sort_enabled = true
 position = Vector2(1540, -1)
-starting_direction = Vector2(0, 1)
-playerNum = 1
 
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(557, -34)
-starting_direction = Vector2(0, 1)
+position = Vector2(1606, 1)
 playerNum = 2
 
 [node name="HUD" type="CanvasLayer" parent="."]

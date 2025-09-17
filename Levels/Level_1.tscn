@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=36 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
@@ -11,13 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
 [ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
-[ext_resource type="PackedScene" uid="uid://c2kgv7y8y0blr" path="res://Menus/pause_menu/pause_menu.tscn" id="13_2hgpn"]
-[ext_resource type="PackedScene" uid="uid://brjov5sqiy5oa" path="res://Menus/pause_menu/pause_button.tscn" id="14_c2bb2"]
+[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="14_ixldi"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/Boxes/HideBox.tscn" id="15_nop75"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
-[ext_resource type="PackedScene" uid="uid://bked35t53cogm" path="res://Menus/pause_menu/pause_interaction.tscn" id="15_yt1os"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="17_2hgpn"]
 [ext_resource type="Script" uid="uid://4d26omf8vc51" path="res://Scripts/objects/Managers/ButtonBridgeConnectionHandler.gd" id="18_uq6m5"]
 [ext_resource type="PackedScene" uid="uid://csrq1j1uisabv" path="res://Scripts/objects/Button/button.tscn" id="19_kfv6s"]
@@ -550,30 +548,7 @@ visibility_layer = 0
 [node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
 process_mode = 3
 
-[node name="PauseMenu" type="Node" parent="HUD"]
-
-[node name="Pause_menu" parent="HUD/PauseMenu" instance=ExtResource("13_2hgpn")]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -75.0
-offset_right = 13.0
-
-[node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("14_c2bb2")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -43.0
-offset_top = -31.0
-offset_right = -22.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="pause_interaction" parent="HUD" instance=ExtResource("15_yt1os")]
+[node name="PauseHud" parent="HUD" instance=ExtResource("14_ixldi")]
 
 [node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
 z_index = 1
