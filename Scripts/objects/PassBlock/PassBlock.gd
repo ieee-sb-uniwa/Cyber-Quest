@@ -1,6 +1,5 @@
 extends StaticBody2D
 @onready var block_sprite: Sprite2D = $Sprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var passArea = $InteractionArea
 
 var unpicked_z_index : int
@@ -9,12 +8,12 @@ var block_number : int = 0
 var block_id
 	
 func set_collision(flag: bool):
-	collision_shape.call_deferred("set", "disabled", flag)
+	print("Setting collision to: ", flag)
+	$CollisionShape2D.set_deferred("disabled", flag)
 
 func set_interaction_area(flag: bool):
 	passArea.call_deferred("set", "monitoring", flag)
 	passArea.call_deferred("set", "monitorable", flag)
-	passArea.get_node("CollisionShape2D").call_deferred("set", "disabled", !flag)
 
 func interaction_area_is_disabled() -> bool:
 	var area = passArea
@@ -23,8 +22,7 @@ func interaction_area_is_disabled() -> bool:
 
 # ---- Drop/Pick block ----
 func drop_block(body: Node2D):
-	set_interaction_area(true)
-	set_collision(false)
+	set_interaction_area(false)
 	picked = false
 	Global.blocks_picked -= 1
 	self.z_index = unpicked_z_index + block_number
@@ -35,7 +33,6 @@ func drop_block(body: Node2D):
 	
 func pick_block(body: Node2D):
 	set_interaction_area(false)
-	set_collision(true)
 	picked = true
 	Global.blocks_picked += 1
 	if body.is_in_group("MainPlayer"):
@@ -48,7 +45,7 @@ func pick_block(body: Node2D):
 # ------- "Interact" button logic ------- 				
 func _input(_event):
 	# Check if disabled so not to repeat pickup logic for picked up items
-	if interaction_area_is_disabled():
+	if interaction_area_is_disabled() or !passArea.monitoring:
 		return
 	var bodies = passArea.get_overlapping_bodies()
 	# Only check input if there is a body inside area

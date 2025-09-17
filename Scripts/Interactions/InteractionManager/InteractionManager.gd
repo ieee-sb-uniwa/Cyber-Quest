@@ -23,7 +23,7 @@ func unregister_area(area: InteractionArea):
 
 func show_action_label(area: InteractionArea):
 	if Global.isTutorial: # If we in tutorial state
-		label.text = "Press " + Global.get_player_interact_button(curr_player) +" to " + area.action_name
+		label.text = "Πάτα " + Global.get_player_interact_button(curr_player) +" για να " + area.action_name
 		label.global_position = area.global_position
 		label.global_position.y -= 36
 		label.global_position.x -= label.size.x / 2

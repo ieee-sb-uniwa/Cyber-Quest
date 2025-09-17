@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://25iokhri7nt4"]
 
 [ext_resource type="Script" uid="uid://bnmrj8kvr12dg" path="res://Scripts/Interactions/InteractionManager/InteractionManager.gd" id="1_0cd8l"]
-[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="2_s7ef5"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="2_bo8fs"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_0cd8l")
@@ -15,7 +15,8 @@ offset_left = -112.0
 offset_right = 112.0
 offset_bottom = 29.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_s7ef5")
-theme_override_font_sizes/font_size = 8
+theme_override_colors/font_shadow_color = Color(0.16446, 0.16446, 0.16446, 1)
+theme_override_colors/font_outline_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_fonts/font = ExtResource("2_bo8fs")
+theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
-vertical_alignment = 1

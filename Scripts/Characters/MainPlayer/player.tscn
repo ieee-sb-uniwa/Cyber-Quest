@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://croxmnqu7e1ma" path="res://Scripts/Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
-[ext_resource type="Texture2D" uid="uid://ngg28ihydbd1" path="res://Assets/web_safety_assets/Characters/Player_SpriteSheet.png" id="3_ceh3p"]
+[ext_resource type="Texture2D" uid="uid://kdi8siv4g2s1" path="res://Assets/CyberQuest_Assets/Characters/player_1_5.png" id="3_l57x5"]
 [ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
 [ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7qia"]
-size = Vector2(24, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l57x5"]
+radius = 18.0
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -227,22 +228,25 @@ states/Move/position = Vector2(516, 95)
 states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_egte2"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0c3b"]
+radius = 18.0
+height = 74.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHolder") groups=["Player"]]
 z_index = 9
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_4ie1l")
+starting_direction = null
 inventory = ExtResource("2_a2323")
 itemHolder = NodePath("Sprite2D/ItemHolder")
+playerNum = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_ceh3p")
+texture = ExtResource("3_l57x5")
 hframes = 4
 vframes = 4
-frame = 4
+frame = 12
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")
@@ -256,12 +260,9 @@ gizmo_extents = 20.0
 position = Vector2(0, -12)
 gizmo_extents = 20.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-light_mask = 0
-visibility_layer = 0
-z_index = 5
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_u7qia")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_l57x5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
@@ -276,12 +277,13 @@ parameters/Idle/blend_position = Vector2(-0.709265, 0.582974)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(2, 1)
-shape = SubResource("CircleShape2D_egte2")
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_e0c3b")
 
 [node name="Dash" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_l57x5")

@@ -2,6 +2,8 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
+@onready var P_sprite = $Sprite2D
+@onready var P_collission = $CollisionShape2D
 @export var inventory: Inventory
 @onready var hitbox = $Hitbox
 @export var itemHolder : ItemHolder
@@ -58,6 +60,7 @@ func update_animation_parameters(move_input : Vector2):
 		# Equal (diagonal): return vertical OR use last pressed key logic
 		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
 			# print(str(abs_x)  + " : " + str(abs_y))
+			# print(str(abs_x)  + " : " + str(abs_y))
 			animation_look_location = Vector2(0.2, direction.y)
 			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
 		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
@@ -80,6 +83,12 @@ func pick_new_state():
 func player(): #Is used to be identified by enemies
 	pass
 	
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy") && !is_hidden: 
+		get_tree().call_deferred("reload_current_scene")
+		Global.reset_variables()
+
+# Getters 		
 func get_movement_inputs() -> Vector2:
 	return Vector2(get_horizontal_move(), get_vertical_move())
 	
@@ -92,6 +101,9 @@ func get_horizontal_move():
 func get_vertical_move():
 	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
 	
+func get_all_items() -> Array[Node2D]:
+	return itemHodler.get_all_items()
+
 func add_item_to_holder(item : Node2D) -> void:
 	itemHolder.add_item(item)
 	

@@ -24,7 +24,7 @@ func get_camera_bounds() -> Rect2:
 	
 func clamp_player_position(player: Node2D) -> void:
 	var bounds = get_camera_bounds()
-	var sprite_size = Vector2(32, 32) #/ zoom # adjust to your player's actual size in world units
+	var sprite_size = Vector2(32, 32) # adjust to your player's actual size in world units
 
 	# Clamp player's position, offsetting so sprite won't clip out of screen
 	var min_pos = bounds.position + sprite_size * 0.5

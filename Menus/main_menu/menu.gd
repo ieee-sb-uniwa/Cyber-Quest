@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_new_pressed():
-	get_tree().change_scene_to_file("res://Levels/Level_1.tscn");
+	get_tree().change_scene_to_file("res://Levels/Lvl1_r1.tscn");
 
 func _on_load_pressed():
 	get_tree().change_scene_to_file("res://Menu/Load-Menu.tscn");

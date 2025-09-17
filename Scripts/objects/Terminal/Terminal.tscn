@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceia7dab75hev"]
+
+[ext_resource type="Script" uid="uid://dcsvyx471ln0p" path="res://Scripts/objects/Terminal/terminal.gd" id="1_jdmvx"]
+[ext_resource type="Texture2D" uid="uid://m1fbxwmb44va" path="res://Assets/CyberQuest_Assets/Environment/terminal.png" id="1_o2cfe"]
+[ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_003jv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cawe"]
+radius = 43.9318
+
+[node name="Terminal" type="Node2D"]
+script = ExtResource("1_jdmvx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o2cfe")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_003jv")]
+collision_layer = 32
+collision_mask = 2
+action_name = "το ανοίξεις"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_0cawe")
