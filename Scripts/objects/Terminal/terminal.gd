@@ -23,3 +23,5 @@ func _open_terminal():
 	get_tree().paused = true
 	var password_ui = get_node("../HUD/PasswordUI")
 	password_ui.visible = true
+	Global.can_pause_game = false
+

@@ -10,7 +10,10 @@ func _process(_delta):
 		pausemenu()
 
 func pausemenu():
-	if paused:
+	# When in any UI, disable pausing
+	if !Global.can_pause_game:
+		return
+	if paused: # Unpause
 		pause_menu.hide()
 		pause_button.show()
 		get_tree().paused = false 

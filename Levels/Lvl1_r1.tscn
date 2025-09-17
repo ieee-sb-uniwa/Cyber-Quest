@@ -421,7 +421,6 @@ offset_top = -75.0
 offset_right = 13.0
 
 [node name="Pause_button" parent="HUD/PauseMenu" instance=ExtResource("10_g0ryg")]
-visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

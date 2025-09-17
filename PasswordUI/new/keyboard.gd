@@ -138,7 +138,7 @@ func _input(event):
 func _successful_unlock():
 	get_tree().paused = false
 	Global.terminal_unlocked = true
-	get_parent().visible = false # hide the control node
+	get_parent().visible = false # hide the control node of the ui
 
 func _rule_breach_regex(password: String, pattern: String) -> bool: # if it matches it returns false
 	var regex := RegEx.new()
