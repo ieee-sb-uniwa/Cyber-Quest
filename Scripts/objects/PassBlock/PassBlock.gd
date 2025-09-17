@@ -34,8 +34,6 @@ func drop_block(body: Node2D):
 func pick_block(body: Node2D):
 	set_interaction_area(false)
 	picked = true
-	self.z_index = body.z_index - 1
-	print(self.z_index)
 	Global.blocks_picked += 1
 	if body.is_in_group("MainPlayer"):
 		Global.player_blocks[0] += 1
