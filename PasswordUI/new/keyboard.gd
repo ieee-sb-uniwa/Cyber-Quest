@@ -27,14 +27,16 @@ func _on_visibility_changed():
 	var label = get_node(label_path)
 	label.bbcode_enabled = true
 	label.scroll_active = true
+	label.clear()
 	# If terminals is not unlocked, show welcome message with typing animation
 	# Else, show exit message directly
 	if !Global.terminal_unlocked:
-		_type_text_animation(welcome1, label)
-		_type_text_animation(welcome2, label)
+		# _type_text_animation(welcome1, label)
+		# _type_text_animation(welcome2, label)
+		label.append_text(welcome1)
+		label.append_text(welcome2)
 		screen_log = welcome1 + welcome2
 	else:
-		label.clear()
 		screen_log = ""
 		current_input = ""
 		input_finalized = false

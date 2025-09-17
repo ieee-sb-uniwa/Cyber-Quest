@@ -8,15 +8,16 @@ script = ExtResource("1_0cd8l")
 
 [node name="Label" type="Label" parent="."]
 z_index = 999
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 offset_left = -112.0
 offset_right = 112.0
 offset_bottom = 29.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.17881, 0.17881, 0.17881, 1)
-theme_override_colors/font_outline_color = Color(0.18359, 0.18359, 0.18359, 1)
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0.16446, 0.16446, 0.16446, 1)
+theme_override_colors/font_outline_color = Color(0.17881, 0.17881, 0.17881, 1)
 theme_override_fonts/font = ExtResource("2_bo8fs")
 theme_override_font_sizes/font_size = 14
-text = "ααα"
+text = "αααα"
 horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
