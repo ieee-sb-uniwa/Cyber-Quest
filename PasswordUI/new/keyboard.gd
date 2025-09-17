@@ -139,6 +139,7 @@ func _successful_unlock():
 	get_tree().paused = false
 	Global.terminal_unlocked = true
 	get_parent().visible = false # hide the control node of the ui
+	Global.can_pause_game = true
 
 func _rule_breach_regex(password: String, pattern: String) -> bool: # if it matches it returns false
 	var regex := RegEx.new()
