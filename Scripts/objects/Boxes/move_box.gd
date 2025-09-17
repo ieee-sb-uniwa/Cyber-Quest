@@ -9,9 +9,10 @@ var nearby_players: Array = []
 var velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
+	area.body_entered.connect(_on_box_area_body_entered)
+	area.body_exited.connect(_on_box_area_body_exited)
 	gravity_scale = 0.0
+	area.set_object_type("movebox")
 
 func _process(_delta: float) -> void:
 	# ελέγχουμε για νέους παίκτες που πατάνε interact
@@ -49,13 +50,13 @@ func _physics_process(_delta: float) -> void:
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity = velocity
 
-func _on_body_entered(body: Node) -> void:
+func _on_box_area_body_entered(body: Node) -> void:
 	print("Entered:", body)
 	if body is CharacterBody2D and not nearby_players.has(body):
 		nearby_players.append(body)
 		print("Player added:", body.name)
 
-func _on_body_exited(body: Node) -> void:
+func _on_box_area_body_exited(body: Node) -> void:
 	if body is CharacterBody2D:
 		nearby_players.erase(body)
 		_release(body)
@@ -78,3 +79,10 @@ func _release(p: CharacterBody2D) -> void:
 	if grabbers.size() == 0:
 		linear_velocity = Vector2.ZERO
 		velocity = Vector2.ZERO
+
+# Signals from InteractionArea	
+func _on_body_exited(_body:Node2D) -> void:
+	pass 
+
+func _on_body_entered(_body:Node2D) -> void:
+	pass 

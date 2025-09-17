@@ -10,14 +10,18 @@ var interaction_status:Global.INTERACTION_STATUS = Global.INTERACTION_STATUS.EMP
 var interact: Callable = func():
 	pass
 
+func _ready():
+	area_label = InteractionManager.get_label()
+	area_label.hide()
+	self.body_entered.connect(_on_body_entered)
+	self.body_exited.connect(_on_body_exited)
+
 func _on_body_entered(_body):
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and  interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
 		return
 
-	if (can_pickup(_body) or object_type=="box"):
+	if (can_pickup(_body) or (object_type != null and object_type != "")):
 		InteractionManager.register_area(self, _body)
-	
-	area_label = InteractionManager.get_label()
 
 func _on_body_exited(_body):
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:

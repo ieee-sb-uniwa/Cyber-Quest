@@ -24,9 +24,11 @@ shape = SubResource("RectangleShape2D_u42wh")
 collision_layer = 40
 collision_mask = 6
 script = ExtResource("2_u42wh")
-action_key = "[E]"
 action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_u42wh")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_body_exited"]
