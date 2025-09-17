@@ -52,10 +52,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.linear_velocity = velocity
 
 func _on_box_area_body_entered(body: Node) -> void:
-	print("Entered:", body)
+	# print("Entered:", body)
 	if body is CharacterBody2D and not nearby_players.has(body):
 		nearby_players.append(body)
-		print("Player added:", body.name)
+		# print("Player added:", body.name)
 
 func _on_box_area_body_exited(body: Node) -> void:
 	if body is CharacterBody2D:

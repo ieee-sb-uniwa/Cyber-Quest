@@ -11,6 +11,8 @@ size = Vector2(55, 33)
 radius = 82.0
 
 [node name="MoveBox" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_r7rgx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,7 +23,7 @@ position = Vector2(-0.5, -8.5)
 shape = SubResource("RectangleShape2D_u42wh")
 
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 40
+collision_layer = 8
 collision_mask = 6
 script = ExtResource("2_u42wh")
 action_name = "μετακινήσεις κουτί"
@@ -29,6 +31,3 @@ metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_u42wh")
-
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_body_entered"]
-[connection signal="body_exited" from="InteractionArea" to="." method="_on_body_exited"]

@@ -434,10 +434,15 @@ grow_vertical = 0
 [node name="pause_interaction" parent="HUD" instance=ExtResource("11_cjydo")]
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
 position = Vector2(1625, -4)
+starting_direction = Vector2(0, 1)
+playerNum = 1
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
 position = Vector2(1564, -4)
+starting_direction = Vector2(0, 1)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]
@@ -471,7 +476,7 @@ position = Vector2(740, 31)
 position = Vector2(1206, 32)
 
 [node name="PassBlock3" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(1381, 35)
+position = Vector2(1449, 37)
 
 [node name="PassBlock4" parent="PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(483, 289)
