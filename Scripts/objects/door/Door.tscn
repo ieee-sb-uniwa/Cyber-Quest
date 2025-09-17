@@ -57,7 +57,8 @@ collision_mask = 2
 script = ExtResource("1_iex6k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
+z_index = 10
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_wt36c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

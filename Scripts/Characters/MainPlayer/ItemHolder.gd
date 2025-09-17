@@ -39,7 +39,7 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	if !isDelivered && item.has_method("drop_block"):
 		item.drop_block(pl)
 	self.remove_child(item)
-	var pass_blocks = get_tree().current_scene.get_node("PassBlocks")
+	var pass_blocks = get_tree().current_scene.get_node("Environment/PassBlocks")
 	if pass_blocks == null:
 		printerr("No passBlocks node found")
 		return

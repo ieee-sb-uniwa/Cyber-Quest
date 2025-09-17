@@ -245,9 +245,11 @@ size = Vector2(56, 79)
 size = Vector2(56, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk21r"]
-size = Vector2(57, 45)
+size = Vector2(56.5, 45)
 
 [node name="Door" type="StaticBody2D"]
+z_index = 10
+y_sort_enabled = true
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_rfi8h")
@@ -278,5 +280,5 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoadArea"]
-position = Vector2(-0.5, -60)
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_yk21r")
