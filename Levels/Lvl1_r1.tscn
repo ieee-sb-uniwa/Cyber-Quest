@@ -466,35 +466,29 @@ y_sort_enabled = true
 position = Vector2(738, 28)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
-z_index = 5
-position = Vector2(-9, 0)
 
 [node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-z_as_relative = true
-position = Vector2(758, 24)
+position = Vector2(1207, 29)
 
 [node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-z_as_relative = true
-position = Vector2(1206, 32)
+position = Vector2(743, 25)
 
 [node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-z_as_relative = true
-position = Vector2(1449, 37)
+position = Vector2(480, 288)
 
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-z_as_relative = true
-position = Vector2(483, 289)
-
-[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(560, -136)
+position = Vector2(1412, 18)
 
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(583, 23)
+position = Vector2(1541, 22)
 playerNum = 2
+
+[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1598, 21)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
