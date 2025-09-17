@@ -11,6 +11,7 @@ var Hide_status: int = 1
 var move_speed : float = 150
 var interacable = false
 var isTutorial: bool = true
+var players: Array[CharacterBody2D] = []
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 

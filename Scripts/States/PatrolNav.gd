@@ -17,6 +17,13 @@ var lastRoomIndex :int = -1
 var roomSelected: bool
 var pathingCompleted: bool
 
+#VARIABLES TO CHECK IF STUCK
+var stuck_timer := 0.0
+var last_progress := INF
+var progress_threshold := 4     # minimum distance moved before considered stuck
+var stuck_time_limit := 1.5    # seconds to wait before triggering reset
+
+
 func _ready(): 
 	animation_tree = enemy.animation_tree
 	state_machine = state_machine
@@ -29,6 +36,8 @@ func Enter():
 	conicalDetectionArea.visible = true
 	roomSelected = false;
 	pathingCompleted = false;
+	#nav_agent.path_changed.connect(func():
+		#print("New path:", nav_agent.get_current_navigation_path()))
 
 
 func Exit():
@@ -53,6 +62,8 @@ func Physics_update(_delta : float):
 		roomSelected = false
 		pathingCompleted = false
 		print("Path Completed")
+		return
+	if is_stuck(_delta):
 		return
 	if roomSelected && pathingCompleted && nav_agent.get_current_navigation_path().size()>0: #CALLED TO KEEP MOVING ON SAME PATH
 		move_towards_next_point(nav_agent.get_next_path_position()) 
@@ -87,12 +98,27 @@ func move_towards_next_point(next_point: Vector2) -> void:
 	var direction_to_path = (next_point - enemy.global_position).normalized()
 	enemy.rotation = direction_to_path.angle()
 	var new_velocity = current_position.direction_to(next_point) * enemy.move_speed
+	
 	if nav_agent.avoidance_enabled:
 		nav_agent.set_velocity(new_velocity)
 	else: 
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
-	enemy.move_and_slide()
 
+func is_stuck(delta : float) -> bool:
+	var next_point = nav_agent.get_next_path_position()
+	var dist_to_next = enemy.global_position.distance_to(next_point)
+	if abs(dist_to_next - last_progress) < progress_threshold:
+		stuck_timer += delta
+		if stuck_timer > stuck_time_limit:
+			print("Agent stuck! Resetting path…")
+			roomSelected = false
+			pathingCompleted = false
+			stuck_timer = 0.0
+			return true
+	else:
+		stuck_timer = 0.0
+	last_progress = dist_to_next
+	return false
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	enemy.velocity=safe_velocity
@@ -105,6 +131,7 @@ func get_random_room()->Vector2:
 			if lastRoomIndex != roomIndex || lastRoomIndex == -1 || enemy.patrolling_rooms.size()==1:
 				lastRoomIndex = roomIndex
 				break
+		print(enemy.patrolling_rooms[lastRoomIndex].name)
 		return await get_random_navigable_point(enemy.patrolling_rooms[lastRoomIndex], 0)
 	return enemy.global_position
 
@@ -128,22 +155,20 @@ func is_point_navigatable(point: Vector2) -> bool:
 	# Wait for the navigation map to synchronize
 	while NavigationServer2D.map_get_iteration_id(nav_agent.get_navigation_map()) == 0:
 		await NavigationServer2D.map_changed
-	
 	await delay_by_frames(3)
 	var nav_map = nav_agent.get_navigation_map()
-	#NavigationServer2D.region_set_map(nav_region.get_region_rid(), nav_map)
-	# print(NavigationServer2D.map_get_regions(nav_map))
+	
 	var start = NavigationServer2D.map_get_closest_point(nav_map, enemy.global_position)
 	var target = NavigationServer2D.map_get_closest_point(nav_map, point)
 	# print(" from: "+str(enemy.global_position) + " to: "+str(point))
 	# print(" from: "+str(start) + " to: "+str(target))
-	var path = NavigationServer2D.map_get_path(nav_map, start, target, false, 3)
-	# print(path)
+	var path:PackedVector2Array = NavigationServer2D.map_get_path(nav_map, start, target, false, 1)
 	if path.size() > 1:
 		print("Target is reachable!")
+		
 		pathingCompleted = true
 		return true;
-	# print("Target is NOT reachable.")
+	#print("Target is NOT reachable.")
 	return false;
 	
 func delay_by_frames(frames: int):

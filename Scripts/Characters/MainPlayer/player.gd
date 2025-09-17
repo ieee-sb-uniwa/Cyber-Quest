@@ -12,6 +12,7 @@ var last_animation_look_location : Vector2 = Vector2(0,0)
 var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
 var is_respawning:bool=false
+var hide_holder = null
 
 @onready var P_sprite = $Sprite2D
 @onready var P_collission = $CollisionShape2D
@@ -21,6 +22,7 @@ func _ready():
 	$Hitbox.body_entered.connect(_on_body_entered)
 	itemHolder.set_player_index(self.z_index)
 	SpawnManager.register_player(playerNum, self)
+	Global.players.append(self)
 	move_speed = Global.move_speed
 	var camera = get_tree().current_scene.get_node("CameraRoot/Camera2D")
 	if camera.has_method("assign_player"):
@@ -101,10 +103,12 @@ func clear_all_items() -> void:
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && !is_hidden: 
-		#get_tree().call_deferred("reload_current_scene")
-		#Global.reset_variables()
-		itemHolder.clear_all_items(self, false)
-		is_respawning = true;
-		#TODO: Implement spawner logic
+		for i in Global.players.size():
+			Global.players[i].on_death()
 		SpawnManager.respawn_players()
-		is_respawning = false;
+		body.change_state("PatrolNav")
+
+func on_death() -> void:
+	if hide_holder:
+		hide_holder.toggle_hide()
+	itemHolder.clear_all_items(self, false)

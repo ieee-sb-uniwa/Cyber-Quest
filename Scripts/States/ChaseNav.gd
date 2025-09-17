@@ -82,7 +82,7 @@ func nav_test():
 		nav_agent.set_velocity(new_velocity)
 	else: 
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
-	enemy.move_and_slide()
+	#enemy.move_and_slide()
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	enemy.velocity=safe_velocity

@@ -19,14 +19,16 @@ func _process(_delta):
 func toggle_hide():
 	is_player_hidden = !is_player_hidden  		 # Toggle the hidden state
 	curr_player.visible = !is_player_hidden  	 # Hide/Unhide player
-	if is_player_hidden: 
+	if is_player_hidden:
+		curr_player.hide_holder = self 
 		box_area.interaction_status = Global.INTERACTION_STATUS.OCCUPIED
 		curr_player.set_collision_layer_value(30,true)
 		curr_player.set_collision_layer_value(2,false)
 		curr_player.is_hidden = true
 		curr_player.move_speed = 0
 		box_sprite.set_frame(0)
-	else: 
+	else:
+		curr_player.hide_holder = null 
 		box_area.interaction_status = Global.INTERACTION_STATUS.AVAILABLE
 		curr_player.set_collision_layer_value(2,true)
 		curr_player.set_collision_layer_value(30,false)
