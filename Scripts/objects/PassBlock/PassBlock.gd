@@ -34,6 +34,8 @@ func drop_block(body: Node2D):
 func pick_block(body: Node2D):
 	set_interaction_area(false)
 	picked = true
+	self.z_index = body.z_index - 1
+	print(self.z_index)
 	Global.blocks_picked += 1
 	if body.is_in_group("MainPlayer"):
 		Global.player_blocks[0] += 1
@@ -55,7 +57,7 @@ func _input(_event):
 	for body in bodies:
 		if body.has_method("player") and picked == false:
 			if Global.player_interacts("Interact_p1", "MainPlayer", body) or Global.player_interacts("Interact_p2", "SecondPlayer", body):
-				print(Global.max_player_items)
+				# print(Global.max_player_items)
 				if Global.player_blocks[0] >= Global.max_player_items and body.is_in_group("MainPlayer"):
 					print("Max items for player 1 reached")
 					return
@@ -72,7 +74,7 @@ func _ready():
 	# Initialize block number at initialiazation
 	randomize()
 	block_id = rand_num(0,9)
-	print("Block id: " + str(block_id))
+	# print("Block id: " + str(block_id))
 	# depending on randon number assign frame (0-9)
 	block_sprite.set_frame(block_id)  
 

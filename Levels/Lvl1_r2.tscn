@@ -610,9 +610,11 @@ playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="CameraRoot"]
+[node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("11_jwjn3")
+player1 = NodePath("../../Player")
+player2 = NodePath("../../Player2")
 
 [node name="Doors" type="Node" parent="."]
 

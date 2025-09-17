@@ -5,10 +5,12 @@ class_name Enemy_nav
 @onready var animation_tree = $"AnimationTree"
 @onready var nav_agent = $'NavigationAgent2D' as NavigationAgent2D
 @onready var state_machine = animation_tree.get("parameters/playback")
+
 #All of these have to do with movement and enemy behavior
 @export var move_speed : float = 75
 @export var acceleration : float = 7
 @export var patrolling_rooms : Array[Area2D] = [] 
+@export var behavior_state : StateMachine
 var current_path_index := 0
 var hunting_targets :  Array[Node2D] = []
 #@export var player_in_zone: bool
@@ -86,6 +88,10 @@ func _on_detection_zone_body_exited(body: Node2D) -> void:
 	if body.has_method("player"):
 		hunting_targets.erase(body)
 	
+func change_state(state:String) -> void:
+	print("changing to: "+state)
+	hunting_targets.clear()
+	behavior_state.current_state.transitioned.emit(state)
 #chase range= circle
 #func _on_chase_range_body_entered(body: Node2D) -> void:
 	#if body.has_method("player"):
@@ -109,3 +115,9 @@ func pick_new_animation():
 		state_machine.travel("Move")
 	else:
 		state_machine.travel("Idle")
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()
+	pass # Replace with function body.

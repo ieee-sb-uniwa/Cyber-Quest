@@ -21,7 +21,6 @@ func _process(_delta):
 					
 func _open_terminal():
 	get_tree().paused = true
-	var password_ui = get_node("../HUD/PasswordUI")
+	var password_ui = get_tree().current_scene.get_node("HUD/PasswordUI")
 	password_ui.visible = true
 	Global.can_pause_game = false
-

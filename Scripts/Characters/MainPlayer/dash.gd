@@ -26,7 +26,7 @@ func _physics_process(_delta):
 			
 func start_dash():
 	if _cooldown_timer <= 0 and not _is_dashing:
-		print("dashing...")
+		# print("dashing...")
 		var input_direction:Vector2 = player.get_movement_inputs()
 		var dash_calculation
 		if input_direction.x!=0 || input_direction.y != 0:

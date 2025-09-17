@@ -1,5 +1,4 @@
 extends CharacterBody2D
-
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -7,24 +6,30 @@ extends CharacterBody2D
 @onready var P_collission = $CollisionShape2D
 @export var inventory: Inventory
 @onready var hitbox = $Hitbox
-@export var itemHodler : ItemHolder
+@export var itemHolder : ItemHolder
 @export var playerNum: int = 1
 var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
 var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
+var is_respawning:bool=false
+var hide_holder = null
 
 func _ready():
 	update_animation_parameters(starting_direction)
 	$Hitbox.body_entered.connect(_on_body_entered)
-	itemHodler.set_player_index(self.z_index)
+	itemHolder.set_player_index(self.z_index)
+	SpawnManager.register_player(playerNum, self)
+	Global.players.append(self)
 	move_speed = Global.move_speed
 	var camera = get_tree().current_scene.get_node("CameraRoot/Camera2D")
 	if camera.has_method("assign_player"):
 		camera.assign_player(playerNum, self)
 
 func _physics_process(_delta):	
+	if is_respawning:
+		return  # Skip movement
 	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
 	update_animation_parameters(input_direction)
 	if movement_enabled:
@@ -52,6 +57,7 @@ func update_animation_parameters(move_input : Vector2):
 		# Equal (diagonal): return vertical OR use last pressed key logic
 		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
 			# print(str(abs_x)  + " : " + str(abs_y))
+			# print(str(abs_x)  + " : " + str(abs_y))
 			animation_look_location = Vector2(0.2, direction.y)
 			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
 		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
@@ -63,8 +69,7 @@ func update_animation_parameters(move_input : Vector2):
 	last_animation_look_location = animation_look_location
 	animation_tree.set("parameters/Idle/blend_position", animation_look_location)
 	animation_tree.set("parameters/Move/blend_position", animation_look_location)
-	
-	itemHodler.change_items_orientation(move_orientation)
+	itemHolder.change_items_orientation(move_orientation)
 
 func pick_new_state():
 	if(velocity != Vector2.ZERO):
@@ -74,11 +79,6 @@ func pick_new_state():
 
 func player(): #Is used to be identified by enemies
 	pass
-	
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") && !is_hidden: 
-		get_tree().call_deferred("reload_current_scene")
-		Global.reset_variables()
 
 # Getters 		
 func get_movement_inputs() -> Vector2:
@@ -94,10 +94,22 @@ func get_vertical_move():
 	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
 	
 func get_all_items() -> Array[Node2D]:
-	return itemHodler.get_all_items()
+	return itemHolder.get_all_items()
 
 func add_item_to_holder(item : Node2D) -> void:
-	itemHodler.add_item(item)
+	itemHolder.add_item(item)
 
 func clear_all_items() -> void:
-	itemHodler.clear_all_items(self.global_position)
+	itemHolder.clear_all_items(self, true)
+		
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy") && !is_hidden: 
+		for i in Global.players.size():
+			Global.players[i].on_death()
+		SpawnManager.respawn_players()
+		body.change_state("PatrolNav")
+
+func on_death() -> void:
+	if hide_holder:
+		hide_holder.toggle_hide()
+	itemHolder.clear_all_items(self, false)

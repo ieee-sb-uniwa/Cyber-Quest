@@ -6,12 +6,13 @@ var max_player_items : int = 2
 var max_passblocks : int = max_player_items * 2
 var player_blocks: Array = [0, 0]  
 var dropped_passblocks: Array = []
-# Hide/Show global variables
+var player_entered_spawn = [false, false]
 var Hide_status: int = 1
 # Player global variables
 var move_speed : float = 150
 # Level global variables
 var isTutorial: bool = true
+var players: Array[CharacterBody2D] = []
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false

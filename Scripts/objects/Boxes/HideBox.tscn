@@ -35,3 +35,8 @@ action_name = "hide/unhide"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 visibility_layer = 2
 shape = SubResource("CircleShape2D_p2jdm")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 22.5
+affect_navigation_mesh = true
+avoidance_layers = 16

@@ -4,7 +4,11 @@ extends Camera2D
 @export var player2: Node2D
 @export var follow_speed: float = 5.0
 @export var offset_margin: float = 200.0  # How far from the center players can be
+var target_position: Vector2 = Vector2.ZERO
+var is_cam_enabled :bool = true
 
+func _ready() -> void:
+	SpawnManager.camera_asset = self
 func assign_player(player_num: int, node: Node2D) -> void:
 	if player_num == 1:
 		player1 = node
@@ -32,6 +36,8 @@ func _process(delta: float) -> void:
 		return
 	# Midpoint between players
 	var center_pos = (player1.global_position + player2.global_position) * 0.5
+	if !is_cam_enabled && self.position.distance_to(center_pos)<5:
+		is_cam_enabled = true
 	
 	# Optional: Maintain margin before adjusting camera (avoids jitter)
 	var distance = player1.global_position.distance_to(player2.global_position)
@@ -41,5 +47,6 @@ func _process(delta: float) -> void:
 		# Softly ease towards midpoint even if within margin
 		global_position = global_position.lerp(center_pos, delta * (follow_speed * 0.3))
 		
-	clamp_player_position(player1)
-	clamp_player_position(player2)
+	if is_cam_enabled:
+		clamp_player_position(player1)
+		clamp_player_position(player2)

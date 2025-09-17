@@ -11,7 +11,7 @@ extends State
 
 
 func Enter():
-	print("Chasing")
+	# print("Chasing")
 	#enemy.player_in_zone = true
 	#enemy.player_in_cone = true
 	#enemy.player_visible = true
@@ -29,7 +29,7 @@ func Physics_update(_delta: float) -> void:
 	if enemy.hunting_target.visible==false:
 		transitioned.emit("Patrol")
 	if !enemy.player_in_zone || !enemy.player_visible:
-		print("Stop chasing")
+		# print("Stop chasing")
 		transitioned.emit("Patrol")
 
 func generate_path() -> void:

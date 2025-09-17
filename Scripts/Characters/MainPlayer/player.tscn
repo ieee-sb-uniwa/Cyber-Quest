@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l57x5"]
-radius = 15.0
-height = 56.0
+radius = 18.0
+height = 44.0
 
 [sub_resource type="Animation" id="Animation_uahb3"]
 length = 0.001
@@ -232,21 +232,19 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 radius = 18.0
 height = 74.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHodler") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHolder") groups=["Player"]]
 z_index = 9
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_4ie1l")
-starting_direction = null
 inventory = ExtResource("2_a2323")
-itemHodler = NodePath("Sprite2D/ItemHolder")
-playerNum = null
+itemHolder = NodePath("Sprite2D/ItemHolder")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_l57x5")
 hframes = 4
 vframes = 4
-frame = 4
+frame = 12
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
 script = ExtResource("4_e0c3b")
@@ -261,7 +259,7 @@ position = Vector2(0, -12)
 gizmo_extents = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 23)
+position = Vector2(-1, 2)
 shape = SubResource("CapsuleShape2D_l57x5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -277,6 +275,7 @@ parameters/Idle/blend_position = Vector2(-0.709265, 0.582974)
 parameters/Move/blend_position = Vector2(0, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 6
 

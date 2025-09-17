@@ -70,7 +70,7 @@ func check_lost_target(duration: float) -> void:
 	switch_state("PatrolNav")
 	
 func switch_state(state_name: String) -> void:
-	print("Switching state to " + state_name)
+	# print("Switching state to " + state_name)
 	transitioned.emit(state_name)
 
 func nav_test():
@@ -82,7 +82,7 @@ func nav_test():
 		nav_agent.set_velocity(new_velocity)
 	else: 
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
-	enemy.move_and_slide()
+	#enemy.move_and_slide()
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	enemy.velocity=safe_velocity
