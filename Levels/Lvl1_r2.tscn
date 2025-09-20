@@ -602,10 +602,12 @@ process_mode = 3
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_54ngp")]
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
-position = Vector2(-68, 8)
+z_index = 11
+position = Vector2(-57, -10)
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("10_7skwt")]
-position = Vector2(64, 11)
+z_index = 11
+position = Vector2(49, -7)
 playerNum = 2
 
 [node name="CameraRoot" type="Node" parent="."]
@@ -619,13 +621,19 @@ player2 = NodePath("../../Player2")
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door" parent="Doors" instance=ExtResource("13_54ngp")]
+z_index = 8
+y_sort_enabled = false
 position = Vector2(-4, -239)
 scale = Vector2(1.5, 1.5)
 
 [node name="Door2" parent="Doors" instance=ExtResource("13_54ngp")]
+z_index = 8
+y_sort_enabled = false
 position = Vector2(479, -431)
 scale = Vector2(1.5, 1.5)
 
 [node name="Door3" parent="Doors" instance=ExtResource("13_54ngp")]
+z_index = 8
+y_sort_enabled = false
 position = Vector2(-479, -431)
 scale = Vector2(1.5, 1.5)
