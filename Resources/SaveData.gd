@@ -1,14 +1,36 @@
-extends Resource
+extends Node
 class_name SaveData
-# Player 1 data
-@export var player1_name : String
-@export var player1_pos : Vector2
-@export var player1_velocity : int
 
-# Player 2 data
-@export var player2_name : String
-@export var player2_pos : Vector2
-@export var player2_velocity : int
+const SAVE_FILE := "user://savegame.json"
 
-# Inventory
-@export var inventory : Dictionary
+func save_game():
+	var data = {
+		"player_name_1": PlayerData.player_name_1,
+		"birthdate_1": PlayerData.birthdate_1,
+		"player_name_2":PlayerData.player_name_2,
+		"birthdate_2": PlayerData.birthdate_2,		
+		"level": PlayerData.level
+	}
+	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(data, "\t"))
+		file.close()
+		print("Data saved: "+ str(data))
+
+func load_game() ->bool:
+	if not FileAccess.file_exists(SAVE_FILE):
+		return false
+
+	var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
+	var text = file.get_as_text()
+	file.close()
+
+	var result = JSON.parse_string(text)
+	if typeof(result) == TYPE_DICTIONARY:
+		PlayerData.player_name_1 = result.get("player_name_1", "")
+		PlayerData.birthdate_1 = result.get("birthdate_1", "")
+		PlayerData.player_name_2 = result.get("player_name_2", "")
+		PlayerData.birthdate_2 = result.get("birthdate_2", "")
+		PlayerData.level = result.get("level", {})
+		return true
+	return false

@@ -22,6 +22,7 @@ func _on_body_entered(body, area_name=):
 		# HERE DO ALL THE STUFF TO RESET THE LEVEL VARIABLES IF NEEDED
 		Global.reset_variables() 
 		Global.isTutorial = false
+		Global.change_level()
 		get_tree().call_deferred("change_scene_to_file", "res://Levels/Lvl1_r2.tscn")
 
 func _on_body_exited(body):
