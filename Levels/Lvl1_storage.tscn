@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=31 format=4 uid="uid://ujqijqnpc1am"]
 
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="8_r215s"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="9_java5"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="11_7k02s"]
+[ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="11_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="14_vwuue"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_5rxy5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3d45e"]
 texture = ExtResource("1_lb1hv")
@@ -206,7 +208,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_r8p4o"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 6
+physics_layer_0/collision_mask = 62
 sources/0 = SubResource("TileSetAtlasSource_3d45e")
 sources/1 = SubResource("TileSetAtlasSource_vwt3a")
 sources/2 = SubResource("TileSetAtlasSource_fnej0")
@@ -583,11 +585,17 @@ texture_region_size = Vector2i(64, 64)
 6:7/0 = 0
 6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 7:5/0 = 0
+7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.114483, -32, 32, -32, 32, 32, 0.114483, 32)
 7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.114483, -32, 32, -32, 32, 32, 0.114483, 32)
 7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.114483, -32, 32, -32, 32, 32, 0.114483, 32)
 8:7/0 = 0
+8:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.114483, -32, -32, -32, -32, 32, -0.114483, 32)
 8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.114483, -32, -32, -32, -32, 32, -0.114483, 32)
 8:6/0 = 0
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.114483, -32, -32, -32, -32, 32, -0.114483, 32)
 9:6/0 = 0
 10:6/0 = 0
 11:6/0 = 0
@@ -742,9 +750,49 @@ script = ExtResource("14_vwuue")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
 
-[node name="Player" parent="." instance=ExtResource("11_7k02s")]
-position = Vector2(1517, 358)
+[node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("11_7k02s")]
+position = Vector2(1438, 425)
 
-[node name="Player2" parent="." instance=ExtResource("11_7k02s")]
-position = Vector2(1411, 356)
+[node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("11_7k02s")]
+position = Vector2(1178, 221)
 playerNum = 2
+
+[node name="PassBlocks" type="Node2D" parent="."]
+
+[node name="PassBlock" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(987, 124)
+
+[node name="PassBlock2" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(1118, 254)
+
+[node name="PassBlock3" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(926, -70)
+
+[node name="PassBlock4" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(926, -397)
+
+[node name="PassBlock5" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(1177, -520)
+
+[node name="PassBlock6" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(2002, -517)
+
+[node name="PassBlock7" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(2011, -79)
+
+[node name="PassBlock8" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
+position = Vector2(2011, 121)
+
+[node name="MoveBoxes" type="Node2D" parent="."]
+
+[node name="MoveBox" parent="MoveBoxes" instance=ExtResource("11_vwuue")]
+z_index = 5
+position = Vector2(1114, 253)
+
+[node name="MoveBox2" parent="MoveBoxes" instance=ExtResource("11_vwuue")]
+z_index = 5
+position = Vector2(2002, -517)
+
+[node name="MoveBox3" parent="MoveBoxes" instance=ExtResource("11_vwuue")]
+z_index = 5
+position = Vector2(929, -395)

@@ -3,7 +3,6 @@ extends Node
 # PassBlock global variables
 var blocks_picked : int = 0
 var max_player_items : int = 2
-var max_passblocks : int = max_player_items * 2
 var player_blocks: Array = [0, 0]  
 var dropped_passblocks: Array = []
 var player_entered_spawn = [false, false]
@@ -27,7 +26,6 @@ func reset_variables() -> void:
 	player_blocks = [0, 0]
 	dropped_passblocks.clear()
 	Hide_status = 1
-	isTutorial = true
 	terminal_unlocked = false
 
 func can_access_terminal() -> bool:

@@ -8,7 +8,7 @@
 size = Vector2(31, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5a3p"]
-radius = 20.0
+radius = 26.0
 
 [node name="PassBlock" type="StaticBody2D"]
 z_index = 5

@@ -229,12 +229,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l57x5"]
-radius = 18.0
-height = 44.0
+radius = 12.0
+height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0c3b"]
-radius = 18.0
-height = 74.0
+radius = 12.0
+height = 42.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("itemHolder") groups=["Player"]]
 z_index = 9
@@ -252,7 +252,7 @@ autoplay = "idle_side"
 [node name="ItemHolder" type="Node2D" parent="AnimatedSprite2D" node_paths=PackedStringArray("items_available_positions")]
 position = Vector2(0, 2)
 script = ExtResource("4_e0c3b")
-items_available_positions = [NodePath("Marker1"), NodePath("Marker2")]
+items_available_positions = [NodePath("Marker1"), NodePath("Marker2"), NodePath("Marker3"), NodePath("Marker4")]
 
 [node name="Marker1" type="Marker2D" parent="AnimatedSprite2D/ItemHolder"]
 position = Vector2(0, -2)
@@ -262,17 +262,24 @@ gizmo_extents = 20.0
 position = Vector2(0, -12)
 gizmo_extents = 20.0
 
+[node name="Marker3" type="Marker2D" parent="AnimatedSprite2D/ItemHolder"]
+position = Vector2(0, -21)
+gizmo_extents = 20.0
+
+[node name="Marker4" type="Marker2D" parent="AnimatedSprite2D/ItemHolder"]
+position = Vector2(0, -30)
+gizmo_extents = 20.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
+position = Vector2(-1, 6)
 shape = SubResource("CapsuleShape2D_l57x5")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -9)
+position = Vector2(-1, 6)
 shape = SubResource("CapsuleShape2D_e0c3b")
 
 [node name="Dash" type="Node2D" parent="." node_paths=PackedStringArray("player")]
