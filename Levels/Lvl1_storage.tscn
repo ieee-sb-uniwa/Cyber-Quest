@@ -793,27 +793,35 @@ playerNum = 2
 
 [node name="PassBlock" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(987, 124)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock2" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(1118, 254)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock3" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(926, -70)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock4" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(926, -397)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock5" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(1177, -520)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock6" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(2002, -517)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock7" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(2011, -79)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock8" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
 position = Vector2(2011, 121)
+scale = Vector2(0.7, 0.7)
 
 [node name="MoveBoxes" type="Node2D" parent="."]
 
