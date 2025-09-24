@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=33 format=4 uid="uid://ujqijqnpc1am"]
 
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d3l5m1hkocn2n" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png" id="7_5rxy5"]
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="8_r215s"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="9_java5"]
+[ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="9_r215s"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="11_7k02s"]
 [ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="11_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
@@ -609,6 +610,28 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_on4r2")
 sources/0 = SubResource("TileSetAtlasSource_rbs70")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
+texture = ExtResource("9_r215s")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ategi"]
 texture = ExtResource("8_r215s")
 texture_region_size = Vector2i(64, 64)
@@ -624,6 +647,9 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_a60cf"]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 6
+sources/0 = SubResource("TileSetAtlasSource_java5")
 sources/1 = SubResource("TileSetAtlasSource_ategi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpdss"]
@@ -725,6 +751,12 @@ position = Vector2(1467, 409)
 tile_map_data = PackedByteArray("AAACAPv/AQAHAAYAAAACAPr/AQAHAAUAAAADAPn/AQAFAAEAAAADAPr/AQAFAAIAAAAIAPn/AQAHAAEAAAAIAPr/AQAHAAIAAAAEAPn/AQAGAAEAAAAEAPr/AQAGAAIAAAAFAPn/AQAEAAUAAAAFAPr/AQAEAAYAAAAGAPn/AQAEAAUAAAAGAPr/AQAEAAYAAAAHAPn/AQAEAAUAAAAHAPr/AQAEAAYAAAAIAP7/AQAFAAUAAAAHAP7/AQAEAAUAAAAGAP7/AQAEAAUAAAAFAP7/AQAEAAUAAAAEAP7/AQAEAAUAAAADAP7/AQAGAAUAAAADAP//AQALAAYAAAAEAP//AQAMAAYAAAAFAP//AQAMAAYAAAAGAP//AQAMAAYAAAAHAP//AQAMAAYAAAAIAP//AQAMAAYAAAD7//7/AQAEAAUAAAD8//7/AQAFAAUAAAD7////AQAMAAYAAAD8////AQANAAYAAAD6////AQAMAAYAAAD5////AQAMAAYAAAD4////AQAMAAYAAAD3////AQAMAAYAAAD6//7/AQAEAAUAAAD5//7/AQAEAAUAAAD4//7/AQAEAAUAAAD3//7/AQAEAAUAAAADAPT/AAAIAAEAAAAFAPT/AAAGAAEAAAAGAPX/AAADAAMAAAAFAPX/AAAGAAMAAAAGAPT/AAAGAAEAAAAEAPT/AAADAAUAAAAHAPT/AAADAAUAAAAIAPT/AAAEAAUAAAAIAPX/AAAEAAcAAAAHAPX/AAADAAcAAAAEAPX/AAADAAcAAAADAPX/AAAFAAMAAAACAPX/AQAHAAUAAAACAPb/AQAHAAcAAAD9//X/AQAIAAUAAAD9//b/AQAIAAcAAAD8//T/AQAHAAEAAAD7//T/AQAFAAUAAAD6//T/AQAGAAEAAAD5//T/AQADAAEAAAD3//T/AQADAAUAAAD4//T/AQABAAUAAAD4//X/AQAEAAcAAAD3//X/AQAEAAcAAAD7//X/AQAEAAcAAAD8//X/AQAEAAMAAAD6//X/AQAGAAMAAAD5//X/AQADAAMAAAD3//n/AAAIAAEAAAD3//r/AAAFAAMAAAD4//n/AAADAAUAAAD4//r/AAADAAcAAAD5//n/AAAGAAEAAAD5//r/AAAGAAMAAAD6//n/AAAGAAEAAAD6//r/AAADAAMAAAD7//n/AAADAAUAAAD7//r/AAADAAcAAAD8//n/AAAEAAUAAAD8//r/AAAEAAcAAAD9//r/AQAIAAUAAAD9//v/AQAIAAcAAAD3/+//AQAFAAEAAAD3//D/AQAFAAIAAAD4/+//AQAGAAEAAAD4//D/AQAGAAIAAAD5/+//AQAEAAUAAAD5//D/AQAEAAYAAAD6/+//AQAEAAUAAAD6//D/AQAEAAYAAAD7/+//AQAEAAUAAAD7//D/AQAEAAYAAAD8/+//AQAHAAEAAAD8//D/AQAHAAIAAAADAO//AQADAAUAAAADAPD/AQAEAAcAAAAEAO//AQABAAUAAAAEAPD/AQAEAAcAAAAFAO//AQADAAEAAAAFAPD/AQADAAMAAAAGAO//AQAGAAEAAAAGAPD/AQAGAAMAAAAHAO//AQAFAAUAAAAHAPD/AQAEAAcAAAAIAO//AQAHAAEAAAAIAPD/AQAEAAMAAAD9//D/AQAEAAcAAAD9//H/AQAIAAcAAAACAPD/AQAFAAYAAAACAPH/AQAHAAcAAAD+/+//AAAAAAUAAAD+//D/AAADAAcAAAD//+//AQAGAAEAAAD///D/AAAGAAMAAAAAAO//AQAEAAUAAAAAAPD/AAADAAcAAAABAO//AAAGAAEAAAABAPD/AAAGAAIAAAACAO//AQAFAAUAAAD9/+//AQAEAAUAAAA=")
 tile_set = SubResource("TileSet_r4s6y")
 
+[node name="Floor Decoration Layer" type="TileMapLayer" parent="TileMap"]
+z_index = 2
+position = Vector2(1467, 409)
+tile_map_data = PackedByteArray("AAD8//H/AAACAAAAAAD6//H/AAABAAIAAAAEAPH/AAABAAEAAAAGAPP/AAABAAIAAAADAPP/AAACAAAAAAADAPj/AAABAAIAAAAEAPj/AAACAAAAAAD7//v/AAABAAEAAAD4//j/AAABAAEAAAD4//f/AAACAAEAAAD5//j/AAACAAIAAAD7//b/AAABAAIAAAAHAPv/AAABAAIAAAAHAPz/AAACAAEAAAADAPv/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_a60cf")
+
 [node name="Floor Map Layer" type="TileMapLayer" parent="TileMap"]
 z_index = 1
 position = Vector2(1467, 409)
@@ -754,7 +786,7 @@ player2 = NodePath("../../Player2")
 position = Vector2(1438, 425)
 
 [node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("11_7k02s")]
-position = Vector2(1178, 221)
+position = Vector2(1498, 472)
 playerNum = 2
 
 [node name="PassBlocks" type="Node2D" parent="."]

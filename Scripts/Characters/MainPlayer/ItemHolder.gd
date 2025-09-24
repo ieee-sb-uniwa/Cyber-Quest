@@ -19,8 +19,6 @@ var item_index := {
 var player_index : int = 0
 
 func add_item(item:Node2D)->void:
-	print("items_available_positions.size(): ", items_available_positions.size()
-		, " assigned_items.size(): ", assigned_items.size())
 	if items_available_positions.size() <= assigned_items.size():
 		print("Your inventory is full.")
 		return

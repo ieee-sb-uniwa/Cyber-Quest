@@ -30,12 +30,15 @@ func _on_body_entered(body, area_name=""):
 			Global.reset_variables() 
 			Global.isTutorial = false
 			Global.current_level += 1
+			get_tree().call_deferred("change_scene_to_file", target_scene)
+			return
 		
 		# Change to the target scene
 		Global.reset_variables()
 		Global.current_level += 1
 		Global.max_player_items *= 2 # Double the max items each level
 		get_tree().call_deferred("change_scene_to_file", target_scene)
+		
 
 
 func _on_body_exited(body):
