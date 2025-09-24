@@ -10,6 +10,7 @@ var player_entered_spawn = [false, false]
 var Hide_status: int = 1
 # Player global variables
 var move_speed : float = 150
+
 # Level global variables
 var isTutorial: bool = true
 var players: Array[CharacterBody2D] = []
@@ -17,6 +18,9 @@ enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false
 var can_pause_game: bool = true
+
+var lobby_doors_open: Array = [true, false, false] # First door is open by default (storage, comms, engineroom)
+var current_level: int = 0
 
 func reset_variables() -> void:
 	blocks_picked = 0

@@ -486,7 +486,7 @@ scale = Vector2(0.7, 0.7)
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(1501, 18)
+position = Vector2(1502, 15)
 playerNum = 2
 
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
