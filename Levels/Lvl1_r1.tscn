@@ -469,20 +469,24 @@ position = Vector2(738, 28)
 
 [node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(1207, 29)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(743, 25)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(480, 288)
+scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(1412, 18)
+scale = Vector2(0.7, 0.7)
 
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(1541, 22)
+position = Vector2(1502, 15)
 playerNum = 2
 
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
