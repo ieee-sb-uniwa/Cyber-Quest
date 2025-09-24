@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://croxmnqu7e1ma" path="res://Scripts/Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
-[ext_resource type="Texture2D" uid="uid://kdi8siv4g2s1" path="res://Assets/CyberQuest_Assets/Characters/player_1_5.png" id="3_l57x5"]
+[ext_resource type="Texture2D" uid="uid://8bswkj5t5wfo" path="res://Assets/CyberQuest_Assets/Characters/SpriteSheet_Animation_256.png" id="3_l57x5"]
 [ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
 [ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
 
@@ -244,9 +244,9 @@ itemHolder = NodePath("Sprite2D/ItemHolder")
 texture = ExtResource("3_l57x5")
 hframes = 4
 vframes = 4
-frame = 12
 
 [node name="ItemHolder" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("items_available_positions")]
+position = Vector2(18, 0)
 script = ExtResource("4_e0c3b")
 items_available_positions = [NodePath("Marker1"), NodePath("Marker2")]
 

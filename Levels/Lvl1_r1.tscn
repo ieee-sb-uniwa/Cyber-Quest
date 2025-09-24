@@ -482,7 +482,7 @@ position = Vector2(1412, 18)
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(1541, 22)
+position = Vector2(1501, 18)
 playerNum = 2
 
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
