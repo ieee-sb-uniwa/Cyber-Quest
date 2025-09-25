@@ -10,6 +10,8 @@ var input_finalized := false
 var unlocked_rules := []   # List for tablet rules
 var tablet_label := "../Secondary/Panel/RichTextLabel3"
 var success := false
+var message_done := false
+var showing_exit_message := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +45,7 @@ func _on_visibility_changed():
 		# start the coroutine deferred so we don't block the signal handling
 		call_deferred("_start_welcome_animation")
 	else:
+		showing_exit_message = true
 		call_deferred("_start_exit_animation")
 
 
@@ -51,15 +54,17 @@ func _start_welcome_animation() -> void:
 	await _type_text_animation(welcome, label, true)
 	# keep an accurate screen_log copy for later input display
 	screen_log = welcome
-
+	message_done= true
 
 func _start_exit_animation() -> void:
+	message_done = false
 	var label = get_node(label_path)
 	label.text=""
-	
 	await _type_text_animation(exit_msg, label, true)
+	message_done = true
 
 func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_first: bool = false) -> void:
+	var frames_per_char := 6 # =less frames = faster typing animation and reverse
 	if clear_first:
 		label.clear()
 
@@ -70,23 +75,30 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 		buffer += ch
 		
 		# Assign text only once per frame
-		await get_tree().process_frame
-		label.text = base_text + buffer
+		for i in range(frames_per_char):
+			await get_tree().process_frame
+			label.text = base_text + buffer
 
 
 func _on_button_pressed(button_name: String):
 	if input_finalized:
 		return
-
-	match button_name:
-		"X":
-			if current_input.length() > 0:
-				current_input = current_input.substr(0, current_input.length() - 1)
-		"✔":
+	
+	if showing_exit_message:
+		if button_name == "✔":
 			_on_confirm_pressed()
-			return
-		_:
-			current_input += button_name
+		return
+		
+	if message_done:
+		match button_name:
+			"X":
+				if current_input.length() > 0:
+					current_input = current_input.substr(0, current_input.length() - 1)
+			"✔":
+				_on_confirm_pressed()
+				return
+			_:
+				current_input += button_name
 
 	# Keeps old and new input/output on screen
 	var label = get_node(label_path)
@@ -95,18 +107,25 @@ func _on_button_pressed(button_name: String):
 
 
 func _on_confirm_pressed():
+
 	input_finalized = true
 
-	var feedback := _generate_rule_feedback()
-	screen_log += current_input + "\n" + feedback
 
-	var label = get_node(label_path)
-	label.text = screen_log
-	label.scroll_to_line(label.get_line_count() - 1)
+	if showing_exit_message:
+		_successful_unlock()
 
-	current_input = ""
-	input_finalized = false
+	if not success:
+		var feedback := _generate_rule_feedback()
+		screen_log += current_input + "\n" + feedback
 
+		var label = get_node(label_path)
+		label.text = screen_log
+		label.scroll_to_line(label.get_line_count() - 1)
+
+		current_input = ""
+		input_finalized = false
+	else:
+		_successful_unlock()
 
 func _generate_rule_feedback() -> String:
 	var password := current_input
