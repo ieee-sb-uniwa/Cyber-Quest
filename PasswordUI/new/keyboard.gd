@@ -76,7 +76,9 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 		
 		# Assign text only once per frame
 		for i in range(frames_per_char):
-			await get_tree().process_frame
+			if get_tree() == null:
+				return
+			await get_tree().create_timer(0.016).timeout # Wait for ~1 frame
 			label.text = base_text + buffer
 
 
