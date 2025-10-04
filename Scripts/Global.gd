@@ -9,6 +9,7 @@ var player_entered_spawn = [false, false]
 var Hide_status: int = 1
 # Player global variables
 var move_speed : float = 150
+var passblocks_in_level : Array = [] # List of passblocks in level to ensure unique ids
 
 # Level global variables
 var isTutorial: bool = true

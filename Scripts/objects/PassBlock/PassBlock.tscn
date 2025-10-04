@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bs5hh8rgdnfr5"]
 
 [ext_resource type="Script" uid="uid://db3g287aaue0c" path="res://Scripts/objects/PassBlock/PassBlock.gd" id="1_uhymk"]
-[ext_resource type="Texture2D" uid="uid://bu2srngeyjbjn" path="res://Assets/CyberQuest_Assets/Environment/PassBlocks.png" id="2_hlapw"]
+[ext_resource type="Texture2D" uid="uid://8ua1k4heiuov" path="res://Assets/CyberQuest_Assets/Environment/Keys_32px_Spritesheet_all.png" id="2_hlapw"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_01e6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlapw"]
@@ -21,7 +21,7 @@ script = ExtResource("1_uhymk")
 position = Vector2(5.0962e-06, 5.54323e-06)
 scale = Vector2(1.11111, 1.09091)
 texture = ExtResource("2_hlapw")
-hframes = 10
+hframes = 28
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)
