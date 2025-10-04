@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=30 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_54ngp"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="11_jwjn3"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
+[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="13_54ngp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7skwt"]
@@ -612,6 +613,9 @@ tile_set = SubResource("TileSet_l6qtc")
 process_mode = 3
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_54ngp")]
+
+[node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
+visible = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
 z_index = 11
