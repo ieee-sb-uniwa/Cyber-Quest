@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
-[ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
 [ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="20_y6a7i"]
@@ -441,9 +441,20 @@ scale = Vector2(1.5, 1.5)
 z_index = 10
 position = Vector2(544, -145)
 
-[node name="Door" parent="Environment" instance=ExtResource("15_subb7")]
-z_index = 8
-position = Vector2(480, -176)
+[node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1558, 28)
+playerNum = 2
+
+[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1614, 52)
+
+[node name="External_Door" parent="Environment" instance=ExtResource("11_1lo17")]
+y_sort_enabled = true
+position = Vector2(477, -196)
 scale = Vector2(1.5, 1.5)
 
 [node name="MoveBoxes" type="Node2D" parent="Environment"]
@@ -482,17 +493,6 @@ scale = Vector2(0.7, 0.7)
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
 position = Vector2(1412, 18)
 scale = Vector2(0.7, 0.7)
-
-[node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(1502, 15)
-playerNum = 2
-
-[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(1598, 21)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
