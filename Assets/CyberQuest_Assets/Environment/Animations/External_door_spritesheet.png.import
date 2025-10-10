@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu2srngeyjbjn"
-path="res://.godot/imported/PassBlocks.png-defa6d09a090aab76eacbb64d862bf41.ctex"
+uid="uid://b80nj1xvld1b0"
+path="res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CyberQuest_Assets/Environment/PassBlocks.png"
-dest_files=["res://.godot/imported/PassBlocks.png-defa6d09a090aab76eacbb64d862bf41.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png"
+dest_files=["res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex"]
 
 [params]
 

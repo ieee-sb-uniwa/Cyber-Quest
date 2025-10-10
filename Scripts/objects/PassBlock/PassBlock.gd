@@ -1,6 +1,12 @@
 extends StaticBody2D
+
 @onready var block_sprite: Sprite2D = $Sprite2D
 @onready var passArea = $InteractionArea
+# Flag to determine what type of block to spawn
+@export var is_num: bool = true
+@export var is_upper: bool = false
+@export var is_lower: bool = false
+@export var is_symbol: bool = false
 
 var unpicked_z_index : int
 var picked = false
@@ -67,24 +73,36 @@ func _input(_event):
 
 # ----- Initialiazation -----
 func _ready():
-	# Initialize default z index
 	unpicked_z_index = self.z_index 
-	# Initialize block number at initialiazation
+	set_block_sprite()
+
+func set_block_sprite():
 	randomize()
-	block_id = rand_num(0,9)
-	# print("Block id: " + str(block_id))
-	# depending on randon number assign frame (0-9)
-	block_sprite.set_frame(block_id)  
 
-# Random number between a range (a,b)
-func rand_num(a, b : int):
-	return randi_range(a, b)
+	block_id = set_block_based_on_type()
+	# Ensure unique block ids in level
+	while block_id in Global.passblocks_in_level:
+		block_id = set_block_based_on_type()
 
-# Random letter -> give true for lowercase
-func rand_letter(isLowercase: bool):
-	if isLowercase:
-		block_id = rand_num(97,122) 
-		return char(97 + randi() % 26) # 'a' - 'z' (ASCII code 97-122)
-	else:
-		block_id = rand_num(65,90)
-		return char(65 + randi() % 26) # 'A' - 'Z' (ASCII code 65-90)
+	# Add to global list of blocks in level
+	Global.passblocks_in_level.append(block_id)
+	print("Block id: ", block_id)
+	block_sprite.set_frame(block_id)
+
+func set_block_based_on_type():
+	var num_len = 4
+	var letr_symb_len = 8
+	var idx = 0
+	var offset = 0
+	if is_num:
+		idx = randi_range(0, num_len - 1)
+	elif is_upper:
+		offset = num_len
+		idx = randi_range(0, letr_symb_len - 1)
+	elif is_lower:
+		offset = num_len + letr_symb_len
+		idx = randi_range(0, letr_symb_len - 1)
+	elif is_symbol:
+		offset = num_len + 2 * letr_symb_len
+		idx = randi_range(0, letr_symb_len - 1)
+	return offset + idx

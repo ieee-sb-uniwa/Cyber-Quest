@@ -32,7 +32,8 @@ func start_dash():
 		if input_direction.x!=0 || input_direction.y != 0:
 			dash_calculation = input_direction.normalized() * dash_movement
 		else:
-			dash_calculation = direction_dict[player.move_orientation].normalized() * dash_movement
+			var dash_dir = direction_dict.get(player.move_orientation, Vector2(1, 0)) # Default to RIGHT
+			dash_calculation = dash_dir.normalized() * dash_movement
 		_is_dashing = true
 		_dash_timer = dash_duration
 		_cooldown_timer = cooldown_time
