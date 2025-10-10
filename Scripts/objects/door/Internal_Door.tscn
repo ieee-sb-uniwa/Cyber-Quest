@@ -247,7 +247,7 @@ size = Vector2(56, 54)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yk21r"]
 size = Vector2(56.5, 45)
 
-[node name="Door" type="StaticBody2D"]
+[node name="Internal_Door" type="StaticBody2D"]
 z_index = 10
 y_sort_enabled = true
 collision_layer = 8

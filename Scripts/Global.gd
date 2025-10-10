@@ -18,6 +18,11 @@ enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false
 var can_pause_game: bool = true
+var saveData :SaveData
+
+func _ready():
+	saveData = SaveData.new()
+
 
 var lobby_doors_open: Array = [true, false, false] # First door is open by default (storage, comms, engineroom)
 var current_level: int = 0
@@ -42,3 +47,15 @@ func get_player_interact_button(body: Node2D) -> String:
 		return "[.]"
 	else:
 		return ""
+		
+func change_level() -> void:
+	PlayerData.level+=1
+	print(PlayerData.level)
+	saveData.save_game()
+	
+func load_game() -> void:
+	var canLoad = saveData.load_game()
+	if canLoad:
+		print("go to loaded level")
+	else:
+		print("no save available")

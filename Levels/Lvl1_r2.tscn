@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=32 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
@@ -9,10 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bw2s2jg6qbkeh" path="res://Assets/CyberQuest_Assets/Environment/fan.png" id="6_bfxao"]
 [ext_resource type="Texture2D" uid="uid://dkq1ni6f6fjbh" path="res://Assets/CyberQuest_Assets/Environment/pipesHorizontal.png" id="6_g3ro0"]
 [ext_resource type="Texture2D" uid="uid://do0r1o5iuffsx" path="res://Assets/CyberQuest_Assets/Environment/circuitsNew.png" id="7_o0k03"]
+[ext_resource type="Texture2D" uid="uid://ubchtr1yu7um" path="res://Assets/CyberQuest_Assets/Environment/sign.png" id="7_wedbv"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="10_7skwt"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_54ngp"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="11_jwjn3"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
+[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="13_54ngp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7skwt"]
@@ -113,6 +115,11 @@ texture_region_size = Vector2i(64, 64)
 4:3/0 = 0
 5:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahura"]
+texture = ExtResource("7_wedbv")
+texture_region_size = Vector2i(128, 64)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_g3ro0"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
@@ -123,6 +130,7 @@ sources/2 = SubResource("TileSetAtlasSource_l6qtc")
 sources/3 = SubResource("TileSetAtlasSource_54ngp")
 sources/4 = SubResource("TileSetAtlasSource_g3ro0")
 sources/5 = SubResource("TileSetAtlasSource_jfvbu")
+sources/6 = SubResource("TileSetAtlasSource_ahura")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkdam"]
 texture = ExtResource("2_bfxao")
@@ -591,7 +599,7 @@ sources/1 = SubResource("TileSetAtlasSource_wedbv")
 
 [node name="Wall Decorations Layer" type="TileMapLayer" parent="TileMap"]
 z_index = 3
-tile_map_data = PackedByteArray("AAD9//j/AAABAAMAAAD+//j/AAACAAMAAAD///j/AAABAAMAAAAAAPj/AAACAAMAAAABAPj/AAABAAMAAAACAPj/AAACAAMAAAADAPj/AAADAAMAAAAEAPf/AAADAAMAAAAFAPb/AAADAAMAAAADAPf/AAABAAEAAAAEAPb/AAABAAEAAAAGAPX/AAABAAMAAAAHAPX/AAACAAMAAAD4//X/AAABAAMAAAD5//X/AAACAAMAAAD3//X/AAACAAMAAAAIAPX/AAACAAMAAAAFAPX/AAABAAEAAAD8//j/AAAAAAMAAAD7//f/AAAAAAMAAAD6//b/AAAAAAMAAAD6//X/AAACAAEAAAD7//b/AAACAAEAAAD8//f/AAACAAEAAAD9//v/AQABAAEAAAD9//z/AQAAAAIAAAAIAPf/AQAEAAIAAAAHAPf/AQABAAIAAAAGAPb/AQABAAIAAAAHAPb/AQACAAEAAAAIAPj/AQAAAAMAAAAIAPb/AQADAAEAAAD3//v/AAADAAAAAAD4//z/AAADAAAAAAD5//3/AAADAAAAAAD6//7/AAADAAAAAAD7////AAADAAAAAAD8/wAAAAADAAAAAAD7/wAAAAABAAIAAAD6////AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAABAAIAAAD3//z/AAABAAIAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAD8/wEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAACAAIAAAAHAP3/AAACAAIAAAAGAP7/AAACAAIAAAAFAP//AAACAAIAAAAEAAAAAAACAAIAAAD+//v/AQACAAIAAAD+//r/AQAEAAEAAAD9//r/AQABAAIAAAD9//n/AQAAAAEAAAD///r/AQABAAAAAAAAAPr/AQABAAAAAAABAPr/AQACAAEAAAD3//b/AQACAAEAAAD3//f/AQACAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9//j/AAABAAMAAAD+//j/AAACAAMAAAD///j/AAABAAMAAAAAAPj/AAACAAMAAAABAPj/AAABAAMAAAACAPj/AAACAAMAAAADAPj/AAADAAMAAAAEAPf/AAADAAMAAAAFAPb/AAADAAMAAAADAPf/AAABAAEAAAAEAPb/AAABAAEAAAAGAPX/AAABAAMAAAAHAPX/AAACAAMAAAD4//X/AAABAAMAAAD5//X/AAACAAMAAAD3//X/AAACAAMAAAAIAPX/AAACAAMAAAAFAPX/AAABAAEAAAD8//j/AAAAAAMAAAD7//f/AAAAAAMAAAD6//b/AAAAAAMAAAD6//X/AAACAAEAAAD7//b/AAACAAEAAAD8//f/AAACAAEAAAD9//v/AQABAAEAAAD9//z/AQAAAAIAAAAIAPf/AQAEAAIAAAAHAPf/AQABAAIAAAAGAPb/AQABAAIAAAAHAPb/AQACAAEAAAAIAPj/AQAAAAMAAAAIAPb/AQADAAEAAAD3//v/AAADAAAAAAD4//z/AAADAAAAAAD5//3/AAADAAAAAAD6//7/AAADAAAAAAD7////AAADAAAAAAD8/wAAAAADAAAAAAD7/wAAAAABAAIAAAD6////AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAABAAIAAAD3//z/AAABAAIAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAD8/wEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAACAAIAAAAHAP3/AAACAAIAAAAGAP7/AAACAAIAAAAFAP//AAACAAIAAAAEAAAAAAACAAIAAAD+//v/AQACAAIAAAD3//b/AQACAAEAAAD3//f/AQACAAIAAAD+//n/AQAEAAEAAAD///n/AQACAAAAAAD+//r/AQAAAAIAAAD9//n/AQABAAIAAAAAAPn/AQABAAAAAAABAPn/AQABAAAAAAACAPn/AQAEAAIAAAACAPv/AQAAAAMAAAACAPr/AQAAAAIAAAA=")
 tile_set = SubResource("TileSet_g3ro0")
 
 [node name="Wall Map Layer" type="TileMapLayer" parent="TileMap"]
@@ -612,6 +620,9 @@ tile_set = SubResource("TileSet_l6qtc")
 process_mode = 3
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_54ngp")]
+
+[node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
+visible = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
 z_index = 11
