@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=35 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c6eyucd6nmqhi" path="res://Scripts/Characters/Enemies/enemy.tscn" id="8_uf234"]
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
-[ext_resource type="PackedScene" uid="uid://88i23lrr0po" path="res://HUD/scenes/hud.tscn" id="11_4fq5f"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="14_ixldi"]
 [ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/Boxes/HideBox.tscn" id="15_nop75"]
@@ -542,7 +541,7 @@ shape = SubResource("RectangleShape2D_6rttb")
 light_mask = 0
 visibility_layer = 0
 
-[node name="HUD" parent="." instance=ExtResource("11_4fq5f")]
+[node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("14_ixldi")]
