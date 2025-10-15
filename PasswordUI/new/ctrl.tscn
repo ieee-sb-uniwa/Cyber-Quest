@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://r21wg5i6yxvu"]
+[gd_scene load_steps=43 format=3 uid="uid://r21wg5i6yxvu"]
 
 [ext_resource type="Script" uid="uid://de0p7onn3v728" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="1_yhck8"]
+[ext_resource type="Script" uid="uid://cig83igiwonat" path="res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/onscreen_keyboard.gd" id="3_lrc1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnaeo"]
 
@@ -372,3 +373,13 @@ offset_bottom = 148.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yhck8")
 shortcut = SubResource("Shortcut_myvxr")
 text = "✓"
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 210.0
+offset_right = 413.0
+offset_bottom = 354.0
+script = ExtResource("3_lrc1x")
+metadata/_custom_type_script = "uid://cig83igiwonat"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbfw12p4n82i7"]
+
+[ext_resource type="Script" uid="uid://cig83igiwonat" path="res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/onscreen_keyboard.gd" id="1_4qk8x"]
+
+[node name="FullKeyboard" type="PanelContainer"]
+visible = false
+offset_top = -1.0
+offset_right = 361.0
+offset_bottom = 151.0
+script = ExtResource("1_4qk8x")
+metadata/_custom_type_script = "uid://cig83igiwonat"
