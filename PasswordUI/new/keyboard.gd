@@ -1,91 +1,23 @@
 extends Control
 
+# Display Messages
 var current_input := ""
 var screen_log := ""
 var welcome := "Καλώς Ήρθατε!\nΕισάγετε κωδικό:\n>"
 var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.\n"
 
+# Paths label- terminal, primary- basic rules, secondary- extra rules
 var label_path := "../Screen/Panel/RichTextLabel1"
 var primary_label := "../Primary/RichTextLabel2"
-var tablet_label := "../Secondary/Panel/RichTextLabel3"
+var secondary_label := "../Secondary/Panel/RichTextLabel3"
 
+# Variables for successfull unlock and checks
 var input_finalized := false
 var success := false
 var message_done := false
 var showing_exit_message := false
 
 
-# --- Rules ---
-var pri_rules := {
-	"prule1": "Μην βάλεις την ημερομηνία γέννησής σου.",
-	"prule2": "Μήκος κωδικού τουλάχιστον 8 ψηφία.",
-	"prule3": "Μην βάλεις το όνομά σου.",
-	"prule4": "Βάλε τουλάχιστον ένα κεφαλαίο γράμμα.",
-	"prule5": "Βάλε τουλάχιστον ένα πεζό γράμμα.",
-	"prule6": "Βάλε τουλάχιστον έναν αριθμό.",
-	"prule7": "Βάλε τουλάχιστον ένα ειδικό σύμβολο."
-}
-
-var sec_rules := {
-	"srule1": "2 συνεχόμενα νούμερα να μην είναι ίδια.",
-	"srule2": "2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα.",
-	"srule3": "2 συνεχόμενα γράμματα να μην είναι ίδια.",
-	"srule4": "2 συνεχόμενα γράμματα να μην είναι σε σειρά ή αντίστροφα.",
-	"srule5": "Να μην υπάρχουν 3 συνεχόμενα ψηφία.",
-	"srule6": "Να μην υπάρχουν 3 συνεχόμενα ειδικά σύμβολα."
-}
-
-# --- Visibility ---
-var visible_pri_rules := {
-	"prule1": true,   # visible from start
-	"prule2": true,   # visible from start
-	"prule3": false,
-	"prule4": false,
-	"prule5": false,
-	"prule6": false,
-	"prule7": false
-}
-
-var visible_sec_rules := {
-	"srule1": false,  # revealed on fail
-	"srule2": false,  # revealed on fail
-	"srule3": false,
-	"srule4": false,
-	"srule5": false,
-	"srule6": false
-}
-
-
-# --- Function to create all possible DOB patterns ---
-func generate_dob_variations(dob_str: String) -> Array:
-	var parts = dob_str.split("/")
-	if parts.size() != 3:
-		return []
-
-	var day = parts[0]
-	var month = parts[1]
-	var year = parts[2]
-
-	if year.length() == 2:
-		year = "20" + year
-
-	var permutations = [
-		[day, month, year],
-		[month, day, year],
-		[day, year, month],
-		[month, year, day],
-		[year, month, day],
-		[year, day, month]
-	]
-
-	var variations = []
-	for p in permutations:
-		variations.append(p[0] + p[1] + p[2])
-
-	return variations
-
-
-# --- On ready ---
 func _ready():
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 
@@ -97,19 +29,26 @@ func _ready():
 		call_deferred("_on_visibility_changed")
 
 	Global.date_of_birth = generate_dob_variations(Global.dob)
-	print(Global.date_of_birth)
+	print(Global.date_of_birth) #for debugging
 
-	# Show only visible primary rules
+	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
-	var sectext = "Βασικοί Κανόνες:\n\n"
-	for key in pri_rules.keys():
-		if visible_pri_rules[key]:
-			sectext += "- " + pri_rules[key] + "\n"
-	primary_label_node.text = sectext
+	var text = "Βασικοί Κανόνες:\n\n"
+	var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
+	Global.visible_pri_rules["prule1"]=true
+	Global.visible_pri_rules["prule2"]=true
 
+	for key in Global.pri_rules.keys():
+		if Global.visible_pri_rules[key]:
+			text += Global.pri_rules[key] + "\n\n"
+
+	primary_label_node.text = text
+
+# Terminal activation
 func _on_visibility_changed():
 	var label = get_node(label_path)
+
 	label.bbcode_enabled = true
 	label.scroll_active = true
 	label.clear()
@@ -125,23 +64,30 @@ func _on_visibility_changed():
 		call_deferred("_start_exit_animation")
 
 
+# Welcome message animation
 func _start_welcome_animation() -> void:
 	var label = get_node(label_path)
+
 	await _type_text_animation(welcome, label, true)
 	screen_log = welcome
 	message_done = true
 
 
+# Exit message animation
 func _start_exit_animation() -> void:
 	message_done = false
 	var label = get_node(label_path)
 	label.text = ""
+
 	await _type_text_animation(exit_msg, label, true)
+
 	message_done = true
 
 
+# Animation timeframes
 func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_first: bool = false) -> void:
 	var frames_per_char := 6
+
 	if clear_first:
 		label.clear()
 
@@ -157,6 +103,7 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 			label.text = base_text + buffer
 
 
+# Interactions through numpad
 func _on_button_pressed(button_name: String):
 	if input_finalized:
 		return
@@ -178,10 +125,12 @@ func _on_button_pressed(button_name: String):
 				current_input += button_name
 
 	var label = get_node(label_path)
+
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
 
 
+# Checking validity
 func _on_confirm_pressed():
 	input_finalized = true
 
@@ -202,44 +151,69 @@ func _on_confirm_pressed():
 		_successful_unlock()
 
 
+# DOB variations function
+func generate_dob_variations(dob_str: String) -> Array:
+	var parts = dob_str.split("/") #assuming dob is 07/02/2008
+
+	var day = parts[0]
+	var month = parts[1]
+	var year = parts[2]
+
+	# all possible variations
+	var permutations = [
+		[day, month, year],
+		[month, day, year],
+		[day, year, month],
+		[month, year, day],
+		[year, month, day],
+		[year, day, month]
+	]
+
+	var variations = []
+	for p in permutations: #all variations in form "07022008"
+		variations.append(p[0] + p[1] + p[2])
+
+	return variations
+
+
+# On screen feedback after check
 func _generate_rule_feedback() -> String:
 	var password := current_input
 	var feedback := "> " + password + "\n"
 
-	# --- Primary rules ---
-	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")"
+	# Primary rules check
+	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")" #turns date_of_birth array to regex
 	var prule1_failed = _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$")  # no DOB
 	var prule2_failed = password.length() < 8  # length >= 8
 
-	# --- Secondary rules ---
+	# Secondary rules check
 	var srule1_failed = _rule_breach_regex(password, "^(?!.*(\\d)\\1).*$")  # no same digits in a row
 	var srule2_failed = _rule_breach_regex(password, "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$")  # no sequences
 
 	var errors := []
 
-	# --- Primary rule failures (always shown) ---
+	# Primary rules violation gets shown on terminal
 	if prule1_failed:
-		errors.append(pri_rules["prule1"])
+		errors.append(Global.pri_rules["prule1"])
 	if prule2_failed:
-		errors.append(pri_rules["prule2"])
+		errors.append(Global.pri_rules["prule2"])
 
-	# --- Secondary rules (revealed dynamically) ---
+	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
 	if srule1_failed:
-		errors.append(sec_rules["srule1"])
-		visible_sec_rules["srule1"] = true
+		errors.append(Global.sec_rules["srule1"])
+		Global.visible_sec_rules["srule1"] = true
 	if srule2_failed:
-		errors.append(sec_rules["srule2"])
-		visible_sec_rules["srule2"] = true
+		errors.append(Global.sec_rules["srule2"])
+		Global.visible_sec_rules["srule2"] = true
 
-	# --- Update tablet info (only visible ones) ---
-	var info_label = get_node(tablet_label)
-	var tablet_text = "Χρήσιμες Πληροφορίες:\n"
-	for key in sec_rules.keys():
-		if visible_sec_rules[key]:
-			tablet_text += "\n" + sec_rules[key] + "\n"
+	# Tablet update after secondary rule failure
+	var info_label = get_node(secondary_label)
+	for key in Global.sec_rules.keys():
+		if Global.visible_sec_rules[key]:
+			tablet_text += "\n" + Global.sec_rules[key] + "\n"
 	info_label.text = tablet_text
 
-	# --- Feedback display ---
+	# Feedback on terminal (colorized)
 	if errors.size() == 0:
 		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
 		success = true
@@ -251,11 +225,13 @@ func _generate_rule_feedback() -> String:
 	return feedback
 
 
+# Confirm works upon all Enter buttons and on-screen confirm button
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
 		_successful_unlock()
 
 
+# Success maintains the terminal unlocked on next interactions
 func _successful_unlock():
 	get_tree().paused = false
 	Global.terminal_unlocked = true
@@ -263,6 +239,7 @@ func _successful_unlock():
 	Global.can_pause_game = true
 
 
+# Regex validation
 func _rule_breach_regex(password: String, pattern: String) -> bool:
 	var regex := RegEx.new()
 	if regex.compile(pattern) != OK:
