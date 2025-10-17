@@ -16,6 +16,7 @@ var input_finalized := false
 var success := false
 var message_done := false
 var showing_exit_message := false
+var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
 
 func _ready():
@@ -34,7 +35,7 @@ func _ready():
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
 	var text = "Βασικοί Κανόνες:\n\n"
-	var tablet_text = "Χρήσιμες Πληροφορίες:\n"
+
 
 	Global.visible_pri_rules["prule1"]=true
 	Global.visible_pri_rules["prule2"]=true
