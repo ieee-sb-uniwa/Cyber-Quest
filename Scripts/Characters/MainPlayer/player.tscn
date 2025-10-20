@@ -246,7 +246,7 @@ itemHolder = NodePath("AnimatedSprite2D/ItemHolder")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e0c3b")
-animation = &"idle_back"
+animation = &"idle_side"
 autoplay = "idle_side"
 
 [node name="ItemHolder" type="Node2D" parent="AnimatedSprite2D" node_paths=PackedStringArray("items_available_positions")]
