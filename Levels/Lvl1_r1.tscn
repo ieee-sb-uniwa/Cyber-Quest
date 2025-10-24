@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box_3.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
-[ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="20_y6a7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_subb7"]
 texture = ExtResource("11_cfkql")
@@ -421,20 +421,14 @@ scale = Vector2(1.5, 1.5)
 z_index = 5
 y_sort_enabled = true
 
-[node name="MoveBox" parent="Environment/MoveBoxes" instance=ExtResource("20_y6a7i")]
-z_index = 5
-y_sort_enabled = true
-position = Vector2(1208, 33)
+[node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+position = Vector2(1205, 29)
 
-[node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("20_y6a7i")]
-z_index = 5
-y_sort_enabled = true
-position = Vector2(482, 287)
+[node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+position = Vector2(744, 25)
 
-[node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("20_y6a7i")]
-z_index = 5
-y_sort_enabled = true
-position = Vector2(738, 28)
+[node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+position = Vector2(480, 288)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
