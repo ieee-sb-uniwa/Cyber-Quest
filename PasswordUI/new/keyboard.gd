@@ -29,13 +29,17 @@ func _ready():
 	if is_visible_in_tree():
 		call_deferred("_on_visibility_changed")
 
-	Global.date_of_birth = generate_dob_variations(Global.dob)
+	var dob_var1 = generate_dob_variations(Global.dob1)
+	var dob_var2 = generate_dob_variations(Global.dob2)
+	Global.date_of_birth = dob_var1+dob_var2
 	print(Global.date_of_birth) #for debugging
 
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
 	var text = "Βασικοί Κανόνες:\n\n"
 
+	var secondary_label_node = get_node(secondary_label)
+	var sec_text = "Χρήσιμες Πληροφορίες:\n\n"
 
 	Global.visible_pri_rules["prule1"]=true
 	Global.visible_pri_rules["prule2"]=true
@@ -45,6 +49,9 @@ func _ready():
 			text += Global.pri_rules[key] + "\n\n"
 
 	primary_label_node.text = text
+	
+	secondary_label_node.text = sec_text
+	tablet_text = sec_text
 
 # Terminal activation
 func _on_visibility_changed():
@@ -154,13 +161,13 @@ func _on_confirm_pressed():
 
 # DOB variations function
 func generate_dob_variations(dob_str: String) -> Array:
-	var parts = dob_str.split("/") #assuming dob is 07/02/2008
+	var parts = dob_str.split("/") #Assuming dob is in format 07/02/2008
 
 	var day = parts[0]
 	var month = parts[1]
 	var year = parts[2]
 
-	# all possible variations
+	# All possible variations
 	var permutations = [
 		[day, month, year],
 		[month, day, year],
@@ -171,8 +178,21 @@ func generate_dob_variations(dob_str: String) -> Array:
 	]
 
 	var variations = []
-	for p in permutations: #all variations in form "07022008"
-		variations.append(p[0] + p[1] + p[2])
+
+	for p in permutations: # All variations in form "07022008"
+		var padded = p[0] + p[1] + p[2]
+		variations.append(padded)
+		
+		var unpadded_vars = []
+		
+		for item in p:
+				# Remove leading zero only if present
+			if item.begins_with("0"):
+				unpadded_vars.append(item.substr(1))
+			else:
+				unpadded_vars.append(item)
+		var unpadded = unpadded_vars[0] + unpadded_vars[1] + unpadded_vars[2]
+		variations.append(unpadded)
 
 	return variations
 
@@ -209,10 +229,12 @@ func _generate_rule_feedback() -> String:
 
 	# Tablet update after secondary rule failure
 	var info_label = get_node(secondary_label)
+	var sec_text = "Χρήσιμες Πληροφορίες:\n"
 	for key in Global.sec_rules.keys():
 		if Global.visible_sec_rules[key]:
-			tablet_text += "\n" + Global.sec_rules[key] + "\n"
-	info_label.text = tablet_text
+			sec_text += "\n" + Global.sec_rules[key] + "\n"
+	info_label.text = sec_text
+	tablet_text = sec_text
 
 	# Feedback on terminal (colorized)
 	if errors.size() == 0:

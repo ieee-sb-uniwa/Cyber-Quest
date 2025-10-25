@@ -12,7 +12,8 @@ var move_speed : float = 150
 var passblocks_in_level : Array = [] # List of passblocks in level to ensure unique ids
 
 # General Password Rules Properties
-var dob := "07/02/2008"
+var dob1 := "07/02/2008"
+var dob2 := "03/12/2008"
 var date_of_birth : Array = []
 var pri_rules := {
 	"prule1": "Μην βάλεις την ημερομηνία γέννησής σου.",
