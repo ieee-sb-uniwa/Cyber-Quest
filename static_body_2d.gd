@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 
 @export var speed_multiplier: float = 0.4
 @export var max_grab_distance: float = 300.0
@@ -15,7 +15,6 @@ var move_orientation: String = ""  # "vertical", "horizontal", or ""
 @onready var area_h: Area2D = $InteractionAreaH
 
 func _ready() -> void:
-	gravity_scale = 0.0
 	# Initialize speed based on global move speed
 	speed = Global.move_speed * speed_multiplier
 	
@@ -27,19 +26,17 @@ func _ready() -> void:
 	area_h.body_exited.connect(_on_body_exited_h)
 
 func _process(_delta: float) -> void:
-	# Έλεγξε για νέες αλληλεπιδράσεις
+	# Check for toggle interactions
 	for p in nearby_players_v + nearby_players_h:
-		if _is_player_interacting(p) and not grabbers.has(p):
-			_grab(p)
+		if _is_player_toggling_interaction(p):
+			_toggle_player_interaction(p)
 
-	# Απελευθέρωσε όσους δεν αλληλεπιδρούν ή βρίσκονται πολύ μακριά
+	# Release players who are too far away
 	for g in grabbers.duplicate():
-		if not _is_player_interacting(g):
-			_release(g)
-		elif max_grab_distance > 0 and g.global_position.distance_to(global_position) > max_grab_distance:
+		if max_grab_distance > 0 and g.global_position.distance_to(global_position) > max_grab_distance:
 			_release(g)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
 		return
@@ -57,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 		total_dir += input_dir
 
 	if total_dir != Vector2.ZERO:
-		# Περιορισμός κίνησης ανάλογα με την περιοχή
+		# Restrict movement based on area
 		if move_orientation == "horizontal":
 			total_dir.y = 0
 		elif move_orientation == "vertical":
@@ -65,9 +62,9 @@ func _physics_process(_delta: float) -> void:
 		velocity = total_dir.normalized() * speed
 	else:
 		velocity = Vector2.ZERO
-
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	state.linear_velocity = velocity
+	
+	# Apply movement directly to position
+	position += velocity * delta
 
 # --- Area signals ---
 
@@ -80,7 +77,9 @@ func _on_body_entered_v(body: Node) -> void:
 func _on_body_exited_v(body: Node) -> void:
 	if body is CharacterBody2D:
 		nearby_players_v.erase(body)
-		_release(body)
+		# Only release if they were grabbing
+		if grabbers.has(body):
+			_release(body)
 		_update_move_orientation()
 
 func _on_body_entered_h(body: Node) -> void:
@@ -92,7 +91,9 @@ func _on_body_entered_h(body: Node) -> void:
 func _on_body_exited_h(body: Node) -> void:
 	if body is CharacterBody2D:
 		nearby_players_h.erase(body)
-		_release(body)
+		# Only release if they were grabbing
+		if grabbers.has(body):
+			_release(body)
 		_update_move_orientation()
 
 func _update_move_orientation() -> void:
@@ -105,29 +106,29 @@ func _update_move_orientation() -> void:
 
 # --- Player interaction ---
 
-func _is_player_interacting(p: CharacterBody2D) -> bool:
+func _is_player_toggling_interaction(p: CharacterBody2D) -> bool:
 	if p == null:
 		return false
 	var action_name := "Interact_p" + str(p.playerNum)
-	if Input.is_action_pressed(action_name):
-		# Notify the player that they're interacting with a box
-		if p.has_method("set_interacting_with_box"):
-			p.set_interacting_with_box(true)
-		return true
-	if p.has_method("is_interacting") and p.is_interacting():
-		if p.has_method("set_interacting_with_box"):
-			p.set_interacting_with_box(true)
-		return true
-	return false
+	return Input.is_action_just_pressed(action_name)
+
+func _toggle_player_interaction(p: CharacterBody2D) -> void:
+	if grabbers.has(p):
+		_release(p)
+	else:
+		_grab(p)
 
 func _grab(p: CharacterBody2D) -> void:
 	if not grabbers.has(p):
 		grabbers.append(p)
+		# Set the player's interaction state
+		if p.has_method("set_interacting_with_box"):
+			p.set_interacting_with_box(true)
 		print("Grabbed box, orientation:", move_orientation)
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)
-	# Reset the player's movement speed
+	# Reset the player's interaction state
 	if p != null and p.has_method("set_interacting_with_box"):
 		p.set_interacting_with_box(false)
 	if grabbers.size() == 0:
