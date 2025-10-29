@@ -290,7 +290,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_2xt3y"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 6
+physics_layer_0/collision_mask = 14
 sources/0 = SubResource("TileSetAtlasSource_e352s")
 sources/1 = SubResource("TileSetAtlasSource_06f0v")
 
@@ -483,15 +483,15 @@ y_sort_enabled = true
 
 [node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
-position = Vector2(1205, 29)
+position = Vector2(2082, 30)
 
 [node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
-position = Vector2(744, 25)
+position = Vector2(1443, -31)
 
 [node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
-position = Vector2(480, 288)
+position = Vector2(483, 606)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
@@ -504,7 +504,7 @@ position = Vector2(-733, -27)
 scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(483, 609)
+position = Vector2(483, 605)
 scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
