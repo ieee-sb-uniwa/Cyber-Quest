@@ -72,7 +72,7 @@ func _on_body_entered_v(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_v.has(body):
 		nearby_players_v.append(body)
 		_update_move_orientation()
-		print("Vertical zone: player nearby")
+		# print("Vertical zone: player nearby")
 
 func _on_body_exited_v(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -86,7 +86,7 @@ func _on_body_entered_h(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_h.has(body):
 		nearby_players_h.append(body)
 		_update_move_orientation()
-		print("Horizontal zone: player nearby")
+		# print("Horizontal zone: player nearby")
 
 func _on_body_exited_h(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -124,7 +124,7 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
-		print("Grabbed box, orientation:", move_orientation)
+		# print("Grabbed box, orientation:", move_orientation)
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)
@@ -133,4 +133,4 @@ func _release(p: CharacterBody2D) -> void:
 		p.set_interacting_with_box(false)
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
-	print("Released box")
+	# print("Released box")
