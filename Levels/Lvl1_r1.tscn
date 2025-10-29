@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
-[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box_3.tscn" id="15_subb7"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
 
@@ -410,7 +410,7 @@ playerNum = 2
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(1614, 52)
+position = Vector2(1382, 18)
 
 [node name="External_Door" parent="Environment" instance=ExtResource("11_1lo17")]
 y_sort_enabled = true
@@ -422,12 +422,15 @@ z_index = 5
 y_sort_enabled = true
 
 [node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+z_index = 5
 position = Vector2(1205, 29)
 
 [node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+z_index = 5
 position = Vector2(744, 25)
 
 [node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+z_index = 5
 position = Vector2(480, 288)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]

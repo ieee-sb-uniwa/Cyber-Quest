@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d13em5756fc6e"]
 
-[ext_resource type="Script" uid="uid://dr7m7tykn3jkq" path="res://static_body_2d.gd" id="1_uqapv"]
+[ext_resource type="Script" path="res://Scripts/objects/Boxes/move_box.gd" id="1_uqapv"]
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="2_xdurq"]
 [ext_resource type="Script" uid="uid://cxoccobhfbs2w" path="res://Scripts/Interactions/InteractionArea/InteractionArea.gd" id="3_fegow"]
 
@@ -19,7 +19,7 @@ size = Vector2(37, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4wmc"]
 size = Vector2(37, 29)
 
-[node name="move_box_3" type="StaticBody2D"]
+[node name="move_box" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("1_uqapv")
