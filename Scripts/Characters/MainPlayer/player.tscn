@@ -122,7 +122,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_back",
-"speed": 12.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -130,7 +130,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_front",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -138,7 +138,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_side",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -246,9 +246,8 @@ itemHolder = NodePath("AnimatedSprite2D/ItemHolder")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e0c3b")
-animation = &"move_back"
+animation = &"move_side"
 autoplay = "idle_side"
-frame_progress = 0.306081
 
 [node name="ItemHolder" type="Node2D" parent="AnimatedSprite2D" node_paths=PackedStringArray("items_available_positions")]
 position = Vector2(0, 2)
