@@ -11,5 +11,5 @@ func _on_settings_pressed():
 	pass 
 
 
-func _on_quit_pressed():
-	get_tree().quit()
+func _on_restart_pressed(): 
+	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")

@@ -23,6 +23,10 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SpawnManager="*res://Scripts/Characters/MainPlayer/SpawnManager.gd"
 PlayerData="*res://Menus/main_menu/PlayerData.gd"
 
+[dialogue_manager]
+
+runtime/balloon_path="res://Dialogues/Level_Dialogues/example_balloons/balloon.tscn"
+
 [display]
 
 window/size/viewport_width=1600
@@ -131,7 +135,7 @@ Pause={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/Level_Dialogues/Level 1/Lev_1_tutorial.dialogue")
 
 [layer_names]
 
