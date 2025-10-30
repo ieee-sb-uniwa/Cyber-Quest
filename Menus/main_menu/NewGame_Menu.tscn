@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3gvyrc74be7l"]
+
+[ext_resource type="Script" uid="uid://cy3sgsqw8pyuh" path="res://Menus/main_menu/new_game_menu.gd" id="1_ew2db"]
+[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="1_nckv1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rnba"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew2db"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b6is"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_078hh"]
+font_size = 14
+
+[node name="NewGameMenu" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ew2db")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nckv1")
+stretch_mode = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+z_index = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="CenteringCon" type="VBoxContainer" parent="CenterContainer"]
+z_index = 1
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/CenteringCon"]
+custom_minimum_size = Vector2(155, 74)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="CenterContainer/CenteringCon/VBoxContainer"]
+layout_mode = 2
+text = "PLAYER"
+label_settings = SubResource("LabelSettings_0rnba")
+
+[node name="PlayerCount" type="Label" parent="CenterContainer/CenteringCon/VBoxContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_ew2db")
+
+[node name="Primary" type="ColorRect" parent="CenterContainer/CenteringCon"]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 2
+size_flags_vertical = 6
+focus_neighbor_bottom = NodePath("../VBoxContainer")
+mouse_filter = 1
+color = Color(0, 0.0641931, 0.208981, 1)
+
+[node name="Name" type="Label" parent="CenterContainer/CenteringCon/Primary"]
+custom_minimum_size = Vector2(104.55, 68.873)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.066
+anchor_top = 0.091
+anchor_right = 0.256
+anchor_bottom = 0.244
+offset_left = -0.129999
+offset_top = -0.019001
+offset_right = -0.0800018
+offset_bottom = 0.0039978
+text = "Όνομα:"
+label_settings = SubResource("LabelSettings_7b6is")
+vertical_alignment = 1
+
+[node name="NameIN" type="LineEdit" parent="CenterContainer/CenteringCon/Primary"]
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.266
+anchor_top = 0.081
+anchor_right = 0.954
+anchor_bottom = 0.23
+offset_left = -13.1
+offset_top = 16.071
+offset_right = -3.89999
+offset_bottom = 23.821
+
+[node name="Date" type="Label" parent="CenterContainer/CenteringCon/Primary"]
+custom_minimum_size = Vector2(320.835, 68.873)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197
+anchor_top = 0.268
+anchor_right = 0.78
+anchor_bottom = 0.421
+offset_left = 31.05
+offset_top = -0.012001
+offset_right = 147.835
+offset_bottom = 30.611
+text = "Ημερομηνία Γέννησης:"
+label_settings = SubResource("LabelSettings_078hh")
+vertical_alignment = 1
+
+[node name="DateIN" type="LineEdit" parent="CenterContainer/CenteringCon/Primary"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197
+anchor_top = 0.431
+anchor_right = 0.885
+anchor_bottom = 0.579
+offset_left = -8.95
+offset_top = 2.921
+offset_right = 20.25
+offset_bottom = 10.921
+placeholder_text = "ΗΜ/ΜΜ/ΧΧΧΧ"
+alignment = 1
+
+[node name="Confirm" type="Button" parent="CenterContainer/CenteringCon/Primary"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197
+anchor_top = 0.718
+anchor_right = 0.823
+anchor_bottom = 0.866
+offset_left = 31.05
+offset_top = 0.5
+offset_right = -38.05
+offset_bottom = 13.5
+text = "Έτοιμο"
+
+[connection signal="text_submitted" from="CenterContainer/CenteringCon/Primary/NameIN" to="." method="_on_name_in_text_submitted"]
+[connection signal="pressed" from="CenterContainer/CenteringCon/Primary/Confirm" to="." method="_on_confirm_pressed"]
