@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1v2038tkqia6"
-path="res://.godot/imported/robotakios.png-7005a595758aa435c99e4f4791685893.ctex"
+uid="uid://ceqgysl4kbnne"
+path="res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CyberQuest_Assets/Dialogues/robotakios.png"
-dest_files=["res://.godot/imported/robotakios.png-7005a595758aa435c99e4f4791685893.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Dialogues/player_1.png"
+dest_files=["res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"]
 
 [params]
 
