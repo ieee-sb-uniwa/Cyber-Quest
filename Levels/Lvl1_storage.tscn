@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="9_java5"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="9_r215s"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="11_7k02s"]
-[ext_resource type="PackedScene" uid="uid://ccudm6wbe24dg" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="11_vwuue"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="11_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="14_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_5rxy5"]
