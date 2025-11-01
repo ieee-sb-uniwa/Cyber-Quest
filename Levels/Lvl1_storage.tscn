@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="9_java5"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="9_r215s"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="11_7k02s"]
-[ext_resource type="PackedScene" uid="uid://dhb420rocoh88" path="res://Scripts/objects/Boxes/MoveBox.tscn" id="11_vwuue"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="11_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="14_vwuue"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_5rxy5"]
@@ -610,7 +610,7 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_on4r2")
 sources/0 = SubResource("TileSetAtlasSource_rbs70")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r215s"]
 texture = ExtResource("9_r215s")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -632,7 +632,7 @@ texture_region_size = Vector2i(128, 128)
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ategi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
 texture = ExtResource("8_r215s")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -649,8 +649,8 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-sources/0 = SubResource("TileSetAtlasSource_java5")
-sources/1 = SubResource("TileSetAtlasSource_ategi")
+sources/0 = SubResource("TileSetAtlasSource_r215s")
+sources/1 = SubResource("TileSetAtlasSource_java5")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpdss"]
 texture = ExtResource("9_java5")
