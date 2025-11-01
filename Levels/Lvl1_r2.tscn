@@ -626,11 +626,12 @@ process_mode = 3
 [node name="InventoryGUI" parent="HUD" instance=ExtResource("10_inv02")]
 anchors_preset = 2
 anchor_top = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.0
 offset_left = 10.0
 offset_top = -54.0
 offset_right = 186.0
 offset_bottom = -10.0
+grow_horizontal = 1
 grow_vertical = 0
 
 [node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
