@@ -19,6 +19,7 @@ enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false
 var can_pause_game: bool = true
 var saveData :SaveData
+var inventory_gui : Control
 
 func _ready():
 	saveData = SaveData.new()
@@ -37,6 +38,12 @@ func reset_variables() -> void:
 func can_access_terminal() -> bool:
 	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
 
+func add_passblock(passblock: Node) -> void:
+	dropped_passblocks.append(passblock)
+	if dropped_passblocks.size() == passblocks_in_level.size():
+		print("All passblocks collected!")
+		change_level()
+
 func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:
 	return Input.is_action_just_pressed(interact_button) and player.is_in_group(player_group)
 
@@ -50,6 +57,7 @@ func get_player_interact_button(body: Node2D) -> String:
 		
 func change_level() -> void:
 	PlayerData.level+=1
+	#inventory_gui.unlock_inventory_for_level(PlayerData.level)
 	print(PlayerData.level)
 	saveData.save_game()
 	

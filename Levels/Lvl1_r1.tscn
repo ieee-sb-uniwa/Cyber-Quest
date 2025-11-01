@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=38 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
+[ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="10_inv01"]
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
@@ -461,6 +462,16 @@ process_mode = 3
 visible = false
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_cjydo")]
+
+[node name="InventoryGUI" parent="HUD" instance=ExtResource("10_inv01")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -54.0
+offset_right = 186.0
+offset_bottom = -10.0
+grow_vertical = 0
 
 [node name="CameraRoot" type="Node" parent="."]
 

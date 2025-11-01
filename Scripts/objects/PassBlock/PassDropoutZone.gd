@@ -19,8 +19,8 @@ func _drop_and_disable_passblocks(body : Node2D):
 		block.drop_block(body)  # Drop the block at player's position
 		# block.visible = false # Set block invisible
 		block.set_interaction_area(false) # Disable interaction area
+		Global.add_passblock(block)
 	# Add all items from player to global dropped_passblocks
-	Global.dropped_passblocks.append_array(body.get_all_items())
 	# print(body)
 	for block in Global.dropped_passblocks:
 		block.drop_block(body) 

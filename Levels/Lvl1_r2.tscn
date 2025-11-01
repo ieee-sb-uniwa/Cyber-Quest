@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=33 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ubchtr1yu7um" path="res://Assets/CyberQuest_Assets/Environment/sign.png" id="7_wedbv"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="10_7skwt"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_54ngp"]
+[ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="10_inv02"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="11_jwjn3"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
@@ -620,6 +621,16 @@ tile_set = SubResource("TileSet_l6qtc")
 process_mode = 3
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_54ngp")]
+
+[node name="InventoryGUI" parent="HUD" instance=ExtResource("10_inv02")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -54.0
+offset_right = 186.0
+offset_bottom = -10.0
+grow_vertical = 0
 
 [node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
 visible = false
