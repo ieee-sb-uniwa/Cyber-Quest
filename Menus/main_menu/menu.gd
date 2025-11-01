@@ -17,6 +17,7 @@ func _on_load_pressed():
 	get_tree().change_scene_to_file("res://Menus/main_menu/Load-Menu.tscn");
 
 func _on_options_pressed():
+	print("help")
 	get_tree().change_scene_to_file("res://Menus/main_menu/Options-Menu.tscn");
 
 

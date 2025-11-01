@@ -1,36 +1,55 @@
 extends Control
 
-
-var username1 = ""
-var username2 = ""
-var DoB1 = ""
-var DoB2 = ""
-
+var DoB := RegEx.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text = "1"
 	$CenterContainer/CenteringCon/Primary/Confirm.text = "Next"
 	$CenterContainer/CenteringCon/Primary/NameIN.grab_focus()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-
 func _on_confirm_pressed() -> void:
-	if $CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text == "1" :
-		username1 = $CenterContainer/CenteringCon/Primary/NameIN.text
-		DoB1 = $CenterContainer/CenteringCon/Primary/DateIN.text
-		if DoB1.length() != 10 || username1.length() == 0:
-			#Pop-up saying its wrong
-			pass
+
+	DoB.compile("[A-Za-z]\\w")
+	var result := DoB.search($CenterContainer/CenteringCon/Primary/DateIN.text)
+	if result:
+		$CenterContainer/CenteringCon.visible = false
+		$"CenterContainer/Pop-Up".visible = true
+		$"CenterContainer/Pop-Up/ErrorLabel".text = "Η Ημερομηνία γέννησης να έχει μορφή: 01/01/0001 !"
+		return
+		
+	if $CenterContainer/CenteringCon/Primary/DateIN.text.length() != 10 || $CenterContainer/CenteringCon/Primary/NameIN.text.length() == 0:
+		$CenterContainer/CenteringCon.visible = false
+		$"CenterContainer/Pop-Up".visible = true
+		$"CenterContainer/Pop-Up/ErrorLabel".text = "Παρακαλώ εισάγετε σωστά τα στοιχεία σας!"
+		return
+
+	if $CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text == "1":
+		Global.player_name_1 = $CenterContainer/CenteringCon/Primary/NameIN.text
+		Global.birthdate_1 = $CenterContainer/CenteringCon/Primary/DateIN.text
 		$CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text = "2"
 		$CenterContainer/CenteringCon/Primary/Confirm.text = "Start!"
-	else: 
-		username2 = $CenterContainer/CenteringCon/Primary/NameIN.text
-		DoB2 = $CenterContainer/CenteringCon/Primary/DateIN.text
-		if DoB2.length() != 10 || username2.length() == 0:
-			#Pop-up saying its wrong
-			pass
-		#Save my data to the proper folder to be used later
-		get_tree().change_scene_to_file("res://Levels/Lvl1_r1.tscn")
+		$CenterContainer/CenteringCon/Primary/NameIN.text =''
+		$CenterContainer/CenteringCon/Primary/DateIN.text =''
+		return
+
+	Global.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
+	Global.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
+
+	get_tree().change_scene_to_file("res://Levels/Lvl1_r1.tscn")
+
+
+func _on_back_pressed() -> void:
+	$CenterContainer/CenteringCon/Primary/NameIN.text =''
+	$CenterContainer/CenteringCon/Primary/DateIN.text =''
+	$CenterContainer/CenteringCon.visible = true
+	$"CenterContainer/Pop-Up".visible = false
+	return
+
+
+func _on_back_to_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");

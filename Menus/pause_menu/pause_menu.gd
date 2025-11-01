@@ -8,8 +8,19 @@ func _on_resume_pressed():
 
 
 func _on_settings_pressed():
-	pass 
+	pause_interaction.pausemenu()
+	get_tree().change_scene_to_file("res://Menus/main_menu/Options-Menu.tscn")
+
 
 
 func _on_quit_pressed():
-	get_tree().quit()
+	pause_interaction.pausemenu()
+	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")
+
+
+func _on_save_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_load_pressed() -> void:
+	pass # Replace with function body.

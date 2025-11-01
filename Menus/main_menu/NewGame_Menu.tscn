@@ -1,22 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3gvyrc74be7l"]
+[gd_scene load_steps=9 format=3 uid="uid://d3gvyrc74be7l"]
 
 [ext_resource type="Script" uid="uid://cy3sgsqw8pyuh" path="res://Menus/main_menu/new_game_menu.gd" id="1_ew2db"]
 [ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="1_nckv1"]
+[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="3_0rnba"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqa1j"]
+font = ExtResource("3_0rnba")
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_0rnba"]
+font = ExtResource("3_0rnba")
 font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_ew2db"]
+font = ExtResource("3_0rnba")
 font_size = 36
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b6is"]
+font = ExtResource("3_0rnba")
 font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_078hh"]
+font = ExtResource("3_0rnba")
 font_size = 14
 
 [node name="NewGameMenu" type="Control"]
+custom_minimum_size = Vector2(1600, 900)
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -38,6 +49,7 @@ stretch_mode = 6
 [node name="CenterContainer" type="CenterContainer" parent="."]
 z_index = 1
 clip_contents = true
+custom_minimum_size = Vector2(1600, 900)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -46,9 +58,35 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="CenteringCon" type="VBoxContainer" parent="CenterContainer"]
+[node name="Pop-Up" type="VBoxContainer" parent="CenterContainer"]
+visible = false
+visibility_layer = 4
 z_index = 1
-clip_contents = true
+custom_minimum_size = Vector2(350, 388)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Pop-Up"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="ErrorLabel" type="Label" parent="CenterContainer/Pop-Up"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+label_settings = SubResource("LabelSettings_cqa1j")
+autowrap_mode = 2
+
+[node name="Back" type="Button" parent="CenterContainer/Pop-Up"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+text = "Πίσω"
+
+[node name="CenteringCon" type="VBoxContainer" parent="CenterContainer"]
+visibility_layer = 4
+z_index = 1
+custom_minimum_size = Vector2(350, 388)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
@@ -70,7 +108,7 @@ text = "1"
 label_settings = SubResource("LabelSettings_ew2db")
 
 [node name="Primary" type="ColorRect" parent="CenterContainer/CenteringCon"]
-custom_minimum_size = Vector2(350, 250)
+custom_minimum_size = Vector2(350, 300)
 layout_mode = 2
 size_flags_vertical = 6
 focus_neighbor_bottom = NodePath("../VBoxContainer")
@@ -151,5 +189,17 @@ offset_right = -38.05
 offset_bottom = 13.5
 text = "Έτοιμο"
 
+[node name="BackToMenu" type="Button" parent="CenterContainer/CenteringCon"]
+custom_minimum_size = Vector2(350, 25)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back to Main Menu"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 450)
+zoom = Vector2(0.75, 0.75)
+
+[connection signal="pressed" from="CenterContainer/Pop-Up/Back" to="." method="_on_back_pressed"]
 [connection signal="text_submitted" from="CenterContainer/CenteringCon/Primary/NameIN" to="." method="_on_name_in_text_submitted"]
 [connection signal="pressed" from="CenterContainer/CenteringCon/Primary/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="CenterContainer/CenteringCon/BackToMenu" to="." method="_on_back_to_menu_pressed"]

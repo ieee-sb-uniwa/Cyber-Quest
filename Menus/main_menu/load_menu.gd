@@ -3,6 +3,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Global.player_name_1 && Global.player_name_2:
+		$CenterVbox/VBoxContainer/N1.text = "Player 1: " + Global.player_name_1 + "\n Player 2:" + Global.player_name_2
 	$VBoxContainer2/BacktoMenu.grab_focus();
 
 

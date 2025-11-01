@@ -11,6 +11,14 @@ var Hide_status: int = 1
 var move_speed : float = 150
 var passblocks_in_level : Array = [] # List of passblocks in level to ensure unique ids
 
+# Player1 profile
+var player_name_1: String = ""
+var birthdate_1: String = ""
+
+# Player2 profile
+var player_name_2: String = ""
+var birthdate_2: String = ""
+
 # Level global variables
 var isTutorial: bool = true
 var players: Array[CharacterBody2D] = []
