@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=44 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
+[ext_resource type="PackedScene" uid="uid://b6mnhntvijhb0" path="res://Dialogues/Dialogue_Area/dialogue_area.tscn" id="11_subb7"]
+[ext_resource type="Resource" uid="uid://chu7l3scv6r5s" path="res://Dialogues/Level_Dialogues/Level 1/Lev_1_tutorial.dialogue" id="12_y6a7i"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
@@ -393,6 +395,9 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_y6a7i")
 sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6a7i"]
+radius = 18.6786
+
 [node name="Lvl1_r1" type="Node2D"]
 process_mode = 1
 
@@ -456,6 +461,15 @@ z_index = 10
 y_sort_enabled = true
 position = Vector2(554, -206)
 scale = Vector2(1.5, 1.5)
+
+[node name="Dialogue_area" parent="Environment/Terminal" instance=ExtResource("11_subb7")]
+dialogue_resource = ExtResource("12_y6a7i")
+dialogue_start = "panel_first"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Terminal/Dialogue_area"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_y6a7i")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
 
 [node name="PassDropoutZone" parent="Environment" instance=ExtResource("18_1lo17")]
 z_index = 10
