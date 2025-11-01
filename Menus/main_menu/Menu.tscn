@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://btssi2ymkf40y"]
+[gd_scene load_steps=8 format=3 uid="uid://btssi2ymkf40y"]
 
 [ext_resource type="Script" uid="uid://bjwfi83g5xfvp" path="res://Menus/main_menu/menu.gd" id="1_e7t8g"]
-[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_mdafx"]
 [ext_resource type="Texture2D" uid="uid://drkg5rvu41j1m" path="res://Assets/CyberQuest_Assets/Backgrounds/Cyber_Quest_logo.png" id="3_5t2ou"]
-[ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="3_qly76"]
 [ext_resource type="Texture2D" uid="uid://g6avlntoy52n" path="res://Assets/CyberQuest_Assets/Backgrounds/Blue_Gradient.png" id="4_qly76"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="6_6mphd"]
 [ext_resource type="AudioStream" uid="uid://bckpynmthi4lk" path="res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3" id="6_qly76"]
@@ -21,36 +19,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e7t8g")
 
-[node name="GameTitle" type="RichTextLabel" parent="."]
-visible = false
-z_index = 2
-layout_mode = 0
-offset_left = 144.0
-offset_top = 55.0
-offset_right = 575.0
-offset_bottom = 96.0
-theme_override_fonts/normal_font = ExtResource("2_mdafx")
-theme_override_font_sizes/normal_font_size = 30
-text = "Cyber - Quest
-"
-
-[node name="GameTitle2" type="TextureRect" parent="."]
+[node name="GameTitle" type="TextureRect" parent="."]
 z_index = 1
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+offset_left = 146.0
+offset_top = -26.0
+offset_right = 2066.0
+offset_bottom = 1054.0
 scale = Vector2(0.292284, 0.291264)
 texture = ExtResource("3_5t2ou")
-
-[node name="Spaceship" type="TextureRect" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 325.0
-offset_top = 18.0
-offset_right = 4437.0
-offset_bottom = 4130.0
-scale = Vector2(0.0799353, 0.0778321)
-texture = ExtResource("3_qly76")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0

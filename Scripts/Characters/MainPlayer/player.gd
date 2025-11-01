@@ -13,6 +13,7 @@ var move_orientation:Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.EMPTY
 var movement_enabled = true
 var is_respawning:bool=false
 var hide_holder = null
+var is_interacting_with_box: bool = false
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -123,3 +124,14 @@ func on_death() -> void:
 	if hide_holder:
 		hide_holder.toggle_hide()
 	itemHolder.clear_all_items(self, false)
+
+func set_interacting_with_box(interacting: bool):
+	is_interacting_with_box = interacting
+	if interacting:
+		move_speed = Global.move_speed * 0.4  # 40% of normal speed, adjust as needed
+	else:
+		move_speed = Global.move_speed
+
+func is_interacting() -> bool:
+	var action_name = "Interact_p" + str(playerNum)
+	return Input.is_action_pressed(action_name)

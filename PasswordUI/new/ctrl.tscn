@@ -1,13 +1,12 @@
-[gd_scene load_steps=42 format=3 uid="uid://r21wg5i6yxvu"]
+[gd_scene load_steps=43 format=3 uid="uid://r21wg5i6yxvu"]
 
 [ext_resource type="Script" uid="uid://de0p7onn3v728" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="1_yhck8"]
+[ext_resource type="Script" uid="uid://cig83igiwonat" path="res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/onscreen_keyboard.gd" id="3_lrc1x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnaeo"]
 
 [sub_resource type="Theme" id="Theme_lnaeo"]
-
-[sub_resource type="SystemFont" id="SystemFont_utqji"]
-subpixel_positioning = 0
 
 [sub_resource type="InputEventKey" id="InputEventKey_utqji"]
 device = -1
@@ -197,6 +196,7 @@ offset_top = 7.0
 offset_right = 391.0
 offset_bottom = 180.0
 theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_yhck8")
 bbcode_enabled = true
 
 [node name="Primary" type="ColorRect" parent="."]
@@ -215,15 +215,9 @@ offset_top = 4.0
 offset_right = 209.0
 offset_bottom = 93.0
 theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_utqji")
-theme_override_font_sizes/normal_font_size = 9
+theme_override_fonts/normal_font = ExtResource("1_yhck8")
+theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
-text = "Θυμήσου!
-
-1) Μήκος κωδικού τουλάχιστον 8 χαρακτήρες.
-
-2) Μην βάλεις την ημερομηνία γέννησής σου
-"
 
 [node name="Secondary" type="ColorRect" parent="."]
 layout_mode = 0
@@ -250,6 +244,7 @@ offset_top = 4.0
 offset_right = 203.0
 offset_bottom = 233.0
 theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_yhck8")
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
 scroll_following = true
@@ -372,3 +367,13 @@ offset_bottom = 148.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yhck8")
 shortcut = SubResource("Shortcut_myvxr")
 text = "✓"
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 7.0
+offset_top = 210.0
+offset_right = 413.0
+offset_bottom = 354.0
+script = ExtResource("3_lrc1x")
+metadata/_custom_type_script = "uid://cig83igiwonat"
