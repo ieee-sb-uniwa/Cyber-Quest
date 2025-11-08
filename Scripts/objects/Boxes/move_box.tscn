@@ -31,43 +31,43 @@ texture = ExtResource("2_xdurq")
 position = Vector2(-0.5, -6.5)
 shape = SubResource("RectangleShape2D_s8ort")
 
-[node name="InteractionAreaHR" type="Area2D" parent="."]
+[node name="InteractionAreaR" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
 action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractionAreaHR"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractionAreaR"]
 position = Vector2(35, -6.5)
 shape = SubResource("RectangleShape2D_u8g2u")
 
-[node name="InteractionAreaVD" type="Area2D" parent="."]
+[node name="InteractionAreaD" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaVD"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaD"]
 position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_s85pb")
 
-[node name="InteractionAreaHL" type="Area2D" parent="."]
+[node name="InteractionAreaL" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaHL"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaL"]
 position = Vector2(-36, -6.5)
 shape = SubResource("RectangleShape2D_t0d6k")
 
-[node name="InteractionAreaVU" type="Area2D" parent="."]
+[node name="InteractionAreaU" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaVU"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaU"]
 position = Vector2(0.5, -29.5)
 shape = SubResource("RectangleShape2D_t4wmc")

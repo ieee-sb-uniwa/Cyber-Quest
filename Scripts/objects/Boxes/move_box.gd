@@ -12,10 +12,10 @@ var nearby_players_down: Array[CharacterBody2D] = []
 var speed: float = 0.0
 var move_orientation: String = ""  # "vertical", "horizontal", or ""
 
-@onready var area_left: Area2D = $InteractionAreaHL
-@onready var area_right: Area2D = $InteractionAreaHR
-@onready var area_up: Area2D = $InteractionAreaVU
-@onready var area_down: Area2D = $InteractionAreaVD
+@onready var area_left: Area2D = $InteractionAreaL
+@onready var area_right: Area2D = $InteractionAreaR
+@onready var area_up: Area2D = $InteractionAreaU
+@onready var area_down: Area2D = $InteractionAreaD
 
 func _ready() -> void:
 	# Initialize speed based on global move speed
