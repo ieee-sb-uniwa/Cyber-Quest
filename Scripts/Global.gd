@@ -80,6 +80,7 @@ func can_access_terminal() -> bool:
 
 func add_passblock(passblock: Node) -> void:
 	dropped_passblocks.append(passblock)
+	print("Passblocks in level: ", passblocks_in_level.size())
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		print("All passblocks collected!")
 		change_level()
@@ -96,8 +97,10 @@ func get_player_interact_button(body: Node2D) -> String:
 		return ""
 		
 func change_level() -> void:
+	passblocks_in_level.clear()
 	PlayerData.level+=1
-	#inventory_gui.unlock_inventory_for_level(PlayerData.level)
+	if inventory_gui:
+		inventory_gui.unlock_inventory_for_level(PlayerData.level)
 	print(PlayerData.level)
 	saveData.save_game()
 	

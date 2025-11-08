@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=38 format=4 uid="uid://ujqijqnpc1am"]
 
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_5rxy5"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="17_3d45e"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="18_3d45e"]
+[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="19_vwt3a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
 texture = ExtResource("9_r215s")
@@ -819,52 +820,54 @@ position = Vector2(1438, 425)
 position = Vector2(1498, 472)
 playerNum = 2
 
-[node name="PassBlocks" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="."]
 
-[node name="PassBlock" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(987, 124)
+[node name="PassBlocks" type="Node2D" parent="Environment"]
+
+[node name="PassBlocks#PassBlock" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1328, 302)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock2" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(1118, 254)
+[node name="PassBlocks#PassBlock2" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1543, 204)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock3" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(926, -70)
+[node name="PassBlocks#PassBlock3" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1576, 153)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock4" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(926, -397)
+[node name="PassBlocks#PassBlock4" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1416, 186)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock5" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(1177, -520)
+[node name="PassBlocks#PassBlock5" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1404, 205)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock6" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(2002, -517)
+[node name="PassBlocks#PassBlock6" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1367, 209)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock7" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(2011, -79)
+[node name="PassBlocks#PassBlock7" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1326, 223)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
 
-[node name="PassBlock8" parent="PassBlocks" instance=ExtResource("15_5rxy5")]
-position = Vector2(2011, 121)
+[node name="PassBlocks#PassBlock8" parent="." instance=ExtResource("15_5rxy5")]
+position = Vector2(1346, 265)
 scale = Vector2(0.7, 0.7)
 is_num = false
 is_upper = true
@@ -932,3 +935,7 @@ position = Vector2(1852, 181)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Room06Collision"]
 position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_vwt3a")
+
+[node name="PassDropoutZone" parent="." instance=ExtResource("19_vwt3a")]
+z_index = 1
+position = Vector2(1567, 424)

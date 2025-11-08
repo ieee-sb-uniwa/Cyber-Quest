@@ -11,10 +11,10 @@ enum KeyboardImages {
 
 # Dictionary mapping level to keyboard image path
 const LEVEL_TO_KEYBOARD : Dictionary = {
-	1: "res://HUD/sprites/keyboards.png",  # Replace with specific keyboard01 path when available
-	2: "res://HUD/sprites/keyboards.png",  # Replace with specific keyboard02 path when available
-	3: "res://HUD/sprites/keyboards.png",  # Replace with specific keyboard03 path when available
-	4: "res://HUD/sprites/keyboards.png"   # Replace with specific keyboard04 path when available
+	1: "res://HUD/sprites/keyboard_key01.tres",  # AtlasTexture for first key
+	2: "res://HUD/sprites/keyboard_key02.tres",  # AtlasTexture for second key
+	3: "res://HUD/sprites/keyboard_key03.tres",  # AtlasTexture for third key
+	4: "res://HUD/sprites/keyboard_key04.tres"   # AtlasTexture for fourth key
 }
 
 @onready var inventory : Inventory = preload("res://HUD/Scripts_Resources/Player_Inventory.tres")
@@ -22,6 +22,7 @@ const LEVEL_TO_KEYBOARD : Dictionary = {
 
 func _ready():
 	Global.inventory_gui = self
+	sync_with_player_data()
 	update()
 
 func update():
@@ -31,14 +32,16 @@ func update():
 # Function to unlock inventory item based on player level
 func unlock_inventory_for_level(level: int):
 	if level > 0 and level <= LEVEL_TO_KEYBOARD.size():
-		var item = InventoryItem.new()
-		item.name = "Keyboard Level " + str(level)
-		item.texture = load(LEVEL_TO_KEYBOARD[level])
+		var slot_index = level - 1
 		
-		# Add item to the appropriate slot (level - 1 for zero-based index)
-		if level - 1 < inventory.items.size():
-			inventory.items[level - 1] = item
-			update()
+		# Check if item already exists in this slot to prevent duplicates
+		if slot_index < inventory.items.size():
+			if inventory.items[slot_index] == null:
+				var item = InventoryItem.new()
+				item.name = "Keyboard Level " + str(level)
+				item.texture = load(LEVEL_TO_KEYBOARD[level])
+				inventory.items[slot_index] = item
+				update()
 
 # Function to sync inventory with PlayerData level
 func sync_with_player_data():
