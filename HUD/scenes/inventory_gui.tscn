@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bvlov74gc0np4" path="res://HUD/Scripts_Resources/inventory_gui.gd" id="1_x437w"]
 
 [node name="InventoryGUI" type="Control"]
-custom_minimum_size = Vector2(140, 44)
+custom_minimum_size = Vector2(176, 44)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,11 +16,11 @@ grow_vertical = 2
 script = ExtResource("1_x437w")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(140, 44)
+custom_minimum_size = Vector2(176, 44)
 layout_mode = 0
-offset_right = 140.0
+offset_right = 176.0
 offset_bottom = 44.0
-columns = 3
+columns = 4
 
 [node name="Inv_Slot" parent="GridContainer" instance=ExtResource("1_g8boa")]
 layout_mode = 2
@@ -29,4 +29,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Inv_Slot3" parent="GridContainer" instance=ExtResource("1_g8boa")]
+layout_mode = 2
+
+[node name="Inv_Slot4" parent="GridContainer" instance=ExtResource("1_g8boa")]
 layout_mode = 2

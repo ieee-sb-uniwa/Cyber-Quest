@@ -39,9 +39,10 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	if !isDelivered && item.has_method("drop_block"):
 		item.drop_block(pl)
 	self.remove_child(item)
-	var pass_blocks = get_tree().current_scene.get_node("Environment/PassBlocks")
+	#! Assuming PassBlocks is a direct child of the current scene
+	var pass_blocks = get_tree().current_scene.get_node("Environment/PassBlocks") 
 	if pass_blocks == null:
-		printerr("No passBlocks node found")
+		printerr("No passBlocks node found. Check the scene structure. There should be a direct child PassBlocks node.")
 		return
 	item.set_collision_layer_value(6,true)
 	item.set_collision_layer_value(30,false)
