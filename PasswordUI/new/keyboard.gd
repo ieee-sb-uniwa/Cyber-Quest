@@ -7,9 +7,9 @@ var welcome := "Καλώς Ήρθατε!\nΕισάγετε κωδικό:\n>"
 var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.\n"
 
 # Paths label- terminal, primary- basic rules, secondary- extra rules
-var label_path := "../Screen/RichTextLabel1"
-var primary_label := "../Primary/RichTextLabel2"
-var secondary_label := "../Secondary/Panel/RichTextLabel3"
+var label_path := "Screen/RichTextLabel1"
+var primary_label := "Primary/RichTextLabel2"
+var secondary_label := "Secondary/Panel/RichTextLabel3"
 
 # Variables for successfull unlock and checks
 var input_finalized := false
@@ -20,10 +20,10 @@ var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
 func _ready():
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
-
-	for child in get_children():
+	var keyboard_node = get_node("Keyboard")
+	for child in keyboard_node.get_children():
 		if child is Button:
-			child.connect("pressed", Callable(self, "_on_button_pressed").bind(child.name))
+			child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
 
 	if is_visible_in_tree():
 		call_deferred("_on_visibility_changed")
@@ -132,17 +132,18 @@ func _on_button_pressed(button_name: String):
 				current_input += button_name
 
 	var label = get_node(label_path)
-
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
 
 
 # Checking validity
 func _on_confirm_pressed():
+
 	input_finalized = true
 
 	if showing_exit_message:
 		_successful_unlock()
+		return
 
 	if not success:
 		var feedback := _generate_rule_feedback()
