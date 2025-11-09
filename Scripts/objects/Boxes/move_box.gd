@@ -109,7 +109,18 @@ func _update_move_orientation() -> void:
 func _is_player_toggling_interaction(p: CharacterBody2D) -> bool:
 	if p == null:
 		return false
-	var action_name := "Interact_p" + str(p.playerNum)
+	# Ignore non-player characters (e.g. enemies)
+	if not (p.is_in_group("MainPlayer") or p.is_in_group("SecondPlayer")):
+		return false
+
+	var player_num: int = 1
+	if p.is_in_group("SecondPlayer"):
+		player_num = 2
+	# If your player nodes use a `playerNum` property instead of groups, you can fallback:
+	# if p.has_variable("playerNum"):
+	#     player_num = int(p.playerNum)
+
+	var action_name := "Interact_p" + str(player_num)
 	return Input.is_action_just_pressed(action_name)
 
 func _toggle_player_interaction(p: CharacterBody2D) -> void:

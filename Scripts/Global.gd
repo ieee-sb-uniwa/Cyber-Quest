@@ -57,6 +57,7 @@ var players: Array[CharacterBody2D] = []
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
 var terminal_unlocked: bool = false
+var canExitLevel: bool = false
 var can_pause_game: bool = true
 var saveData :SaveData
 var inventory_gui : Control
@@ -74,8 +75,10 @@ func reset_variables() -> void:
 	dropped_passblocks.clear()
 	Hide_status = 1
 	terminal_unlocked = false
+	canExitLevel = false
 
 func can_access_terminal() -> bool:
+	#!! HERE CHANGE LOGIC FOR LOBBBY TERMINAL ACCESS
 	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
 
 func add_passblock(passblock: Node) -> void:
@@ -83,6 +86,7 @@ func add_passblock(passblock: Node) -> void:
 	print("Passblocks in level: ", passblocks_in_level.size())
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		print("All passblocks collected!")
+		canExitLevel = true
 		change_level()
 
 func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:

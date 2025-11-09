@@ -36,6 +36,8 @@ func drop_block(body: Node2D):
 		Global.player_blocks[0] -= 1
 	elif body.is_in_group("SecondPlayer"):
 		Global.player_blocks[1] -= 1
+	# hide the visual when dropped 
+	block_sprite.call_deferred("hide")
 	
 func pick_block(body: Node2D):
 	set_interaction_area(false)
@@ -47,6 +49,8 @@ func pick_block(body: Node2D):
 		Global.player_blocks[1] += 1
 	if body.has_method("add_item_to_holder"):
 		body.add_item_to_holder(self)
+	# ensure the visual is visible when picked up
+	block_sprite.call_deferred("show")
 
 # ------- "Interact" button logic ------- 				
 func _input(_event):

@@ -114,11 +114,14 @@ func clear_all_items() -> void:
 	itemHolder.clear_all_items(self, true)
 		
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") && !is_hidden: 
-		for i in Global.players.size():
-			Global.players[i].on_death()
+	if body.is_in_group("enemy") && !is_hidden:
+		# iterate safely over players (avoid calling methods on freed/null instances)
+		for p in Global.players.duplicate():
+			if p != null and is_instance_valid(p):
+				p.on_death()
 		SpawnManager.respawn_players()
-		body.change_state("PatrolNav")
+		if body.has_method("change_state"):
+			body.change_state("PatrolNav")
 
 func on_death() -> void:
 	if hide_holder:

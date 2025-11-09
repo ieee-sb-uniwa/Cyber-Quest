@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgmi0fox44as8"]
+
+[ext_resource type="Script" uid="uid://b0lql4q3ucoxq" path="res://Scripts/objects/door/door_to_lobby.gd" id="1_qpif2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpif2"]
+size = Vector2(312, 139)
+
+[node name="DoorToLobby" type="Node2D"]
+script = ExtResource("1_qpif2")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 0.52)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(146, 59.5)
+shape = SubResource("RectangleShape2D_qpif2")
