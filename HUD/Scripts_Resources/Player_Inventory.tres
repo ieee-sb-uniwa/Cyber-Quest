@@ -5,4 +5,4 @@
 
 [resource]
 script = ExtResource("3_y0eoq")
-items = Array[ExtResource("1_m2fmx")]([null, null, null])
+items = Array[ExtResource("1_m2fmx")]([null, null, null, null])

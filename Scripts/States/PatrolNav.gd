@@ -8,7 +8,7 @@ extends State
 #onready is used for variable that need to access the scene tree
 @onready var nav_agent:  NavigationAgent2D = $"../../NavigationAgent2D"
 @onready var conicalDetectionArea =  $"../../detection_zone/Cone"
-@onready var nav_region : NavigationRegion2D = get_tree().get_root().find_child("TileMap", true, false).find_child("NavigationRegion2D", true, false)
+@onready var nav_region : NavigationRegion2D = get_tree().get_root().find_child("Environment", true, false).find_child("NavigationRegion2D", true, false)
 
 var animation_tree : AnimationTree
 var state_machine
@@ -55,13 +55,13 @@ func Physics_update(_delta : float):
 			transitioned.emit("ChaseNav")
 			return
 	if !roomSelected: #CALLED WHEN NEEDED TO SELECT A NEW ROOM
-		print("Selecting new path")
+		# print("Selecting new path")
 		nav_check()
 		return
 	if nav_agent.is_navigation_finished() && roomSelected == true: #CALLED WHEwN ENEMY TOUCHES PATH FINISH POINT
 		roomSelected = false
 		pathingCompleted = false
-		print("Path Completed")
+		# print("Path Completed")
 		return
 	if is_stuck(_delta):
 		return
@@ -110,7 +110,7 @@ func is_stuck(delta : float) -> bool:
 	if abs(dist_to_next - last_progress) < progress_threshold:
 		stuck_timer += delta
 		if stuck_timer > stuck_time_limit:
-			print("Agent stuck! Resetting path…")
+			# print("Agent stuck! Resetting path…")
 			roomSelected = false
 			pathingCompleted = false
 			stuck_timer = 0.0
@@ -131,14 +131,14 @@ func get_random_room()->Vector2:
 			if lastRoomIndex != roomIndex || lastRoomIndex == -1 || enemy.patrolling_rooms.size()==1:
 				lastRoomIndex = roomIndex
 				break
-		print(enemy.patrolling_rooms[lastRoomIndex].name)
+		# print(enemy.patrolling_rooms[lastRoomIndex].name)
 		return await get_random_navigable_point(enemy.patrolling_rooms[lastRoomIndex], 0)
 	return enemy.global_position
 
 func get_random_navigable_point(room: Area2D, counter: int) -> Vector2:
 	var collision_shape = room.get_node("CollisionShape2D") as CollisionShape2D
 	if collision_shape == null:
-		print("No CollisionShape2D found in room!")
+		# print("No CollisionShape2D found in room!")
 		return Vector2.ZERO
 	var shape = collision_shape.shape
 	var extents = shape.extents
@@ -171,6 +171,9 @@ func is_point_navigatable(point: Vector2) -> bool:
 	# print("Target is NOT reachable.")
 	return false;
 	
-func delay_by_frames(frames: int):
-	for i in frames:
-		await get_tree().process_frame
+func delay_by_frames(frames: int) -> void:
+	var main_loop := get_tree() as SceneTree
+	if main_loop == null:
+		main_loop = Engine.get_main_loop() as SceneTree
+	for i in range(frames):
+		await main_loop.process_frame

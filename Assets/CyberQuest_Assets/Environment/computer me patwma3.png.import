@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6a3ct0terais"
-path="res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"
+uid="uid://dswngoa2couaa"
+path="res://.godot/imported/computer me patwma3.png-5cfd2ab2b2c1207c9f8eb060d5273db2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CyberQuest_Assets/Dialogues/player_1.png"
-dest_files=["res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Environment/computer me patwma3.png"
+dest_files=["res://.godot/imported/computer me patwma3.png-5cfd2ab2b2c1207c9f8eb060d5273db2.ctex"]
 
 [params]
 

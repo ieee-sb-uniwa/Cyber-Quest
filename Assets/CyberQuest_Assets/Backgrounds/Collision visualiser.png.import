@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6a3ct0terais"
-path="res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"
+uid="uid://dqg8b01318ppp"
+path="res://.godot/imported/Collision visualiser.png-d217ceea290a88c7a0ab9f496de7a845.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/CyberQuest_Assets/Dialogues/player_1.png"
-dest_files=["res://.godot/imported/player_1.png-44ee8c05d1a68012041aa576d74f9cac.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Backgrounds/Collision visualiser.png"
+dest_files=["res://.godot/imported/Collision visualiser.png-d217ceea290a88c7a0ab9f496de7a845.ctex"]
 
 [params]
 

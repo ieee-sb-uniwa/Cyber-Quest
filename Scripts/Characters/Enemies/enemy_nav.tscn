@@ -226,7 +226,7 @@ states/Start/position = Vector2(203, 95)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_y5m6v"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_qyqlg")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_770a6"]
-radius = 14.0
+radius = 17.7205
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gusw1"]
 radius = 12.2087
@@ -244,7 +244,7 @@ input_texture = ExtResource("2_rm7rt")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
 position = Vector2(1.19209e-07, 0)
-scale = Vector2(1.248, 0.9)
+scale = Vector2(0.832, 0.6)
 texture = ExtResource("2_rm7rt")
 hframes = 4
 vframes = 4
