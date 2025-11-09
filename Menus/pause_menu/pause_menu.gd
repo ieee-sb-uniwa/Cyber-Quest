@@ -19,8 +19,8 @@ func _on_quit_pressed():
 
 
 func _on_save_pressed() -> void:
-	pass # Replace with function body.
+	Global.saveData.save_game()
 
 
 func _on_load_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Menus/main_menu/Load-Menu.tscn");

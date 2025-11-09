@@ -19,6 +19,7 @@ func save_game():
 
 func load_game() ->bool:
 	if not FileAccess.file_exists(SAVE_FILE):
+		print("Loading failed")
 		return false
 
 	var file = FileAccess.open(SAVE_FILE, FileAccess.READ)

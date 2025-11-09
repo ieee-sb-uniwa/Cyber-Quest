@@ -1,26 +1,27 @@
-[gd_scene load_steps=41 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=42 format=4 uid="uid://dbwnkhhmg5c7n"]
 
-[ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
-[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
-[ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="2_ceosy"]
-[ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="3_1lo17"]
-[ext_resource type="Texture2D" uid="uid://cubih4mnyfbuk" path="res://Assets/CyberQuest_Assets/Environment/fenceBigger.png" id="3_8exm3"]
-[ext_resource type="Texture2D" uid="uid://d3e5m3jjro17d" path="res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png" id="3_mhy3o"]
-[ext_resource type="Texture2D" uid="uid://bdbab2u7mt50k" path="res://Assets/CyberQuest_Assets/Environment/towers.png" id="4_mhy3o"]
-[ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
-[ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
-[ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
-[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
-[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
-[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
-[ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
-[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
-[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
-[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
-[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
+[ext_resource type="Script" uid="uid://dqyllppja6m3a" path="res://Levels/lvl_1_1.gd" id="1_j1jna"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="1_npxg6"]
+[ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="2_j1jna"]
+[ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="3_bolj5"]
+[ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="4_rdxtu"]
+[ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="5_s2f44"]
+[ext_resource type="Texture2D" uid="uid://d3e5m3jjro17d" path="res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png" id="6_gvoy2"]
+[ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="7_ly0ed"]
+[ext_resource type="Texture2D" uid="uid://bdbab2u7mt50k" path="res://Assets/CyberQuest_Assets/Environment/towers.png" id="8_5ufkb"]
+[ext_resource type="Texture2D" uid="uid://cubih4mnyfbuk" path="res://Assets/CyberQuest_Assets/Environment/fenceBigger.png" id="9_epe3s"]
+[ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="10_n0xr7"]
+[ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="11_5x5c4"]
+[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="12_2ixd6"]
+[ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="13_a3mtv"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="14_cwg3t"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_0bu1i"]
+[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="16_ftg18"]
+[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="17_lil1h"]
+[ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="18_4k2ra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_subb7"]
-texture = ExtResource("11_cfkql")
+texture = ExtResource("1_npxg6")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, -32, 32)
@@ -174,7 +175,7 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_subb7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjydo"]
-texture = ExtResource("11_cfkql")
+texture = ExtResource("1_npxg6")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 1:0/0 = 0
@@ -196,7 +197,7 @@ texture_region_size = Vector2i(128, 128)
 5:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1lo17"]
-texture = ExtResource("1_1ipe4")
+texture = ExtResource("2_j1jna")
 texture_region_size = Vector2i(4112, 1170)
 0:0/0 = 0
 0:0/0/y_sort_origin = 550
@@ -204,7 +205,7 @@ texture_region_size = Vector2i(4112, 1170)
 0:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_loljf"]
-texture = ExtResource("3_1lo17")
+texture = ExtResource("3_bolj5")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 1:0/0 = 0
@@ -222,7 +223,7 @@ sources/1 = SubResource("TileSetAtlasSource_1lo17")
 sources/2 = SubResource("TileSetAtlasSource_loljf")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vi6fb"]
-texture = ExtResource("1_1ipe4")
+texture = ExtResource("2_j1jna")
 texture_region_size = Vector2i(5440, 5440)
 0:0/0 = 0
 0:0/0/y_sort_origin = -900
@@ -233,7 +234,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_vi6fb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oek2e"]
-texture = ExtResource("1_1ipe4")
+texture = ExtResource("2_j1jna")
 texture_region_size = Vector2i(5440, 1419)
 0:0/0 = 0
 0:0/0/y_sort_origin = 540
@@ -241,7 +242,7 @@ texture_region_size = Vector2i(5440, 1419)
 0:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyue1"]
-texture = ExtResource("1_1ipe4")
+texture = ExtResource("2_j1jna")
 texture_region_size = Vector2i(89, 89)
 29:27/0 = 0
 30:27/0 = 0
@@ -253,7 +254,7 @@ sources/0 = SubResource("TileSetAtlasSource_oek2e")
 sources/2 = SubResource("TileSetAtlasSource_qyue1")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e352s"]
-texture = ExtResource("8_ymyl2")
+texture = ExtResource("4_rdxtu")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
@@ -275,7 +276,7 @@ texture_region_size = Vector2i(128, 128)
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_06f0v"]
-texture = ExtResource("2_ceosy")
+texture = ExtResource("5_s2f44")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -295,7 +296,7 @@ sources/0 = SubResource("TileSetAtlasSource_e352s")
 sources/1 = SubResource("TileSetAtlasSource_06f0v")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cfkql"]
-texture = ExtResource("8_ymyl2")
+texture = ExtResource("4_rdxtu")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -308,7 +309,7 @@ texture_region_size = Vector2i(64, 64)
 2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bxrcv"]
-texture = ExtResource("2_ceosy")
+texture = ExtResource("5_s2f44")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -321,7 +322,7 @@ texture_region_size = Vector2i(64, 64)
 2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85jq7"]
-texture = ExtResource("3_mhy3o")
+texture = ExtResource("6_gvoy2")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, -1.89829, 0.683399, 32, -32, 32)
@@ -353,7 +354,7 @@ texture_region_size = Vector2i(64, 64)
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.265759, -32, 32, -32, -32, 29.1075, -32, 1.26557)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ksftt"]
-texture = ExtResource("8_3lskg")
+texture = ExtResource("7_ly0ed")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
@@ -367,14 +368,14 @@ sources/3 = SubResource("TileSetAtlasSource_ksftt")
 sources/1 = SubResource("TileSetAtlasSource_bxrcv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6a7i"]
-texture = ExtResource("4_mhy3o")
+texture = ExtResource("8_5ufkb")
 texture_region_size = Vector2i(192, 356)
 0:0/0 = 0
 0:0/0/y_sort_origin = 20
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 33.304, 168.966, -1.31709, 175.363, -34.4329, 167.837)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8xicj"]
-texture = ExtResource("3_8exm3")
+texture = ExtResource("9_epe3s")
 texture_region_size = Vector2i(103, 120)
 0:0/0 = 0
 0:0/0/z_index = -1
@@ -395,6 +396,7 @@ sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
 [node name="Lvl1_r1" type="Node2D"]
 process_mode = 1
+script = ExtResource("1_j1jna")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -451,28 +453,28 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAlAP7/AAAAAAAAAADp//7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_y6a7i")
 
-[node name="Terminal" parent="Environment" instance=ExtResource("13_ksftt")]
+[node name="Terminal" parent="Environment" instance=ExtResource("10_n0xr7")]
 z_index = 10
 y_sort_enabled = true
 position = Vector2(554, -206)
 scale = Vector2(1.5, 1.5)
 
-[node name="PassDropoutZone" parent="Environment" instance=ExtResource("18_1lo17")]
+[node name="PassDropoutZone" parent="Environment" instance=ExtResource("11_5x5c4")]
 z_index = 10
 position = Vector2(554, -206)
 
-[node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
+[node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("12_2ixd6")]
 z_index = 10
 y_sort_enabled = true
 position = Vector2(2342, 92)
 playerNum = 2
 
-[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
+[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("12_2ixd6")]
 z_index = 10
 y_sort_enabled = true
 position = Vector2(2398, 116)
 
-[node name="External_Door" parent="Environment" instance=ExtResource("11_1lo17")]
+[node name="External_Door" parent="Environment" instance=ExtResource("13_a3mtv")]
 y_sort_enabled = true
 position = Vector2(483, -259)
 scale = Vector2(1.5, 1.5)
@@ -481,49 +483,49 @@ scale = Vector2(1.5, 1.5)
 z_index = 5
 y_sort_enabled = true
 
-[node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+[node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("14_cwg3t")]
 z_index = 5
 position = Vector2(2082, 30)
 
-[node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+[node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("14_cwg3t")]
 z_index = 5
 position = Vector2(1443, -31)
 
-[node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
+[node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("14_cwg3t")]
 z_index = 5
 position = Vector2(483, 606)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
-[node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
+[node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("15_0bu1i")]
 position = Vector2(1955, -32)
 scale = Vector2(0.7, 0.7)
 
-[node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
+[node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("15_0bu1i")]
 position = Vector2(-733, -27)
 scale = Vector2(0.7, 0.7)
 
-[node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
+[node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("15_0bu1i")]
 position = Vector2(483, 605)
 scale = Vector2(0.7, 0.7)
 
-[node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
+[node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("15_0bu1i")]
 position = Vector2(1442, -32)
 scale = Vector2(0.7, 0.7)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="PasswordUI" parent="HUD" instance=ExtResource("19_y6a7i")]
+[node name="PasswordUI" parent="HUD" instance=ExtResource("16_ftg18")]
 visible = false
 
-[node name="PauseHud" parent="HUD" instance=ExtResource("10_cjydo")]
+[node name="PauseHud" parent="HUD" instance=ExtResource("17_lil1h")]
 
 [node name="CameraRoot" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]
 position = Vector2(1472, 4)
 zoom = Vector2(0.4, 0.4)
-script = ExtResource("7_mhy3o")
+script = ExtResource("18_4k2ra")
 player1 = NodePath("../../Environment/Player")
 player2 = NodePath("../../Environment/Player2")

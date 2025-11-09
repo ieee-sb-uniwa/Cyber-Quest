@@ -29,18 +29,18 @@ func _on_confirm_pressed() -> void:
 		return
 
 	if $CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text == "1":
-		Global.player_name_1 = $CenterContainer/CenteringCon/Primary/NameIN.text
-		Global.birthdate_1 = $CenterContainer/CenteringCon/Primary/DateIN.text
+		PlayerData.player_name_1 = $CenterContainer/CenteringCon/Primary/NameIN.text
+		PlayerData.birthdate_1 = $CenterContainer/CenteringCon/Primary/DateIN.text
 		$CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text = "2"
 		$CenterContainer/CenteringCon/Primary/Confirm.text = "Start!"
 		$CenterContainer/CenteringCon/Primary/NameIN.text =''
 		$CenterContainer/CenteringCon/Primary/DateIN.text =''
 		return
 
-	Global.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
-	Global.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
+	PlayerData.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
+	PlayerData.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
 
-	get_tree().change_scene_to_file("res://Levels/Lvl1_r1.tscn")
+	get_tree().change_scene_to_file("res://Levels/Lvl1_1.tscn")
 
 
 func _on_back_pressed() -> void:

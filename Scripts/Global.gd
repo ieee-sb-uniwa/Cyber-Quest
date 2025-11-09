@@ -12,9 +12,7 @@ var move_speed : float = 150
 var passblocks_in_level : Array = [] # List of passblocks in level to ensure unique ids
 
 # General Password Rules Properties
-var dob1 := "07/02/2008"
-var dob2 := "03/12/2008"
-var date_of_birth : Array = []
+
 var pri_rules := {
 	"prule1": "Μην βάλεις την ημερομηνία γέννησής σου.",
 	"prule2": "Μήκος κωδικού τουλάχιστον 8 ψηφία.",
@@ -51,14 +49,16 @@ var visible_sec_rules := {
 	"srule6": false
 }
 
-# Player1 profile
-var player_name_1: String = ""
-var birthdate_1: String = ""
+# # Player1 profile
+# var player_name_1: String = ""
+# var birthdate_1: String = ""
 
-# Player2 profile
-var player_name_2: String = ""
-var birthdate_2: String = ""
-
+# # Player2 profile
+# var player_name_2: String = ""
+# var birthdate_2: String = ""
+var dob1 := "07/02/2008"
+var dob2 := "03/12/2008"
+var date_of_birth : Array = []
 # Level global variables
 var isTutorial: bool = true
 var players: Array[CharacterBody2D] = []
@@ -96,14 +96,15 @@ func get_player_interact_button(body: Node2D) -> String:
 	else:
 		return ""
 		
-func change_level() -> void:
-	PlayerData.level+=1
-	print(PlayerData.level)
-	saveData.save_game()
-	
+
 func load_game() -> void:
 	var canLoad = saveData.load_game()
 	if canLoad:
 		print("go to loaded level")
+		dob1 = PlayerData.birthdate_1
+		dob2 = PlayerData.birthdate_2
+		current_level = PlayerData.level
 	else:
 		print("no save available")
+func save_game() -> void:
+	saveData.save_game()
