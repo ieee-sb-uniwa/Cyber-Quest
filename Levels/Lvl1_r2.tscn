@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=34 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
