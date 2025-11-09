@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cyber Quest Game"
-run/main_scene="uid://r21wg5i6yxvu"
+run/main_scene="uid://btssi2ymkf40y"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -36,7 +36,7 @@ project/assembly_name="attempt 1"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 
