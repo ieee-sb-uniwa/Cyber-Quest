@@ -17,8 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="13_54ngp"]
+[ext_resource type="PackedScene" uid="uid://2rh2rxmwh6hh" path="res://Scripts/objects/Sign/Sign.tscn" id="17_jfvbu"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7skwt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfvbu"]
 texture = ExtResource("3_yfn6w")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -50,7 +51,7 @@ texture_region_size = Vector2i(64, 64)
 3:3/0 = 0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, -32, -1.05333, -32, -32, -0.175552)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjn3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahura"]
 texture = ExtResource("4_pare0")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -69,19 +70,19 @@ texture_region_size = Vector2i(64, 64)
 0:3/0 = 0
 1:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6qtc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1u20"]
 texture = ExtResource("5_o0k03")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_54ngp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65nj1"]
 texture = ExtResource("6_bfxao")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g3ro0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xsuo6"]
 texture = ExtResource("7_o0k03")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -92,7 +93,7 @@ texture_region_size = Vector2i(64, 64)
 2:1/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfvbu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aibol"]
 texture = ExtResource("6_g3ro0")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
@@ -116,24 +117,25 @@ texture_region_size = Vector2i(64, 64)
 4:3/0 = 0
 5:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ahura"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y0t1a"]
 texture = ExtResource("7_wedbv")
-texture_region_size = Vector2i(128, 64)
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+1:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_g3ro0"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-sources/0 = SubResource("TileSetAtlasSource_7skwt")
-sources/1 = SubResource("TileSetAtlasSource_jwjn3")
-sources/2 = SubResource("TileSetAtlasSource_l6qtc")
-sources/3 = SubResource("TileSetAtlasSource_54ngp")
-sources/4 = SubResource("TileSetAtlasSource_g3ro0")
-sources/5 = SubResource("TileSetAtlasSource_jfvbu")
-sources/6 = SubResource("TileSetAtlasSource_ahura")
+sources/0 = SubResource("TileSetAtlasSource_jfvbu")
+sources/1 = SubResource("TileSetAtlasSource_ahura")
+sources/2 = SubResource("TileSetAtlasSource_f1u20")
+sources/3 = SubResource("TileSetAtlasSource_65nj1")
+sources/4 = SubResource("TileSetAtlasSource_xsuo6")
+sources/5 = SubResource("TileSetAtlasSource_aibol")
+sources/6 = SubResource("TileSetAtlasSource_y0t1a")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkdam"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xr83t"]
 texture = ExtResource("2_bfxao")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -353,7 +355,7 @@ texture_region_size = Vector2i(64, 64)
 17:7/0 = 0
 17:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, 32, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_emdui"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7kbg"]
 texture = ExtResource("2_k7w2x")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -491,10 +493,10 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-sources/1 = SubResource("TileSetAtlasSource_emdui")
-sources/0 = SubResource("TileSetAtlasSource_xkdam")
+sources/1 = SubResource("TileSetAtlasSource_i7kbg")
+sources/0 = SubResource("TileSetAtlasSource_xr83t")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k7w2x"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n7v13"]
 texture = ExtResource("1_p0005")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -509,9 +511,9 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_emdui"]
 tile_size = Vector2i(64, 64)
-sources/1 = SubResource("TileSetAtlasSource_k7w2x")
+sources/1 = SubResource("TileSetAtlasSource_n7v13")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wedbv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vwg7"]
 texture = ExtResource("12_l6qtc")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -592,7 +594,7 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-sources/1 = SubResource("TileSetAtlasSource_wedbv")
+sources/1 = SubResource("TileSetAtlasSource_0vwg7")
 
 [node name="Lvl1_r2" type="Node2D"]
 
@@ -600,7 +602,7 @@ sources/1 = SubResource("TileSetAtlasSource_wedbv")
 
 [node name="Wall Decorations Layer" type="TileMapLayer" parent="TileMap"]
 z_index = 3
-tile_map_data = PackedByteArray("AAD9//j/AAABAAMAAAD+//j/AAACAAMAAAD///j/AAABAAMAAAAAAPj/AAACAAMAAAABAPj/AAABAAMAAAACAPj/AAACAAMAAAADAPj/AAADAAMAAAAEAPf/AAADAAMAAAAFAPb/AAADAAMAAAADAPf/AAABAAEAAAAEAPb/AAABAAEAAAAGAPX/AAABAAMAAAAHAPX/AAACAAMAAAD4//X/AAABAAMAAAD5//X/AAACAAMAAAD3//X/AAACAAMAAAAIAPX/AAACAAMAAAAFAPX/AAABAAEAAAD8//j/AAAAAAMAAAD7//f/AAAAAAMAAAD6//b/AAAAAAMAAAD6//X/AAACAAEAAAD7//b/AAACAAEAAAD8//f/AAACAAEAAAD9//v/AQABAAEAAAD9//z/AQAAAAIAAAAIAPf/AQAEAAIAAAAHAPf/AQABAAIAAAAGAPb/AQABAAIAAAAHAPb/AQACAAEAAAAIAPj/AQAAAAMAAAAIAPb/AQADAAEAAAD3//v/AAADAAAAAAD4//z/AAADAAAAAAD5//3/AAADAAAAAAD6//7/AAADAAAAAAD7////AAADAAAAAAD8/wAAAAADAAAAAAD7/wAAAAABAAIAAAD6////AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAABAAIAAAD3//z/AAABAAIAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAD8/wEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAACAAIAAAAHAP3/AAACAAIAAAAGAP7/AAACAAIAAAAFAP//AAACAAIAAAAEAAAAAAACAAIAAAD+//v/AQACAAIAAAD3//b/AQACAAEAAAD3//f/AQACAAIAAAD+//n/AQAEAAEAAAD///n/AQACAAAAAAD+//r/AQAAAAIAAAD9//n/AQABAAIAAAAAAPn/AQABAAAAAAABAPn/AQABAAAAAAACAPn/AQAEAAIAAAACAPv/AQAAAAMAAAACAPr/AQAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9//j/AAABAAMAAAD+//j/AAACAAMAAAD///j/AAABAAMAAAAAAPj/AAACAAMAAAABAPj/AAABAAMAAAACAPj/AAACAAMAAAADAPj/AAADAAMAAAAEAPf/AAADAAMAAAAFAPb/AAADAAMAAAADAPf/AAABAAEAAAAEAPb/AAABAAEAAAAGAPX/AAABAAMAAAAHAPX/AAACAAMAAAD4//X/AAABAAMAAAD5//X/AAACAAMAAAD3//X/AAACAAMAAAAIAPX/AAACAAMAAAAFAPX/AAABAAEAAAD8//j/AAAAAAMAAAD7//f/AAAAAAMAAAD6//b/AAAAAAMAAAD6//X/AAACAAEAAAD7//b/AAACAAEAAAD8//f/AAACAAEAAAD9//v/AQABAAEAAAD9//z/AQAAAAIAAAAIAPf/AQAEAAIAAAAHAPf/AQABAAIAAAAGAPb/AQABAAIAAAAHAPb/AQACAAEAAAAIAPj/AQAAAAMAAAAIAPb/AQADAAEAAAD3//v/AAADAAAAAAD4//z/AAADAAAAAAD5//3/AAADAAAAAAD6//7/AAADAAAAAAD7////AAADAAAAAAD8/wAAAAADAAAAAAD7/wAAAAABAAIAAAD6////AAABAAIAAAD5//7/AAABAAIAAAD4//3/AAABAAIAAAD3//z/AAABAAIAAAD9/wEAAAABAAAAAAD+/wEAAAACAAAAAAD//wEAAAABAAAAAAAAAAEAAAACAAAAAAABAAEAAAABAAAAAAACAAEAAAACAAAAAAD8/wEAAAABAAIAAAADAAEAAAACAAIAAAADAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAACAAIAAAAHAP3/AAACAAIAAAAGAP7/AAACAAIAAAAFAP//AAACAAIAAAAEAAAAAAACAAIAAAD+//v/AQACAAIAAAD3//b/AQACAAEAAAD3//f/AQACAAIAAAD+//n/AQAEAAEAAAD///n/AQACAAAAAAD+//r/AQAAAAIAAAD9//n/AQABAAIAAAAAAPn/AQABAAAAAAABAPn/AQAEAAEAAAACAPn/AQAEAAIAAAACAPv/AQAAAAMAAAACAPr/AQAEAAIAAAAEAPn/BQABAAIAAAAFAPn/BQACAAIAAAAFAPj/BQABAAEAAAAFAPr/BQADAAAAAAAEAPr/BQABAAMAAAAFAPf/AQAAAAEAAAADAPr/BQAAAAEAAAADAPv/BQADAAIAAAADAPn/AQAAAAEAAAABAPr/AQABAAIAAAADAPz/BQADAAAAAAA=")
 tile_set = SubResource("TileSet_g3ro0")
 
 [node name="Wall Map Layer" type="TileMapLayer" parent="TileMap"]
@@ -681,3 +683,20 @@ position = Vector2(-479, -431)
 scale = Vector2(1.5, 1.5)
 target_scene = "res://Levels/Lvl1_storage.tscn"
 is_lobby_door = true
+
+[node name="Signs" type="Node" parent="."]
+
+[node name="Comms" parent="Signs" instance=ExtResource("17_jfvbu")]
+z_index = 5
+position = Vector2(-4, -325)
+sign_label = "res://Assets/CyberQuest_Assets/Environment/Comms.png"
+
+[node name="Engine" parent="Signs" instance=ExtResource("17_jfvbu")]
+z_index = 5
+position = Vector2(479, -516)
+sign_label = "res://Assets/CyberQuest_Assets/Environment/Engine.png"
+
+[node name="Storage" parent="Signs" instance=ExtResource("17_jfvbu")]
+z_index = 5
+position = Vector2(-479, -517)
+sign_label = "res://Assets/CyberQuest_Assets/Environment/Storage.png"
