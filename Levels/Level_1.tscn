@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://2wvn5u3j1yes"]
+[gd_scene load_steps=33 format=4 uid="uid://2wvn5u3j1yes"]
 
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="1_pe37q"]
 [ext_resource type="Texture2D" uid="uid://bjyoydqowsa42" path="res://Assets/web_safety_assets/Tilesets/Map/Wall.png" id="1_wo6ly"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://25iokhri7nt4" path="res://Scripts/Interactions/InteractionManager/InteractionManager.tscn" id="9_ivotk"]
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="10_6rttb"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="14_ixldi"]
-[ext_resource type="PackedScene" uid="uid://vw1dg0of3173" path="res://Dialogues/Dialogue_interaction.tscn" id="15_6sw07"]
 [ext_resource type="PackedScene" uid="uid://dnbdfkg7ur1tq" path="res://Scripts/objects/Boxes/HideBox.tscn" id="15_nop75"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="15_uqtfo"]
 [ext_resource type="Texture2D" uid="uid://ft6bop55g05x" path="res://Assets/web_safety_assets/Characters/Enemy_Spritesheet.png" id="15_yoeg4"]
@@ -422,9 +421,6 @@ point_count = 18
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rttb"]
 size = Vector2(605, 609)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k21mj"]
-size = Vector2(114, 38)
-
 [node name="Level_1" type="Node2D"]
 process_mode = 1
 
@@ -545,17 +541,6 @@ visibility_layer = 0
 process_mode = 3
 
 [node name="PauseHud" parent="HUD" instance=ExtResource("14_ixldi")]
-
-[node name="Dialogue_interaction" parent="." instance=ExtResource("15_6sw07")]
-z_index = 1
-position = Vector2(2138, 691)
-collision_layer = 32
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialogue_interaction"]
-z_index = 1
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_k21mj")
 
 [node name="PassBlocks" type="Node" parent="."]
 
