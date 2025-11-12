@@ -11,8 +11,6 @@ func _on_area_body_entered(body: Node) -> void:
     if not body.has_method("player"):
         return
 
-    # check global flag and change scene if allowed
-    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", Global.canExitLevel)
     if Global.canExitLevel:
         if target_scene:
             get_tree().call_deferred("change_scene_to_packed", target_scene)
