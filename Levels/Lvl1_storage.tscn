@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="9_java5"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="9_r215s"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="11_7k02s"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="13_inv03"]
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="14_vwuue"]
@@ -22,6 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="20_fnej0"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
 [ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_r2.tscn" id="22_fd52h"]
+=======
+[ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="13_vwuue"]
+[ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="14_vwuue"]
+[ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="15_5rxy5"]
+[ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="16_r215s"]
+>>>>>>> 52fafd2 (Flip orientation added with new bugs)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
 texture = ExtResource("9_r215s")
@@ -942,6 +949,7 @@ position = Vector2(1087, 182)
 position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_vwt3a")
 
+<<<<<<< HEAD
 [node name="Room06Collision" type="Area2D" parent="Enemies"]
 position = Vector2(1852, 181)
 
@@ -957,3 +965,16 @@ position = Vector2(1366, 285)
 z_index = 2
 position = Vector2(1319, 402)
 target_scene = ExtResource("22_fd52h")
+=======
+[node name="move_box" parent="MoveBoxes" instance=ExtResource("16_r215s")]
+z_index = 5
+position = Vector2(1118, 250)
+
+[node name="move_box2" parent="MoveBoxes" instance=ExtResource("16_r215s")]
+z_index = 5
+position = Vector2(930, -391)
+
+[node name="move_box3" parent="MoveBoxes" instance=ExtResource("16_r215s")]
+z_index = 5
+position = Vector2(2004, -515)
+>>>>>>> 52fafd2 (Flip orientation added with new bugs)
