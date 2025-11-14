@@ -23,4 +23,5 @@ func _on_save_pressed() -> void:
 
 
 func _on_load_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menus/main_menu/Load-Menu.tscn");
+	pause_interaction.pausemenu()
+	get_tree().change_scene_to_file("res://Menus/main_menu/Load-Menu.tscn")

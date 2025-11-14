@@ -7,6 +7,7 @@ func _ready():
 	if canLoad:
 		$CenterVbox/VBoxContainer/N1.text = "Player 1: " + PlayerData.player_name_1 + "\n Player 2:" + PlayerData.player_name_2
 	$VBoxContainer2/BacktoMenu.grab_focus();
+	print(get_tree().get_current_scene())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,15 +16,14 @@ func _process(_delta: float) -> void:
 
 
 func _on_backto_menu_pressed():
-	print("press acknowledged")
 	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");
 
 
-func _on_n_1_pressed() -> void:	
+func _on_n_1_pressed() -> void:
 	@warning_ignore("integer_division")
-	print("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, '.tscn'))
+	print("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
 	@warning_ignore("integer_division")
-	get_tree().change_scene_to_file("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, '.tscn'))
+	get_tree().change_scene_to_file("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
 
 
 func _on_n_2_pressed() -> void:
