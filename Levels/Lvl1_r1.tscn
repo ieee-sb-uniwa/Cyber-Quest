@@ -541,7 +541,7 @@ position = Vector2(483, 606)
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
 [node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(1931, 12)
+position = Vector2(1955, -28)
 scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
@@ -553,7 +553,7 @@ position = Vector2(483, 605)
 scale = Vector2(0.7, 0.7)
 
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("14_4vqe8")]
-position = Vector2(1930, 35)
+position = Vector2(1442, -32)
 scale = Vector2(0.7, 0.7)
 
 [node name="HUD" type="CanvasLayer" parent="."]
