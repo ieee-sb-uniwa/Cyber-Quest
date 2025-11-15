@@ -10,6 +10,11 @@ func _ready():
 	box_sprite.set_frame(1)  # Set to "unhidden" frame initially
 
 func _process(_delta):
+	# Check if this is the closest interaction area
+	var closest_area = InteractionManager.get_closest_area()
+	if closest_area != box_area:
+		return
+		
 	var bodies = box_area.get_overlapping_bodies()
 	# Only check input if there is a body inside area
 	if bodies.size() == 0: 
