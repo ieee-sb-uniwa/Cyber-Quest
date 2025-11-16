@@ -12,9 +12,7 @@ var move_speed : float = 150
 var passblocks_in_level : Array = [] # List of passblocks in level to ensure unique ids
 
 # General Password Rules Properties
-var dob1 := "07/02/2008"
-var dob2 := "03/12/2008"
-var date_of_birth : Array = []
+
 var pri_rules := {
 	"prule1": "Μην βάλεις την ημερομηνία γέννησής σου.",
 	"prule2": "Μήκος κωδικού τουλάχιστον 8 ψηφία.",
@@ -51,6 +49,16 @@ var visible_sec_rules := {
 	"srule6": false
 }
 
+# # Player1 profile
+# var player_name_1: String = ""
+# var birthdate_1: String = ""
+
+# # Player2 profile
+# var player_name_2: String = ""
+# var birthdate_2: String = ""
+var dob1 := "07/02/2008"
+var dob2 := "03/12/2008"
+var date_of_birth : Array = []
 # Level global variables
 var isTutorial: bool = true
 var players: Array[CharacterBody2D] = []
@@ -67,7 +75,8 @@ func _ready():
 
 
 var lobby_doors_open: Array = [true, false, false] # First door is open by default (storage, comms, engineroom)
-var current_level: int = 0
+var current_level: int = 0 ## 
+var current_inv_slot: int = 0 
 
 func reset_variables() -> void:
 	blocks_picked = 0
@@ -76,6 +85,17 @@ func reset_variables() -> void:
 	Hide_status = 1
 	terminal_unlocked = false
 	canExitLevel = false
+
+
+func before_scene_change() -> void:
+	# Clear runtime references that should not persist across scenes
+	players.clear()
+	passblocks_in_level.clear()
+	dropped_passblocks.clear()
+	player_entered_spawn = [false, false]
+	# Reset SpawnManager if available to avoid stale player refs
+	if typeof(SpawnManager) != TYPE_NIL:
+		SpawnManager.reset()
 
 func can_access_terminal() -> bool:
 	#!! HERE CHANGE LOGIC FOR LOBBBY TERMINAL ACCESS
@@ -102,15 +122,21 @@ func get_player_interact_button(body: Node2D) -> String:
 		
 func change_level() -> void:
 	passblocks_in_level.clear()
-	PlayerData.level+=1
+	PlayerData.inv_slot+=1
 	if inventory_gui:
-		inventory_gui.unlock_inventory_for_level(PlayerData.level)
-	print(PlayerData.level)
+		inventory_gui.unlock_inventory_for_level(PlayerData.inv_slot)
+	print(PlayerData.inv_slot)
 	saveData.save_game()
 	
 func load_game() -> void:
 	var canLoad = saveData.load_game()
 	if canLoad:
 		print("go to loaded level")
+		dob1 = PlayerData.birthdate_1
+		dob2 = PlayerData.birthdate_2
+		current_level = PlayerData.level
+		current_inv_slot = PlayerData.inv_slot
 	else:
 		print("no save available")
+func save_game() -> void:
+	saveData.save_game()

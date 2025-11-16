@@ -1,28 +1,29 @@
-[gd_scene load_steps=38 format=4 uid="uid://ca3pruvhpmll6"]
+[gd_scene load_steps=39 format=4 uid="uid://ca3pruvhpmll6"]
 
-[ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_hbkpr"]
-[ext_resource type="Texture2D" uid="uid://bomtkj3weluqq" path="res://Assets/CyberQuest_Assets/Environment/terminal kleisto.png" id="1_ryou8"]
-[ext_resource type="Texture2D" uid="uid://sluddvo7dpaf" path="res://Assets/CyberQuest_Assets/Environment/karekla.png" id="2_1x0r2"]
-[ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_w6mlp"]
-[ext_resource type="Texture2D" uid="uid://bfgkqx3bdoj48" path="res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png" id="3_5w1wt"]
-[ext_resource type="Texture2D" uid="uid://iyuu7u5pb5ne" path="res://Assets/CyberQuest_Assets/Environment/ypologisths.png" id="3_uew2q"]
-[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="4_2ria2"]
-[ext_resource type="Texture2D" uid="uid://bw2s2jg6qbkeh" path="res://Assets/CyberQuest_Assets/Environment/fan.png" id="4_5jtut"]
-[ext_resource type="Texture2D" uid="uid://do0r1o5iuffsx" path="res://Assets/CyberQuest_Assets/Environment/circuitsNew.png" id="5_m6qia"]
-[ext_resource type="Texture2D" uid="uid://dswngoa2couaa" path="res://Assets/CyberQuest_Assets/Environment/computer me patwma3.png" id="5_roc7i"]
-[ext_resource type="Texture2D" uid="uid://ddhy83tu0wmsh" path="res://Assets/CyberQuest_Assets/Environment/bashhhh.png" id="6_h78rh"]
-[ext_resource type="Texture2D" uid="uid://dkq1ni6f6fjbh" path="res://Assets/CyberQuest_Assets/Environment/pipesHorizontal.png" id="6_m813i"]
-[ext_resource type="Texture2D" uid="uid://dy0i7yokc6ymr" path="res://Assets/CyberQuest_Assets/Environment/Untitljfed-1.png" id="7_1x0r2"]
-[ext_resource type="Texture2D" uid="uid://ubchtr1yu7um" path="res://Assets/CyberQuest_Assets/Environment/sign.png" id="7_ryou8"]
-[ext_resource type="Texture2D" uid="uid://bbnwd22g8fdrq" path="res://Assets/CyberQuest_Assets/Environment/wallTopThin.png" id="8_1x0r2"]
-[ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="9_uew2q"]
-[ext_resource type="Texture2D" uid="uid://d3l5m1hkocn2n" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png" id="10_2ria2"]
-[ext_resource type="Texture2D" uid="uid://cepqwocgme3op" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor_Bridge.png" id="11_roc7i"]
-[ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="12_h78rh"]
-[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="13_vc58c"]
+[ext_resource type="Script" uid="uid://1eguaaciegma" path="res://Levels/lvl_1_6.gd" id="1_yq3oo"]
+[ext_resource type="Texture2D" uid="uid://bomtkj3weluqq" path="res://Assets/CyberQuest_Assets/Environment/terminal kleisto.png" id="2_q32vq"]
+[ext_resource type="Texture2D" uid="uid://sluddvo7dpaf" path="res://Assets/CyberQuest_Assets/Environment/karekla.png" id="3_g88tw"]
+[ext_resource type="Texture2D" uid="uid://iyuu7u5pb5ne" path="res://Assets/CyberQuest_Assets/Environment/ypologisths.png" id="4_5xl0b"]
+[ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="5_8v4hn"]
+[ext_resource type="Texture2D" uid="uid://dswngoa2couaa" path="res://Assets/CyberQuest_Assets/Environment/computer me patwma3.png" id="6_1dj67"]
+[ext_resource type="Texture2D" uid="uid://ddhy83tu0wmsh" path="res://Assets/CyberQuest_Assets/Environment/bashhhh.png" id="7_veamt"]
+[ext_resource type="Texture2D" uid="uid://dy0i7yokc6ymr" path="res://Assets/CyberQuest_Assets/Environment/Untitljfed-1.png" id="8_cmy4d"]
+[ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="9_deig2"]
+[ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="10_jgjto"]
+[ext_resource type="Texture2D" uid="uid://bfgkqx3bdoj48" path="res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png" id="11_cbwsb"]
+[ext_resource type="Texture2D" uid="uid://bw2s2jg6qbkeh" path="res://Assets/CyberQuest_Assets/Environment/fan.png" id="12_rucce"]
+[ext_resource type="Texture2D" uid="uid://do0r1o5iuffsx" path="res://Assets/CyberQuest_Assets/Environment/circuitsNew.png" id="13_j30fb"]
+[ext_resource type="Texture2D" uid="uid://dkq1ni6f6fjbh" path="res://Assets/CyberQuest_Assets/Environment/pipesHorizontal.png" id="14_3xyx8"]
+[ext_resource type="Texture2D" uid="uid://ubchtr1yu7um" path="res://Assets/CyberQuest_Assets/Environment/sign.png" id="15_n65al"]
+[ext_resource type="Texture2D" uid="uid://bbnwd22g8fdrq" path="res://Assets/CyberQuest_Assets/Environment/wallTopThin.png" id="16_mph7t"]
+[ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="17_wu6cc"]
+[ext_resource type="Texture2D" uid="uid://d3l5m1hkocn2n" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png" id="18_qhpfo"]
+[ext_resource type="Texture2D" uid="uid://cepqwocgme3op" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor_Bridge.png" id="19_tpwyv"]
+[ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="20_q6n7t"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="21_ruvqb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbmra"]
-texture = ExtResource("1_hbkpr")
+texture = ExtResource("9_deig2")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, -32, 32, 1.05333, 0.175552, 32)
@@ -54,7 +55,7 @@ texture_region_size = Vector2i(64, 64)
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, -32, -1.05333, -32, -32, -0.175552)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lxir1"]
-texture = ExtResource("2_w6mlp")
+texture = ExtResource("10_jgjto")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -73,19 +74,19 @@ texture_region_size = Vector2i(64, 64)
 1:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_whh64"]
-texture = ExtResource("3_5w1wt")
+texture = ExtResource("11_cbwsb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvrvl"]
-texture = ExtResource("4_5jtut")
+texture = ExtResource("12_rucce")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_44c4m"]
-texture = ExtResource("5_m6qia")
+texture = ExtResource("13_j30fb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -96,7 +97,7 @@ texture_region_size = Vector2i(64, 64)
 3:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jk72t"]
-texture = ExtResource("6_m813i")
+texture = ExtResource("14_3xyx8")
 texture_region_size = Vector2i(64, 64)
 2:0/0 = 0
 3:0/0 = 0
@@ -120,13 +121,13 @@ texture_region_size = Vector2i(64, 64)
 5:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tdx3c"]
-texture = ExtResource("7_ryou8")
+texture = ExtResource("15_n65al")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ov6bi"]
-texture = ExtResource("8_1x0r2")
+texture = ExtResource("16_mph7t")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -163,7 +164,7 @@ sources/6 = SubResource("TileSetAtlasSource_tdx3c")
 sources/7 = SubResource("TileSetAtlasSource_ov6bi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_61wxt"]
-texture = ExtResource("9_uew2q")
+texture = ExtResource("17_wu6cc")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, -32, 32, 32)
@@ -383,7 +384,7 @@ texture_region_size = Vector2i(64, 64)
 17:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, 32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_thnq1"]
-texture = ExtResource("10_2ria2")
+texture = ExtResource("18_qhpfo")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32)
@@ -524,7 +525,7 @@ sources/1 = SubResource("TileSetAtlasSource_thnq1")
 sources/0 = SubResource("TileSetAtlasSource_61wxt")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57jyp"]
-texture = ExtResource("11_roc7i")
+texture = ExtResource("19_tpwyv")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -537,7 +538,7 @@ texture_region_size = Vector2i(64, 64)
 2:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_12a3m"]
-texture = ExtResource("12_h78rh")
+texture = ExtResource("20_q6n7t")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -555,7 +556,7 @@ sources/1 = SubResource("TileSetAtlasSource_12a3m")
 sources/0 = SubResource("TileSetAtlasSource_57jyp")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wasam"]
-texture = ExtResource("13_vc58c")
+texture = ExtResource("21_ruvqb")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -637,48 +638,49 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_wasam")
 
-[node name="Node2D" type="Node2D"]
+[node name="Lvl1_bridge" type="Node2D"]
+script = ExtResource("1_yq3oo")
 
 [node name="On floor items (temp)" type="Node" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(134, -625)
-texture = ExtResource("1_ryou8")
+texture = ExtResource("2_q32vq")
 
 [node name="Sprite2D3" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(-129, -630)
-texture = ExtResource("1_ryou8")
+texture = ExtResource("2_q32vq")
 
 [node name="Sprite2D2" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(-224, -97)
-texture = ExtResource("2_1x0r2")
+texture = ExtResource("3_g88tw")
 
 [node name="Ypologisths" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(-306, -91)
-texture = ExtResource("3_uew2q")
+texture = ExtResource("4_5xl0b")
 
-[node name="Player" parent="On floor items (temp)" instance=ExtResource("4_2ria2")]
+[node name="Player" parent="On floor items (temp)" instance=ExtResource("5_8v4hn")]
 position = Vector2(-98, -116)
 
 [node name="ComputerMePatwma3" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(0, -162)
-texture = ExtResource("5_roc7i")
+texture = ExtResource("6_1dj67")
 
 [node name="Bashhhh" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 5
 position = Vector2(0, -384)
-texture = ExtResource("6_h78rh")
+texture = ExtResource("7_veamt")
 
 [node name="Untitljfed-1" type="Sprite2D" parent="On floor items (temp)"]
 z_index = 6
 position = Vector2(-5.96046e-08, -410)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("7_1x0r2")
+texture = ExtResource("8_cmy4d")
 
 [node name="Tilemap" type="Node" parent="."]
 

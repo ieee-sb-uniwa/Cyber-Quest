@@ -1,5 +1,6 @@
-[gd_scene load_steps=41 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=42 format=4 uid="uid://ujqijqnpc1am"]
 
+[ext_resource type="Script" uid="uid://dts4vdnf8bvyl" path="res://Levels/lvl_1_3.gd" id="1_7kvs1"]
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
 [ext_resource type="Texture2D" uid="uid://bfgkqx3bdoj48" path="res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png" id="3_7k02s"]
@@ -21,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="19_vwt3a"]
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="20_fnej0"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
-[ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_r2.tscn" id="22_fd52h"]
+[ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="22_fd52h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
 texture = ExtResource("9_r215s")
@@ -755,6 +756,7 @@ sources/6 = SubResource("TileSetAtlasSource_rw06k")
 size = Vector2(383, 189)
 
 [node name="Lvl1_storage" type="Node2D"]
+script = ExtResource("1_7kvs1")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
