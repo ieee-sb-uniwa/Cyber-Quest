@@ -82,6 +82,17 @@ func reset_variables() -> void:
 	Hide_status = 1
 	terminal_unlocked = false
 
+
+func before_scene_change() -> void:
+	# Clear runtime references that should not persist across scenes
+	players.clear()
+	passblocks_in_level.clear()
+	dropped_passblocks.clear()
+	player_entered_spawn = [false, false]
+	# Reset SpawnManager if available to avoid stale player refs
+	if typeof(SpawnManager) != TYPE_NIL:
+		SpawnManager.reset()
+
 func can_access_terminal() -> bool:
 	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
 

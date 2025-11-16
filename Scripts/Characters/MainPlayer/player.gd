@@ -26,6 +26,17 @@ func _ready():
 	if camera.has_method("assign_player"):
 		camera.assign_player(playerNum, self)
 
+
+func _exit_tree() -> void:
+	# Unregister from spawn manager and global players list
+	if typeof(SpawnManager) != TYPE_NIL:
+		if SpawnManager.has_method("unregister_player"):
+			SpawnManager.unregister_player(self)
+	for i in range(Global.players.size()):
+		if Global.players[i] == self:
+			Global.players.remove_at(i)
+			break
+
 func _physics_process(_delta):	
 	if is_respawning:
 		return  # Skip movement
@@ -115,8 +126,9 @@ func clear_all_items() -> void:
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && !is_hidden: 
-		for i in Global.players.size():
-			Global.players[i].on_death()
+		for p in Global.players:
+			if is_instance_valid(p):
+				p.on_death()
 		SpawnManager.respawn_players()
 		body.change_state("PatrolNav")
 
