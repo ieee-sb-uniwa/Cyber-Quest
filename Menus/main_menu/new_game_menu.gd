@@ -42,6 +42,7 @@ func _on_confirm_pressed() -> void:
 
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
+	Global.save_game()
 	get_tree().change_scene_to_file("res://Levels/Lvl1_1.tscn")
 
 

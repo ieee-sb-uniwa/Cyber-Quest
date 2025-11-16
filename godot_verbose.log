@@ -48,6 +48,7 @@ Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
 Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
 Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
 Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
+Data saved: { "player_name_1": "fr1", "birthdate_1": "07/02/2003", "player_name_2": "fr2", "birthdate_2": "07/02/2003", "level": 0, "inv_slot": 0 }
 Loading resource: res://Levels/Lvl1_1.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
 Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
@@ -139,11 +140,9 @@ Loading resource: res://Assets/UI/Keys/Numbers/9.png
 Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
 Loading resource: res://Assets/UI/Keys/Numbers/0.png
 Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
-Block id: 3
 Block id: 2
-Block id: 1
 Block id: 0
-["07022008", "722008", "02072008", "272008", "07200802", "720082", "02200807", "220087", "20080207", "200827", "20080702", "200872", "03122008", "3122008", "12032008", "1232008", "03200812", "3200812", "12200803", "1220083", "20081203", "2008123", "20080312", "2008312"]
-XR: Clearing primary interface
-XR: Removed interface "Native mobile"
-XR: Removed interface "OpenXR"
+Block id: 1
+Block id: 3
+["07022003", "722003", "02072003", "272003", "07200302", "720032", "02200307", "220037", "20030207", "200327", "20030702", "200372", "07022003", "722003", "02072003", "272003", "07200302", "720032", "02200307", "220037", "20030207", "200327", "20030702", "200372"]
+Data saved: { "player_name_1": "fr1", "birthdate_1": "07/02/2003", "player_name_2": "fr2", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0 }
