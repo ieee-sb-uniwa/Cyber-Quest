@@ -14,6 +14,7 @@ var movement_enabled = true
 var is_respawning:bool=false
 var hide_holder = null
 var is_interacting_with_box: bool = false
+var box_interaction_side: String = ""  # "left", "right", "up", "down"
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -26,6 +27,17 @@ func _ready():
 	if camera.has_method("assign_player"):
 		camera.assign_player(playerNum, self)
 
+
+func _exit_tree() -> void:
+	# Unregister from spawn manager and global players list
+	if typeof(SpawnManager) != TYPE_NIL:
+		if SpawnManager.has_method("unregister_player"):
+			SpawnManager.unregister_player(self)
+	for i in range(Global.players.size()):
+		if Global.players[i] == self:
+			Global.players.remove_at(i)
+			break
+
 func _physics_process(_delta):	
 	if is_respawning:
 		return  # Skip movement
@@ -36,6 +48,7 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	pick_new_state()
+	update_animation()
 
 func update_animation_parameters(move_input : Vector2):
 	if(move_input == Vector2.ZERO):
@@ -134,7 +147,75 @@ func set_interacting_with_box(interacting: bool):
 		move_speed = Global.move_speed * 0.4  # 40% of normal speed, adjust as needed
 	else:
 		move_speed = Global.move_speed
+		box_interaction_side = ""
 
 func is_interacting() -> bool:
 	var action_name = "Interact_p" + str(playerNum)
 	return Input.is_action_pressed(action_name)
+
+func update_box_interaction_orientation(side: String):
+	box_interaction_side = side
+	
+	# Update animation based on side
+	if side == "left":
+		# Player is on the left side - face right to push the box
+		$AnimatedSprite2D.animation = "move_side"
+		$AnimatedSprite2D.flip_h = false
+	elif side == "right":
+		# Player is on the right side - face left to push the box
+		$AnimatedSprite2D.animation = "move_side"
+		$AnimatedSprite2D.flip_h = true
+	elif side == "up":
+		# Player is on the top - face down to push the box
+		$AnimatedSprite2D.animation = "move_front"
+		$AnimatedSprite2D.flip_h = false
+	elif side == "down":
+		# Player is on the bottom - face up to push the box
+		$AnimatedSprite2D.animation = "move_back"
+		$AnimatedSprite2D.flip_h = false
+
+func reset_box_orientation():
+	box_interaction_side = ""
+	# Reset any special orientation settings
+	$AnimatedSprite2D.flip_h = false
+
+# Update your animation function to account for box interaction
+func update_animation():
+	if is_interacting_with_box and box_interaction_side != "":
+		# We're interacting with a box
+		if velocity.length() > 0:
+			# Moving while interacting
+			if box_interaction_side == "left" or box_interaction_side == "right":
+				$AnimatedSprite2D.animation = "move_side"
+			elif box_interaction_side == "up":
+				$AnimatedSprite2D.animation = "move_front"
+			elif box_interaction_side == "down":
+				$AnimatedSprite2D.animation = "move_back"
+		else:
+			# Standing still while interacting
+			if box_interaction_side == "left" or box_interaction_side == "right":
+				$AnimatedSprite2D.animation = "idle_side"
+			elif box_interaction_side == "up":
+				$AnimatedSprite2D.animation = "idle_front"
+			elif box_interaction_side == "down":
+				$AnimatedSprite2D.animation = "idle_back"
+	else:
+		# Regular movement animations
+		if velocity.x != 0:
+			$AnimatedSprite2D.animation = "move_side"
+			$AnimatedSprite2D.flip_h = velocity.x < 0
+		elif velocity.y != 0:
+			if velocity.y > 0:
+				$AnimatedSprite2D.animation = "move_front"  # Moving down
+			else:
+				$AnimatedSprite2D.animation = "move_back"   # Moving up
+		else:
+			# Idle - maintain last direction
+			if $AnimatedSprite2D.animation == "move_side":
+				$AnimatedSprite2D.animation = "idle_side"
+			elif $AnimatedSprite2D.animation == "move_front":
+				$AnimatedSprite2D.animation = "idle_front"
+			elif $AnimatedSprite2D.animation == "move_back":
+				$AnimatedSprite2D.animation = "idle_back"
+			else:
+				$AnimatedSprite2D.animation = "idle_front"  # Default

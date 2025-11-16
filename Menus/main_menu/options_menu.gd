@@ -11,4 +11,16 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_backto_menu_pressed():
-	get_tree().change_scene_to_file("res://Menu/Menu.tscn");
+	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
+
+
+
+func _on_master_slider_drag_ended(value_changed:bool) -> void:
+	pass # Replace with function body.
+
+
+func _on_music_slider_drag_ended(value_changed:bool) -> void:
+	pass # Replace with function body.
+
+func _on_sounds_slider_drag_ended(value_changed:bool) -> void:
+	pass # Replace with function body.

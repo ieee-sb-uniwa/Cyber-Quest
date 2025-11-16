@@ -8,7 +8,7 @@ var isOpen = false
 
 # Add these properties to configure each door instance
 @export var door_index: int = 0  # Which door this is (0, 1, 2, etc.)
-@export var target_scene: String = "res://Levels/Lvl1_r2.tscn"  # Scene to load
+@export var target_scene: String = "res://Levels/Lvl1_2.tscn"  # Scene to load
 @export var is_lobby_door: bool = false  # Whether this uses the lobby system
 
 func _ready():
@@ -29,13 +29,11 @@ func _on_body_entered(body, area_name=""):
 		if not is_lobby_door:
 			Global.reset_variables() 
 			Global.isTutorial = false
-			Global.current_level += 1
 			get_tree().call_deferred("change_scene_to_file", target_scene)
 			return
 		
 		# Change to the target scene
 		Global.reset_variables()
-		Global.current_level += 1
 		Global.max_player_items *= 2 # Double the max items each level
 		get_tree().call_deferred("change_scene_to_file", target_scene)
 		
