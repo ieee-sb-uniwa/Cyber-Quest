@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ckudgosc6wseb" path="res://Scripts/Characters/Enemies/enemy_nav.tscn" id="18_3d45e"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="19_vwt3a"]
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="20_fnej0"]
-[ext_resource type="PackedScene" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
+[ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
 [ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="22_fd52h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]

@@ -9,6 +9,7 @@ var player_name_2: String = ""
 var birthdate_2: String = ""
 
 var level: int = 0
+var inv_slot: int = 0
 
 var inventory: Dictionary = { 
 #	1: "res://assets/inventory/item1.png", 
