@@ -33,7 +33,6 @@ Loading resource: res://.godot/imported/AC-Everyday_unicode.ttf-438a4ddfd09e2c53
 Loading resource: res://addons/dialogue_manager/dialogue_manager.gd
 Loading resource: res://addons/dialogue_manager/test_scene.tscn
 Loading resource: res://addons/dialogue_manager/test_scene.gd
-Loading resource: res://Scripts/Characters/MainPlayer/SpawnManager.gd
 Loaded system CA certificates
 Loading resource: res://Menus/main_menu/Menu.tscn
 Loading resource: res://Menus/main_menu/menu.gd
@@ -50,63 +49,32 @@ Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c88
 Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
 Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
 Loading resource: res://Levels/Lvl1_1.tscn
-Loading resource: res://Levels/lvl_1_1.gd
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/background.png
-Loading resource: res://.godot/imported/background.png-0392819e5197ed62187de544c5514f81.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
 Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png
-Loading resource: res://.godot/imported/spaceBackround.png-fcc0780cc31d545de2f589fc10c165b3.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/boxesNew.png
-Loading resource: res://.godot/imported/boxesNew.png-1398d1c85f898685165bc626c21b6f42.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
-Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png
-Loading resource: res://.godot/imported/wallTopGrey.png-6fe3576eb4b713dd680d96ff55c59bba.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/bigBox.png
-Loading resource: res://.godot/imported/bigBox.png-dc0aed776d9faee6e073ec5a298d5f33.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/towers.png
-Loading resource: res://.godot/imported/towers.png-7f9f281aef9406b9223d3ac97e4eb51b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/fenceBigger.png
-Loading resource: res://.godot/imported/fenceBigger.png-6e69ee0ec120637944b7cc3c5ad73cab.ctex
-Loading resource: res://Scripts/objects/Terminal/Terminal.tscn
-Loading resource: res://Scripts/objects/Terminal/terminal.gd
-Loading resource: res://Assets/CyberQuest_Assets/Environment/terminal.png
-Loading resource: res://.godot/imported/terminal.png-ed325459714acec0f7253627bb49350e.ctex
-Loading resource: res://Scripts/Interactions/InteractionArea/InteractionArea.tscn
-Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.tscn
-Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.gd
 Loading resource: res://Scripts/Characters/MainPlayer/player.tscn
 Loading resource: res://Scripts/Characters/MainPlayer/player.gd
 Loading resource: res://HUD/Scripts_Resources/Player_Inventory.tres
 Loading resource: res://Assets/CyberQuest_Assets/Characters/Astronaut Player.png
 Loading resource: res://.godot/imported/Astronaut Player.png-345fb4170eb179657f532d951910f7e0.ctex
 Loading resource: res://Scripts/Characters/MainPlayer/dash.gd
-Loading resource: res://Scripts/objects/door/Door.tscn
-Loading resource: res://Scripts/objects/door/door.gd
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png
-Loading resource: res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex
-Loading resource: res://Scripts/objects/Boxes/move_box.tscn
-Loading resource: res://Scripts/objects/Boxes/move_box.gd
-Loading resource: res://Scripts/objects/PassBlock/PassBlock.tscn
-Loading resource: res://Scripts/objects/PassBlock/PassBlock.gd
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Keys_32px_Spritesheet_all.png
-Loading resource: res://.godot/imported/Keys_32px_Spritesheet_all.png-e02dce04c47efb21b9e37f4c6b331b99.ctex
-Loading resource: res://PasswordUI/new/ctrl.tscn
-Loading resource: res://PasswordUI/new/keyboard.gd
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/onscreen_keyboard.gd
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/delete.png
-Loading resource: res://.godot/imported/delete.png-354dc972208d0290a60df7d6a5e4c739.ctex
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/shift.png
-Loading resource: res://.godot/imported/shift.png-4121abf1331977967da161efefd0e138.ctex
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/left.png
-Loading resource: res://.godot/imported/left.png-3f4b2420c3b885733e76835490ac9436.ctex
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/right.png
-Loading resource: res://.godot/imported/right.png-691027f392b240125d9a95c9d89db6de.ctex
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/hide.png
-Loading resource: res://.godot/imported/hide.png-0712c776a983563cd9f3dfc5945d9dbe.ctex
-Loading resource: res://addons/Onscreen-Keyboard/addons/onscreenkeyboard/icons/enter.png
-Loading resource: res://.godot/imported/enter.png-de240c0e9894c1dc8b3a2e6ff7a5576d.ctex
+Loading resource: res://Levels/lvl_1_1.gd
+Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Collision visualiser.png
+Loading resource: res://.godot/imported/Collision visualiser.png-d217ceea290a88c7a0ab9f496de7a845.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
+Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png
+Loading resource: res://.godot/imported/spaceBackround.png-fcc0780cc31d545de2f589fc10c165b3.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/fenceBigger.png
+Loading resource: res://.godot/imported/fenceBigger.png-6e69ee0ec120637944b7cc3c5ad73cab.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png
+Loading resource: res://.godot/imported/wallTopGrey.png-6fe3576eb4b713dd680d96ff55c59bba.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/towers.png
+Loading resource: res://.godot/imported/towers.png-7f9f281aef9406b9223d3ac97e4eb51b.ctex
+Loading resource: res://Scripts/Characters/MainPlayer/two_player_camera.gd
+Loading resource: res://Assets/CyberQuest_Assets/Environment/bigBox.png
+Loading resource: res://.godot/imported/bigBox.png-dc0aed776d9faee6e073ec5a298d5f33.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/boxesNew.png
+Loading resource: res://.godot/imported/boxesNew.png-1398d1c85f898685165bc626c21b6f42.ctex
 Loading resource: res://Menus/pause_menu/PauseHUD.tscn
 Loading resource: res://Menus/pause_menu/pause_menu.tscn
 Loading resource: res://Menus/pause_menu/pause_menu.gd
@@ -114,67 +82,68 @@ Loading resource: res://Menus/pause_menu/pause_button.tscn
 Loading resource: res://Menus/pause_menu/pause_button.gd
 Loading resource: res://Menus/pause_menu/pause_interaction.tscn
 Loading resource: res://Menus/pause_menu/pause_interaction.gd
-Loading resource: res://Scripts/Characters/MainPlayer/two_player_camera.gd
-Block id: 2
-Block id: 1
-Block id: 3
-Block id: 0
-["07022008", "722008", "02072008", "272008", "07200802", "720082", "02200807", "220087", "20080207", "200827", "20080702", "200872", "03122008", "3122008", "12032008", "1232008", "03200812", "3200812", "12200803", "1220083", "20081203", "2008123", "20080312", "2008312"]
-Data saved: { "player_name_1": "fr1", "birthdate_1": "07/02/2003", "player_name_2": "fr2", "birthdate_2": "07/02/2003", "level": 11 }
-Loading resource: res://Menus/main_menu/Menu.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Cyber_Quest_logo.png
-Loading resource: res://.godot/imported/Cyber_Quest_logo.png-a94f5096de0810e96bee619e5bc7bcd6.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Blue_Gradient.png
-Loading resource: res://.godot/imported/Blue_Gradient.png-6408f79048997b4b46719b76b25bbc35.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3
-Loading resource: res://.godot/imported/TitleMusic.mp3-255c6cb31c8ff9a63f836c6ab6008586.mp3str
-Loading resource: res://Menus/main_menu/Load-Menu.tscn
-Loading resource: res://Menus/main_menu/load_menu.gd
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
-Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
-Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
-Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
-Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
-LoadMenu:<Control#142136575800>
-res://Levels/Lvl1_1.tscn
-Loading resource: res://Levels/Lvl1_1.tscn
+Loading resource: res://HUD/scenes/inventory_gui.tscn
+Loading resource: res://HUD/scenes/inv_slot.tscn
+Loading resource: res://HUD/sprites/inv_slot_dark.png
+Loading resource: res://.godot/imported/inv_slot_dark.png-f72d1dd456a1617eae5f40ee766cd6dd.ctex
+Loading resource: res://HUD/Scripts_Resources/inv_slot.gd
+Loading resource: res://HUD/Scripts_Resources/inventory_gui.gd
+Loading resource: res://Scripts/objects/door/Door.tscn
+Loading resource: res://Scripts/objects/door/door.gd
+Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png
+Loading resource: res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/background.png
 Loading resource: res://.godot/imported/background.png-0392819e5197ed62187de544c5514f81.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
-Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png
-Loading resource: res://.godot/imported/spaceBackround.png-fcc0780cc31d545de2f589fc10c165b3.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/boxesNew.png
-Loading resource: res://.godot/imported/boxesNew.png-1398d1c85f898685165bc626c21b6f42.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
-Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png
-Loading resource: res://.godot/imported/wallTopGrey.png-6fe3576eb4b713dd680d96ff55c59bba.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/bigBox.png
-Loading resource: res://.godot/imported/bigBox.png-dc0aed776d9faee6e073ec5a298d5f33.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/towers.png
-Loading resource: res://.godot/imported/towers.png-7f9f281aef9406b9223d3ac97e4eb51b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/fenceBigger.png
-Loading resource: res://.godot/imported/fenceBigger.png-6e69ee0ec120637944b7cc3c5ad73cab.ctex
 Loading resource: res://Scripts/objects/Terminal/Terminal.tscn
+Loading resource: res://Scripts/objects/Terminal/terminal.gd
 Loading resource: res://Assets/CyberQuest_Assets/Environment/terminal.png
 Loading resource: res://.godot/imported/terminal.png-ed325459714acec0f7253627bb49350e.ctex
 Loading resource: res://Scripts/Interactions/InteractionArea/InteractionArea.tscn
-Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.tscn
-Loading resource: res://Scripts/Characters/MainPlayer/player.tscn
-Loading resource: res://HUD/Scripts_Resources/Player_Inventory.tres
-Loading resource: res://Assets/CyberQuest_Assets/Characters/Astronaut Player.png
-Loading resource: res://.godot/imported/Astronaut Player.png-345fb4170eb179657f532d951910f7e0.ctex
-Loading resource: res://Scripts/objects/door/Door.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png
-Loading resource: res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex
-Loading resource: res://Scripts/objects/Boxes/move_box.tscn
 Loading resource: res://Scripts/objects/PassBlock/PassBlock.tscn
+Loading resource: res://Scripts/objects/PassBlock/PassBlock.gd
 Loading resource: res://Assets/CyberQuest_Assets/Environment/Keys_32px_Spritesheet_all.png
 Loading resource: res://.godot/imported/Keys_32px_Spritesheet_all.png-e02dce04c47efb21b9e37f4c6b331b99.ctex
+Loading resource: res://Scripts/objects/Boxes/move_box.tscn
+Loading resource: res://Scripts/objects/Boxes/move_box.gd
+Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.tscn
+Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.gd
+Loading resource: res://Assets/CyberQuest_Assets/Environment/workbench.png
+Loading resource: res://.godot/imported/workbench.png-aa1634d3ff31ab8894a999f76d75a853.ctex
 Loading resource: res://PasswordUI/new/ctrl.tscn
-Loading resource: res://Menus/pause_menu/PauseHUD.tscn
-Loading resource: res://Menus/pause_menu/pause_menu.tscn
-Loading resource: res://Menus/pause_menu/pause_button.tscn
-Loading resource: res://Menus/pause_menu/pause_interaction.tscn
+Loading resource: res://Assets/UI/Monitor.png
+Loading resource: res://.godot/imported/Monitor.png-908ed0feba66bb398aeada4a71e300c2.ctex
+Loading resource: res://PasswordUI/new/keyboard.gd
+Loading resource: res://Assets/UI/Numpad.png
+Loading resource: res://.godot/imported/Numpad.png-379fe8b253ec45277fee9fc78fbf5e5f.ctex
+Loading resource: res://Assets/UI/Keys/Cancel Key.png
+Loading resource: res://.godot/imported/Cancel Key.png-14086bf416d188a6f2fc8833bd6a69fe.ctex
+Loading resource: res://Assets/UI/Keys/Accept key.png
+Loading resource: res://.godot/imported/Accept key.png-41f5ccc9bef2015cd88560186fbdc2e1.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/1.png
+Loading resource: res://.godot/imported/1.png-e21c36c707109f3feda6cb32d4eb8747.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/2.png
+Loading resource: res://.godot/imported/2.png-ea425455971dd130daa96815d46ddb03.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/3.png
+Loading resource: res://.godot/imported/3.png-f96d4a0b769a3aac1ac5bd4da640b80a.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/4.png
+Loading resource: res://.godot/imported/4.png-0c09d8ef77a489624b985b2a7c83c9de.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/5.png
+Loading resource: res://.godot/imported/5.png-cd44b51090526dfbbc4f5a9587464f65.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/6.png
+Loading resource: res://.godot/imported/6.png-398dd56fc520162cad5ebde546de920a.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/7.png
+Loading resource: res://.godot/imported/7.png-e6c7e4599c9d7703e77895b62f22dca3.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/8.png
+Loading resource: res://.godot/imported/8.png-aa29aa0a1bf3298ca770f9477709cc8a.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/9.png
+Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
+Loading resource: res://Assets/UI/Keys/Numbers/0.png
+Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
+Block id: 3
+Block id: 2
+Block id: 1
+Block id: 0
+["07022008", "722008", "02072008", "272008", "07200802", "720082", "02200807", "220087", "20080207", "200827", "20080702", "200872", "03122008", "3122008", "12032008", "1232008", "03200812", "3200812", "12200803", "1220083", "20081203", "2008123", "20080312", "2008312"]
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"

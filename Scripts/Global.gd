@@ -73,6 +73,10 @@ var inventory_gui : Control
 func _ready():
 	saveData = SaveData.new()
 
+func _exit_tree():
+	if saveData:
+		saveData.free()
+		saveData = null
 
 var lobby_doors_open: Array = [true, false, false] # First door is open by default (storage, comms, engineroom)
 var current_level: int = 0 ## 
@@ -107,7 +111,7 @@ func add_passblock(passblock: Node) -> void:
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		print("All passblocks collected!")
 		canExitLevel = true
-		change_level()
+		update_inv()
 
 func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:
 	return Input.is_action_just_pressed(interact_button) and player.is_in_group(player_group)
@@ -120,13 +124,11 @@ func get_player_interact_button(body: Node2D) -> String:
 	else:
 		return ""
 		
-func change_level() -> void:
+func update_inv() -> void:
 	passblocks_in_level.clear()
 	PlayerData.inv_slot+=1
 	if inventory_gui:
 		inventory_gui.unlock_inventory_for_level(PlayerData.inv_slot)
-	print(PlayerData.inv_slot)
-	saveData.save_game()
 	
 func load_game() -> void:
 	var canLoad = saveData.load_game()
