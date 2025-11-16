@@ -177,7 +177,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -235,7 +235,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 15.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpo7h"]
@@ -258,6 +258,9 @@ script = ExtResource("1_rfi8h")
 z_index = 2
 position = Vector2(-0.5, -13)
 sprite_frames = SubResource("SpriteFrames_wt36c")
+animation = &"close"
+frame = 14
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 3

@@ -7,7 +7,7 @@ var welcome := "Καλώς Ήρθατε!\nΕισάγετε κωδικό:\n>"
 var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.\n"
 
 # Paths label- terminal, primary- basic rules, secondary- extra rules
-var label_path := "../Screen/Panel/RichTextLabel1"
+var label_path := "../Screen/RichTextLabel1"
 var primary_label := "../Primary/RichTextLabel2"
 var secondary_label := "../Secondary/Panel/RichTextLabel3"
 
@@ -237,11 +237,11 @@ func _generate_rule_feedback() -> String:
 
 	# Feedback on terminal (colorized)
 	if errors.size() == 0:
-		feedback += "[color=green]✔ Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
+		feedback += "[color=0cc5cc]Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
 		success = true
 	else:
 		for error in errors:
-			feedback += "[color=red]✘ " + error + "\n[/color]"
+			feedback += "[color=ef6e2f]" + error + "\n[/color]"
 		feedback += "Εισάγετε νέο κωδικό:\n> "
 
 	return feedback
