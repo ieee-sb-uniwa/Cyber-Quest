@@ -32,6 +32,6 @@ func load_game() ->bool:
 		PlayerData.birthdate_1 = result.get("birthdate_1", "")
 		PlayerData.player_name_2 = result.get("player_name_2", "")
 		PlayerData.birthdate_2 = result.get("birthdate_2", "")
-		PlayerData.level = result.get("level", {})
+		PlayerData.level = result.get("level", 0)
 		return true
 	return false
