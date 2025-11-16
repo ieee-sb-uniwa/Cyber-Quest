@@ -596,8 +596,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_0vwg7")
 
-[node name="Lvl1_2" type="Node2D"]
-script = ExtResource("1_65qf8")
+[node name="Lvl1_r2" type="Node2D"]
 
 [node name="TileMap" type="Node" parent="."]
 
@@ -637,14 +636,14 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="Ctrl" parent="HUD" instance=ExtResource("13_rvyvo")]
+[node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
 visible = false
 
-[node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("14_ffltg")]
+[node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
 z_index = 11
 position = Vector2(-57, -10)
 
-[node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("14_ffltg")]
+[node name="Player2" parent="." groups=["SecondPlayer", "player"] instance=ExtResource("10_7skwt")]
 z_index = 11
 position = Vector2(49, -7)
 playerNum = 2
@@ -653,36 +652,36 @@ playerNum = 2
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]
 zoom = Vector2(0.5, 0.5)
-script = ExtResource("15_8dcy3")
+script = ExtResource("11_jwjn3")
 player1 = NodePath("../../Player")
 player2 = NodePath("../../Player2")
 
 [node name="Doors" type="Node" parent="."]
 
-[node name="Door" parent="Doors" instance=ExtResource("16_y0bim")]
+[node name="Door" parent="Doors" instance=ExtResource("13_54ngp")]
 z_index = 8
 y_sort_enabled = false
 position = Vector2(-4, -239)
 scale = Vector2(1.5, 1.5)
 door_index = 1
-target_scene = "res://Levels/Lvl1_5.tscn"
+target_scene = "res://Levels/Lvl1_comms.tscn"
 is_lobby_door = true
 
-[node name="Door2" parent="Doors" instance=ExtResource("16_y0bim")]
+[node name="Door2" parent="Doors" instance=ExtResource("13_54ngp")]
 z_index = 8
 y_sort_enabled = false
 position = Vector2(479, -431)
 scale = Vector2(1.5, 1.5)
 door_index = 2
-target_scene = "res://Levels/Lvl1_4.tscn"
+target_scene = "res://Levels/Lvl1_engineroom.tscn"
 is_lobby_door = true
 
-[node name="Door3" parent="Doors" instance=ExtResource("16_y0bim")]
+[node name="Door3" parent="Doors" instance=ExtResource("13_54ngp")]
 z_index = 8
 y_sort_enabled = false
 position = Vector2(-479, -431)
 scale = Vector2(1.5, 1.5)
-target_scene = "res://Levels/Lvl1_3.tscn"
+target_scene = "res://Levels/Lvl1_storage.tscn"
 is_lobby_door = true
 
 [node name="Signs" type="Node" parent="."]

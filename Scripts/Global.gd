@@ -106,7 +106,6 @@ func add_passblock(passblock: Node) -> void:
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		print("All passblocks collected!")
 		canExitLevel = true
-		change_level()
 
 func player_interacts(interact_button: String, player_group: String, player: Node) -> bool:
 	return Input.is_action_just_pressed(interact_button) and player.is_in_group(player_group)

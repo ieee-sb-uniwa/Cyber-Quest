@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="19_vwt3a"]
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="20_fnej0"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
-[ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_r2.tscn" id="22_fd52h"]
+[ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="22_fd52h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_java5"]
 texture = ExtResource("9_r215s")
@@ -156,7 +156,7 @@ parsed_collision_mask = 4294967057
 agent_radius = 22.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rbs70"]
-texture = ExtResource("8_kikdx")
+texture = ExtResource("6_vwuue")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, -32, 32, 32)
@@ -388,7 +388,7 @@ texture_region_size = Vector2i(64, 64)
 17:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, -32, -32, 32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_on4r2"]
-texture = ExtResource("7_hx2ao")
+texture = ExtResource("7_5rxy5")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, 32, 32)
@@ -755,7 +755,6 @@ sources/6 = SubResource("TileSetAtlasSource_rw06k")
 size = Vector2(383, 189)
 
 [node name="Lvl1_storage" type="Node2D"]
-script = ExtResource("1_7kvs1")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -878,7 +877,7 @@ position = Vector2(1466, -520)
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="PauseHud" parent="HUD" instance=ExtResource("12_vk5yo")]
+[node name="PauseHud" parent="HUD" instance=ExtResource("13_vwuue")]
 
 [node name="InventoryGUI" parent="HUD" instance=ExtResource("13_inv03")]
 anchors_preset = 2

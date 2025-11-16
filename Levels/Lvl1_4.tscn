@@ -638,7 +638,6 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_wasam")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_vulhv")
 
 [node name="On floor items (temp)" type="Node" parent="."]
 
