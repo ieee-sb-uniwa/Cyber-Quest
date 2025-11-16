@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=35 format=4 uid="uid://bx0a4c0nphj70"]
 
+[ext_resource type="Script" uid="uid://coqooaqfvbog3" path="res://Levels/lvl_1_2.gd" id="1_65qf8"]
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
 [ext_resource type="Texture2D" uid="uid://d3l5m1hkocn2n" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png" id="2_k7w2x"]
@@ -597,6 +598,7 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_0vwg7")
 
 [node name="Lvl1_r2" type="Node2D"]
+script = ExtResource("1_65qf8")
 
 [node name="TileMap" type="Node" parent="."]
 

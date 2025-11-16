@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=4 uid="uid://ca3pruvhpmll6"]
+[gd_scene load_steps=39 format=4 uid="uid://ca3pruvhpmll6"]
 
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_hbkpr"]
 [ext_resource type="Texture2D" uid="uid://bomtkj3weluqq" path="res://Assets/CyberQuest_Assets/Environment/terminal kleisto.png" id="1_ryou8"]
+[ext_resource type="Script" uid="uid://j3dj188dx1b8" path="res://Levels/lvl_1_4.gd" id="1_vulhv"]
 [ext_resource type="Texture2D" uid="uid://sluddvo7dpaf" path="res://Assets/CyberQuest_Assets/Environment/karekla.png" id="2_1x0r2"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_w6mlp"]
 [ext_resource type="Texture2D" uid="uid://bfgkqx3bdoj48" path="res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png" id="3_5w1wt"]
@@ -638,6 +639,7 @@ physics_layer_0/collision_mask = 6
 sources/1 = SubResource("TileSetAtlasSource_wasam")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_vulhv")
 
 [node name="On floor items (temp)" type="Node" parent="."]
 
