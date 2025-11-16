@@ -23,6 +23,8 @@ func _on_n_1_pressed() -> void:
 	@warning_ignore("integer_division")
 	print("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
 	@warning_ignore("integer_division")
+	# Clean up globals before switching to level scene
+	Global.before_scene_change()
 	get_tree().change_scene_to_file("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
 
 

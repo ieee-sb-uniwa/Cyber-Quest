@@ -32,3 +32,18 @@ func respawn_players():
 	print("respawning to "+str(spawn2.global_position))
 	player_1_asset.global_position = spawn1.global_position
 	player_2_asset.global_position = spawn2.global_position
+
+
+func unregister_player(player_node: Node) -> void:
+	if player_1_asset == player_node:
+		player_1_asset = null
+	if player_2_asset == player_node:
+		player_2_asset = null
+
+
+func reset() -> void:
+	player_1_asset = null
+	player_2_asset = null
+	camera_asset = null
+	spawn_points = [[],[]]
+	spawnIndex = 0
