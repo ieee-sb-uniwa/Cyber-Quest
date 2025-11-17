@@ -1,6 +1,7 @@
 extends Resource
-
-class_name InventoryItem # δημιουργει ενα resource με τις παρακατω ιδιοτητες
-
-@export var name : String = " " #ονομα αντικειμενου
-@export var texture : Texture2D #texture αντικειμενου
+# δημιουργει ενα resource με τις παρακατω ιδιοτητες 
+class_name InventoryItem 
+# ονομα αντικειμενου
+@export var name : String = " " 
+# texture αντικειμενου
+@export var texture : Texture2D 

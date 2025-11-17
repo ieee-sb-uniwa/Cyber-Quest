@@ -16,3 +16,4 @@ data_*/
 mono_crash.*.json
 .vscode/
 .DS_Store
+godot_verbose.log

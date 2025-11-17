@@ -7,19 +7,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ort"]
 size = Vector2(55, 29)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0d6k"]
-size = Vector2(23, 29)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8g2u"]
-size = Vector2(24, 29)
+size = Vector2(16, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s85pb"]
-size = Vector2(37, 28)
+size = Vector2(37, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0d6k"]
+size = Vector2(16, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4wmc"]
-size = Vector2(37, 29)
+size = Vector2(37, 17)
 
-[node name="move_box" type="StaticBody2D"]
+[node name="move_box" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_uqapv")
@@ -31,29 +31,46 @@ texture = ExtResource("2_xdurq")
 position = Vector2(-0.5, -6.5)
 shape = SubResource("RectangleShape2D_s8ort")
 
-[node name="InteractionAreaH" type="Area2D" parent="."]
+[node name="InteractionAreaR" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
 action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaH"]
-position = Vector2(-39.5, -6.5)
-shape = SubResource("RectangleShape2D_t0d6k")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractionAreaH"]
-position = Vector2(39, -6.5)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractionAreaR"]
+position = Vector2(35, -6.5)
 shape = SubResource("RectangleShape2D_u8g2u")
 
-[node name="InteractionAreaV" type="Area2D" parent="."]
+[node name="InteractionAreaD" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 6
+script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
+metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaV"]
-position = Vector2(0, 22)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaD"]
+position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_s85pb")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaV"]
-position = Vector2(0.5, -35.5)
+[node name="InteractionAreaL" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
+metadata/_custom_type_script = "uid://cxoccobhfbs2w"
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaL"]
+position = Vector2(-36, -6.5)
+shape = SubResource("RectangleShape2D_t0d6k")
+
+[node name="InteractionAreaU" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
+metadata/_custom_type_script = "uid://cxoccobhfbs2w"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaU"]
+position = Vector2(0.5, -29.5)
 shape = SubResource("RectangleShape2D_t4wmc")

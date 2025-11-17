@@ -1,12 +1,14 @@
 extends Node2D
-@onready var curr_player = null
-@onready var label = $Label
+
+# Defensive initialization: assign in _ready to avoid errors if node graph changes
+var curr_player: Node2D = null
+var label: Label = null
 
 # holds all objects the player can currently interact with.
-var active_areas = []
-var can_interact = true
+var active_areas: Array = []
+var can_interact: bool = true
 
-# Getter method to access the label
+# Getter method to access the label (returns null if not available)
 func get_label() -> Label:
 	return label
 
@@ -38,8 +40,8 @@ func register_area(area: InteractionArea, body: Node2D):
 	curr_player = body
 	# Don't need to update label here, _process will handle it
 
-func unregister_area(area: InteractionArea):
-	var index = active_areas.find(area) 
+func unregister_area(area: InteractionArea) -> void:
+	var index = active_areas.find(area)
 	if index != -1:
 		active_areas.remove_at(index)
 		# Don't need to update label here, _process will handle it
@@ -51,10 +53,23 @@ func update_closest_label():
 	else:
 		label.hide()
 
-func show_action_label(area: InteractionArea):
+func show_action_label(area: InteractionArea) -> void:
+	var l = get_label()
+	if not l:
+		return
 	if Global.isTutorial: # If we in tutorial state
-		label.text = "Πάτα " + Global.get_player_interact_button(curr_player) +" για να " + area.action_name
-		label.global_position = area.global_position
-		label.global_position.y -= 36
-		label.global_position.x -= label.size.x / 2
-		label.show()
+		# Defensive checks for curr_player
+		var btn = ""
+		if curr_player and is_instance_valid(curr_player):
+			btn = Global.get_player_interact_button(curr_player)
+		l.text = "Πάτα " + btn + " για να " + area.action_name
+		l.global_position = area.global_position
+		l.global_position.y -= 36
+		# Guard label size access
+		if l.has_method("get_size"):
+			l.global_position.x -= l.size.x / 2
+		else:
+			# best-effort: try to access size property if present
+			if "size" in l:
+				l.global_position.x -= l.size.x / 2
+		l.show()
