@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="10_inv02"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="11_jwjn3"]
 [ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="12_l6qtc"]
-[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="13_54ngp"]
+[ext_resource type="PackedScene" uid="uid://c18qbg4tc15eu" path="res://PasswordUI/new/Char_UI.tscn" id="15_8p1af"]
 [ext_resource type="PackedScene" uid="uid://2rh2rxmwh6hh" path="res://Scripts/objects/Sign/Sign.tscn" id="17_jfvbu"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="19_l65v4"]
 
@@ -637,7 +637,7 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="PasswordUI" parent="HUD" instance=ExtResource("12_xkdam")]
+[node name="PasswordUI" parent="HUD" instance=ExtResource("15_8p1af")]
 visible = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
@@ -706,4 +706,4 @@ sign_label = "res://Assets/CyberQuest_Assets/Environment/Storage.png"
 
 [node name="Terminal" parent="." instance=ExtResource("19_l65v4")]
 z_index = 9
-position = Vector2(65, -199)
+position = Vector2(99, -199)
