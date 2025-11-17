@@ -10,7 +10,8 @@ func save_game():
 		"player_name_2":PlayerData.player_name_2,
 		"birthdate_2": PlayerData.birthdate_2,		
 		"level": PlayerData.level,
-		"inv_slot": PlayerData.inv_slot
+		"inv_slot": PlayerData.inv_slot,
+		"isTutorial": Global.isTutorial
 	}
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	if file:
@@ -35,5 +36,6 @@ func load_game() ->bool:
 		PlayerData.birthdate_2 = result.get("birthdate_2", "")
 		PlayerData.level = result.get("level", 0)
 		PlayerData.inv_slot = result.get("inv_slot", 0)
+		Global.isTutorial = result.get("isTutorial", true)
 		return true
 	return false
