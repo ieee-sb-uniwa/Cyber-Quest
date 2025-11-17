@@ -99,6 +99,13 @@ func before_scene_change() -> void:
 	if typeof(SpawnManager) != TYPE_NIL:
 		SpawnManager.reset()
 
+func change_scene(target_scene: String, target_index: int) -> void:
+	before_scene_change()
+	reset_variables()
+	get_tree().call_deferred("change_scene_to_file", target_scene)
+	PlayerData.level = target_index
+	save_game()
+
 func can_access_terminal() -> bool:
 	# Check if current level matches the required inventory slot
 	var required_slot = 0
@@ -147,7 +154,7 @@ func load_game() -> void:
 		dob2 = PlayerData.birthdate_2
 		user1 = PlayerData.player_name_1
 		user2 = PlayerData.player_name_2
-		# PlayerData.level and PlayerData.inv_slot are loaded directly
+		#? PlayerData.level and PlayerData.inv_slot are loaded/used directly
 	else:
 		print("no save available")
 

@@ -957,3 +957,4 @@ position = Vector2(1366, 285)
 z_index = 2
 position = Vector2(1319, 402)
 target_scene = ExtResource("22_fd52h")
+target_index = 12
