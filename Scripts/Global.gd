@@ -14,11 +14,11 @@ var Hide_status: int = 1
 var move_speed : float = 150
 
 # Level global variables
-var isTutorial: bool = true
+var isTutorial: bool
 var canExitLevel: bool = false
 var can_pause_game: bool = true
 
-var lobby_doors_open: Array = [true, false, false] # (storage, comms, engineroom)
+var lobby_doors_open: Array 
 var terminal_unlocked: bool = false
 
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
@@ -145,6 +145,16 @@ func get_player_interact_button(body: Node2D) -> String:
 		return "[.]"
 	else:
 		return ""
+
+func on_new_game(player_names: Array, birthdates: Array) -> void:
+	PlayerData.player_name_1 = player_names[0]
+	PlayerData.birthdate_1 = birthdates[0]
+	PlayerData.player_name_2 = player_names[1]
+	PlayerData.birthdate_2 = birthdates[1]
+	PlayerData.inv_slot = 0
+	PlayerData.level = 11
+	isTutorial = true
+	lobby_doors_open = [true, false, false]
 	
 ## Save and Load Functions
 func load_game() -> void:
