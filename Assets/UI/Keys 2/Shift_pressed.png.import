@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7rhv3itov0r0"
-path="res://.godot/imported/Shift_pressed.png-e146fbd8f574b9655e83636ab03609bf.ctex"
+path="res://.godot/imported/Shift_pressed.png-8ca166e204711a2d86680af6673f3b19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Keys/Shift_pressed.png"
-dest_files=["res://.godot/imported/Shift_pressed.png-e146fbd8f574b9655e83636ab03609bf.ctex"]
+source_file="res://Assets/UI/Keys 2/Shift_pressed.png"
+dest_files=["res://.godot/imported/Shift_pressed.png-8ca166e204711a2d86680af6673f3b19.ctex"]
 
 [params]
 

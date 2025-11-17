@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddv6xgxseminb"
-path="res://.godot/imported/m.png-12526c7d2047b2bc1a45f56c21089a71.ctex"
+path="res://.godot/imported/m.png-2f33f81dd725aff7213b19e9a36a29b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Keys/Lowercase Letters/m.png"
-dest_files=["res://.godot/imported/m.png-12526c7d2047b2bc1a45f56c21089a71.ctex"]
+source_file="res://Assets/UI/Keys 2/Lowercase Letters/m.png"
+dest_files=["res://.godot/imported/m.png-2f33f81dd725aff7213b19e9a36a29b7.ctex"]
 
 [params]
 

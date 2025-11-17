@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b25bjlmlhepqw"
-path="res://.godot/imported/Cancel Key.png-14086bf416d188a6f2fc8833bd6a69fe.ctex"
+path="res://.godot/imported/Cancel Key.png-29e7db0d8dcbb3c918cf8daa0753e400.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Keys/Cancel Key.png"
-dest_files=["res://.godot/imported/Cancel Key.png-14086bf416d188a6f2fc8833bd6a69fe.ctex"]
+source_file="res://Assets/UI/Keys 2/Cancel Key.png"
+dest_files=["res://.godot/imported/Cancel Key.png-29e7db0d8dcbb3c918cf8daa0753e400.ctex"]
 
 [params]
 
