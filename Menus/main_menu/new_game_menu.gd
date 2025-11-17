@@ -39,11 +39,14 @@ func _on_confirm_pressed() -> void:
 
 	PlayerData.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
 	PlayerData.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
+	PlayerData.inv_slot = 0
+	PlayerData.level = 11
 
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
+	# Save the game before starting
+	Global.save_game()
 	get_tree().change_scene_to_file("res://Levels/Lvl1_1.tscn")
-
 
 func _on_back_pressed() -> void:
 	$CenterContainer/CenteringCon/Primary/NameIN.text =''
@@ -51,7 +54,6 @@ func _on_back_pressed() -> void:
 	$CenterContainer/CenteringCon.visible = true
 	$"CenterContainer/Pop-Up".visible = false
 	return
-
 
 func _on_back_to_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var target_scene: PackedScene
+@export var target_index: int = 0
 @onready var area: Area2D = $Area2D
 
 func _ready():
@@ -13,7 +14,8 @@ func _on_area_body_entered(body: Node) -> void:
 
     if Global.canExitLevel:
         if target_scene:
+            Global.reset_variables()    
+            Global.lobby_doors_open[target_index] = false
             get_tree().call_deferred("change_scene_to_packed", target_scene)
-            Global.canExitLevel = false  # reset flag after use
         else:
             push_error("DoorToLobby: target_scene not set")

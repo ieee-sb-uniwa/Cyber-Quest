@@ -24,4 +24,3 @@ func get_curr_inventory() -> Dictionary:
 		if i <= inventory.size():
 			curr_dictionary[i] = inventory[i]
 	return curr_dictionary
-	

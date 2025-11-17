@@ -28,10 +28,10 @@ func interaction_area_is_disabled() -> bool:
 
 # ---- Drop/Pick block ----
 func drop_block(body: Node2D):
-	set_interaction_area(false)
 	picked = false
 	Global.blocks_picked -= 1
 	self.z_index = unpicked_z_index + block_number
+	set_interaction_area(true)
 	if body.is_in_group("MainPlayer"):
 		Global.player_blocks[0] -= 1
 	elif body.is_in_group("SecondPlayer"):
@@ -86,7 +86,7 @@ func set_block_sprite():
 
 	# Add to global list of blocks in level
 	Global.passblocks_in_level.append(block_id)
-	print("Block id: ", block_id)
+	# print("Block id: ", block_id)
 	block_sprite.set_frame(block_id)
 
 func set_block_based_on_type():
