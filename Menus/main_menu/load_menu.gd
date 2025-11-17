@@ -20,6 +20,8 @@ func _on_n_1_pressed() -> void:
 	var scene_num = PlayerData.level % 10
 	var level_path = "res://Levels/Lvl" + str(level_num, '_', scene_num, ".tscn")
 	print(level_path)
+	print(PlayerData.level)
+	print(PlayerData.inv_slot)
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
 	get_tree().change_scene_to_file(level_path)
