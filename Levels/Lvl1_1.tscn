@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
-[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="19_y6a7i"]
+[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="19_y6a7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xt3y"]
 texture = ExtResource("1_subb7")
@@ -558,9 +558,6 @@ scale = Vector2(0.7, 0.7)
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="PasswordUI" parent="HUD" instance=ExtResource("19_y6a7i")]
-visible = false
-
 [node name="PauseHud" parent="HUD" instance=ExtResource("10_cjydo")]
 
 [node name="InventoryGUI" parent="HUD" instance=ExtResource("10_inv01")]
@@ -573,6 +570,9 @@ offset_right = 186.0
 offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="PasswordUI" parent="HUD" instance=ExtResource("19_y6a7i")]
+visible = false
 
 [node name="CameraRoot" type="Node" parent="."]
 

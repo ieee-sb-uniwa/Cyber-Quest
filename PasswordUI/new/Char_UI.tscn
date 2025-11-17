@@ -1,21 +1,21 @@
-[gd_scene load_steps=58 format=3 uid="uid://r21wg5i6yxvu"]
+[gd_scene load_steps=58 format=3 uid="uid://c18qbg4tc15eu"]
 
-[ext_resource type="Texture2D" uid="uid://bh8weuka7pp1p" path="res://Assets/UI/Monitor.png" id="1_lrc1x"]
-[ext_resource type="Script" uid="uid://de0p7onn3v728" path="res://PasswordUI/new/keyboard.gd" id="1_utqji"]
-[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="1_yhck8"]
-[ext_resource type="Texture2D" uid="uid://446kw6e0k56a" path="res://Assets/UI/Numpad.png" id="3_bpbxx"]
-[ext_resource type="Texture2D" uid="uid://b25bjlmlhepqw" path="res://Assets/UI/Keys/Cancel Key.png" id="4_201wn"]
-[ext_resource type="Texture2D" uid="uid://c3lrjygw1cajg" path="res://Assets/UI/Keys/Accept key.png" id="5_8cj44"]
-[ext_resource type="Texture2D" uid="uid://c2q0j74ntabiq" path="res://Assets/UI/Keys/Numbers/1.png" id="5_32tih"]
-[ext_resource type="Texture2D" uid="uid://wj3bblvclfbm" path="res://Assets/UI/Keys/Numbers/2.png" id="6_x44nw"]
-[ext_resource type="Texture2D" uid="uid://ds7p38qhx1egt" path="res://Assets/UI/Keys/Numbers/3.png" id="7_vy1th"]
-[ext_resource type="Texture2D" uid="uid://cj0vsrxf0hk2i" path="res://Assets/UI/Keys/Numbers/4.png" id="8_d74kc"]
-[ext_resource type="Texture2D" uid="uid://dscmcb5ujhog1" path="res://Assets/UI/Keys/Numbers/5.png" id="9_j7xye"]
-[ext_resource type="Texture2D" uid="uid://cu2poef6dgw37" path="res://Assets/UI/Keys/Numbers/6.png" id="10_3ff3r"]
-[ext_resource type="Texture2D" uid="uid://col4lqwx0b5w0" path="res://Assets/UI/Keys/Numbers/7.png" id="11_7cwpa"]
-[ext_resource type="Texture2D" uid="uid://cpcdm8wbnixrl" path="res://Assets/UI/Keys/Numbers/8.png" id="12_8nr1s"]
-[ext_resource type="Texture2D" uid="uid://ci65gc4arhbgs" path="res://Assets/UI/Keys/Numbers/9.png" id="13_8x5oc"]
-[ext_resource type="Texture2D" uid="uid://b32xtaqxauc7t" path="res://Assets/UI/Keys/Numbers/0.png" id="14_ov5m3"]
+[ext_resource type="Script" uid="uid://de0p7onn3v728" path="res://PasswordUI/new/keyboard.gd" id="1_p5g54"]
+[ext_resource type="Texture2D" uid="uid://bh8weuka7pp1p" path="res://Assets/UI/Monitor.png" id="2_tgvrk"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="3_1xklb"]
+[ext_resource type="Texture2D" uid="uid://446kw6e0k56a" path="res://Assets/UI/Numpad.png" id="4_entmr"]
+[ext_resource type="Texture2D" uid="uid://c2q0j74ntabiq" path="res://Assets/UI/Keys/Numbers/1.png" id="5_6mllw"]
+[ext_resource type="Texture2D" uid="uid://wj3bblvclfbm" path="res://Assets/UI/Keys/Numbers/2.png" id="6_7bc0h"]
+[ext_resource type="Texture2D" uid="uid://ds7p38qhx1egt" path="res://Assets/UI/Keys/Numbers/3.png" id="7_6qr4t"]
+[ext_resource type="Texture2D" uid="uid://cj0vsrxf0hk2i" path="res://Assets/UI/Keys/Numbers/4.png" id="8_2uquv"]
+[ext_resource type="Texture2D" uid="uid://dscmcb5ujhog1" path="res://Assets/UI/Keys/Numbers/5.png" id="9_8sqod"]
+[ext_resource type="Texture2D" uid="uid://cu2poef6dgw37" path="res://Assets/UI/Keys/Numbers/6.png" id="10_q5oij"]
+[ext_resource type="Texture2D" uid="uid://col4lqwx0b5w0" path="res://Assets/UI/Keys/Numbers/7.png" id="11_yqcdm"]
+[ext_resource type="Texture2D" uid="uid://cpcdm8wbnixrl" path="res://Assets/UI/Keys/Numbers/8.png" id="12_dyi6s"]
+[ext_resource type="Texture2D" uid="uid://ci65gc4arhbgs" path="res://Assets/UI/Keys/Numbers/9.png" id="13_ofql7"]
+[ext_resource type="Texture2D" uid="uid://b32xtaqxauc7t" path="res://Assets/UI/Keys/Numbers/0.png" id="14_7mvxs"]
+[ext_resource type="Texture2D" uid="uid://b25bjlmlhepqw" path="res://Assets/UI/Keys/Cancel Key.png" id="15_tmaf1"]
+[ext_resource type="Texture2D" uid="uid://c3lrjygw1cajg" path="res://Assets/UI/Keys/Accept key.png" id="16_03snh"]
 
 [sub_resource type="Theme" id="Theme_lnaeo"]
 
@@ -188,7 +188,7 @@ keycode = 4194310
 [sub_resource type="Shortcut" id="Shortcut_myvxr"]
 events = [SubResource("InputEventKey_my003"), SubResource("InputEventKey_oc3bx")]
 
-[node name="Ctrl" type="Control"]
+[node name="CharUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,7 +197,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_utqji")
+script = ExtResource("1_p5g54")
 metadata/_edit_horizontal_guides_ = [198.0]
 metadata/_edit_vertical_guides_ = [399.0, 397.0]
 
@@ -208,7 +208,7 @@ offset_left = 2.0
 offset_top = -28.0
 offset_right = 398.0
 offset_bottom = 223.0
-texture = ExtResource("1_lrc1x")
+texture = ExtResource("2_tgvrk")
 expand_mode = 1
 
 [node name="RichTextLabel1" type="RichTextLabel" parent="Screen"]
@@ -218,7 +218,7 @@ offset_top = 46.0
 offset_right = 374.0
 offset_bottom = 201.0
 theme_override_colors/default_color = Color(0.0470588, 0.772549, 0.8, 1)
-theme_override_fonts/normal_font = ExtResource("1_yhck8")
+theme_override_fonts/normal_font = ExtResource("3_1xklb")
 bbcode_enabled = true
 
 [node name="Primary" type="ColorRect" parent="."]
@@ -237,7 +237,7 @@ offset_top = 4.0
 offset_right = 209.0
 offset_bottom = 93.0
 theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_yhck8")
+theme_override_fonts/normal_font = ExtResource("3_1xklb")
 theme_override_font_sizes/normal_font_size = 10
 bbcode_enabled = true
 
@@ -266,7 +266,7 @@ offset_top = 4.0
 offset_right = 203.0
 offset_bottom = 233.0
 theme_override_colors/default_color = Color(0, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_yhck8")
+theme_override_fonts/normal_font = ExtResource("3_1xklb")
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
 scroll_following = true
@@ -279,7 +279,7 @@ offset_right = 493.0
 offset_bottom = 473.0
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_lnaeo")
-texture = ExtResource("3_bpbxx")
+texture = ExtResource("4_entmr")
 expand_mode = 1
 
 [node name="1" type="Button" parent="Keyboard"]
@@ -293,7 +293,7 @@ theme_override_colors/icon_pressed_color = Color(0.666569, 0.666569, 0.666569, 1
 theme_override_styles/hover = SubResource("StyleBoxFlat_bpbxx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_32tih")
 shortcut = SubResource("Shortcut_yhck8")
-icon = ExtResource("5_32tih")
+icon = ExtResource("5_6mllw")
 flat = true
 
 [node name="2" type="Button" parent="Keyboard"]
@@ -303,7 +303,7 @@ offset_top = 47.0
 offset_right = 157.0
 offset_bottom = 108.0
 shortcut = SubResource("Shortcut_201wn")
-icon = ExtResource("6_x44nw")
+icon = ExtResource("6_7bc0h")
 flat = true
 
 [node name="3" type="Button" parent="Keyboard"]
@@ -313,7 +313,7 @@ offset_top = 47.0
 offset_right = 214.0
 offset_bottom = 108.0
 shortcut = SubResource("Shortcut_ouwvn")
-icon = ExtResource("7_vy1th")
+icon = ExtResource("7_6qr4t")
 flat = true
 
 [node name="4" type="Button" parent="Keyboard"]
@@ -323,7 +323,7 @@ offset_top = 92.0
 offset_right = 100.0
 offset_bottom = 153.0
 shortcut = SubResource("Shortcut_umfuu")
-icon = ExtResource("8_d74kc")
+icon = ExtResource("8_2uquv")
 flat = true
 
 [node name="5" type="Button" parent="Keyboard"]
@@ -333,7 +333,7 @@ offset_top = 92.0
 offset_right = 157.0
 offset_bottom = 153.0
 shortcut = SubResource("Shortcut_ukl33")
-icon = ExtResource("9_j7xye")
+icon = ExtResource("9_8sqod")
 flat = true
 
 [node name="6" type="Button" parent="Keyboard"]
@@ -343,7 +343,7 @@ offset_top = 92.0
 offset_right = 214.0
 offset_bottom = 153.0
 shortcut = SubResource("Shortcut_wq3bc")
-icon = ExtResource("10_3ff3r")
+icon = ExtResource("10_q5oij")
 flat = true
 
 [node name="7" type="Button" parent="Keyboard"]
@@ -353,7 +353,7 @@ offset_top = 137.0
 offset_right = 100.0
 offset_bottom = 198.0
 shortcut = SubResource("Shortcut_x44nw")
-icon = ExtResource("11_7cwpa")
+icon = ExtResource("11_yqcdm")
 flat = true
 
 [node name="8" type="Button" parent="Keyboard"]
@@ -363,7 +363,7 @@ offset_top = 137.0
 offset_right = 157.0
 offset_bottom = 198.0
 shortcut = SubResource("Shortcut_j7xye")
-icon = ExtResource("12_8nr1s")
+icon = ExtResource("12_dyi6s")
 flat = true
 
 [node name="9" type="Button" parent="Keyboard"]
@@ -373,7 +373,7 @@ offset_top = 137.0
 offset_right = 214.0
 offset_bottom = 198.0
 shortcut = SubResource("Shortcut_8nr1s")
-icon = ExtResource("13_8x5oc")
+icon = ExtResource("13_ofql7")
 flat = true
 
 [node name="0" type="Button" parent="Keyboard"]
@@ -383,7 +383,7 @@ offset_top = 183.0
 offset_right = 158.0
 offset_bottom = 244.0
 shortcut = SubResource("Shortcut_7oy3s")
-icon = ExtResource("14_ov5m3")
+icon = ExtResource("14_7mvxs")
 flat = true
 
 [node name="X" type="Button" parent="Keyboard"]
@@ -395,7 +395,7 @@ offset_right = 280.0
 offset_bottom = 188.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_utqji")
 shortcut = SubResource("Shortcut_4813h")
-icon = ExtResource("4_201wn")
+icon = ExtResource("15_tmaf1")
 flat = true
 
 [node name="✔" type="Button" parent="Keyboard"]
@@ -407,5 +407,5 @@ offset_right = 280.0
 offset_bottom = 280.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yhck8")
 shortcut = SubResource("Shortcut_myvxr")
-icon = ExtResource("5_8cj44")
+icon = ExtResource("16_03snh")
 flat = true
