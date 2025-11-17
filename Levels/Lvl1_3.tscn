@@ -1,6 +1,5 @@
-[gd_scene load_steps=42 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=41 format=4 uid="uid://ujqijqnpc1am"]
 
-[ext_resource type="Script" uid="uid://dts4vdnf8bvyl" path="res://Levels/lvl_1_3.gd" id="1_7kvs1"]
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
 [ext_resource type="Texture2D" uid="uid://bfgkqx3bdoj48" path="res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png" id="3_7k02s"]
@@ -756,7 +755,6 @@ sources/6 = SubResource("TileSetAtlasSource_rw06k")
 size = Vector2(383, 189)
 
 [node name="Lvl1_storage" type="Node2D"]
-script = ExtResource("1_7kvs1")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true

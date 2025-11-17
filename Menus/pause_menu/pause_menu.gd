@@ -17,8 +17,6 @@ func _on_settings_pressed():
 	print("[PauseMenu] settings -> unpaused and switching to Options")
 	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Options-Menu.tscn")
 
-
-
 func _on_quit_pressed():
 	# Safely unpause and go back to main menu
 	if pause_interaction and pause_interaction.has_method("pausemenu"):
@@ -28,10 +26,10 @@ func _on_quit_pressed():
 	print("[PauseMenu] quit -> unpaused and switching to Main Menu")
 	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
 
-
+# THIS WILL MAYBE USED FOR MULTI-SLOT SAVING IN THE FUTURE
 func _on_save_pressed() -> void:
-	Global.saveData.save_game()
-
+	pass
+	# Global.saveData.save_game()
 
 func _on_load_pressed() -> void:
 	# Safely unpause before opening the Load menu
