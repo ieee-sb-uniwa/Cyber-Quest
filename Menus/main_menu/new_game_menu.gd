@@ -39,6 +39,7 @@ func _on_confirm_pressed() -> void:
 
 	PlayerData.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
 	PlayerData.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
+	PlayerData.inv_slot = 0
 
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()

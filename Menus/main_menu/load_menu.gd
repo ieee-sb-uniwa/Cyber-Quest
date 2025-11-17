@@ -5,7 +5,7 @@ extends Control
 func _ready():
 	var canLoad = Global.saveData.load_game()
 	if canLoad:
-		$CenterVbox/VBoxContainer/N1.text = "Player 1: " + PlayerData.player_name_1 + "\n Player 2:" + PlayerData.player_name_2
+		$CenterVbox/VBoxContainer/N1.text = "Players: " + PlayerData.player_name_1 + " & " + PlayerData.player_name_2
 	$VBoxContainer2/BacktoMenu.grab_focus();
 	print(get_tree().get_current_scene())
 
@@ -20,12 +20,13 @@ func _on_backto_menu_pressed():
 
 
 func _on_n_1_pressed() -> void:
-	@warning_ignore("integer_division")
-	print("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
-	@warning_ignore("integer_division")
+	var level_num = int(PlayerData.level / 10)
+	var scene_num = PlayerData.level % 10
+	var level_path = "res://Levels/Lvl" + str(level_num, '_', scene_num, ".tscn")
+	print(level_path)
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
-	get_tree().change_scene_to_file("res://Levels/Lvl" + str(floor(PlayerData.level/10),'_', PlayerData.level%10, ".tscn"))
+	get_tree().change_scene_to_file(level_path)
 
 
 func _on_n_2_pressed() -> void:

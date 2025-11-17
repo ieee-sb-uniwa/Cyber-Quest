@@ -42,13 +42,16 @@ Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Blue_Gradient.png
 Loading resource: res://.godot/imported/Blue_Gradient.png-6408f79048997b4b46719b76b25bbc35.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3
 Loading resource: res://.godot/imported/TitleMusic.mp3-255c6cb31c8ff9a63f836c6ab6008586.mp3str
-Loading resource: res://Menus/main_menu/NewGame_Menu.tscn
-Loading resource: res://Menus/main_menu/new_game_menu.gd
-Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
-Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
+Loading resource: res://Menus/main_menu/Load-Menu.tscn
+Loading resource: res://Menus/main_menu/load_menu.gd
 Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
 Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
-Data saved: { "player_name_1": "fr1", "birthdate_1": "07/02/2003", "player_name_2": "fr2", "birthdate_2": "07/02/2003", "level": 0, "inv_slot": 0 }
+Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
+Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
+Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
+Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
+LoadMenu:<Control#46657439184>
+res://Levels/Lvl1_1.tscn
 Loading resource: res://Levels/Lvl1_1.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
 Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
@@ -140,9 +143,20 @@ Loading resource: res://Assets/UI/Keys/Numbers/9.png
 Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
 Loading resource: res://Assets/UI/Keys/Numbers/0.png
 Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
+Block id: 3
+Block id: 1
 Block id: 2
 Block id: 0
-Block id: 1
-Block id: 3
-["07022003", "722003", "02072003", "272003", "07200302", "720032", "02200307", "220037", "20030207", "200327", "20030702", "200372", "07022003", "722003", "02072003", "272003", "07200302", "720032", "02200307", "220037", "20030207", "200327", "20030702", "200372"]
-Data saved: { "player_name_1": "fr1", "birthdate_1": "07/02/2003", "player_name_2": "fr2", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0 }
+["07022003", "722003", "02072003", "272003", "07200302", "720032", "02200307", "220037", "20030207", "200327", "20030702", "200372", "07022006", "722006", "02072006", "272006", "07200602", "720062", "02200607", "220067", "20060207", "200627", "20060702", "200672"]
+[PauseMenu] load -> unpaused and switching to Load Menu
+Loading resource: res://Menus/main_menu/Load-Menu.tscn
+Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
+Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
+Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
+Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
+Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
+Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
+LoadMenu:<Control#103028885779>
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
