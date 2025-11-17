@@ -1,8 +1,7 @@
-[gd_scene load_steps=45 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=44 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
-[ext_resource type="Script" uid="uid://dqyllppja6m3a" path="res://Levels/lvl_1_1.gd" id="1_j1jna"]
 [ext_resource type="Texture2D" uid="uid://dqg8b01318ppp" path="res://Assets/CyberQuest_Assets/Backgrounds/Collision visualiser.png" id="1_subb7"]
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="2_ceosy"]
 [ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="3_1lo17"]
@@ -441,7 +440,6 @@ sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
 [node name="Lvl1_spaceship" type="Node2D"]
 process_mode = 1
-script = ExtResource("1_j1jna")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -523,6 +521,7 @@ position = Vector2(2291, 23)
 y_sort_enabled = true
 position = Vector2(483, -259)
 scale = Vector2(1.5, 1.5)
+next_level_index = 12
 
 [node name="MoveBoxes" type="Node2D" parent="Environment"]
 z_index = 5

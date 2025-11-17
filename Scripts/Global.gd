@@ -17,8 +17,6 @@ var move_speed : float = 150
 var isTutorial: bool = true
 var canExitLevel: bool = false
 var can_pause_game: bool = true
-var current_level: int 
-var current_inv_slot: int
 
 var lobby_doors_open: Array = [true, false, false] # (storage, comms, engineroom)
 var terminal_unlocked: bool = false
@@ -101,8 +99,17 @@ func before_scene_change() -> void:
 		SpawnManager.reset()
 
 func can_access_terminal() -> bool:
-	#!! HERE CHANGE LOGIC FOR LOBBBY TERMINAL ACCESS (BASED ON INVENTORY CHANGE AND LEVEL WE ARE IN	)
-	return dropped_passblocks.size() == max_player_items * 2 # 4 for room 1 -> this can be changed later for more rooms
+	# Check if current level matches the required inventory slot
+	var required_slot = 0
+	match PlayerData.level:
+		11:
+			required_slot = 1
+		12:
+			required_slot = 3
+		15:
+			required_slot = 4
+	print("Current Inv Slot: ", PlayerData.inv_slot, " Required Slot: ", required_slot)
+	return PlayerData.inv_slot >= required_slot
 
 ## PassBlock Functions
 func add_passblock(passblock: Node) -> void:
@@ -115,7 +122,7 @@ func add_passblock(passblock: Node) -> void:
 
 func update_inv() -> void:
 	passblocks_in_level.clear()
-	PlayerData.inv_slot+=1
+	PlayerData.inv_slot += 1
 	if inventory_gui:
 		inventory_gui.unlock_inventory_for_level(PlayerData.inv_slot)
 
@@ -139,8 +146,7 @@ func load_game() -> void:
 		dob2 = PlayerData.birthdate_2
 		user1 = PlayerData.player_name_1
 		user2 = PlayerData.player_name_2
-		current_level = PlayerData.level
-		current_inv_slot = PlayerData.inv_slot
+		# PlayerData.level and PlayerData.inv_slot are loaded directly
 	else:
 		print("no save available")
 
