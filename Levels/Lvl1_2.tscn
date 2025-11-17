@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bx0a4c0nphj70"]
+[gd_scene load_steps=35 format=4 uid="uid://bx0a4c0nphj70"]
 
 [ext_resource type="Texture2D" uid="uid://coqirnlue386e" path="res://Assets/CyberQuest_Assets/Environment/tilesFloor.png" id="1_p0005"]
 [ext_resource type="Texture2D" uid="uid://chab4xsnggwul" path="res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png" id="2_bfxao"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/ctrl.tscn" id="12_xkdam"]
 [ext_resource type="PackedScene" uid="uid://dh5jy6ayih7n4" path="res://Scripts/objects/door/Internal_Door.tscn" id="13_54ngp"]
 [ext_resource type="PackedScene" uid="uid://2rh2rxmwh6hh" path="res://Scripts/objects/Sign/Sign.tscn" id="17_jfvbu"]
+[ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="19_l65v4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfvbu"]
 texture = ExtResource("3_yfn6w")
@@ -636,7 +637,7 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="Ctrl" parent="HUD" instance=ExtResource("12_xkdam")]
+[node name="PasswordUI" parent="HUD" instance=ExtResource("12_xkdam")]
 visible = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
@@ -702,3 +703,5 @@ sign_label = "res://Assets/CyberQuest_Assets/Environment/Engine.png"
 z_index = 5
 position = Vector2(-479, -517)
 sign_label = "res://Assets/CyberQuest_Assets/Environment/Storage.png"
+
+[node name="Terminal" parent="." instance=ExtResource("19_l65v4")]

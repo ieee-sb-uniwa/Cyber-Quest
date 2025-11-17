@@ -496,26 +496,25 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAlAP7/AAAAAAAAAADp//7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_y6a7i")
 
-[node name="Terminal" parent="Environment" instance=ExtResource("13_ksftt")]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(554, -206)
-scale = Vector2(1.5, 1.5)
-
 [node name="PassDropoutZone" parent="Environment" instance=ExtResource("18_1lo17")]
 z_index = 10
 position = Vector2(-1282, 31)
 
+[node name="Terminal" parent="Environment" instance=ExtResource("13_ksftt")]
+z_index = 9
+position = Vector2(552, -198)
+scale = Vector2(1.5, 1.5)
+
 [node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(2291, -34)
+position = Vector2(2271, 4)
 playerNum = 2
 
 [node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("1_85jq7")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(2291, 23)
+position = Vector2(2325, 2)
 
 [node name="External_Door" parent="Environment" instance=ExtResource("11_1lo17")]
 y_sort_enabled = true
