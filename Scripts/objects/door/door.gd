@@ -35,7 +35,7 @@ func _on_body_entered(body, area_name=""):
 		Global.reset_variables()
 		PlayerData.level = target_index
 		get_tree().call_deferred("change_scene_to_file", target_scene)
-		
+		Global.save_game()
 
 func _on_body_exited(body):
 	if body.is_in_group("Player") and isOpen:

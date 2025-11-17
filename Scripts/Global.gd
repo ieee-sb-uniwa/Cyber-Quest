@@ -95,6 +95,7 @@ func before_scene_change() -> void:
 	dropped_passblocks.clear()
 	player_entered_spawn = [false, false]
 	# Reset SpawnManager if available to avoid stale player refs
+	inventory_gui = null
 	if typeof(SpawnManager) != TYPE_NIL:
 		SpawnManager.reset()
 
@@ -108,7 +109,7 @@ func can_access_terminal() -> bool:
 			required_slot = 3
 		15:
 			required_slot = 4
-	print("Current Inv Slot: ", PlayerData.inv_slot, " Required Slot: ", required_slot)
+	# print("Current Inv Slot: ", PlayerData.inv_slot, " Required Slot: ", required_slot)
 	return PlayerData.inv_slot >= required_slot
 
 ## PassBlock Functions

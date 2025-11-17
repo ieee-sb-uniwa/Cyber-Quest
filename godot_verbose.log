@@ -42,16 +42,13 @@ Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Blue_Gradient.png
 Loading resource: res://.godot/imported/Blue_Gradient.png-6408f79048997b4b46719b76b25bbc35.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3
 Loading resource: res://.godot/imported/TitleMusic.mp3-255c6cb31c8ff9a63f836c6ab6008586.mp3str
-Loading resource: res://Menus/main_menu/Load-Menu.tscn
-Loading resource: res://Menus/main_menu/load_menu.gd
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
-Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
+Loading resource: res://Menus/main_menu/NewGame_Menu.tscn
+Loading resource: res://Menus/main_menu/new_game_menu.gd
 Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
 Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
-Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
-LoadMenu:<Control#42144368066>
-res://Levels/Lvl1_1.tscn
+Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
+Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
+Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2003", "player_name_2": "frottori", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0 }
 Loading resource: res://Levels/Lvl1_1.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
 Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
@@ -142,11 +139,13 @@ Loading resource: res://Assets/UI/Keys/Numbers/9.png
 Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
 Loading resource: res://Assets/UI/Keys/Numbers/0.png
 Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
+Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2003", "player_name_2": "frottori", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0.0 }
+Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2003", "player_name_2": "frottori", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0.0 }
+Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2003", "player_name_2": "frottori", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 0.0 }
 Loading resource: res://HUD/sprites/keyboard_key01.tres
 Loading resource: res://HUD/sprites/keyboards.png
 Loading resource: res://.godot/imported/keyboards.png-1b6d11ad35b15d02ac9b293c6c7acc57.ctex
-Current Inv Slot: 1 Required Slot: 1
-Current Inv Slot: 1 Required Slot: 1
+Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2003", "player_name_2": "frottori", "birthdate_2": "07/02/2003", "level": 11, "inv_slot": 1 }
 Loading resource: res://Levels/Lvl1_2.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png
 Loading resource: res://.godot/imported/WallTilesFixedWithDesign.png-57f3a3b46a3254bbf90008ae284fb426.ctex
@@ -185,90 +184,6 @@ Loading resource: res://Assets/CyberQuest_Assets/Environment/Engine.png
 Loading resource: res://.godot/imported/Engine.png-977671de524d56c59c02da7a8d9e3984.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Environment/Storage.png
 Loading resource: res://.godot/imported/Storage.png-34b9779f9a47a86d4e50ff78637aaa1a.ctex
-Data saved: { "player_name_1": "frottori", "birthdate_1": "07/02/2005", "player_name_2": "lydia", "birthdate_2": "08/09/2008", "level": 12, "inv_slot": 1 }
-[PauseMenu] load -> unpaused and switching to Load Menu
-Loading resource: res://Menus/main_menu/Load-Menu.tscn
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
-Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
-Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
-Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
-Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
-Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
-LoadMenu:<Control#244091717420>
-res://Levels/Lvl1_2.tscn
-Loading resource: res://Levels/Lvl1_2.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
-Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png
-Loading resource: res://.godot/imported/WallTilesFixedWithDesign.png-57f3a3b46a3254bbf90008ae284fb426.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png
-Loading resource: res://.godot/imported/WallTilesFixed.png-3ef622947e89611fe4ea8531f1af25b6.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTop.png
-Loading resource: res://.godot/imported/wallTop.png-b96e221969d6cbe24529c05cbe091ca8.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png
-Loading resource: res://.godot/imported/pipes_tilemap.png-0021243cef5acda542a10cd9076798bf.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png
-Loading resource: res://.godot/imported/circuitsBigger.png-3f08c24f30ed0382ada83b2986d9b23c.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/fan.png
-Loading resource: res://.godot/imported/fan.png-849e39c5305f0dfaf108c8475bff4cee.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/pipesHorizontal.png
-Loading resource: res://.godot/imported/pipesHorizontal.png-bba0d061232629050233541958102ab5.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/circuitsNew.png
-Loading resource: res://.godot/imported/circuitsNew.png-a52167c9e79819a037987922a986b283.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/sign.png
-Loading resource: res://.godot/imported/sign.png-3c37bc254233b370e7dc8d07898c4732.ctex
-Loading resource: res://Scripts/Characters/MainPlayer/player.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Characters/Astronaut Player.png
-Loading resource: res://.godot/imported/Astronaut Player.png-345fb4170eb179657f532d951910f7e0.ctex
-Loading resource: res://Menus/pause_menu/PauseHUD.tscn
-Loading resource: res://Menus/pause_menu/pause_menu.tscn
-Loading resource: res://Menus/pause_menu/pause_button.tscn
-Loading resource: res://Menus/pause_menu/pause_interaction.tscn
-Loading resource: res://HUD/scenes/inventory_gui.tscn
-Loading resource: res://HUD/scenes/inv_slot.tscn
-Loading resource: res://HUD/sprites/inv_slot_dark.png
-Loading resource: res://.godot/imported/inv_slot_dark.png-f72d1dd456a1617eae5f40ee766cd6dd.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/background.png
-Loading resource: res://.godot/imported/background.png-0392819e5197ed62187de544c5514f81.ctex
-Loading resource: res://PasswordUI/new/ctrl.tscn
-Loading resource: res://Assets/UI/Monitor.png
-Loading resource: res://.godot/imported/Monitor.png-908ed0feba66bb398aeada4a71e300c2.ctex
-Loading resource: res://Assets/UI/Numpad.png
-Loading resource: res://.godot/imported/Numpad.png-379fe8b253ec45277fee9fc78fbf5e5f.ctex
-Loading resource: res://Assets/UI/Keys/Cancel Key.png
-Loading resource: res://.godot/imported/Cancel Key.png-14086bf416d188a6f2fc8833bd6a69fe.ctex
-Loading resource: res://Assets/UI/Keys/Accept key.png
-Loading resource: res://.godot/imported/Accept key.png-41f5ccc9bef2015cd88560186fbdc2e1.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/1.png
-Loading resource: res://.godot/imported/1.png-e21c36c707109f3feda6cb32d4eb8747.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/2.png
-Loading resource: res://.godot/imported/2.png-ea425455971dd130daa96815d46ddb03.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/3.png
-Loading resource: res://.godot/imported/3.png-f96d4a0b769a3aac1ac5bd4da640b80a.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/4.png
-Loading resource: res://.godot/imported/4.png-0c09d8ef77a489624b985b2a7c83c9de.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/5.png
-Loading resource: res://.godot/imported/5.png-cd44b51090526dfbbc4f5a9587464f65.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/6.png
-Loading resource: res://.godot/imported/6.png-398dd56fc520162cad5ebde546de920a.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/7.png
-Loading resource: res://.godot/imported/7.png-e6c7e4599c9d7703e77895b62f22dca3.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/8.png
-Loading resource: res://.godot/imported/8.png-aa29aa0a1bf3298ca770f9477709cc8a.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/9.png
-Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
-Loading resource: res://Assets/UI/Keys/Numbers/0.png
-Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
-Loading resource: res://Scripts/objects/door/Internal_Door.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/spritesheet.png
-Loading resource: res://.godot/imported/spritesheet.png-050e8ba3b0f3431a62891cc1d0eff7ba.ctex
-Loading resource: res://Scripts/objects/Sign/Sign.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Comms.png
-Loading resource: res://.godot/imported/Comms.png-79a51997046da2227759f90d0eded412.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Engine.png
-Loading resource: res://.godot/imported/Engine.png-977671de524d56c59c02da7a8d9e3984.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Storage.png
-Loading resource: res://.godot/imported/Storage.png-34b9779f9a47a86d4e50ff78637aaa1a.ctex
 [PauseMenu] quit -> unpaused and switching to Main Menu
 Loading resource: res://Menus/main_menu/Menu.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Cyber_Quest_logo.png
@@ -278,38 +193,37 @@ Loading resource: res://.godot/imported/Blue_Gradient.png-6408f79048997b4b46719b
 Loading resource: res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3
 Loading resource: res://.godot/imported/TitleMusic.mp3-255c6cb31c8ff9a63f836c6ab6008586.mp3str
 Loading resource: res://Menus/main_menu/Load-Menu.tscn
+Loading resource: res://Menus/main_menu/load_menu.gd
 Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf
 Loading resource: res://.godot/imported/PixelOperator8-Bold.ttf-7ec03b807c785763e18082e9078b806b.fontdata
 Loading resource: res://Assets/web_safety_assets/Backgrounds/Stars.png
 Loading resource: res://.godot/imported/Stars.png-c0d743b12072be31b9a25f0cb54c8880.ctex
 Loading resource: res://Assets/web_safety_assets/fonts/PixelOperator8.ttf
 Loading resource: res://.godot/imported/PixelOperator8.ttf-6307ebe270c7f96400f3dfd2e42d7196.fontdata
-LoadMenu:<Control#281102256510>
-res://Levels/Lvl1_2.tscn
-Loading resource: res://Levels/Lvl1_2.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
-Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/WallTilesFixedWithDesign.png
-Loading resource: res://.godot/imported/WallTilesFixedWithDesign.png-57f3a3b46a3254bbf90008ae284fb426.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/WallTilesFixed.png
-Loading resource: res://.godot/imported/WallTilesFixed.png-3ef622947e89611fe4ea8531f1af25b6.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTop.png
-Loading resource: res://.godot/imported/wallTop.png-b96e221969d6cbe24529c05cbe091ca8.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png
-Loading resource: res://.godot/imported/pipes_tilemap.png-0021243cef5acda542a10cd9076798bf.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/circuitsBigger.png
-Loading resource: res://.godot/imported/circuitsBigger.png-3f08c24f30ed0382ada83b2986d9b23c.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/fan.png
-Loading resource: res://.godot/imported/fan.png-849e39c5305f0dfaf108c8475bff4cee.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/pipesHorizontal.png
-Loading resource: res://.godot/imported/pipesHorizontal.png-bba0d061232629050233541958102ab5.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/circuitsNew.png
-Loading resource: res://.godot/imported/circuitsNew.png-a52167c9e79819a037987922a986b283.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/sign.png
-Loading resource: res://.godot/imported/sign.png-3c37bc254233b370e7dc8d07898c4732.ctex
+LoadMenu:<Control#262747981623>
+res://Levels/Lvl1_1.tscn
+Loading resource: res://Levels/Lvl1_1.tscn
+Loading resource: res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png
+Loading resource: res://.godot/imported/spaceshipWithoutWalkway.png-cb26b8a8a7bf36b8cd1eb3dcb32f6ca3.ctex
 Loading resource: res://Scripts/Characters/MainPlayer/player.tscn
 Loading resource: res://Assets/CyberQuest_Assets/Characters/Astronaut Player.png
 Loading resource: res://.godot/imported/Astronaut Player.png-345fb4170eb179657f532d951910f7e0.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/Collision visualiser.png
+Loading resource: res://.godot/imported/Collision visualiser.png-d217ceea290a88c7a0ab9f496de7a845.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/tilesFloor.png
+Loading resource: res://.godot/imported/tilesFloor.png-df245ea9a9e5042a9ed3f86fc8ce7c2b.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png
+Loading resource: res://.godot/imported/spaceBackround.png-fcc0780cc31d545de2f589fc10c165b3.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/fenceBigger.png
+Loading resource: res://.godot/imported/fenceBigger.png-6e69ee0ec120637944b7cc3c5ad73cab.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png
+Loading resource: res://.godot/imported/wallTopGrey.png-6fe3576eb4b713dd680d96ff55c59bba.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/towers.png
+Loading resource: res://.godot/imported/towers.png-7f9f281aef9406b9223d3ac97e4eb51b.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/bigBox.png
+Loading resource: res://.godot/imported/bigBox.png-dc0aed776d9faee6e073ec5a298d5f33.ctex
+Loading resource: res://Assets/CyberQuest_Assets/Environment/boxesNew.png
+Loading resource: res://.godot/imported/boxesNew.png-1398d1c85f898685165bc626c21b6f42.ctex
 Loading resource: res://Menus/pause_menu/PauseHUD.tscn
 Loading resource: res://Menus/pause_menu/pause_menu.tscn
 Loading resource: res://Menus/pause_menu/pause_button.tscn
@@ -318,8 +232,22 @@ Loading resource: res://HUD/scenes/inventory_gui.tscn
 Loading resource: res://HUD/scenes/inv_slot.tscn
 Loading resource: res://HUD/sprites/inv_slot_dark.png
 Loading resource: res://.godot/imported/inv_slot_dark.png-f72d1dd456a1617eae5f40ee766cd6dd.ctex
+Loading resource: res://Scripts/objects/door/Door.tscn
+Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png
+Loading resource: res://.godot/imported/External_door_spritesheet.png-45fe409a8354d779daf64672e547731b.ctex
 Loading resource: res://Assets/CyberQuest_Assets/Backgrounds/background.png
 Loading resource: res://.godot/imported/background.png-0392819e5197ed62187de544c5514f81.ctex
+Loading resource: res://Scripts/objects/Terminal/Terminal.tscn
+Loading resource: res://Assets/CyberQuest_Assets/Environment/terminal.png
+Loading resource: res://.godot/imported/terminal.png-ed325459714acec0f7253627bb49350e.ctex
+Loading resource: res://Scripts/Interactions/InteractionArea/InteractionArea.tscn
+Loading resource: res://Scripts/objects/PassBlock/PassBlock.tscn
+Loading resource: res://Assets/CyberQuest_Assets/Environment/Keys_32px_Spritesheet_all.png
+Loading resource: res://.godot/imported/Keys_32px_Spritesheet_all.png-e02dce04c47efb21b9e37f4c6b331b99.ctex
+Loading resource: res://Scripts/objects/Boxes/move_box.tscn
+Loading resource: res://Scripts/objects/PassBlock/PassDropoutZone.tscn
+Loading resource: res://Assets/CyberQuest_Assets/Environment/workbench.png
+Loading resource: res://.godot/imported/workbench.png-aa1634d3ff31ab8894a999f76d75a853.ctex
 Loading resource: res://PasswordUI/new/ctrl.tscn
 Loading resource: res://Assets/UI/Monitor.png
 Loading resource: res://.godot/imported/Monitor.png-908ed0feba66bb398aeada4a71e300c2.ctex
@@ -349,28 +277,14 @@ Loading resource: res://Assets/UI/Keys/Numbers/9.png
 Loading resource: res://.godot/imported/9.png-db9861a5bb9e082c2d99aa25164cdc36.ctex
 Loading resource: res://Assets/UI/Keys/Numbers/0.png
 Loading resource: res://.godot/imported/0.png-1be51ba8d12834e47b342b6c39918140.ctex
-Loading resource: res://Scripts/objects/door/Internal_Door.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Animations/spritesheet.png
-Loading resource: res://.godot/imported/spritesheet.png-050e8ba3b0f3431a62891cc1d0eff7ba.ctex
-Loading resource: res://Scripts/objects/Sign/Sign.tscn
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Comms.png
-Loading resource: res://.godot/imported/Comms.png-79a51997046da2227759f90d0eded412.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Engine.png
-Loading resource: res://.godot/imported/Engine.png-977671de524d56c59c02da7a8d9e3984.ctex
-Loading resource: res://Assets/CyberQuest_Assets/Environment/Storage.png
-Loading resource: res://.godot/imported/Storage.png-34b9779f9a47a86d4e50ff78637aaa1a.ctex
 XR: Clearing primary interface
 XR: Removed interface "Native mobile"
 XR: Removed interface "OpenXR"
 [1;33mWARNING:[0;93m ObjectDB instances leaked at exit (run with --verbose for details).
 [0;90m     at: cleanup (core/object/object.cpp:2378)[0m
-Leaked instance: GDScriptFunctionState:9223372207781054566
-Leaked instance: SceneTreeTimer:9223372251083049247
-Leaked instance: GDScriptFunctionState:9223372213418199328
-Leaked instance: SceneTreeTimer:9223372251150158114
-Leaked instance: GDScriptFunctionState:9223372220481407267
-Leaked instance: SceneTreeTimer:9223372251217266980
+Leaked instance: SceneTreeTimer:9223372270125189419
+Leaked instance: GDScriptFunctionState:9223372260931275064
 Hint: Leaked instances typically happen when nodes are removed from the scene tree (with `remove_child()`) but not freed (with `free()` or `queue_free()`).
-Orphan StringName: _type_text_animation (static: 0, total: 3)
-Orphan StringName: timeout (static: 2, total: 5)
+Orphan StringName: _type_text_animation (static: 0, total: 1)
+Orphan StringName: timeout (static: 2, total: 3)
 StringName: 2 unclaimed string names at exit.

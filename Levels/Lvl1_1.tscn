@@ -521,7 +521,6 @@ position = Vector2(2291, 23)
 y_sort_enabled = true
 position = Vector2(483, -259)
 scale = Vector2(1.5, 1.5)
-next_level_index = 12
 
 [node name="MoveBoxes" type="Node2D" parent="Environment"]
 z_index = 5

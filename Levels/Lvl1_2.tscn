@@ -664,7 +664,7 @@ y_sort_enabled = false
 position = Vector2(-479, -431)
 scale = Vector2(1.5, 1.5)
 target_scene = "res://Levels/Lvl1_3.tscn"
-next_level_index = 13
+target_index = 13
 is_terminal_unlock_door = false
 
 [node name="Door_Comms" parent="Doors" instance=ExtResource("13_54ngp")]
@@ -674,7 +674,7 @@ position = Vector2(-4, -239)
 scale = Vector2(1.5, 1.5)
 door_index = 1
 target_scene = "res://Levels/Lvl1_5.tscn"
-next_level_index = 15
+target_index = 15
 
 [node name="Door_Engine" parent="Doors" instance=ExtResource("13_54ngp")]
 z_index = 8
@@ -683,7 +683,7 @@ position = Vector2(479, -431)
 scale = Vector2(1.5, 1.5)
 door_index = 2
 target_scene = "res://Levels/Lvl1_4.tscn"
-next_level_index = 14
+target_index = 14
 is_terminal_unlock_door = false
 
 [node name="Signs" type="Node" parent="."]
