@@ -1,6 +1,10 @@
 extends Control
 
 var DoB := RegEx.new()
+var player_name_1: String
+var player_name_2: String
+var birth_date_: String
+var birthdate_2: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,18 +33,20 @@ func _on_confirm_pressed() -> void:
 		return
 
 	if $CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text == "1":
-		PlayerData.player_name_1 = $CenterContainer/CenteringCon/Primary/NameIN.text
-		PlayerData.birthdate_1 = $CenterContainer/CenteringCon/Primary/DateIN.text
+		player_name_1 = $CenterContainer/CenteringCon/Primary/NameIN.text
+		birth_date_ = $CenterContainer/CenteringCon/Primary/DateIN.text
 		$CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text = "2"
 		$CenterContainer/CenteringCon/Primary/Confirm.text = "Start!"
 		$CenterContainer/CenteringCon/Primary/NameIN.text =''
 		$CenterContainer/CenteringCon/Primary/DateIN.text =''
 		return
 
-	PlayerData.player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
-	PlayerData.birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
-	PlayerData.inv_slot = 0
-	PlayerData.level = 11
+	player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
+	birthdate_2 = $CenterContainer/CenteringCon/Primary/DateIN.text
+	var player_names := [player_name_1, player_name_2]
+	var birthdates := [birth_date_, birthdate_2]
+	# Set new game data
+	Global.on_new_game(player_names, birthdates)
 
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
