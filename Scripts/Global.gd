@@ -107,9 +107,9 @@ func can_access_terminal() -> bool:
 ## PassBlock Functions
 func add_passblock(passblock: Node) -> void:
 	dropped_passblocks.append(passblock)
-	print("Passblocks in level: ", passblocks_in_level.size())
+	# print("Passblocks in level: ", passblocks_in_level.size())
 	if dropped_passblocks.size() == passblocks_in_level.size():
-		print("All passblocks collected!")
+		# print("All passblocks collected!")
 		canExitLevel = true
 		update_inv()
 
