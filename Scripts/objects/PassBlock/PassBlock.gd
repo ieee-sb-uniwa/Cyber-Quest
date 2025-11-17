@@ -86,7 +86,7 @@ func set_block_sprite():
 
 	# Add to global list of blocks in level
 	Global.passblocks_in_level.append(block_id)
-	print("Block id: ", block_id)
+	# print("Block id: ", block_id)
 	block_sprite.set_frame(block_id)
 
 func set_block_based_on_type():
