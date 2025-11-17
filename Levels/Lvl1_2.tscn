@@ -705,3 +705,5 @@ position = Vector2(-479, -517)
 sign_label = "res://Assets/CyberQuest_Assets/Environment/Storage.png"
 
 [node name="Terminal" parent="." instance=ExtResource("19_l65v4")]
+z_index = 9
+position = Vector2(65, -199)
