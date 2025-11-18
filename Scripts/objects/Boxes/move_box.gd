@@ -22,11 +22,11 @@ func _ready() -> void:
 	speed = Global.move_speed * speed_multiplier
 	
 	# Debug: Print all area nodes to make sure they're found
-	print("Box areas found:")
-	print("Left: ", area_left != null)
-	print("Right: ", area_right != null)
-	print("Up: ", area_up != null)
-	print("Down: ", area_down != null)
+	# print("Box areas found:")
+	# print("Left: ", area_left != null)
+	# print("Right: ", area_right != null)
+	# print("Up: ", area_up != null)
+	# print("Down: ", area_down != null)
 	
 	# Connect area signals for all four sides
 	area_left.body_entered.connect(_on_body_entered_left)
@@ -70,8 +70,9 @@ func _physics_process(delta: float) -> void:
 			)
 		total_dir += input_dir
 		
-		# Update player orientation based on which side they're on
-		if g.has_method("update_box_interaction_orientation"):
+		# Only update player orientation when they're actually moving the box
+		# This prevents overriding the player's regular animation when not moving
+		if input_dir != Vector2.ZERO and g.has_method("update_box_interaction_orientation"):
 			var player_side = _get_player_side(g)
 			g.update_box_interaction_orientation(player_side)
 
@@ -90,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	if collision:
 		# Handle collision - stop movement
 		velocity = Vector2.ZERO
-		print("Box collided with: ", collision.get_collider().name)
+		# print("Box collided with: ", collision.get_collider().name)
 
 # --- Area signals ---
 
@@ -98,7 +99,7 @@ func _on_body_entered_left(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_left.has(body):
 		nearby_players_left.append(body)
 		_update_move_orientation()
-		print("Left side: player entered. Total left players: ", nearby_players_left.size())
+		# print("Left side: player entered. Total left players: ", nearby_players_left.size())
 
 func _on_body_exited_left(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -107,13 +108,13 @@ func _on_body_exited_left(body: Node) -> void:
 		if grabbers.has(body):
 			_release(body)
 		_update_move_orientation()
-		print("Left side: player exited. Total left players: ", nearby_players_left.size())
+		# print("Left side: player exited. Total left players: ", nearby_players_left.size())
 
 func _on_body_entered_right(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_right.has(body):
 		nearby_players_right.append(body)
 		_update_move_orientation()
-		print("Right side: player entered. Total right players: ", nearby_players_right.size())
+		# print("Right side: player entered. Total right players: ", nearby_players_right.size())
 
 func _on_body_exited_right(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -122,13 +123,13 @@ func _on_body_exited_right(body: Node) -> void:
 		if grabbers.has(body):
 			_release(body)
 		_update_move_orientation()
-		print("Right side: player exited. Total right players: ", nearby_players_right.size())
+		# print("Right side: player exited. Total right players: ", nearby_players_right.size())
 
 func _on_body_entered_up(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_up.has(body):
 		nearby_players_up.append(body)
 		_update_move_orientation()
-		print("Up side: player entered. Total up players: ", nearby_players_up.size())
+		# print("Up side: player entered. Total up players: ", nearby_players_up.size())
 
 func _on_body_exited_up(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -137,13 +138,13 @@ func _on_body_exited_up(body: Node) -> void:
 		if grabbers.has(body):
 			_release(body)
 		_update_move_orientation()
-		print("Up side: player exited. Total up players: ", nearby_players_up.size())
+		# print("Up side: player exited. Total up players: ", nearby_players_up.size())
 
 func _on_body_entered_down(body: Node) -> void:
 	if body is CharacterBody2D and not nearby_players_down.has(body):
 		nearby_players_down.append(body)
 		_update_move_orientation()
-		print("Down side: player entered. Total down players: ", nearby_players_down.size())
+		# print("Down side: player entered. Total down players: ", nearby_players_down.size())
 
 func _on_body_exited_down(body: Node) -> void:
 	if body is CharacterBody2D:
@@ -152,14 +153,14 @@ func _on_body_exited_down(body: Node) -> void:
 		if grabbers.has(body):
 			_release(body)
 		_update_move_orientation()
-		print("Down side: player exited. Total down players: ", nearby_players_down.size())
+		# print("Down side: player exited. Total down players: ", nearby_players_down.size())
 
 func _update_move_orientation() -> void:
 	# Debug: Print current state
-	print("Update orientation - Left: ", nearby_players_left.size(), 
-		  ", Right: ", nearby_players_right.size(),
-		  ", Up: ", nearby_players_up.size(),
-		  ", Down: ", nearby_players_down.size())
+	# print("Update orientation - Left: ", nearby_players_left.size(), 
+	#	  ", Right: ", nearby_players_right.size(),
+	#	  ", Up: ", nearby_players_up.size(),
+	#	  ", Down: ", nearby_players_down.size())
 	
 	# Horizontal areas have priority over vertical areas
 	if nearby_players_left.size() > 0 or nearby_players_right.size() > 0:
@@ -169,7 +170,7 @@ func _update_move_orientation() -> void:
 	else:
 		move_orientation = ""
 	
-	print("New orientation: ", move_orientation)
+	# print("New orientation: ", move_orientation)
 
 # Helper function to determine which side a player is on
 func _get_player_side(player: CharacterBody2D) -> String:
@@ -204,7 +205,7 @@ func _grab(p: CharacterBody2D) -> void:
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
 		var side = _get_player_side(p)
-		print("Grabbed box, side:", side)
+		# print("Grabbed box, side:", side)
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)
@@ -215,4 +216,4 @@ func _release(p: CharacterBody2D) -> void:
 		p.reset_box_orientation()
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
-	print("Released box")
+	# print("Released box")
