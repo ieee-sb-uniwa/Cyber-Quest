@@ -94,6 +94,9 @@ func before_scene_change() -> void:
 	passblocks_in_level.clear()
 	dropped_passblocks.clear()
 	player_entered_spawn = [false, false]
+	# Reset inventory GUI
+	if inventory_gui:
+		inventory_gui.clear_inventory()
 	# Reset SpawnManager if available to avoid stale player refs
 	inventory_gui = null
 	if typeof(SpawnManager) != TYPE_NIL:
