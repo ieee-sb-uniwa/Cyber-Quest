@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		if max_grab_distance > 0 and g.global_position.distance_to(global_position) > max_grab_distance:
 			_release(g)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
 		return
@@ -204,8 +204,7 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
-		var side = _get_player_side(p)
-		# print("Grabbed box, side:", side)
+		# print("Grabbed box, side:", _get_player_side(p))
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)
