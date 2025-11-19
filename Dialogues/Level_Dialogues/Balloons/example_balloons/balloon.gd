@@ -10,6 +10,8 @@ extends CanvasLayer
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
+@onready var portrairt: TextureRect = %Portrairt
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -108,6 +110,11 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	var portrait_path: String = "res://Dialogues/Dialogue_assets/%s.png" % dialogue_line.character.to_lower()
+	if FileAccess.file_exists(portrait_path):
+		portrairt.texture = load(portrait_path)
+	else:
+		portrairt.texture = null
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

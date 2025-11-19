@@ -294,6 +294,7 @@ dash_duration = 0.15
 [node name="Dialogue_Direction" type="Marker2D" parent="."]
 
 [node name="Dialogue_Finder" type="Area2D" parent="Dialogue_Direction"]
+process_mode = 3
 collision_layer = 0
 collision_mask = 64
 

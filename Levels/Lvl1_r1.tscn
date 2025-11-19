@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=48 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -440,8 +440,11 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_y6a7i")
 sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y6a7i"]
-radius = 18.6786
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6fb"]
+size = Vector2(20, 97.3333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vi6fb"]
+radius = 52.6708
 
 [node name="Lvl1_r1" type="Node2D"]
 process_mode = 1
@@ -507,15 +510,6 @@ y_sort_enabled = true
 position = Vector2(554, -206)
 scale = Vector2(1.5, 1.5)
 
-[node name="Dialogue_area" parent="Environment/Terminal" instance=ExtResource("11_subb7")]
-dialogue_resource = ExtResource("12_y6a7i")
-dialogue_start = "panel_first"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Terminal/Dialogue_area"]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_y6a7i")
-debug_color = Color(0.682353, 0.117647, 0, 0.396078)
-
 [node name="PassDropoutZone" parent="Environment" instance=ExtResource("18_1lo17")]
 z_index = 10
 position = Vector2(-1282, 31)
@@ -570,6 +564,39 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(1442, -32)
 scale = Vector2(0.7, 0.7)
 
+[node name="Dialogue_areas" type="Node2D" parent="Environment"]
+process_mode = 3
+z_index = 10
+position = Vector2(0, -1)
+
+[node name="terminal_first" parent="Environment/Dialogue_areas" instance=ExtResource("11_subb7")]
+process_mode = 3
+position = Vector2(864, 11)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+dialogue_resource = ExtResource("12_y6a7i")
+dialogue_start = "panel_first"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Dialogue_areas/terminal_first"]
+process_mode = 3
+position = Vector2(-1.52588e-05, 1.0252e-05)
+shape = SubResource("RectangleShape2D_vi6fb")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
+
+[node name="scene_start" parent="Environment/Dialogue_areas" instance=ExtResource("11_subb7")]
+process_mode = 3
+position = Vector2(2283, 6)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+dialogue_resource = ExtResource("12_y6a7i")
+dialogue_start = "tutorial_start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Dialogue_areas/scene_start"]
+process_mode = 3
+position = Vector2(2.0504e-05, -4.76837e-06)
+shape = SubResource("CircleShape2D_vi6fb")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
+
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -597,3 +624,6 @@ zoom = Vector2(0.4, 0.4)
 script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Environment/Player")
 player2 = NodePath("../../Environment/Player2")
+
+[connection signal="body_entered" from="Environment/Dialogue_areas/terminal_first" to="Environment/Dialogue_areas/terminal_first" method="_on_body_entered"]
+[connection signal="body_entered" from="Environment/Dialogue_areas/scene_start" to="Environment/Dialogue_areas/scene_start" method="_on_body_entered"]
