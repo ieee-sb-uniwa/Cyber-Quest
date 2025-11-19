@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 		if max_grab_distance > 0 and g.global_position.distance_to(global_position) > max_grab_distance:
 			_release(g)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
 		return
