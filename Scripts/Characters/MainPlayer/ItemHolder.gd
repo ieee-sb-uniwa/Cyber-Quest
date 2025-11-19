@@ -30,7 +30,6 @@ func add_item(item:Node2D)->void:
 	var currDir = lastDir
 	lastDir = Global.MOVE_ORIENTATION.EMPTY
 	change_items_orientation(currDir)
-	# print("Item "+item.name+" added!")
 
 func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDelivered:bool) -> void:
 	if assigned_items.find(item) == -1:
@@ -39,7 +38,6 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	if !isDelivered && item.has_method("drop_block"):
 		item.drop_block(pl)
 	self.remove_child(item)
-	#! Assuming PassBlocks is a direct child of the current scene
 	var pass_blocks = get_tree().current_scene.get_node("Environment/PassBlocks") 
 	if pass_blocks == null:
 		printerr("No passBlocks node found. Check the scene structure. There should be a direct child PassBlocks node.")
@@ -48,7 +46,6 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	item.set_collision_layer_value(30,false)
 	pass_blocks.call_deferred("add_child", item)  
 	item.global_position = pos
-	# print("Item "+item.name+ " has been removed from the inventory.")
 
 func get_all_items() -> Array[Node2D]:
 	return assigned_items
@@ -61,12 +58,24 @@ func clear_all_items(pl:Node2D, isDelivered:bool) -> void:
 	
 func set_player_index(index : int) -> void:
 	player_index = index
-	
-func change_items_orientation(move_orientation : Global.MOVE_ORIENTATION) -> void:
+
+func change_items_orientation(move_orientation : Global.MOVE_ORIENTATION, is_flipped: bool = false) -> void:
 	if lastDir == move_orientation:
 		return
 	lastDir = move_orientation
+	
 	for i in assigned_items.size():
-		assigned_items[i].position = item_offsets.get(move_orientation) + items_available_positions[i].position
+		var offset = item_offsets.get(move_orientation)
+		
+		# Only flip the offset for horizontal directions when the player is flipped
+		if is_flipped and move_orientation == Global.MOVE_ORIENTATION.LEFT:
+			# When facing left and flipped, use the right offset but flipped
+			offset = item_offsets.get(Global.MOVE_ORIENTATION.RIGHT)
+			offset.x = -offset.x  # Flip the x offset
+		elif is_flipped and move_orientation == Global.MOVE_ORIENTATION.RIGHT:
+			# When facing right and flipped, use the left offset but flipped
+			offset = item_offsets.get(Global.MOVE_ORIENTATION.LEFT)
+			offset.x = -offset.x  # Flip the x offset
+		
+		assigned_items[i].position = offset + items_available_positions[i].position
 		assigned_items[i].z_index = player_index + i - item_index.get(move_orientation)*assigned_items.size()
-	# print("change orientation to: " + str(Global.MOVE_ORIENTATION.find_key(move_orientation)))

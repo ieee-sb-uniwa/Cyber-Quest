@@ -50,3 +50,9 @@ func sync_with_player_data():
 		for i in range(1, player_data.inv_slot + 1):
 			if i <= LEVEL_TO_KEYBOARD.size():
 				unlock_inventory_for_level(i)
+
+# Function to clear all inventory items
+func clear_inventory():
+	for i in range(inventory.items.size()):
+		inventory.items[i] = null
+	update()

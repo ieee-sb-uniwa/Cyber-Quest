@@ -70,8 +70,9 @@ func _physics_process(delta: float) -> void:
 			)
 		total_dir += input_dir
 		
-		# Update player orientation based on which side they're on
-		if g.has_method("update_box_interaction_orientation"):
+		# Only update player orientation when they're actually moving the box
+		# This prevents overriding the player's regular animation when not moving
+		if input_dir != Vector2.ZERO and g.has_method("update_box_interaction_orientation"):
 			var player_side = _get_player_side(g)
 			g.update_box_interaction_orientation(player_side)
 
@@ -203,7 +204,8 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
-		# print("Grabbed box, side:", _get_player_side(p))
+		var side = _get_player_side(p)
+		# print("Grabbed box, side:", side)
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)

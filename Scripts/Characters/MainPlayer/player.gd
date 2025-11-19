@@ -50,32 +50,6 @@ func _physics_process(_delta):
 	pick_new_state()
 	update_animation()
 
-func update_animation_parameters(move_input : Vector2):
-	if(move_input == Vector2.ZERO):
-		return
-	var direction = move_input.normalized()
-	var abs_x = abs(move_input.x)
-	var abs_y = abs(move_input.y)
-	move_orientation = Global.MOVE_ORIENTATION.EMPTY
-	
-	if abs_x > abs_y:
-		move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
-		animated_sprite.flip_h = direction.x < 0
-	elif abs_y > abs_x:
-		move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
-		animated_sprite.flip_h = false
-	else:
-		# Equal (diagonal): return vertical OR use last pressed key logic
-		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
-			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
-			animated_sprite.flip_h = false
-		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
-			move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
-			animated_sprite.flip_h = direction.x < 0
-		else:
-			return
-	
-	itemHolder.change_items_orientation(move_orientation)
 
 func pick_new_state():
 	var is_moving = velocity != Vector2.ZERO
@@ -153,6 +127,34 @@ func is_interacting() -> bool:
 	var action_name = "Interact_p" + str(playerNum)
 	return Input.is_action_pressed(action_name)
 
+func update_animation_parameters(move_input : Vector2):
+	if(move_input == Vector2.ZERO):
+		return
+	var direction = move_input.normalized()
+	var abs_x = abs(move_input.x)
+	var abs_y = abs(move_input.y)
+	move_orientation = Global.MOVE_ORIENTATION.EMPTY
+	
+	if abs_x > abs_y:
+		move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
+		animated_sprite.flip_h = direction.x < 0
+	elif abs_y > abs_x:
+		move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
+		animated_sprite.flip_h = false
+	else:
+		# Equal (diagonal): return vertical OR use last pressed key logic
+		if abs(last_animation_look_location.x) > 0.1 && abs(last_animation_look_location.y) < 0.1:
+			move_orientation = Global.MOVE_ORIENTATION.DOWN if direction.y > 0 else Global.MOVE_ORIENTATION.UP
+			animated_sprite.flip_h = false
+		elif abs(last_animation_look_location.y) > 0.1 && abs(last_animation_look_location.x) < 0.1:
+			move_orientation = Global.MOVE_ORIENTATION.RIGHT if direction.x > 0 else Global.MOVE_ORIENTATION.LEFT
+			animated_sprite.flip_h = direction.x < 0
+		else:
+			return
+	
+	# Pass the flip state to the item holder
+	itemHolder.change_items_orientation(move_orientation, animated_sprite.flip_h)
+
 func update_box_interaction_orientation(side: String):
 	box_interaction_side = side
 	
@@ -161,61 +163,52 @@ func update_box_interaction_orientation(side: String):
 		# Player is on the left side - face right to push the box
 		$AnimatedSprite2D.animation = "move_side"
 		$AnimatedSprite2D.flip_h = false
+		itemHolder.change_items_orientation(Global.MOVE_ORIENTATION.RIGHT, false)
 	elif side == "right":
 		# Player is on the right side - face left to push the box
 		$AnimatedSprite2D.animation = "move_side"
 		$AnimatedSprite2D.flip_h = true
+		itemHolder.change_items_orientation(Global.MOVE_ORIENTATION.LEFT, true)
 	elif side == "up":
 		# Player is on the top - face down to push the box
 		$AnimatedSprite2D.animation = "move_front"
 		$AnimatedSprite2D.flip_h = false
+		itemHolder.change_items_orientation(Global.MOVE_ORIENTATION.DOWN, false)
 	elif side == "down":
 		# Player is on the bottom - face up to push the box
 		$AnimatedSprite2D.animation = "move_back"
 		$AnimatedSprite2D.flip_h = false
+		itemHolder.change_items_orientation(Global.MOVE_ORIENTATION.UP, false)
 
 func reset_box_orientation():
 	box_interaction_side = ""
 	# Reset any special orientation settings
 	$AnimatedSprite2D.flip_h = false
+	# Update item holder with current orientation
+	itemHolder.change_items_orientation(move_orientation, false)
+
 
 # Update your animation function to account for box interaction
 func update_animation():
+	# If interacting with box, use box interaction animations
 	if is_interacting_with_box and box_interaction_side != "":
-		# We're interacting with a box
 		if velocity.length() > 0:
 			# Moving while interacting
-			if box_interaction_side == "left" or box_interaction_side == "right":
-				$AnimatedSprite2D.animation = "move_side"
-			elif box_interaction_side == "up":
-				$AnimatedSprite2D.animation = "move_front"
-			elif box_interaction_side == "down":
-				$AnimatedSprite2D.animation = "move_back"
+			match box_interaction_side:
+				"left", "right":
+					$AnimatedSprite2D.animation = "move_side"
+					$AnimatedSprite2D.flip_h = (box_interaction_side == "right")
+				"up":
+					$AnimatedSprite2D.animation = "move_front"
+				"down":
+					$AnimatedSprite2D.animation = "move_back"
 		else:
-			# Standing still while interacting
-			if box_interaction_side == "left" or box_interaction_side == "right":
-				$AnimatedSprite2D.animation = "idle_side"
-			elif box_interaction_side == "up":
-				$AnimatedSprite2D.animation = "idle_front"
-			elif box_interaction_side == "down":
-				$AnimatedSprite2D.animation = "idle_back"
-	else:
-		# Regular movement animations
-		if velocity.x != 0:
-			$AnimatedSprite2D.animation = "move_side"
-			$AnimatedSprite2D.flip_h = velocity.x < 0
-		elif velocity.y != 0:
-			if velocity.y > 0:
-				$AnimatedSprite2D.animation = "move_front"  # Moving down
-			else:
-				$AnimatedSprite2D.animation = "move_back"   # Moving up
-		else:
-			# Idle - maintain last direction
-			if $AnimatedSprite2D.animation == "move_side":
-				$AnimatedSprite2D.animation = "idle_side"
-			elif $AnimatedSprite2D.animation == "move_front":
-				$AnimatedSprite2D.animation = "idle_front"
-			elif $AnimatedSprite2D.animation == "move_back":
-				$AnimatedSprite2D.animation = "idle_back"
-			else:
-				$AnimatedSprite2D.animation = "idle_front"  # Default
+			# Standing while interacting
+			match box_interaction_side:
+				"left", "right":
+					$AnimatedSprite2D.animation = "idle_side"
+					$AnimatedSprite2D.flip_h = (box_interaction_side == "right")
+				"up":
+					$AnimatedSprite2D.animation = "idle_front"
+				"down":
+					$AnimatedSprite2D.animation = "idle_back"
