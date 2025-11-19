@@ -25,6 +25,14 @@ var data: Dictionary = {}
 
 #endregion
 
+#region External processing
+
+
+var processor: DMDialogueProcessor = null
+
+
+#endregion
+
 #region Internal variables
 
 
@@ -220,7 +228,7 @@ func build_line_tree(raw_lines: PackedStringArray) -> DMTreeLine:
 	var autoload_names: PackedStringArray = get_autoload_names()
 
 	for i in range(0, raw_lines.size()):
-		var raw_line: String = raw_lines[i]
+		var raw_line: String = get_processor()._preprocess_line(raw_lines[i])
 		var tree_line: DMTreeLine = DMTreeLine.new(str(i - _imported_line_count))
 
 		tree_line.line_number = i + 1
@@ -354,6 +362,9 @@ func parse_line_tree(root: DMTreeLine, parent: DMCompiledLine = null) -> Array[D
 
 		# Main line map is keyed by ID
 		lines[line.id] = line
+
+		# Apply any post-processing.
+		get_processor()._process_line(line)
 
 		# Returned lines order is preserved so that it can be used for compiling children
 		compiled_lines.append(line)
@@ -753,7 +764,7 @@ func parse_dialogue_line(tree_line: DMTreeLine, line: DMCompiledLine, siblings: 
 	for bbcode: Dictionary in bbcodes:
 		var tag: String = bbcode.code
 		var code: String = bbcode.raw_args
-		if tag.begins_with("do") or tag.begins_with("set") or tag.begins_with("if"):
+		if tag.begins_with("$>") or tag.begins_with("do") or tag.begins_with("set") or tag.begins_with("if"):
 			var expression: Array = expression_parser.tokenise(code, DMConstants.TYPE_MUTATION, bbcode.start + bbcode.code.length())
 			if expression.size() == 0:
 				add_error(tree_line.line_number, tree_line.indent, DMConstants.ERR_INVALID_EXPRESSION)
@@ -929,6 +940,14 @@ func extract_import_path_and_name(line: String) -> Dictionary:
 		return {}
 
 
+## Load the configured processor (or the default one is none configured).
+func get_processor() -> DMDialogueProcessor:
+	if processor == null:
+		var processor_path: String = DMSettings.get_setting(DMSettings.DIALOGUE_PROCESSOR_PATH, "")
+		processor = DMDialogueProcessor.new() if processor_path.is_empty() else load(processor_path).new()
+	return processor
+
+
 ## Get the indent of a raw line
 func get_indent(raw_line: String) -> int:
 	var tabs: RegExMatch = regex.INDENT_REGEX.search(raw_line)
@@ -967,7 +986,7 @@ func get_line_type(raw_line: String) -> String:
 	if text.begins_with("when "):
 		return DMConstants.TYPE_WHEN
 
-	if text.begins_with("do ") or text.begins_with("do! ") or text.begins_with("set "):
+	if text.begins_with("do ") or text.begins_with("do! ") or text.begins_with("set ") or text.begins_with("$> ") or text.begins_with("$>> "):
 		return DMConstants.TYPE_MUTATION
 
 	if text.begins_with("=> ") or text.begins_with("=>< "):
@@ -1073,7 +1092,7 @@ func extract_mutation(text: String) -> Dictionary:
 		else:
 			return {
 				expression = expression,
-				is_blocking = not "!" in found.strings[found.names.keyword]
+				is_blocking = not "!" in found.strings[found.names.keyword] and found.strings[found.names.keyword] != "$>>"
 			}
 
 	else:

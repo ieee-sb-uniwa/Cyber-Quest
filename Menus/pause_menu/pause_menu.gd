@@ -39,3 +39,6 @@ func _on_load_pressed() -> void:
 		get_tree().paused = false
 	print("[PauseMenu] load -> unpaused and switching to Load Menu")
 	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn")
+	
+func _on_restart_pressed(): 
+	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")

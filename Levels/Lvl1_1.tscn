@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
 [ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="10_inv01"]
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="11_cfkql"]
+[ext_resource type="PackedScene" uid="uid://b6mnhntvijhb0" path="res://Dialogues/Dialogue_Area/dialogue_area.tscn" id="11_subb7"]
+[ext_resource type="Resource" uid="uid://chu7l3scv6r5s" path="res://Dialogues/Level_Dialogues/Level 1/Lev_1_tutorial.dialogue" id="12_y6a7i"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
@@ -188,6 +191,12 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_y6a7i")
 sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vi6fb"]
+size = Vector2(20, 97.3333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vi6fb"]
+radius = 52.6708
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xt3y"]
 texture = ExtResource("1_subb7")
 texture_region_size = Vector2i(64, 64)
@@ -345,6 +354,39 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(1442, -32)
 scale = Vector2(0.7, 0.7)
 
+[node name="Dialogue_areas" type="Node2D" parent="Environment"]
+process_mode = 3
+z_index = 10
+position = Vector2(0, -1)
+
+[node name="terminal_first" parent="Environment/Dialogue_areas" instance=ExtResource("11_subb7")]
+process_mode = 3
+position = Vector2(864, 11)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+dialogue_resource = ExtResource("12_y6a7i")
+dialogue_start = "panel_first"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Dialogue_areas/terminal_first"]
+process_mode = 3
+position = Vector2(-1.52588e-05, 1.0252e-05)
+shape = SubResource("RectangleShape2D_vi6fb")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
+
+[node name="scene_start" parent="Environment/Dialogue_areas" instance=ExtResource("11_subb7")]
+process_mode = 3
+position = Vector2(2283, 6)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+dialogue_resource = ExtResource("12_y6a7i")
+dialogue_start = "tutorial_start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Dialogue_areas/scene_start"]
+process_mode = 3
+position = Vector2(2.0504e-05, -4.76837e-06)
+shape = SubResource("CircleShape2D_vi6fb")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
+
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -372,3 +414,6 @@ zoom = Vector2(0.4, 0.4)
 script = ExtResource("7_mhy3o")
 player1 = NodePath("../../Environment/Player")
 player2 = NodePath("../../Environment/Player2")
+
+[connection signal="body_entered" from="Environment/Dialogue_areas/terminal_first" to="Environment/Dialogue_areas/terminal_first" method="_on_body_entered"]
+[connection signal="body_entered" from="Environment/Dialogue_areas/scene_start" to="Environment/Dialogue_areas/scene_start" method="_on_body_entered"]
