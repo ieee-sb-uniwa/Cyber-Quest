@@ -80,7 +80,14 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_glnao")
 text = "Back to Main menu"
 
+[node name="ResumePlaying" type="Button" parent="VBoxContainer2"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_glnao")
+text = "Resume Playing"
+
 [connection signal="drag_ended" from="VBoxContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
 [connection signal="drag_ended" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
 [connection signal="drag_ended" from="VBoxContainer/SoundsSlider" to="." method="_on_sounds_slider_drag_ended"]
 [connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer2/ResumePlaying" to="." method="_on_resume_playing_pressed"]

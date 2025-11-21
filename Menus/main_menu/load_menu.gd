@@ -6,7 +6,6 @@ func _ready():
 	if canLoad:
 		$CenterVbox/VBoxContainer/N1.text = "Players: " + PlayerData.player_name_1 + " & " + PlayerData.player_name_2
 	$VBoxContainer2/BacktoMenu.grab_focus();
-	print(get_tree().get_current_scene())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -32,3 +31,8 @@ func _on_n_2_pressed() -> void:
 
 func _on_n_3_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_resume_playing_pressed() -> void:
+	$"../InventoryGUI".show()	
+	$"../../".show()
+	queue_free()	# Destroys the instanced load node
