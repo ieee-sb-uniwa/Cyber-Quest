@@ -22,6 +22,7 @@ Global="*res://Scripts/Global.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SpawnManager="*res://Scripts/Characters/MainPlayer/SpawnManager.gd"
 PlayerData="*res://Menus/main_menu/PlayerData.gd"
+AudioPlayer="*res://Scripts/audio_player.tscn"
 
 [display]
 

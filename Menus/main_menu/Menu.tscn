@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://btssi2ymkf40y"]
+[gd_scene load_steps=7 format=3 uid="uid://btssi2ymkf40y"]
 
 [ext_resource type="Script" uid="uid://bjwfi83g5xfvp" path="res://Menus/main_menu/menu.gd" id="1_e7t8g"]
 [ext_resource type="Texture2D" uid="uid://drkg5rvu41j1m" path="res://Assets/CyberQuest_Assets/Backgrounds/Cyber_Quest_logo.png" id="3_5t2ou"]
 [ext_resource type="Texture2D" uid="uid://g6avlntoy52n" path="res://Assets/CyberQuest_Assets/Backgrounds/Blue_Gradient.png" id="4_qly76"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="6_6mphd"]
-[ext_resource type="AudioStream" uid="uid://bckpynmthi4lk" path="res://Assets/CyberQuest_Assets/Music/TitleMusic.mp3" id="6_qly76"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wohcc"]
 
@@ -98,11 +97,6 @@ focus_neighbor_bottom = NodePath("../New")
 theme_override_fonts/font = ExtResource("6_6mphd")
 theme_override_font_sizes/font_size = 18
 text = "Έξοδος"
-
-[node name="TitleMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_qly76")
-autoplay = true
-parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_load_pressed"]

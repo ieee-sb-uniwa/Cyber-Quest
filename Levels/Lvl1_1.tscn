@@ -361,19 +361,6 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="PasswordUI" parent="HUD"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = false
-script = null
-
 [node name="CameraRoot" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="CameraRoot" node_paths=PackedStringArray("player1", "player2")]

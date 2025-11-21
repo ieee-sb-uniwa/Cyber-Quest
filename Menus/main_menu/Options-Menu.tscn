@@ -38,11 +38,13 @@ offset_bottom = 43.0
 grow_horizontal = 2
 
 [node name="Master" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Master Volume"
 label_settings = SubResource("LabelSettings_x0w3x")
 
 [node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 value = 100.0
 
@@ -53,14 +55,18 @@ label_settings = SubResource("LabelSettings_jj3pi")
 
 [node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="Sound" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Sound Effects Volume"
 label_settings = SubResource("LabelSettings_jj3pi")
 
 [node name="SoundsSlider" type="HSlider" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 value = 100.0
 
@@ -86,8 +92,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_glnao")
 text = "Resume Playing"
 
-[connection signal="drag_ended" from="VBoxContainer/MasterSlider" to="." method="_on_master_slider_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]
-[connection signal="drag_ended" from="VBoxContainer/SoundsSlider" to="." method="_on_sounds_slider_drag_ended"]
+[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer2/ResumePlaying" to="." method="_on_resume_playing_pressed"]
