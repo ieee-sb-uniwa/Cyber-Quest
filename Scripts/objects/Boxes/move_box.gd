@@ -96,7 +96,7 @@ func _physics_process(delta: float) -> void:
 # --- Area signals ---
 
 func _on_body_entered_left(body: Node) -> void:
-	if body is CharacterBody2D and not nearby_players_left.has(body):
+	if body is CharacterBody2D and "playerNum" in body and not nearby_players_left.has(body):
 		nearby_players_left.append(body)
 		_update_move_orientation()
 		# print("Left side: player entered. Total left players: ", nearby_players_left.size())
@@ -111,7 +111,7 @@ func _on_body_exited_left(body: Node) -> void:
 		# print("Left side: player exited. Total left players: ", nearby_players_left.size())
 
 func _on_body_entered_right(body: Node) -> void:
-	if body is CharacterBody2D and not nearby_players_right.has(body):
+	if body is CharacterBody2D and "playerNum" in body and not nearby_players_right.has(body):
 		nearby_players_right.append(body)
 		_update_move_orientation()
 		# print("Right side: player entered. Total right players: ", nearby_players_right.size())
@@ -126,7 +126,7 @@ func _on_body_exited_right(body: Node) -> void:
 		# print("Right side: player exited. Total right players: ", nearby_players_right.size())
 
 func _on_body_entered_up(body: Node) -> void:
-	if body is CharacterBody2D and not nearby_players_up.has(body):
+	if body is CharacterBody2D and "playerNum" in body and not nearby_players_up.has(body):
 		nearby_players_up.append(body)
 		_update_move_orientation()
 		# print("Up side: player entered. Total up players: ", nearby_players_up.size())
@@ -141,7 +141,7 @@ func _on_body_exited_up(body: Node) -> void:
 		# print("Up side: player exited. Total up players: ", nearby_players_up.size())
 
 func _on_body_entered_down(body: Node) -> void:
-	if body is CharacterBody2D and not nearby_players_down.has(body):
+	if body is CharacterBody2D and "playerNum" in body and not nearby_players_down.has(body):
 		nearby_players_down.append(body)
 		_update_move_orientation()
 		# print("Down side: player entered. Total down players: ", nearby_players_down.size())
@@ -158,9 +158,9 @@ func _on_body_exited_down(body: Node) -> void:
 func _update_move_orientation() -> void:
 	# Debug: Print current state
 	# print("Update orientation - Left: ", nearby_players_left.size(), 
-	#	  ", Right: ", nearby_players_right.size(),
-	#	  ", Up: ", nearby_players_up.size(),
-	#	  ", Down: ", nearby_players_down.size())
+		#   ", Right: ", nearby_players_right.size(),
+		#   ", Up: ", nearby_players_up.size(),
+		#   ", Down: ", nearby_players_down.size())
 	
 	# Horizontal areas have priority over vertical areas
 	if nearby_players_left.size() > 0 or nearby_players_right.size() > 0:
@@ -187,7 +187,7 @@ func _get_player_side(player: CharacterBody2D) -> String:
 # --- Player interaction ---
 
 func _is_player_toggling_interaction(p: CharacterBody2D) -> bool:
-	if p == null:
+	if p == null or not "playerNum" in p:
 		return false
 	var action_name := "Interact_p" + str(p.playerNum)
 	return Input.is_action_just_pressed(action_name)

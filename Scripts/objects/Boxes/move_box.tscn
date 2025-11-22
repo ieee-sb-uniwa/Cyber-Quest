@@ -46,6 +46,7 @@ shape = SubResource("RectangleShape2D_u8g2u")
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaD"]
@@ -56,6 +57,7 @@ shape = SubResource("RectangleShape2D_s85pb")
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaL"]
@@ -66,6 +68,7 @@ shape = SubResource("RectangleShape2D_t0d6k")
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
+action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaU"]

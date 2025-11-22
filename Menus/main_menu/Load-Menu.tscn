@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cugf7rdpr7euj"]
+[gd_scene load_steps=6 format=3 uid="uid://cugf7rdpr7euj"]
 
 [ext_resource type="Script" uid="uid://ncyp8fx8jit" path="res://Menus/main_menu/load_menu.gd" id="1_ulsya"]
 [ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_ccrfn"]
 [ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="2_kmes4"]
 [ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_6xt81"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjlji"]
+font = ExtResource("2_ccrfn")
+font_size = 24
 
 [node name="LoadMenu" type="Control"]
 layout_mode = 3
@@ -20,7 +24,7 @@ offset_right = 768.0
 offset_bottom = 384.0
 texture = ExtResource("2_kmes4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterVbox" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -31,10 +35,41 @@ offset_right = 80.0
 offset_bottom = 43.0
 grow_horizontal = 2
 
-[node name="Load Game" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterVbox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_ccrfn")
-text = "Load Game"
+
+[node name="P1" type="Label" parent="CenterVbox/VBoxContainer"]
+layout_mode = 2
+text = "Profile 1"
+label_settings = SubResource("LabelSettings_sjlji")
+
+[node name="N1" type="Button" parent="CenterVbox/VBoxContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterVbox"]
+layout_mode = 2
+
+[node name="P2" type="Label" parent="CenterVbox/VBoxContainer2"]
+layout_mode = 2
+text = "Profile 2"
+label_settings = SubResource("LabelSettings_sjlji")
+
+[node name="N2" type="Button" parent="CenterVbox/VBoxContainer2"]
+layout_mode = 2
+text = "Name:"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterVbox"]
+layout_mode = 2
+
+[node name="P3" type="Label" parent="CenterVbox/VBoxContainer3"]
+layout_mode = 2
+text = "Profile 2"
+label_settings = SubResource("LabelSettings_sjlji")
+
+[node name="N3" type="Button" parent="CenterVbox/VBoxContainer3"]
+layout_mode = 2
+text = "Name:"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -52,4 +87,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6xt81")
 text = "Back to Main Menu"
 
+[connection signal="pressed" from="CenterVbox/VBoxContainer/N1" to="." method="_on_n_1_pressed"]
+[connection signal="pressed" from="CenterVbox/VBoxContainer2/N2" to="." method="_on_n_2_pressed"]
+[connection signal="pressed" from="CenterVbox/VBoxContainer3/N3" to="." method="_on_n_3_pressed"]
 [connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]
