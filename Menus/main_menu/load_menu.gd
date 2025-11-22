@@ -23,6 +23,7 @@ func _on_n_1_pressed() -> void:
 	print(PlayerData.inv_slot)
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
+	AudioPlayer.stop_clear()	# Use before loading level to stop menu music
 	get_tree().change_scene_to_file(level_path)
 
 #! OTHER SAVE FILES -> FUTURE REFERENCE
