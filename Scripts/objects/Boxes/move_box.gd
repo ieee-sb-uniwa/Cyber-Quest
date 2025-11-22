@@ -204,8 +204,7 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
-		var side = _get_player_side(p)
-		# print("Grabbed box, side:", side)
+		# print("Grabbed box, side:", _get_player_side(p))
 
 func _release(p: CharacterBody2D) -> void:
 	grabbers.erase(p)
