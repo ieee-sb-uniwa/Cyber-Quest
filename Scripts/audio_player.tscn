@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://u871jpvjn541"]
+
+[ext_resource type="Script" uid="uid://bi1oegel41jst" path="res://Scripts/audio_player.gd" id="1_0gv8g"]
+
+[node name="AudioPlayer" type="AudioStreamPlayer"]
+script = ExtResource("1_0gv8g")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

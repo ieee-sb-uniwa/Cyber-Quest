@@ -52,6 +52,7 @@ func _on_confirm_pressed() -> void:
 	Global.before_scene_change()
 	# Save the game before starting
 	Global.save_game()
+	AudioPlayer.stop_clear()	# Use before loading level to stop menu music
 	get_tree().change_scene_to_file("res://Levels/Lvl1_1.tscn")
 
 func _on_back_pressed() -> void:
