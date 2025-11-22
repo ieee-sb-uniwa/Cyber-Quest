@@ -20,18 +20,18 @@ func _process(_delta):
 	var player_with_items = null
 	for body in bodies:
 		if body.is_in_group("Player") and body.get_all_items().size() > 0:
-			print(body.get_all_items().size())
+			# print(body.get_all_items().size())
 			player_with_items = body
 			break
 	
 	# Register/unregister based on whether player has items
 	if player_with_items and !currently_registered:
 		InteractionManager.register_area(area, player_with_items)
-		print("Registered dropout zone")
+		# print("Registered dropout zone")
 		currently_registered = true
 	elif !player_with_items and currently_registered:
 		InteractionManager.unregister_area(area)
-		print("Unregistered dropout zone")
+		# print("Unregistered dropout zone")
 		currently_registered = false
 	
 	# Only handle interaction if player has items
@@ -49,27 +49,28 @@ func _process(_delta):
 
 func _drop_and_disable_passblocks(body : Node2D):
 	if !body.has_method("clear_all_items"):
-		print("Player doesn't have ItemHolder script")
+		# print("Player doesn't have ItemHolder script")
 		return
 	
 	# Get all items before clearing
 	var items_to_drop = body.get_all_items().duplicate()
-	print("Dropping ", items_to_drop.size(), " items")
+	# print("Dropping ", items_to_drop.size(), " items")
 	
 	# Drop items at the dropout zone position (isDelivered=true)
 	body.clear_all_items(Vector2(global_position.x, global_position.y-25))
 	
-	print("After clear_all_items, player has ", body.get_all_items().size(), " items")
+	# print("After clear_all_items, player has ", body.get_all_items().size(), " items")
 	
 	# Process each dropped block
 	for block in items_to_drop:
+		block.block_sprite.call_deferred("hide") # Hide the block sprite
 		block.set_interaction_area(false) # Disable interaction area
 		Global.add_passblock(block)
-		print("PassBlock added")
+		# print("PassBlock added")
 	
 	# Immediately unregister after dropping items
-	print("Attempting to unregister, currently_registered: ", currently_registered)
+	# print("Attempting to unregister, currently_registered: ", currently_registered)
 	if currently_registered:
 		InteractionManager.unregister_area(area)
-		print("Unregistered dropout zone after drop")
+		# print("Unregistered dropout zone after drop")
 		currently_registered = false
