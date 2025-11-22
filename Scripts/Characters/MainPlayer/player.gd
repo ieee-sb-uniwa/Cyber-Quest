@@ -126,8 +126,8 @@ func get_all_items() -> Array[Node2D]:
 func add_item_to_holder(item : Node2D) -> void:
 	itemHolder.add_item(item)
 
-func clear_all_items() -> void:
-	itemHolder.clear_all_items(self, true)
+func clear_all_items(positionToDrop: Vector2) -> void:
+	itemHolder.clear_all_items(self, true, positionToDrop)
 		
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && !is_hidden:

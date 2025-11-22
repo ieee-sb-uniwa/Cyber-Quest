@@ -31,12 +31,16 @@ func add_item(item:Node2D)->void:
 	lastDir = Global.MOVE_ORIENTATION.EMPTY
 	change_items_orientation(currDir)
 
-func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDelivered:bool) -> void:
+func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDelivered:bool, index:int) -> void:
 	if assigned_items.find(item) == -1:
-		print("This item does not excist in the inventory.")
+		print("This item does not exist in the inventory.")
 		return
 	if !isDelivered && item.has_method("drop_block"):
 		item.drop_block(pl)
+	
+	# Remove from assigned_items array
+	assigned_items.erase(item)
+	
 	self.remove_child(item)
 	var pass_blocks = get_tree().current_scene.get_node("Environment/PassBlocks") 
 	if pass_blocks == null:
@@ -46,14 +50,24 @@ func remove_item_from_character(pl:Node2D, item:Node2D, pos : Vector2, isDeliver
 	item.set_collision_layer_value(30,false)
 	pass_blocks.call_deferred("add_child", item)  
 	item.global_position = pos
+	item.z_index = 15+index  # Ensure items are visible above other objects
+	# print("Item "+item.name+ " has been removed from the inventory.")
 
 func get_all_items() -> Array[Node2D]:
 	return assigned_items
 
-func clear_all_items(pl:Node2D, isDelivered:bool) -> void:
+func clear_all_items(pl:Node2D, isDelivered:bool, positionToDrop: Vector2 = Vector2.ZERO) -> void:
 	var pos = pl.global_position
-	for i in assigned_items.size():
-		remove_item_from_character(pl, assigned_items[i], Vector2(pos.x, pos.y + items_available_positions[i].position.y), isDelivered)
+	# Create a copy of the array to iterate over
+	var items_to_remove = assigned_items.duplicate()
+	
+	for i in items_to_remove.size():
+		# Use positionToDrop if provided (not Vector2.ZERO), otherwise use player position with offset
+		var drop_pos = positionToDrop if positionToDrop != Vector2.ZERO else Vector2(pos.x, pos.y + items_available_positions[i].position.y)
+		if positionToDrop != Vector2.ZERO:
+			print(Global.dropped_passblocks.size())
+			drop_pos = Vector2(drop_pos.x, drop_pos.y - 10*Global.dropped_passblocks.size()) # Offset each dropped block vertically
+		remove_item_from_character(pl, items_to_remove[i], drop_pos, isDelivered, i)
 	assigned_items.clear()
 	
 func set_player_index(index : int) -> void:

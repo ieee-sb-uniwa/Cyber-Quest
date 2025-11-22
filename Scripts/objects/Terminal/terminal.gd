@@ -6,6 +6,11 @@ func _ready():
 	area.interaction_status = Global.INTERACTION_STATUS.AVAILABLE
 
 func _process(_delta):
+	# Check if this is the closest interaction area
+	var closest_area = InteractionManager.get_closest_area()
+	if closest_area != area:
+		return
+		
 	var bodies = area.get_overlapping_bodies()
 	# Only check input if there is a body inside area
 	if bodies.size() == 0: 

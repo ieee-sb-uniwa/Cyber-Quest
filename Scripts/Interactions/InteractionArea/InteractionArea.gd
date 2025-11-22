@@ -16,11 +16,12 @@ func _ready():
 
 func _on_body_entered(_body):
 	area_label = InteractionManager.get_label()
-	area_label.hide()
+	if area_label:
+		area_label.hide()
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and  interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
 		return
 
-	if (can_pickup(_body) or (object_type != null and object_type != "" and object_type != "passdropoutzone")):
+	if (can_pickup(_body) or (object_type != null and object_type != "")):
 		InteractionManager.register_area(self, _body)
 
 func _on_body_exited(_body):

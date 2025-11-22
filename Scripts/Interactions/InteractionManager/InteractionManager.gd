@@ -8,30 +8,53 @@ var label: Label = null
 var active_areas: Array = []
 var can_interact: bool = true
 
+func _ready():
+	label = $Label
+
 # Getter method to access the label (returns null if not available)
 func get_label() -> Label:
-	if label and is_instance_valid(label):
-		return label
-	return null
+	return label
 
-func _ready() -> void:
-	if has_node("Label"):
-		label = $Label
+func _process(_delta):
+	# Always update label to handle both showing closest and hiding when empty
+	update_closest_label()
+
+# Get the closest interaction area to the current player
+func get_closest_area() -> InteractionArea:
+	if active_areas.is_empty() or curr_player == null:
+		return null
 	
-func register_area(area: InteractionArea, body: Node2D) -> void:
+	var closest_area: InteractionArea = null
+	var closest_distance: float = INF
+	
+	for area in active_areas:
+		if area == null:
+			continue
+		var distance = curr_player.global_position.distance_to(area.global_position)
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_area = area
+	
+	return closest_area
+	
+func register_area(area: InteractionArea, body: Node2D):
 	active_areas.push_back(area) # adds area to available areas
 	curr_player = body
-	# Only show label if it's available and this manager can interact
-	if can_interact and get_label():
-		show_action_label(area) # prints area label
+	# Don't need to update label here, _process will handle it
 
 func unregister_area(area: InteractionArea) -> void:
 	var index = active_areas.find(area)
 	if index != -1:
 		active_areas.remove_at(index)
-		var l = get_label()
-		if l:
-			l.hide() # hide label when you exit area
+		# Immediately update label when unregistering
+		update_closest_label()
+
+func update_closest_label():
+	var closest = get_closest_area()
+	if closest:
+		show_action_label(closest)
+	else:
+		label.hide()
 
 func show_action_label(area: InteractionArea) -> void:
 	var l = get_label()
