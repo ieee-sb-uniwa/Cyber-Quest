@@ -21,7 +21,7 @@ func _on_body_entered(_body):
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and  interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
 		return
 
-	if (can_pickup(_body) or (object_type != null and object_type != "" and object_type != "passdropoutzone")):
+	if (can_pickup(_body) or (object_type != null and object_type != "")):
 		InteractionManager.register_area(self, _body)
 
 func _on_body_exited(_body):

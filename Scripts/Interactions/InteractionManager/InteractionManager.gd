@@ -8,14 +8,16 @@ var label: Label = null
 var active_areas: Array = []
 var can_interact: bool = true
 
+func _ready():
+	label = $Label
+
 # Getter method to access the label (returns null if not available)
 func get_label() -> Label:
 	return label
 
 func _process(_delta):
-	# Update label position as player moves between overlapping areas
-	if not active_areas.is_empty():
-		update_closest_label()
+	# Always update label to handle both showing closest and hiding when empty
+	update_closest_label()
 
 # Get the closest interaction area to the current player
 func get_closest_area() -> InteractionArea:
@@ -44,7 +46,8 @@ func unregister_area(area: InteractionArea) -> void:
 	var index = active_areas.find(area)
 	if index != -1:
 		active_areas.remove_at(index)
-		# Don't need to update label here, _process will handle it
+		# Immediately update label when unregistering
+		update_closest_label()
 
 func update_closest_label():
 	var closest = get_closest_area()

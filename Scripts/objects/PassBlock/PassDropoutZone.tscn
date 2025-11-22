@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xy7gn3icim7w"]
+[gd_scene load_steps=6 format=3 uid="uid://xy7gn3icim7w"]
 
 [ext_resource type="Script" uid="uid://bekua6g51ai7n" path="res://Scripts/objects/PassBlock/PassDropoutZone.gd" id="1_xaljh"]
 [ext_resource type="Texture2D" uid="uid://dpx5o68qjjfjr" path="res://Assets/CyberQuest_Assets/Environment/workbench.png" id="2_7wl4x"]
+[ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_xy7gn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wl4x"]
 size = Vector2(103, 45)
@@ -21,9 +22,10 @@ texture = ExtResource("2_7wl4x")
 position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_7wl4x")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InteractionArea" parent="." instance=ExtResource("3_xy7gn")]
 collision_layer = 32
 collision_mask = 2
+action_name = "αφήσεις τα μπλοκ"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_wt8pr")
