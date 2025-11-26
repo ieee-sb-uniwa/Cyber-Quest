@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5nrd1h3teqrb"]
+
+[ext_resource type="Texture2D" uid="uid://baaww36818rup" path="res://Assets/UI/NewUI/Empty Key_regular.png" id="1_8j7yk"]
+[ext_resource type="Script" uid="uid://bbtip8ksaspj6" path="res://PasswordUI/new/key_letter.gd" id="2_thvw6"]
+
+[node name="KeyLetter" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_8j7yk")
+flat = true
+script = ExtResource("2_thvw6")
+
+[node name="KeyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

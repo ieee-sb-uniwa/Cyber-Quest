@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckv28cidycc32"]
+
+[ext_resource type="Texture2D" uid="uid://c7mptf2exqjwh" path="res://Assets/UI/NewUI/Empty Key_symbols.png" id="1_5iv1b"]
+[ext_resource type="Script" uid="uid://bbtip8ksaspj6" path="res://PasswordUI/new/key_letter.gd" id="2_y1203"]
+
+[node name="KeySymbol" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("1_5iv1b")
+flat = true
+script = ExtResource("2_y1203")
+
+[node name="KeyLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

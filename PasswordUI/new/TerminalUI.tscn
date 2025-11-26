@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://djwamh073u1ur"]
+
+[ext_resource type="Script" uid="uid://cdw60ydrrocpu" path="res://PasswordUI/new/terminal_ui.gd" id="1_ookdm"]
+[ext_resource type="Texture2D" uid="uid://dvnpss0lk48b2" path="res://Assets/UI/NewUI/Monitor.png" id="2_okdu2"]
+[ext_resource type="Texture2D" uid="uid://c3vwi2qckgmf5" path="res://Assets/UI/NewUI/Numpad(empty).png" id="3_okdu2"]
+[ext_resource type="Texture2D" uid="uid://clalqiuscsh37" path="res://Assets/UI/NewUI/Main keyboard(empty).png" id="4_ja7o1"]
+[ext_resource type="Texture2D" uid="uid://bnyk6jbe64ige" path="res://Assets/UI/NewUI/Add-on Keyboard(empty).png" id="5_okdu2"]
+[ext_resource type="PackedScene" uid="uid://b5nrd1h3teqrb" path="res://PasswordUI/new/KeyLetter.tscn" id="7_3jkiv"]
+[ext_resource type="Texture2D" uid="uid://crelkutf0a4l8" path="res://Assets/UI/NewUI/Shift.png" id="7_m4bf3"]
+[ext_resource type="Script" uid="uid://6xehtw3neu16" path="res://PasswordUI/new/keyboard_manager.gd" id="7_t0kc8"]
+[ext_resource type="Texture2D" uid="uid://dycxqnjde0jp" path="res://Assets/UI/NewUI/Accept key.png" id="8_3jkiv"]
+[ext_resource type="PackedScene" uid="uid://ckv28cidycc32" path="res://PasswordUI/new/KeySymbol.tscn" id="8_epyed"]
+[ext_resource type="Texture2D" uid="uid://c5jc7p0l3onft" path="res://Assets/UI/NewUI/Backspace Key.png" id="9_epyed"]
+[ext_resource type="Texture2D" uid="uid://bt1dt17u5hbdk" path="res://Assets/UI/NewUI/Cancel Key.png" id="10_15noo"]
+
+[node name="TerminalUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_ookdm")
+
+[node name="DisplayScreen" type="TextureRect" parent="."]
+z_index = 3
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 1.0
+offset_top = -83.0
+offset_right = 899.0
+offset_bottom = 612.0
+texture = ExtResource("2_okdu2")
+
+[node name="OutputText" type="RichTextLabel" parent="DisplayScreen"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 118.0
+offset_right = 841.0
+offset_bottom = 567.0
+
+[node name="KeyboardContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NumpadBackground" type="TextureRect" parent="KeyboardContainer"]
+z_index = 2
+layout_mode = 0
+offset_left = 617.5
+offset_top = 532.0
+offset_right = 852.5
+offset_bottom = 812.0
+texture = ExtResource("3_okdu2")
+stretch_mode = 2
+
+[node name="LettersBackground" type="TextureRect" parent="KeyboardContainer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 532.0
+offset_right = 618.0
+offset_bottom = 772.0
+texture = ExtResource("4_ja7o1")
+stretch_mode = 2
+
+[node name="SymbolsBackground" type="TextureRect" parent="KeyboardContainer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 727.5
+offset_right = 612.0
+offset_bottom = 811.5
+texture = ExtResource("5_okdu2")
+stretch_mode = 2
+
+[node name="KeyboardLayout" type="Button" parent="KeyboardContainer" node_paths=PackedStringArray("numpad_container", "letter_container", "symbol_container")]
+visible = false
+layout_mode = 0
+offset_left = 945.0
+offset_top = 135.0
+offset_right = 1119.0
+offset_bottom = 292.0
+flat = true
+script = ExtResource("7_t0kc8")
+letter_key_scene = ExtResource("7_3jkiv")
+symbol_key_scene = ExtResource("8_epyed")
+numpad_container = NodePath("../NumpadKeys")
+letter_container = NodePath("../LetterKeys")
+symbol_container = NodePath("../SymbolKeys")
+
+[node name="ShiftToggle" type="Button" parent="KeyboardContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 42.5
+offset_top = 670.0
+offset_right = 166.5
+offset_bottom = 733.0
+icon = ExtResource("7_m4bf3")
+flat = true
+
+[node name="Enter" type="Button" parent="KeyboardContainer"]
+z_index = 1
+layout_mode = 0
+offset_left = 844.5
+offset_top = 707.0
+offset_right = 903.5
+offset_bottom = 816.0
+icon = ExtResource("8_3jkiv")
+flat = true
+
+[node name="Backspace" type="Button" parent="KeyboardContainer"]
+layout_mode = 0
+offset_left = 844.5
+offset_top = 564.0
+offset_right = 903.5
+offset_bottom = 641.0
+icon = ExtResource("9_epyed")
+flat = true
+
+[node name="Cancel" type="Button" parent="KeyboardContainer"]
+layout_mode = 0
+offset_left = 844.5
+offset_top = 627.0
+offset_right = 903.5
+offset_bottom = 721.0
+icon = ExtResource("10_15noo")
+flat = true
+
+[node name="NumpadKeys" type="Control" parent="KeyboardContainer"]
+z_index = 3
+anchors_preset = 0
+offset_left = 719.0
+offset_top = 578.0
+offset_right = 759.0
+offset_bottom = 618.0
+
+[node name="LetterKeys" type="Control" parent="KeyboardContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 284.9
+offset_top = 578.5
+offset_right = 324.9
+offset_bottom = 618.5
+
+[node name="SymbolKeys" type="Control" parent="KeyboardContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 282.5
+offset_top = 738.0
+offset_right = 322.5
+offset_bottom = 778.0
