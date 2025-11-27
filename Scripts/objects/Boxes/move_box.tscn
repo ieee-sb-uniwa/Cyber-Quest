@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d13em5756fc6e"]
 
 [ext_resource type="Script" uid="uid://2s0voickxndj" path="res://Scripts/objects/Boxes/move_box.gd" id="1_uqapv"]
-[ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="2_xdurq"]
+[ext_resource type="Texture2D" uid="uid://doxvay64x783x" path="res://Assets/CyberQuest_Assets/Environment/Move_box_new.png" id="2_xy5cb"]
 [ext_resource type="Script" uid="uid://cxoccobhfbs2w" path="res://Scripts/Interactions/InteractionArea/InteractionArea.gd" id="3_fegow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ort"]
@@ -25,7 +25,7 @@ collision_mask = 15
 script = ExtResource("1_uqapv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xdurq")
+texture = ExtResource("2_xy5cb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -6.5)
