@@ -22,10 +22,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 10.0
 }]
 
-[node name="Fan" type="StaticBody2D"]
+[node name="Fan" type="Node2D"]
 script = ExtResource("1_15ki8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

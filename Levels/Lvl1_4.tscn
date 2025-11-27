@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://duqttgojm32h1"]
+[gd_scene load_steps=36 format=4 uid="uid://duqttgojm32h1"]
 
 [ext_resource type="PackedScene" uid="uid://cr2gilkvk8ca0" path="res://Scripts/objects/Fans/Fan.tscn" id="1_docje"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="1_wc1b3"]
@@ -15,6 +15,13 @@
 [ext_resource type="Texture2D" uid="uid://bbnwd22g8fdrq" path="res://Assets/CyberQuest_Assets/Environment/wallTopThin.png" id="11_j3t40"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="12_2tyuq"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="13_153ub"]
+[ext_resource type="PackedScene" uid="uid://cknwa5xhy6x6o" path="res://Scripts/objects/Bridge/bridge.tscn" id="16_120p6"]
+
+[sub_resource type="Gradient" id="Gradient_120p6"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1af5f"]
+gradient = SubResource("Gradient_120p6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ru4mx"]
 texture = ExtResource("1_wc1b3")
@@ -765,6 +772,15 @@ sources/6 = SubResource("TileSetAtlasSource_ixx53")
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Polygon2D" type="Polygon2D" parent="Environment"]
+z_index = 3
+position = Vector2(562.169, 94)
+scale = Vector2(0.988764, 0.990257)
+color = Color(0.0627451, 0.0588235, 0.129412, 1)
+texture = SubResource("GradientTexture2D_1af5f")
+polygon = PackedVector2Array(643.057, -974.532, -165.023, -977.562, -160.977, 211.019, 628.898, 223.137)
+uv = PackedVector2Array(-149.5, -72.25, -150, 69.25, 104.5, 73.25, 105, -70.75)
+
 [node name="Fan" parent="Environment" instance=ExtResource("1_docje")]
 z_index = 2
 position = Vector2(471, 56)
@@ -835,3 +851,21 @@ position = Vector2(635, 305)
 z_index = 5
 y_sort_enabled = true
 position = Vector2(1019, 560)
+
+[node name="Bridges" type="Node" parent="."]
+
+[node name="Bridge2" parent="Bridges" instance=ExtResource("16_120p6")]
+z_index = 3
+position = Vector2(538, 113)
+
+[node name="Bridge" parent="Bridges" instance=ExtResource("16_120p6")]
+z_index = 3
+position = Vector2(1050, 113)
+
+[node name="Bridge2" parent="Bridges/Bridge" instance=ExtResource("16_120p6")]
+z_index = 3
+position = Vector2(-512, 320)
+
+[node name="Bridge" parent="Bridges/Bridge" instance=ExtResource("16_120p6")]
+z_index = 3
+position = Vector2(0, 320)

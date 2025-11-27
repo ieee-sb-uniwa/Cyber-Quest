@@ -28,10 +28,12 @@ script = ExtResource("1_uqapv")
 texture = ExtResource("2_xy5cb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.5, -6.5)
 shape = SubResource("RectangleShape2D_s8ort")
 
 [node name="InteractionAreaR" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
@@ -43,6 +45,7 @@ position = Vector2(35, -6.5)
 shape = SubResource("RectangleShape2D_u8g2u")
 
 [node name="InteractionAreaD" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
@@ -50,10 +53,12 @@ action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionAreaD"]
+visible = false
 position = Vector2(0, 19)
 shape = SubResource("RectangleShape2D_s85pb")
 
 [node name="InteractionAreaL" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
@@ -65,6 +70,7 @@ position = Vector2(-36, -6.5)
 shape = SubResource("RectangleShape2D_t0d6k")
 
 [node name="InteractionAreaU" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("3_fegow")
@@ -72,5 +78,6 @@ action_name = "μετακινήσεις κουτί"
 metadata/_custom_type_script = "uid://cxoccobhfbs2w"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionAreaU"]
+visible = false
 position = Vector2(0.5, -29.5)
 shape = SubResource("RectangleShape2D_t4wmc")

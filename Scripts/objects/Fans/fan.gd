@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Node2D
 
 @onready var fan_anim_sprite = $AnimatedSprite2D
 
