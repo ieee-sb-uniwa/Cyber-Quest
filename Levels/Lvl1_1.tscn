@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
-[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="18_j1jna"]
+[ext_resource type="PackedScene" uid="uid://bwsxh7ax4nm1x" path="res://PasswordUI/new/TerminalUI.tscn" id="18_j1jna"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_loljf"]
 texture = ExtResource("3_1lo17")
@@ -363,7 +363,6 @@ grow_horizontal = 1
 grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
-visible = false
 
 [node name="CameraRoot" type="Node" parent="."]
 

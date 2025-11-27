@@ -6,6 +6,9 @@ extends Control
 @onready var numpad_bg: Control = $KeyboardContainer/NumpadBackground
 @onready var letters_bg: Control = $KeyboardContainer/LettersBackground
 @onready var symbols_bg: Control = $KeyboardContainer/SymbolsBackground
+@export var hasNum : bool = true
+@export var hasLetters : bool = false
+@export var hasSymbols : bool = false
 
 var current_level: int = 3 # Hard coded for testing full terminal
 
