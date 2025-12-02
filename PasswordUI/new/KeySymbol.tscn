@@ -14,5 +14,8 @@ flat = true
 script = ExtResource("2_y1203")
 
 [node name="KeyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 28.0

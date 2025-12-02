@@ -4,28 +4,40 @@ extends Button
 @export var key_display: String = ""
 @export var key_type: String = "character"
 
-var key_label: Label
-
 signal key_pressed(key_value, key_type)
 
 func _ready():
-	key_label = get_node("KeyLabel")
+	call_deferred("deferred_setup")
+
+func deferred_setup():
+	# Without await the text generates elsewhere as a "glitch"
+	await get_tree().process_frame
 	
-	if key_display.is_empty():
-		key_display = key_value
-	
-	if key_label != null:
-		key_label.text = key_display
-	else:
-		print("KeyLabel not found!")
-	
+	setup_label()
 	pressed.connect(_on_pressed)
 
+func setup_label():
+
+	var label = null
+	for child in get_children():
+		if child is Label:
+			label = child
+			break
+	
+	if label == null:
+		label = Label.new()
+		add_child(label)
+
+	label.text = key_display
+
+	# Without await the text generates elsewhere as a "glitch"
+	await get_tree().process_frame
+
+
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	
+	label.add_theme_font_size_override("font_size", 20)
+	
 func _on_pressed():
 	emit_signal("key_pressed", key_value, key_type)
-
-func update_key(new_value: String, new_display: String = ""):
-	key_value = new_value
-	key_display = new_display if not new_display.is_empty() else new_value
-	if key_label != null:
-		key_label.text = key_display

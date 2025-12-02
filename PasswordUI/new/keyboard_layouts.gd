@@ -77,8 +77,8 @@ var qwerty_upper_layout = {
 				{"display": "B", "value": "B", "type": "letter"},
 				{"display": "N", "value": "N", "type": "letter"},
 				{"display": "M", "value": "M", "type": "letter"},
-				{"display": "", "value": "", "type": ""},
-				{"display": "", "value": "", "type": ""},
+				{"display": "", "value": "", "type": "spacer"},
+				{"display": "", "value": "", "type": "spacer"},
 			],
 			"key_count": 9
 		}
@@ -119,8 +119,8 @@ var qwerty_lower_layout = {
 		},
 		{
 			"keys": [
-				{"display": "", "value": "", "type": ""},
-				{"display": "", "value": "", "type": ""},
+				{"display": "", "value": "", "type": "spacer"},
+				{"display": "", "value": "", "type": "spacer"},
 				{"display": "z", "value": "z", "type": "letter"},
 				{"display": "x", "value": "x", "type": "letter"},
 				{"display": "c", "value": "c", "type": "letter"},

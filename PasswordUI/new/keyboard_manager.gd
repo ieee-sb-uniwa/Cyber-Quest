@@ -2,6 +2,7 @@ extends Control
 
 signal key_pressed(key_value, key_type)
 
+@export var custom_font: Font
 @export var letter_key_scene: PackedScene
 @export var symbol_key_scene: PackedScene
 @export var letter_key_size: Vector2 = Vector2(60, 60)
@@ -34,6 +35,10 @@ func setup_level_layouts(level: int):
 			_create_keys_in_container("symbols", symbol_container, Vector2(0, 0))
 
 func _create_keys_in_container(layout_name: String, container: Control, position_offset: Vector2):
+	# Container for keys and labels
+	container.queue_redraw()
+	await get_tree().process_frame
+	
 	var layout_data = KeyboardLayouts.get_layout(layout_name)
 	
 	if layout_data.has("rows"):
@@ -85,10 +90,12 @@ func _create_keys_from_rows(layout_data: Dictionary, container: Control, positio
 			key.key_display = key_info.display
 			key.key_type = key_info.type
 			
-			key.position = Vector2(
-				start_x + (actual_key_index * (key_size_to_use.x + key_spacing_to_use.x)),
-				current_y
-			)
+			if custom_font != null:
+				key.custom_font = custom_font
+			
+			var x_pos = start_x + (actual_key_index * (key_size_to_use.x + key_spacing_to_use.x))
+			
+			_deferred_set_position(key, Vector2(x_pos, current_y))
 			key.size = key_size_to_use
 			
 			key.key_pressed.connect(_on_key_pressed)
@@ -112,6 +119,7 @@ func _create_keys_from_grid(layout_data: Dictionary, container: Control, positio
 				return
 				
 			var key_info = layout_data.keys[button_index]
+			
 			if key_info.display.is_empty():
 				button_index += 1
 				continue
@@ -125,15 +133,21 @@ func _create_keys_from_grid(layout_data: Dictionary, container: Control, positio
 			key.key_display = key_info.display  
 			key.key_type = key_info.type
 			
-			key.position = Vector2(
-				position_offset.x + (col * (key_size_to_use.x + key_spacing_to_use.x)),
-				position_offset.y + (row * (key_size_to_use.y + key_spacing_to_use.y))
-			)
+			var x_pos = position_offset.x + (col * (key_size_to_use.x + key_spacing_to_use.x))
+			var y_pos = position_offset.y + (row * (key_size_to_use.y + key_spacing_to_use.y))
+			
+			_deferred_set_position(key, Vector2(x_pos, y_pos))
 			key.size = key_size_to_use
 			
 			key.key_pressed.connect(_on_key_pressed)
 			current_keys.append(key)
 			button_index += 1
+
+func _deferred_set_position(key_node: Control, position: Vector2):
+	call_deferred("_set_key_position", key_node, position)
+
+func _set_key_position(key_node: Control, position: Vector2):
+	key_node.position = position
 
 func _on_key_pressed(key_value: String, key_type: String):
 	emit_signal("key_pressed", key_value, key_type)
