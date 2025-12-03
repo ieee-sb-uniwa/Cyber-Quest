@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://duqttgojm32h1"]
+[gd_scene load_steps=50 format=4 uid="uid://duqttgojm32h1"]
 
 [ext_resource type="PackedScene" uid="uid://cr2gilkvk8ca0" path="res://Scripts/objects/Fans/Fan.tscn" id="1_docje"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="1_wc1b3"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="20_j3t40"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="21_2tyuq"]
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="25_153ub"]
+[ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="25_n22bo"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="26_ru4mx"]
 [ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="27_c1lpr"]
 
@@ -1001,6 +1002,8 @@ offset_right = 186.0
 offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("25_n22bo")]
 
 [node name="SpawnPoint0" parent="." instance=ExtResource("25_153ub")]
 z_index = 5
