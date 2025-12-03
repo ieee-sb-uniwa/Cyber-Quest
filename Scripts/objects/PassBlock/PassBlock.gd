@@ -80,13 +80,21 @@ func set_block_sprite():
 	randomize()
 
 	block_id = set_block_based_on_type()
-	# Ensure unique block ids in level
-	while block_id in Global.passblocks_in_level:
+	# Best-effort uniqueness without risking infinite loops
+	var max_unique := 28
+	if is_num:
+		max_unique = 4
+	elif is_upper or is_lower or is_symbol:
+		max_unique = 8
+
+	var attempts := 0
+	# Try a limited number of times to find a non-duplicate id
+	while (block_id in Global.passblocks_in_level) and attempts < max_unique * 2:
 		block_id = set_block_based_on_type()
+		attempts += 1
 
 	# Add to global list of blocks in level
 	Global.passblocks_in_level.append(block_id)
-	# print("Block id: ", block_id)
 	block_sprite.set_frame(block_id)
 
 func set_block_based_on_type():
@@ -96,10 +104,10 @@ func set_block_based_on_type():
 	var offset = 0
 	if is_num:
 		idx = randi_range(0, num_len - 1)
-	elif is_upper:
+	elif is_lower:
 		offset = num_len
 		idx = randi_range(0, letr_symb_len - 1)
-	elif is_lower:
+	elif is_upper:
 		offset = num_len + letr_symb_len
 		idx = randi_range(0, letr_symb_len - 1)
 	elif is_symbol:
