@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch5d7muhhdxch"]
+
+[ext_resource type="Script" uid="uid://bvlov74gc0np4" path="res://HUD/Scripts_Resources/inventory_gui.gd" id="1_gxxjj"]
+[ext_resource type="PackedScene" uid="uid://ccybaubxshghb" path="res://HUD/scenes/inv_slot.tscn" id="2_dyifu"]
+
+[node name="InventoryGUI" type="Control"]
+custom_minimum_size = Vector2(176, 44)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1460.0
+offset_bottom = -856.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxxjj")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(176, 44)
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 44.0
+columns = 4
+
+[node name="Inv_Slot" parent="GridContainer" instance=ExtResource("2_dyifu")]
+layout_mode = 2
+
+[node name="Inv_Slot2" parent="GridContainer" instance=ExtResource("2_dyifu")]
+layout_mode = 2
+
+[node name="Inv_Slot3" parent="GridContainer" instance=ExtResource("2_dyifu")]
+layout_mode = 2
+
+[node name="Inv_Slot4" parent="GridContainer" instance=ExtResource("2_dyifu")]
+layout_mode = 2

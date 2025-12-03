@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=38 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="18_j1jna"]
+[ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="19_bolj5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_loljf"]
 texture = ExtResource("3_1lo17")
@@ -364,6 +365,8 @@ grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
 visible = false
+
+[node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("19_bolj5")]
 
 [node name="CameraRoot" type="Node" parent="."]
 
