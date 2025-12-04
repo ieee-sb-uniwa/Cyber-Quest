@@ -96,7 +96,7 @@ func _create_keys_from_rows(layout_data: Dictionary, container: Control, positio
 			var x_pos = start_x + (actual_key_index * (key_size_to_use.x + key_spacing_to_use.x))
 			
 			_deferred_set_position(key, Vector2(x_pos, current_y))
-			key.size = key_size_to_use
+			key.set_deferred("size", key_size_to_use)
 			
 			key.key_pressed.connect(_on_key_pressed)
 			current_keys.append(key)
@@ -143,11 +143,11 @@ func _create_keys_from_grid(layout_data: Dictionary, container: Control, positio
 			current_keys.append(key)
 			button_index += 1
 
-func _deferred_set_position(key_node: Control, position: Vector2):
-	call_deferred("_set_key_position", key_node, position)
+func _deferred_set_position(key_node: Control, pos: Vector2):
+	call_deferred("_set_key_position", key_node, pos)
 
-func _set_key_position(key_node: Control, position: Vector2):
-	key_node.position = position
+func _set_key_position(key_node: Control, pos: Vector2):
+	key_node.position = pos
 
 func _on_key_pressed(key_value: String, key_type: String):
 	emit_signal("key_pressed", key_value, key_type)
