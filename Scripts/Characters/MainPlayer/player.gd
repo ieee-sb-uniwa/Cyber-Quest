@@ -115,10 +115,30 @@ func get_move(move):
 	return Input.get_action_strength(move)
 	
 func get_horizontal_move():
-	return get_move("move_right_p" + str(playerNum)) - get_move("move_left_p" + str(playerNum))
+	if playerNum == 1:
+		# Player 1: πάντα τα ίδια controls
+		return get_move("move_right_p1") - get_move("move_left_p1")
+	else:  # Player 2
+		# Player 2: ελέγχουμε αν χρησιμοποιεί numpad
+		if Global.has_numpad:
+			# Χρησιμοποιούμε τα numpad controls
+			return get_move("move_right_p2_numpad") - get_move("move_left_p2_numpad")
+		else:
+			# Χρησιμοποιούμε τα standard controls
+			return get_move("move_right_p2") - get_move("move_left_p2")
 
 func get_vertical_move():
-	return get_move("move_down_p" + str(playerNum)) - get_move("move_up_p" + str(playerNum))
+	if playerNum == 1:
+		# Player 1: πάντα τα ίδια controls
+		return get_move("move_down_p1") - get_move("move_up_p1")
+	else:  # Player 2
+		# Player 2: ελέγχουμε αν χρησιμοποιεί numpad
+		if Global.has_numpad:
+			# Χρησιμοποιούμε τα numpad controls
+			return get_move("move_down_p2_numpad") - get_move("move_up_p2_numpad")
+		else:
+			# Χρησιμοποιούμε τα standard controls
+			return get_move("move_down_p2") - get_move("move_up_p2")
 	
 func get_all_items() -> Array[Node2D]:
 	return itemHolder.get_all_items()
@@ -154,8 +174,17 @@ func set_interacting_with_box(interacting: bool):
 		keep_box_orientation = true
 
 func is_interacting() -> bool:
-	var action_name = "Interact_p" + str(playerNum)
-	return Input.is_action_pressed(action_name)
+	if playerNum == 1:
+		# Player 1: πάντα το ίδιο control
+		return Input.is_action_pressed("Interact_p1")
+	else:  # Player 2
+		# Player 2: ελέγχουμε αν χρησιμοποιεί numpad
+		if Global.has_numpad:
+			# Χρησιμοποιούμε το numpad control
+			return Input.is_action_pressed("Interact_p2_numpad")
+		else:
+			# Χρησιμοποιούμε το standard control
+			return Input.is_action_pressed("Interact_p2")
 
 func update_animation_parameters(move_input : Vector2):
 	# If we're keeping box orientation, don't update based on movement

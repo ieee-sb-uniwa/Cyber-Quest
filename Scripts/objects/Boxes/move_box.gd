@@ -189,8 +189,11 @@ func _get_player_side(player: CharacterBody2D) -> String:
 func _is_player_toggling_interaction(p: CharacterBody2D) -> bool:
 	if p == null or not "playerNum" in p:
 		return false
-	var action_name := "Interact_p" + str(p.playerNum)
-	return Input.is_action_just_pressed(action_name)
+	
+	if p.playerNum == 1:
+		return Input.is_action_just_pressed("Interact_p1")
+	
+	return Input.is_action_just_pressed("Interact_p2_numpad" if Global.has_numpad else "Interact_p2")
 
 func _toggle_player_interaction(p: CharacterBody2D) -> void:
 	if grabbers.has(p):
@@ -204,7 +207,7 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
-		var side = _get_player_side(p)
+		var _side = _get_player_side(p)
 		# print("Grabbed box, side:", side)
 
 func _release(p: CharacterBody2D) -> void:

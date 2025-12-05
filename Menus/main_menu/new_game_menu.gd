@@ -6,18 +6,28 @@ var player_name_2: String
 var birth_date_: String
 var birthdate_2: String
 
+@onready var numpad_checkbox = $CenterContainer/CenteringCon/NumpadCheckBox  # Προσθήκη αναφοράς
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$CenterContainer/CenteringCon/VBoxContainer/PlayerCount.text = "1"
 	$CenterContainer/CenteringCon/Primary/Confirm.text = "Next"
 	$CenterContainer/CenteringCon/Primary/NameIN.grab_focus()
 	
+	# Σύνδεση του checkbox με την συνάρτηση
+	if numpad_checkbox:
+		numpad_checkbox.toggled.connect(_on_numpad_toggled)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-func _on_confirm_pressed() -> void:
+# Συνάρτηση για το checkbox του numpad
+func _on_numpad_toggled(button_pressed: bool):
+	Global.has_numpad = button_pressed
+	print("Numpad setting: ", Global.has_numpad)
 
+func _on_confirm_pressed() -> void:
 	DoB.compile("[A-Za-z]\\w")
 	var result := DoB.search($CenterContainer/CenteringCon/Primary/DateIN.text)
 	if result:
@@ -39,6 +49,9 @@ func _on_confirm_pressed() -> void:
 		$CenterContainer/CenteringCon/Primary/Confirm.text = "Start!"
 		$CenterContainer/CenteringCon/Primary/NameIN.text =''
 		$CenterContainer/CenteringCon/Primary/DateIN.text =''
+		# Εμφάνιση του checkbox για το numpad μόνο όταν εισάγουμε τον 2ο παίκτη
+		if numpad_checkbox:
+			numpad_checkbox.visible = true
 		return
 
 	player_name_2 = $CenterContainer/CenteringCon/Primary/NameIN.text
@@ -63,4 +76,4 @@ func _on_back_pressed() -> void:
 	return
 
 func _on_back_to_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");
+	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")

@@ -70,6 +70,9 @@ var visible_sec_rules := {
 	"srule6": false
 }
 
+## Numpad
+var has_numpad = false
+
 func _ready():
 	saveData = SaveData.new()
 	load_game()

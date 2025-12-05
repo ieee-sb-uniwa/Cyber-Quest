@@ -189,6 +189,12 @@ offset_right = -38.05
 offset_bottom = 13.5
 text = "Έτοιμο"
 
+[node name="NumpadCheckBox" type="CheckBox" parent="CenterContainer/CenteringCon"]
+visible = false
+layout_mode = 2
+text = "'Εχει ο υπολογιστής σου Numpad;"
+alignment = 1
+
 [node name="BackToMenu" type="Button" parent="CenterContainer/CenteringCon"]
 custom_minimum_size = Vector2(350, 25)
 layout_mode = 2
