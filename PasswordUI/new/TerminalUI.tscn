@@ -18,12 +18,16 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 6.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_ookdm")
 
-[node name="DisplayScreen" type="TextureRect" parent="."]
+[node name="Screen" type="TextureRect" parent="."]
 z_index = 3
 y_sort_enabled = true
 layout_mode = 0
@@ -33,7 +37,7 @@ offset_right = 899.0
 offset_bottom = 612.0
 texture = ExtResource("2_okdu2")
 
-[node name="OutputText" type="RichTextLabel" parent="DisplayScreen"]
+[node name="RichTextLabel1" type="RichTextLabel" parent="Screen"]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 118.0
@@ -149,3 +153,37 @@ offset_left = 282.5
 offset_top = 738.0
 offset_right = 322.5
 offset_bottom = 778.0
+
+[node name="Primary" type="ColorRect" parent="."]
+z_index = 3
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 927.5
+offset_top = 5.00006
+offset_right = 1389.5
+offset_bottom = 218.0
+color = Color(0.142249, 0.113378, 0.389926, 1)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Primary"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 450.0
+offset_bottom = 204.0
+
+[node name="Secondary" type="ColorRect" parent="."]
+z_index = 3
+y_sort_enabled = true
+layout_mode = 0
+offset_left = 968.5
+offset_top = 271.0
+offset_right = 1445.5
+offset_bottom = 824.0
+color = Color(0.408329, 0.408329, 0.408329, 1)
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Secondary"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 19.0
+offset_right = 457.0
+offset_bottom = 536.0

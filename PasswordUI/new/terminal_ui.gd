@@ -13,7 +13,6 @@ extends Control
 var current_level: int = 3 # Hard coded for testing full terminal
 
 func _ready():
-	keyboard_manager.key_pressed.connect(_on_keyboard_key_pressed)
 	shift_toggle.toggled.connect(_on_shift_toggled)
 	setup_level(current_level)
 
@@ -43,31 +42,6 @@ func setup_level(level: int):
 			letters_bg.visible = true
 			symbols_bg.visible = true
 
-func _on_keyboard_key_pressed(key_value: String, key_type: String):
-	match key_type:
-		"action":
-			handle_action_key(key_value)
-		"character", "number", "symbol":
-			display_text.text += key_value
-
-func handle_action_key(action: String):
-	match action:
-		"backspace":
-			if display_text.text.length() > 0:
-				display_text.text = display_text.text.substr(0, display_text.text.length() - 1)
-		"enter":
-			process_command(display_text.text)
-			display_text.text = ""
-		" ":
-			display_text.text += " "
 
 func _on_shift_toggled(button_pressed: bool):
 	keyboard_manager.is_uppercase = button_pressed
-
-func process_command(command: String):
-	print("Command:", command)
-
-func advance_to_next_level():
-	current_level += 1
-	if current_level <= 3:
-		setup_level(current_level)
