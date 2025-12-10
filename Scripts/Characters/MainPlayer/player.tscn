@@ -252,7 +252,7 @@ autoplay = "idle_side"
 [node name="ItemHolder" type="Node2D" parent="AnimatedSprite2D" node_paths=PackedStringArray("items_available_positions")]
 position = Vector2(0, 2)
 script = ExtResource("4_e0c3b")
-items_available_positions = [NodePath("Marker1"), NodePath("Marker2"), NodePath(""), NodePath("")]
+items_available_positions = [NodePath("Marker1"), NodePath("Marker2"), null, null]
 
 [node name="Marker1" type="Marker2D" parent="AnimatedSprite2D/ItemHolder"]
 position = Vector2(0, -2)

@@ -157,7 +157,7 @@ func on_new_game(player_names: Array, birthdates: Array) -> void:
 	PlayerData.inv_slot = 0
 	PlayerData.level = 11
 	isTutorial = true
-	lobby_doors_open = [true, false, false]
+	lobby_doors_open = [true, false, true]
 	
 ## Save and Load Functions
 func load_game() -> void:
