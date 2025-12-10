@@ -15,9 +15,13 @@ func _save():
 	ResourceSaver.save(data, SAVE_GAME_PATH) #.tres for readable text format, .res for binary format
 
 func _load():
-	var data = ResourceLoader.load(SAVE_GAME_PATH) as SaveData
-	player1.global_position = data.player1_pos
-	player1.velocity = data.player1_velocity
+	if not FileAccess.file_exists(SAVE_GAME_PATH):
+		return
 	
-	player2.global_position = data.player2_pos
-	player2.velocity = data.player2_velocity
+	var data = ResourceLoader.load(SAVE_GAME_PATH)
+	if data is SaveData:
+		player1.global_position = data.player1_pos
+		player1.velocity = data.player1_velocity
+		
+		player2.global_position = data.player2_pos
+		player2.velocity = data.player2_velocity
