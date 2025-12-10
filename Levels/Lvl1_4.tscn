@@ -941,34 +941,50 @@ position = Vector2(512, 96)
 [node name="PassBlock" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(504, 619)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock2" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(635, 305)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock3" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(635, -143)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock4" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(1147, -145)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock5" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(1149, 235)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock6" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(1016, 559)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock7" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(444, 304)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassBlock8" parent="Environment/PassBlocks" instance=ExtResource("20_j3t40")]
 position = Vector2(956, -18)
 scale = Vector2(0.7, 0.7)
+is_num = false
+is_upper = true
 
 [node name="PassDropoutZone" parent="Environment" instance=ExtResource("21_2tyuq")]
 z_index = 4
