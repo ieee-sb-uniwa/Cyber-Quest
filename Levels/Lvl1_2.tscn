@@ -639,7 +639,6 @@ grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("15_8p1af")]
 visible = false
-hasNum = false
 hasLetters = true
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]
