@@ -171,6 +171,29 @@ func _on_button_pressed(button_name: String):
 			_:
 				current_input += button_name
 
+# Checking validity
+func _on_confirm_pressed():
+
+	input_finalized = true
+
+	if showing_exit_message:
+		_successful_unlock()
+		return
+
+	if not success:
+		var feedback := _generate_rule_feedback()
+		screen_log += current_input + "\n" + feedback
+
+		var label = get_node(label_path)
+		label.text = screen_log
+		label.scroll_to_line(label.get_line_count() - 1)
+
+		current_input = ""
+		input_finalized = false
+	else:
+		_successful_unlock()
+
+		
 # DOB variations function
 func generate_dob_variations(dob_str: String) -> Array:
 	var parts = dob_str.split("/") #Assuming dob is in format 07/02/2008
@@ -260,28 +283,6 @@ func _generate_rule_feedback() -> String:
 		feedback += "Εισάγετε νέο κωδικό:\n> "
 
 	return feedback
-
-# Checking validity
-func _on_confirm_pressed():
-
-	input_finalized = true
-
-	if showing_exit_message:
-		_successful_unlock()
-		return
-
-	if not success:
-		var feedback := _generate_rule_feedback()
-		screen_log += current_input + "\n" + feedback
-
-		var label = get_node(label_path)
-		label.text = screen_log
-		label.scroll_to_line(label.get_line_count() - 1)
-
-		current_input = ""
-		input_finalized = false
-	else:
-		_successful_unlock()
 
 # Confirm works upon all Enter buttons and on-screen confirm button
 func _input(event):
