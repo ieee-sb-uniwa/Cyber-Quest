@@ -27,7 +27,7 @@ var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
 @export var hasNum : bool = false
 @export var hasLetters : bool = false
-@export var hasSymbols : bool = false
+@export var hasSymbols : bool = true
 
 func _ready():
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
@@ -64,48 +64,34 @@ func _ready():
 	tablet_text = sec_text
 
 	shift_toggle.toggled.connect(_on_shift_toggled)
-	setup_level()
+	setup_terminal()
 
-func setup_level():
-	var check
+func setup_terminal():
 
-	match PlayerData.level:
-		11: 
-			hasNum = true
-			check = hasNum
-		12: 
-			hasLetters = true
-			check= hasLetters
-		15: 
-			hasSymbols = true
-			check = hasSymbols
-
-	
 	numpad_bg.visible = false
 	letters_bg.visible = false
 	symbols_bg.visible = false
-	
-	match check: #To be swapped with inventory slots
-		hasNum:
-			keyboard_manager.setup_level_layouts(1)
-			$KeyboardContainer/ShiftToggle.visible = false
-			numpad_bg.visible = true
-			print(PlayerData.level)
+	#To be swapped with inventory slots
+	if hasNum:
+		keyboard_manager.setup_level_layouts(1)
+		$KeyboardContainer/ShiftToggle.visible = false
+		numpad_bg.visible = true
+		print(PlayerData.level)
 			
-		hasLetters:
-			keyboard_manager.setup_level_layouts(2)
-			$KeyboardContainer/ShiftToggle.visible = true
-			numpad_bg.visible = true
-			letters_bg.visible = true
-			print(PlayerData.level)
+	elif hasLetters:
+		keyboard_manager.setup_level_layouts(2)
+		$KeyboardContainer/ShiftToggle.visible = true
+		numpad_bg.visible = true
+		letters_bg.visible = true
+		print(PlayerData.level)
 			
-		hasSymbols:
-			keyboard_manager.setup_level_layouts(3)
-			$KeyboardContainer/ShiftToggle.visible = true
-			numpad_bg.visible = true
-			letters_bg.visible = true
-			symbols_bg.visible = true
-			print(PlayerData.level)
+	elif hasSymbols:
+		keyboard_manager.setup_level_layouts(3)
+		$KeyboardContainer/ShiftToggle.visible = true
+		numpad_bg.visible = true
+		letters_bg.visible = true
+		symbols_bg.visible = true
+		print(PlayerData.level)
 
 # Terminal activation
 func _on_visibility_changed():
