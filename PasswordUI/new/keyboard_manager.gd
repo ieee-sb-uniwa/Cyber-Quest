@@ -16,6 +16,7 @@ signal key_pressed(key_value, key_type)
 
 var current_keys: Array = []
 var is_uppercase: bool = false
+var current_letter_layout : String = "qwerty_lower"
 
 func setup_level_layouts(level: int):
 	clear_keyboard()
@@ -27,12 +28,35 @@ func setup_level_layouts(level: int):
 			symbol_container.visible = false
 		2:
 			_create_keys_in_container("numpad", numpad_container, Vector2(0, 0))
-			_create_keys_in_container("qwerty_lower", letter_container, Vector2(0, 0))
+			_create_keys_in_container(current_letter_layout, letter_container, Vector2(0, 0))
 			symbol_container.visible = false
 		3:
 			_create_keys_in_container("numpad", numpad_container, Vector2(0, 0))
-			_create_keys_in_container("qwerty_lower", letter_container, Vector2(0, 0))
+			_create_keys_in_container(current_letter_layout, letter_container, Vector2(0, 0))
 			_create_keys_in_container("symbols", symbol_container, Vector2(0, 0))
+
+func toggle_uppercase(uppercase: bool):
+	is_uppercase = uppercase
+	
+	if uppercase:
+		current_letter_layout = "qwerty_upper"
+	else:
+		current_letter_layout = "qwerty_lower"
+	
+	# Only recreate letter keys if letter container is visible
+	if letter_container.visible:
+		# Remove only letter keys
+		var keys_to_remove = []
+		for key in current_keys:
+			if key.get_parent() == letter_container:
+				keys_to_remove.append(key)
+		
+		for key in keys_to_remove:
+			key.queue_free()
+			current_keys.erase(key)
+		
+		# Recreate letter keys with new layout
+		_create_keys_in_container(current_letter_layout, letter_container, Vector2(0, 0))
 
 func _create_keys_in_container(layout_name: String, container: Control, position_offset: Vector2):
 	# Container for keys and labels
