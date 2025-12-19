@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5nrd1h3teqrb"]
+[gd_scene load_steps=5 format=3 uid="uid://b5nrd1h3teqrb"]
 
 [ext_resource type="Texture2D" uid="uid://baaww36818rup" path="res://Assets/UI/NewUI/Empty Key_regular.png" id="1_8j7yk"]
 [ext_resource type="Script" uid="uid://bbtip8ksaspj6" path="res://PasswordUI/new/key_letter.gd" id="2_thvw6"]
 [ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_thvw6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thvw6"]
 
 [node name="KeyLetter" type="Button"]
 anchors_preset = 15
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_thvw6")
 icon = ExtResource("1_8j7yk")
 flat = true
 script = ExtResource("2_thvw6")

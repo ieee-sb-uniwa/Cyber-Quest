@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwsxh7ax4nm1x"]
+[gd_scene load_steps=15 format=3 uid="uid://bwsxh7ax4nm1x"]
 
 [ext_resource type="Script" uid="uid://cdw60ydrrocpu" path="res://PasswordUI/new/terminal_ui.gd" id="1_ookdm"]
 [ext_resource type="Texture2D" uid="uid://dvnpss0lk48b2" path="res://Assets/UI/NewUI/Monitor.png" id="2_okdu2"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://ckv28cidycc32" path="res://PasswordUI/new/KeySymbol.tscn" id="8_epyed"]
 [ext_resource type="Texture2D" uid="uid://c5jc7p0l3onft" path="res://Assets/UI/NewUI/Backspace Key.png" id="9_epyed"]
 [ext_resource type="Texture2D" uid="uid://bt1dt17u5hbdk" path="res://Assets/UI/NewUI/Cancel Key.png" id="10_15noo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4bf3"]
 
 [node name="TerminalUI" type="Control"]
 layout_mode = 3
@@ -138,6 +140,7 @@ offset_left = 42.5
 offset_top = 670.0
 offset_right = 166.5
 offset_bottom = 733.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m4bf3")
 icon = ExtResource("7_m4bf3")
 flat = true
 
@@ -148,6 +151,7 @@ offset_left = 844.5
 offset_top = 707.0
 offset_right = 903.5
 offset_bottom = 816.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m4bf3")
 icon = ExtResource("8_3jkiv")
 flat = true
 
@@ -157,6 +161,7 @@ offset_left = 844.5
 offset_top = 564.0
 offset_right = 903.5
 offset_bottom = 641.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m4bf3")
 icon = ExtResource("9_epyed")
 flat = true
 
@@ -166,6 +171,7 @@ offset_left = 844.5
 offset_top = 627.0
 offset_right = 903.5
 offset_bottom = 721.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m4bf3")
 icon = ExtResource("10_15noo")
 flat = true
 

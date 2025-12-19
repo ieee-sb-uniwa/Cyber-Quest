@@ -392,6 +392,7 @@ grow_horizontal = 1
 grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
+hasNum = true
 
 [node name="CameraRoot" type="Node" parent="."]
 
