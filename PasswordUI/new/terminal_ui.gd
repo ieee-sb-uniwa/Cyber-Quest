@@ -31,14 +31,26 @@ var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 @onready var backspace_button: Button = $KeyboardContainer/Backspace
 @onready var cancel_button: Button = $KeyboardContainer/Cancel
 
+var pass_check = password_validator.new()
+	
 @export var hasNum : bool = false
 @export var hasLetters : bool = false
 @export var hasSymbols : bool = true
 
 # --------------------------------------------- Ready ---------------------------------------------
 func _ready():
+
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 	# Connect keyboard manager signals
+	
+	# Initialize password validator with data
+	pass_check.setup_data(Global.date_of_birth, Global.user1, Global.user2)
+	
+	# Load any previously discovered secondary rules
+	for key in Global.visible_sec_rules.keys():
+		if Global.visible_sec_rules[key]:
+			pass_check.set_secondary_rule_visible(key, true)
+		
 	keyboard_manager.key_pressed.connect(_on_keyboard_key_pressed)
 	
 	# Connect button signals
@@ -47,6 +59,7 @@ func _ready():
 	cancel_button.pressed.connect(_on_cancel_pressed)
 	shift_toggle.toggled.connect(_on_shift_toggled)
 
+	_update_rule_displays()
 
 	if is_visible_in_tree():
 		call_deferred("_on_visibility_changed")
@@ -57,7 +70,7 @@ func _ready():
 	# print(Global.date_of_birth) #for debugging
 	
 	var username: Array = [Global.user1, Global.user2]
-	print(username)
+	# print(username)
 
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
@@ -307,62 +320,68 @@ func generate_dob_variations(dob_str: String) -> Array:
 func _generate_rule_feedback() -> String:
 	var password := current_input
 	var feedback := "> " + password + "\n"
-
-	# Primary rules check
-	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")" #turns date_of_birth array to regex
 	
-	var prule1_failed = _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$")  # no DOB
-	var prule2_failed = _rule_breach_regex(password, "^\\d{8,}$") # length >= 8
-	var prule3_failed = _rule_breach_regex(password, "")
-	var prule4_failed = _rule_breach_regex(password, "")
-	var prule5_failed = _rule_breach_regex(password, "")
-	var prule6_failed = _rule_breach_regex(password, "")
-	var prule7_failed = _rule_breach_regex(password, "")
-
-	# Secondary rules check
-	var srule1_failed = _rule_breach_regex(password, "^(?!.*(\\d)\\1).*$")  # no same digits in a row
-	var srule2_failed = _rule_breach_regex(password, "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$")  # no sequences
-	var srule3_failed = _rule_breach_regex(password, "")
-	var srule4_failed = _rule_breach_regex(password, "")
-	var srule5_failed = _rule_breach_regex(password, "")
-	var srule6_failed = _rule_breach_regex(password, "")
+	# Use the password validator
+	var validation_result = pass_check.validate_password(password, hasNum, hasLetters, hasSymbols)
 	
-	var errors := []
-
-	# Primary rules violation gets shown on terminal
-	if prule1_failed:
-		errors.append(Global.pri_rules["prule1"])
-	if prule2_failed:
-		errors.append(Global.pri_rules["prule2"])
-
-	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
-	if srule1_failed:
-		errors.append(Global.sec_rules["srule1"])
-		Global.visible_sec_rules["srule1"] = true
-	if srule2_failed:
-		errors.append(Global.sec_rules["srule2"])
-		Global.visible_sec_rules["srule2"] = true
-
-	# Tablet update after secondary rule failure
-	var info_label = get_node(secondary_label)
-	var sec_text = "Χρήσιμες Πληροφορίες:\n"
-	for key in Global.sec_rules.keys():
-		if Global.visible_sec_rules[key]:
-			sec_text += "\n" + Global.sec_rules[key] + "\n"
-	info_label.text = sec_text
-	tablet_text = sec_text
-
+	# Convert rule keys to actual error messages
+	var primary_errors = []
+	var secondary_errors = []
+	
+	for rule_key in validation_result["primary_errors"]:
+		if rule_key in Global.pri_rules:
+			primary_errors.append(Global.pri_rules[rule_key])
+	
+	for rule_key in validation_result["secondary_errors"]:
+		if rule_key in Global.sec_rules:
+			secondary_errors.append(Global.sec_rules[rule_key])
+	
+	# Update Global with discovered secondary rules
+	for key in Global.visible_sec_rules.keys():
+		Global.visible_sec_rules[key] = pass_check.visible_sec_rules.get(key, false)
+	
+	# Update rule displays
+	_update_rule_displays()
+	
+	# Combine all errors
+	var all_errors = primary_errors + secondary_errors
+	
 	# Feedback on terminal (colorized)
-	if errors.size() == 0:
+	if all_errors.size() == 0:
 		feedback += "[color=0cc5cc]Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
 		success = true
 	else:
-		for error in errors:
+		for error in all_errors:
 			feedback += "[color=ef6e2f]" + error + "\n[/color]"
 		feedback += "Εισάγετε νέο κωδικό:\n> "
-
+	
 	return feedback
 
+func _update_rule_displays():
+	# Update primary rules display
+	var primary_label_node = get_node(primary_label)
+	var primary_text = "Βασικοί Κανόνες:\n\n"
+	
+	# Get which primary rules to show based on current level
+	var validation_result = pass_check.validate_password("", hasNum, hasLetters, hasSymbols)
+	
+	for rule_key in validation_result["primary_rules_to_show"]:
+		if rule_key in Global.pri_rules:
+			primary_text += Global.pri_rules[rule_key] + "\n\n"
+	
+	primary_label_node.text = primary_text
+	
+	# Update secondary rules display
+	var info_label = get_node(secondary_label)
+	var sec_text = "Χρήσιμες Πληροφορίες:\n"
+	
+	for rule_key in validation_result["secondary_rules_to_show"]:
+		if rule_key in Global.sec_rules:
+			sec_text += "\n" + Global.sec_rules[rule_key] + "\n"
+	
+	info_label.text = sec_text
+	tablet_text = sec_text
+	
 # Success maintains the terminal unlocked on next interactions
 func _successful_unlock():
 	get_tree().paused = false
