@@ -117,7 +117,7 @@ func _validate_level2(password: String) -> Dictionary:
 		secondary_errors.append("srule3")
 		visible_sec_rules["srule3"] = true
 	
-	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$", true):
+	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$"):
 		secondary_errors.append("srule4")
 		visible_sec_rules["srule4"] = true
 	
@@ -171,7 +171,7 @@ func _validate_level3(password: String) -> Dictionary:
 		secondary_errors.append("srule3")
 		visible_sec_rules["srule3"] = true
 	
-	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$", true):
+	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$"):
 		secondary_errors.append("srule4")
 		visible_sec_rules["srule4"] = true
 	
@@ -188,7 +188,7 @@ func _validate_level3(password: String) -> Dictionary:
 		"secondary_errors": secondary_errors
 	}
 
-func _rule_breach_regex(password: String, pattern: String, case_insensitive: bool = false) -> bool:
+func _rule_breach_regex(password: String, pattern: String) -> bool:
 	var regex := RegEx.new()
 	
 	if regex.compile(pattern) != OK:
