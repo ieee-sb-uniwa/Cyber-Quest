@@ -13,19 +13,10 @@ var visible_sec_rules: Dictionary = {
 	"srule6": false
 }
 
-var date_of_birth: Array = []
-var usernames: Array = []  # Store usernames for checking
+var usernames: Array = [Global.user1, Global.user2]  # Store usernames for checking
 
 func _init():
 	pass
-
-func setup_data(dob: Array, username1: String, username2: String):
-	date_of_birth = dob
-	usernames.clear()
-	if username1 != "":
-		usernames.append(username1)
-	if username2 != "":
-		usernames.append(username2)
 
 func validate_password(password: String, hasNum: bool, hasLetters: bool, hasSymbols: bool) -> Dictionary:
 	var result = {
@@ -48,9 +39,9 @@ func validate_password(password: String, hasNum: bool, hasLetters: bool, hasSymb
 	if hasNum:
 		result["primary_rules_to_show"] = ["prule1", "prule2"]
 	elif hasLetters:
-		result["primary_rules_to_show"] = ["prule1", "prule2", "prule3", "prule4", "prule5", "prule6"]
+		result["primary_rules_to_show"] = ["prule3", "prule4", "prule5", "prule6"]
 	elif hasSymbols:
-		result["primary_rules_to_show"] = ["prule1", "prule2", "prule3", "prule4", "prule5", "prule6", "prule7"]
+		result["primary_rules_to_show"] = ["prule7"]
 	
 	# Build list of discovered secondary rules to show
 	result["secondary_rules_to_show"] = []
@@ -67,12 +58,11 @@ func _validate_level1(password: String) -> Dictionary:
 	var secondary_errors = []
 	
 	# Primary rules for Level 1
-	if date_of_birth.size() > 0:
-		var dob_pattern = "(" + String(",").join(date_of_birth).replace(",", "|") + ")"
-		if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
-			primary_errors.append("prule1")
+	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")"
+	if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
+		primary_errors.append("prule1")
 	
-	if password.length() < 8:
+	if _rule_breach_regex(password, "^\\d{8,}$"):
 		primary_errors.append("prule2")
 	
 	# Secondary rules for Level 1
@@ -94,22 +84,15 @@ func _validate_level2(password: String) -> Dictionary:
 	var secondary_errors = []
 	
 	# Primary rules for Level 2
-	if date_of_birth.size() > 0:
-		var dob_pattern = "(" + String(",").join(date_of_birth).replace(",", "|") + ")"
-		if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
-			primary_errors.append("prule1")
+	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")"
+	if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
+		primary_errors.append("prule1")
 	
-	if password.length() < 8:
+	if _rule_breach_regex(password, "^\\d{8,}$"):
 		primary_errors.append("prule2")
 	
-	# Check usernames
-	var username_pattern = ""
-	for username in usernames:
-		if username_pattern != "":
-			username_pattern += "|"
-		username_pattern += username
-	
-	if username_pattern != "" and _rule_breach_regex(password, "^(?!.*" + username_pattern + ").*$"):
+	var users = "(" + String(",").join(usernames).replace(",", "|") + ")"
+	if _rule_breach_regex(password, "^(?!.*" + users + ").*$"):
 		primary_errors.append("prule3")
 	
 	if _rule_breach_regex(password, "^(?=.*[A-Z]).*$"):
@@ -134,7 +117,7 @@ func _validate_level2(password: String) -> Dictionary:
 		secondary_errors.append("srule3")
 		visible_sec_rules["srule3"] = true
 	
-	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz)).*$", true):
+	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$", true):
 		secondary_errors.append("srule4")
 		visible_sec_rules["srule4"] = true
 	
@@ -152,22 +135,15 @@ func _validate_level3(password: String) -> Dictionary:
 	var secondary_errors = []
 	
 	# Primary rules for Level 3 (all rules)
-	if date_of_birth.size() > 0:
-		var dob_pattern = "(" + String(",").join(date_of_birth).replace(",", "|") + ")"
-		if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
-			primary_errors.append("prule1")
+	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")"
+	if _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$"):
+		primary_errors.append("prule1")
 	
-	if password.length() < 8:
+	if _rule_breach_regex(password, "^\\d{8,}$"):
 		primary_errors.append("prule2")
 	
-	# Check usernames
-	var username_pattern = ""
-	for username in usernames:
-		if username_pattern != "":
-			username_pattern += "|"
-		username_pattern += username
-	
-	if username_pattern != "" and _rule_breach_regex(password, "^(?!.*" + username_pattern + ").*$"):
+	var users = "(" + String(",").join(usernames).replace(",", "|") + ")"
+	if _rule_breach_regex(password, "^(?!.*" + users + ").*$"):
 		primary_errors.append("prule3")
 	
 	if _rule_breach_regex(password, "^(?=.*[A-Z]).*$"):
@@ -195,7 +171,7 @@ func _validate_level3(password: String) -> Dictionary:
 		secondary_errors.append("srule3")
 		visible_sec_rules["srule3"] = true
 	
-	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz)).*$", true):
+	if _rule_breach_regex(password, "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$", true):
 		secondary_errors.append("srule4")
 		visible_sec_rules["srule4"] = true
 	
@@ -214,10 +190,6 @@ func _validate_level3(password: String) -> Dictionary:
 
 func _rule_breach_regex(password: String, pattern: String, case_insensitive: bool = false) -> bool:
 	var regex := RegEx.new()
-	
-	# Add case-insensitive flag if needed
-	if case_insensitive:
-		pattern = "(?i)" + pattern
 	
 	if regex.compile(pattern) != OK:
 		print("Regex compilation failed for pattern: ", pattern)

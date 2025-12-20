@@ -43,9 +43,6 @@ func _ready():
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 	# Connect keyboard manager signals
 	
-	# Initialize password validator with data
-	pass_check.setup_data(Global.date_of_birth, Global.user1, Global.user2)
-	
 	# Load any previously discovered secondary rules
 	for key in Global.visible_sec_rules.keys():
 		if Global.visible_sec_rules[key]:
@@ -68,9 +65,6 @@ func _ready():
 	var dob_var2 = generate_dob_variations(Global.dob2)
 	Global.date_of_birth = dob_var1+dob_var2
 	# print(Global.date_of_birth) #for debugging
-	
-	var username: Array = [Global.user1, Global.user2]
-	# print(username)
 
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
@@ -316,15 +310,15 @@ func generate_dob_variations(dob_str: String) -> Array:
 
 	return variations
 
-# On screen feedback after check
+# On screen feedback after checks
 func _generate_rule_feedback() -> String:
 	var password := current_input
 	var feedback := "> " + password + "\n"
 	
-	# Use the password validator
+	# Check rules using password_validator.gd
 	var validation_result = pass_check.validate_password(password, hasNum, hasLetters, hasSymbols)
 	
-	# Convert rule keys to actual error messages
+	# For rules to appear on the screen upon error
 	var primary_errors = []
 	var secondary_errors = []
 	
@@ -343,7 +337,6 @@ func _generate_rule_feedback() -> String:
 	# Update rule displays
 	_update_rule_displays()
 	
-	# Combine all errors
 	var all_errors = primary_errors + secondary_errors
 	
 	# Feedback on terminal (colorized)
@@ -358,11 +351,11 @@ func _generate_rule_feedback() -> String:
 	return feedback
 
 func _update_rule_displays():
-	# Update primary rules display
+	# Update "dialogue" box for primary rules
 	var primary_label_node = get_node(primary_label)
 	var primary_text = "Βασικοί Κανόνες:\n\n"
 	
-	# Get which primary rules to show based on current level
+	# Shows specific primary rules per level
 	var validation_result = pass_check.validate_password("", hasNum, hasLetters, hasSymbols)
 	
 	for rule_key in validation_result["primary_rules_to_show"]:
@@ -371,7 +364,7 @@ func _update_rule_displays():
 	
 	primary_label_node.text = primary_text
 	
-	# Update secondary rules display
+	# Update secondary rules tablet
 	var info_label = get_node(secondary_label)
 	var sec_text = "Χρήσιμες Πληροφορίες:\n"
 	
@@ -388,10 +381,3 @@ func _successful_unlock():
 	Global.terminal_unlocked = true
 	get_parent().visible = false
 	Global.can_pause_game = true
-
-# Regex validation
-func _rule_breach_regex(password: String, pattern: String) -> bool:
-	var regex := RegEx.new()
-	if regex.compile(pattern) != OK:
-		return true
-	return regex.search(password) == null
