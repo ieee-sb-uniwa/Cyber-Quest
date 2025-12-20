@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6vsusdwvyas4"]
+
+[ext_resource type="Script" uid="uid://m2t8m585ge26" path="res://HUD/Scripts_Resources/passblock_counter.gd" id="1_h4nej"]
+
+[node name="PassblockCounter_tscn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_h4nej")
+
+[node name="PassblockCounterText" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

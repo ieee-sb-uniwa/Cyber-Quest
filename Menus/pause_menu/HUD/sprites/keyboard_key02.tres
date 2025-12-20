@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://3m5vr1oh1ppe"]
+
+[ext_resource type="Texture2D" uid="uid://dejybniv5debw" path="res://HUD/sprites/keyboards.png" id="1_xh3kt"]
+
+[resource]
+atlas = ExtResource("1_xh3kt")
+region = Rect2(190, 0, 190, 190)
