@@ -1,6 +1,7 @@
 extends Node
 
 # PassBlock global variables
+var passblock_count : int = 0
 var blocks_picked : int = 0
 var max_player_items : int = 2
 var player_blocks: Array = [0, 0]  
@@ -84,6 +85,8 @@ func reset_variables() -> void:
 	blocks_picked = 0
 	player_blocks = [0, 0]
 	dropped_passblocks.clear()
+	passblock_count = 0;
+	emit_signal("passblock_count_changed")
 	Hide_status = 1
 	terminal_unlocked = false
 	canExitLevel = false
@@ -122,9 +125,12 @@ func can_access_terminal() -> bool:
 	# print("Current Inv Slot: ", PlayerData.inv_slot, " Required Slot: ", required_slot)
 	return PlayerData.inv_slot >= required_slot
 
+signal passblock_count_changed()
 ## PassBlock Functions
 func add_passblock(passblock: Node) -> void:
 	dropped_passblocks.append(passblock)
+	passblock_count += 1;
+	emit_signal("passblock_count_changed")
 	# print("Passblocks in level: ", passblocks_in_level.size())
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		# print("All passblocks collected!")
