@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cknwa5xhy6x6o"]
+[gd_scene load_steps=5 format=3 uid="uid://cknwa5xhy6x6o"]
 
 [ext_resource type="Script" uid="uid://cho5qath817kc" path="res://Scripts/objects/Bridge/bridge_logic.gd" id="1_ionyk"]
 [ext_resource type="Texture2D" uid="uid://40rfig132fxx" path="res://Assets/CyberQuest_Assets/Environment/bridge 2x3.png" id="2_ionyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ionyk"]
+size = Vector2(128, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bled8"]
 size = Vector2(128, 192)
 
 [node name="Bridge" type="StaticBody2D"]
@@ -18,3 +21,13 @@ texture = ExtResource("2_ionyk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ionyk")
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+shape = SubResource("RectangleShape2D_bled8")
+debug_color = Color(0.878082, 0.30382, 0.409255, 0.42)
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_body_exited"]

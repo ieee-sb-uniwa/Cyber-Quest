@@ -19,6 +19,7 @@ var last_move_orientation: Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.DOW
 var keep_box_orientation: bool = false  # Flag to keep box orientation until movement
 
 func _ready():
+	Global.force_respawn.connect(on_respawn)
 	update_animation_parameters(starting_direction)
 	$Hitbox.body_entered.connect(_on_body_entered)
 	itemHolder.set_player_index(self.z_index)
@@ -138,6 +139,14 @@ func _on_body_entered(body: Node2D) -> void:
 		SpawnManager.respawn_players()
 		if body.has_method("change_state"):
 			body.change_state("PatrolNav")
+			
+func on_respawn(player_to_be_respawned):
+	if player_to_be_respawned != self:
+		return
+	if player_to_be_respawned != null and is_instance_valid(player_to_be_respawned):
+		player_to_be_respawned.on_death()
+	Global.clear_players()
+	SpawnManager.respawn_player(playerNum)
 
 func on_death() -> void:
 	if hide_holder:

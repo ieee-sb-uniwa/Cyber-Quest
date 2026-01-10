@@ -33,6 +33,16 @@ func respawn_players():
 	player_1_asset.global_position = spawn1.global_position
 	player_2_asset.global_position = spawn2.global_position
 
+#Respawn only 1 player
+func respawn_player(num):
+	var spawn1 = spawn_points[0][spawnIndex]
+	var spawn2 = spawn_points[1][spawnIndex]
+	if num == 1:
+		player_1_asset.global_position = spawn1.global_position
+		print("respawning to "+str(spawn1.global_position))
+	else:
+		player_2_asset.global_position = spawn2.global_position
+		print("respawning to "+str(spawn2.global_position))
 
 func unregister_player(player_node: Node) -> void:
 	if player_1_asset == player_node:

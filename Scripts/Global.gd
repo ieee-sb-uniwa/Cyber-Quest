@@ -137,6 +137,19 @@ func add_passblock(passblock: Node) -> void:
 		canExitLevel = true
 		update_inv()
 
+signal force_respawn(player)
+var players_to_respawn: Array = []
+## Respawn player if fallen out of bridge or fallen (general)
+func request_respawn(player):
+	if players_to_respawn.has(player):
+		return
+	players_to_respawn.append(player)
+	emit_signal("force_respawn", player)
+
+## Remove "dead" player from players to be respawned
+func clear_players():
+	players_to_respawn.clear()
+
 func update_inv() -> void:
 	passblocks_in_level.clear()
 	PlayerData.inv_slot += 1
