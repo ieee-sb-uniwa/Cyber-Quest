@@ -16,6 +16,8 @@ var is_respawning:bool=false
 var hide_holder = null
 var is_interacting_with_box: bool = false
 var box_interaction_side: String = ""  # "left", "right", "up", "down"
+var last_move_orientation: Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.DOWN  # Store last movement orientation
+var keep_box_orientation: bool = false  # Flag to keep box orientation until movement
 
 func _ready():
 	update_animation_parameters(starting_direction)
@@ -43,7 +45,14 @@ func _physics_process(_delta):
 	if is_respawning:
 		return  # Skip movement
 	var input_direction = Vector2(get_horizontal_move(), get_vertical_move())
+	
+	# If we're moving, clear the keep_box_orientation flag
+	if input_direction != Vector2.ZERO and keep_box_orientation:
+		keep_box_orientation = false
+		box_interaction_side = ""
+	
 	update_animation_parameters(input_direction)
+	
 	if movement_enabled:
 		velocity = input_direction.normalized() * move_speed
 	
@@ -56,22 +65,42 @@ func pick_new_state():
 	var is_moving = velocity != Vector2.ZERO
 	var animation_name = ""
 	
-	if is_moving:
-		match move_orientation:
-			Global.MOVE_ORIENTATION.UP:
-				animation_name = "move_back"
-			Global.MOVE_ORIENTATION.DOWN:
-				animation_name = "move_front"
-			Global.MOVE_ORIENTATION.LEFT, Global.MOVE_ORIENTATION.RIGHT:
-				animation_name = "move_side"
+	# If we're keeping box orientation, use the appropriate animation
+	if keep_box_orientation and box_interaction_side != "":
+		if is_moving:
+			match box_interaction_side:
+				"left", "right":
+					animation_name = "move_side"
+				"up":
+					animation_name = "move_front"
+				"down":
+					animation_name = "move_back"
+		else:
+			match box_interaction_side:
+				"left", "right":
+					animation_name = "idle_side"
+				"up":
+					animation_name = "idle_front"
+				"down":
+					animation_name = "idle_back"
 	else:
-		match move_orientation:
-			Global.MOVE_ORIENTATION.UP:
-				animation_name = "idle_back"
-			Global.MOVE_ORIENTATION.DOWN:
-				animation_name = "idle_front"
-			Global.MOVE_ORIENTATION.LEFT, Global.MOVE_ORIENTATION.RIGHT:
-				animation_name = "idle_side"
+		# Normal movement animations
+		if is_moving:
+			match move_orientation:
+				Global.MOVE_ORIENTATION.UP:
+					animation_name = "move_back"
+				Global.MOVE_ORIENTATION.DOWN:
+					animation_name = "move_front"
+				Global.MOVE_ORIENTATION.LEFT, Global.MOVE_ORIENTATION.RIGHT:
+					animation_name = "move_side"
+		else:
+			match move_orientation:
+				Global.MOVE_ORIENTATION.UP:
+					animation_name = "idle_back"
+				Global.MOVE_ORIENTATION.DOWN:
+					animation_name = "idle_front"
+				Global.MOVE_ORIENTATION.LEFT, Global.MOVE_ORIENTATION.RIGHT:
+					animation_name = "idle_side"
 	
 	if animation_name != "" and animated_sprite.animation != animation_name:
 		animated_sprite.play(animation_name)
@@ -122,7 +151,8 @@ func set_interacting_with_box(interacting: bool):
 		move_speed = Global.move_speed * 0.4  # 40% of normal speed, adjust as needed
 	else:
 		move_speed = Global.move_speed
-		box_interaction_side = ""
+		# Set flag to keep box orientation until movement
+		keep_box_orientation = true
 
 func is_interacting() -> bool:
 	var action_name = "Interact_p" + str(playerNum)
@@ -136,8 +166,13 @@ func _unhandled_input(_event: InputEvent) -> void: # Για διάλογο
 			return
 
 func update_animation_parameters(move_input : Vector2):
+	# If we're keeping box orientation, don't update based on movement
+	if keep_box_orientation and box_interaction_side != "":
+		return
+		
 	if(move_input == Vector2.ZERO):
 		return
+		
 	var direction = move_input.normalized()
 	var abs_x = abs(move_input.x)
 	var abs_y = abs(move_input.y)
@@ -159,6 +194,9 @@ func update_animation_parameters(move_input : Vector2):
 			animated_sprite.flip_h = direction.x < 0
 		else:
 			return
+	
+	# Store the last movement orientation
+	last_move_orientation = move_orientation
 	
 	# Pass the flip state to the item holder
 	itemHolder.change_items_orientation(move_orientation, animated_sprite.flip_h)
@@ -188,18 +226,10 @@ func update_box_interaction_orientation(side: String):
 		$AnimatedSprite2D.flip_h = false
 		itemHolder.change_items_orientation(Global.MOVE_ORIENTATION.UP, false)
 
-func reset_box_orientation():
-	box_interaction_side = ""
-	# Reset any special orientation settings
-	$AnimatedSprite2D.flip_h = false
-	# Update item holder with current orientation
-	itemHolder.change_items_orientation(move_orientation, false)
-
-
 # Update your animation function to account for box interaction
 func update_animation():
-	# If interacting with box, use box interaction animations
-	if is_interacting_with_box and box_interaction_side != "":
+	# If interacting with box or keeping box orientation, use box interaction animations
+	if (is_interacting_with_box or keep_box_orientation) and box_interaction_side != "":
 		if velocity.length() > 0:
 			# Moving while interacting
 			match box_interaction_side:

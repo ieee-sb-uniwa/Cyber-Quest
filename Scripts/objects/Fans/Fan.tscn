@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr2gilkvk8ca0"]
+
+[ext_resource type="Script" uid="uid://cgea2623x3pd7" path="res://Scripts/objects/Fans/fan.gd" id="1_15ki8"]
+[ext_resource type="Texture2D" uid="uid://54av83guawi" path="res://Assets/CyberQuest_Assets/Environment/fan64x64Animation.png" id="1_r641t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15ki8"]
+atlas = ExtResource("1_r641t")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjjkb"]
+atlas = ExtResource("1_r641t")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlcoj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15ki8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjjkb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Fan" type="Node2D"]
+script = ExtResource("1_15ki8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dlcoj")
+frame_progress = 0.230553
+
+[connection signal="ready" from="." to="." method="_on_ready"]
