@@ -51,12 +51,10 @@ func _on_load_pressed() -> void:
 	if get_tree().paused:
 		get_tree().paused = false
 	print("[PauseMenu] load -> unpaused and switching to Load Menu")
-<<<<<<< HEAD
 	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn")
 	
 func _on_restart_pressed(): 
 	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")
-=======
 	pause_interaction.pausemenu()
 	var load_instance = load_scene.instantiate()	# Create Load Menu
 	lvl.hide()	# Hide level
@@ -67,4 +65,3 @@ func _on_restart_pressed():
 	Return.show()
 	$"../../InventoryGUI".hide()	# Hide Inv_slots
 	#get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn") ## Unused
->>>>>>> develop
