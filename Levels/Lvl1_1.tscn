@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=39 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cubih4mnyfbuk" path="res://Assets/CyberQuest_Assets/Environment/fenceBigger.png" id="3_8exm3"]
 [ext_resource type="Texture2D" uid="uid://d3e5m3jjro17d" path="res://Assets/CyberQuest_Assets/Environment/wallTopGrey.png" id="3_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://bdbab2u7mt50k" path="res://Assets/CyberQuest_Assets/Environment/towers.png" id="4_mhy3o"]
+[ext_resource type="PackedScene" uid="uid://cr2gilkvk8ca0" path="res://Scripts/objects/Fans/Fan.tscn" id="7_bolj5"]
 [ext_resource type="Script" uid="uid://4vc1ik8nvmgm" path="res://Scripts/Characters/MainPlayer/two_player_camera.gd" id="7_mhy3o"]
 [ext_resource type="Texture2D" uid="uid://d2snh5teg34pq" path="res://Assets/CyberQuest_Assets/Environment/bigBox.png" id="8_3lskg"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="8_ymyl2"]
@@ -19,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="18_j1jna"]
+[ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="19_bolj5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_loljf"]
 texture = ExtResource("3_1lo17")
@@ -188,7 +190,7 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_y6a7i")
 sources/1 = SubResource("TileSetAtlasSource_8xicj")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xt3y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bolj5"]
 texture = ExtResource("1_subb7")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -234,10 +236,11 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-sources/0 = SubResource("TileSetAtlasSource_2xt3y")
+sources/0 = SubResource("TileSetAtlasSource_bolj5")
 
 [node name="Lvl1_spaceship" type="Node2D"]
 process_mode = 1
+metadata/_edit_vertical_guides_ = [66.0, 195.0, 323.0, 580.0, 707.0, 835.0]
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -266,6 +269,33 @@ y_sort_enabled = true
 position = Vector2(3, 0)
 tile_map_data = PackedByteArray("AAAGAAIAAQABAAEAAAAHAAIAAQABAAEAAAAIAAIAAQABAAEAAAAGAAQAAQAAAAEAAAAHAAMAAQABAAAAAAAHAAQAAQABAAEAAAAHAAUAAQABAAAAAAAIAAQAAQACAAEAAAAGAAYAAQAAAAEAAAAHAAYAAQABAAEAAAAHAAcAAQABAAIAAAAIAAYAAQACAAEAAAAGAAUAAQAAAAEAAAAIAAUAAQACAAEAAAAGAAMAAQAAAAEAAAAIAAMAAQACAAEAAAAGAAcAAQAAAAEAAAAIAAcAAQACAAEAAAAGAP//AQAAAAEAAAAGAAAAAQABAAEAAAAGAAEAAQABAAIAAAAJAP//AQABAAAAAAAJAAAAAQACAAEAAAAJAAEAAQACAAEAAAAHAAAAAQAAAAEAAAAIAAAAAQABAAEAAAAHAP//AQABAAEAAAAIAP//AQACAAEAAAAFAAEAAQACAAEAAAAFAP//AQACAAEAAAAHAAEAAQAAAAEAAAAIAAEAAQABAAEAAAAFAAAAAQABAAAAAAAjAP7/AQAAAAAAAAAjAP//AQABAAAAAAAkAP7/AQABAAEAAAAkAP//AQAAAAEAAAAlAP7/AQACAAEAAAAlAP//AQABAAEAAAAmAP7/AQAAAAEAAAAmAP//AQACAAEAAAAnAP7/AQACAAAAAAAnAP//AQABAAIAAAAKAP//AQABAAAAAAAKAAAAAQABAAEAAAAKAAEAAQABAAIAAAALAP//AQABAAIAAAALAAAAAQAAAAEAAAALAAEAAQABAAAAAAAMAP//AQAAAAEAAAAMAAAAAQABAAEAAAAMAAEAAQACAAEAAAANAP//AQABAAAAAAANAAAAAQACAAEAAAANAAEAAQABAAIAAAAOAP//AQACAAEAAAAOAAAAAQAAAAEAAAAOAAEAAQAAAAEAAAAPAP//AQAAAAEAAAAPAAAAAQABAAEAAAAPAAEAAQABAAEAAAAQAP//AQABAAEAAAAQAAAAAQAAAAEAAAAQAAEAAQACAAEAAAARAP//AQACAAEAAAARAAAAAQABAAEAAAARAAEAAQAAAAEAAAASAP//AQABAAIAAAASAAAAAQACAAEAAAASAAEAAQABAAEAAAATAP//AQABAAIAAAATAAAAAQAAAAEAAAATAAEAAQACAAEAAAAUAP//AQABAAEAAAAUAAAAAQABAAEAAAAUAAEAAQABAAEAAAAVAP//AQABAAEAAAAVAAAAAQACAAEAAAAVAAEAAQAAAAEAAAAWAP//AQABAAAAAAAWAAAAAQABAAEAAAAWAAEAAQABAAIAAAAXAP//AQABAAEAAAAXAAAAAQABAAEAAAAXAAEAAQABAAEAAAAYAP//AQAAAAEAAAAYAAAAAQABAAAAAAAYAAEAAQABAAEAAAAZAP//AQABAAAAAAAZAAAAAQABAAEAAAAZAAEAAQABAAIAAAAaAP//AQACAAEAAAAaAAAAAQABAAEAAAAaAAEAAQABAAAAAAAbAP//AQABAAAAAAAbAAAAAQABAAAAAAAbAAEAAQABAAEAAAAcAP//AQABAAEAAAAcAAAAAQABAAIAAAAcAAEAAQABAAIAAAAdAP//AQABAAEAAAAdAAAAAQAAAAEAAAAdAAEAAQABAAAAAAAeAP//AQABAAAAAAAeAAAAAQABAAEAAAAeAAEAAQABAAIAAAAfAP//AQABAAIAAAAfAAAAAQACAAEAAAAfAAEAAQABAAEAAAAgAP//AQABAAEAAAAgAAAAAQAAAAEAAAAgAAEAAQABAAAAAAAhAP//AQABAAAAAAAhAAAAAQABAAEAAAAhAAEAAQABAAIAAAAiAP//AQABAAIAAAAiAAAAAQACAAEAAAAiAAEAAQABAAEAAAAjAAAAAQABAAIAAAAjAAEAAQAAAAEAAAAjAAIAAQAAAAIAAAAkAAAAAQABAAAAAAAkAAEAAQABAAEAAAAkAAIAAQAAAAEAAAAlAAAAAQAAAAEAAAAlAAEAAQACAAEAAAAlAAIAAQABAAEAAAAmAAAAAQABAAEAAAAmAAEAAQABAAAAAAAmAAIAAQACAAEAAAAnAAAAAQACAAEAAAAnAAEAAQABAAIAAAAnAAIAAQACAAIAAADr//7/AQAAAAAAABDq//7/AQABAAEAABDp//7/AQACAAEAABDo//7/AQAAAAEAABDn//7/AQACAAAAABAEAP//AQABAAAAABADAP//AQABAAIAABACAP//AQAAAAEAABABAP//AQABAAAAABAAAP//AQACAAEAABD/////AQAAAAEAABD+////AQABAAEAABD9////AQACAAEAABD8////AQABAAIAABD7////AQABAAIAABD6////AQABAAEAABD5////AQABAAEAABD4////AQABAAAAABD3////AQABAAEAABD2////AQAAAAEAABD1////AQABAAAAABD0////AQACAAEAABDz////AQABAAAAABDy////AQABAAEAABDx////AQABAAEAABDw////AQABAAAAABDv////AQABAAIAABDu////AQABAAEAABDt////AQABAAAAABDs////AQABAAIAABDr////AQABAAAAABDq////AQAAAAEAABDp////AQABAAEAABDo////AQACAAEAABDn////AQABAAIAABAEAAAAAQABAAEAABADAAAAAQAAAAEAABACAAAAAQABAAEAABABAAAAAQACAAEAABAAAAAAAQAAAAEAABD//wAAAQABAAEAABD+/wAAAQAAAAEAABD9/wAAAQABAAEAABD8/wAAAQACAAEAABD7/wAAAQAAAAEAABD6/wAAAQABAAEAABD5/wAAAQACAAEAABD4/wAAAQABAAEAABD3/wAAAQABAAEAABD2/wAAAQABAAAAABD1/wAAAQABAAEAABD0/wAAAQABAAEAABDz/wAAAQABAAAAABDy/wAAAQABAAIAABDx/wAAAQAAAAEAABDw/wAAAQABAAEAABDv/wAAAQACAAEAABDu/wAAAQAAAAEAABDt/wAAAQABAAEAABDs/wAAAQACAAEAABDr/wAAAQABAAIAABDq/wAAAQABAAAAABDp/wAAAQAAAAEAABDo/wAAAQABAAEAABDn/wAAAQACAAEAABAEAAEAAQABAAIAABADAAEAAQABAAAAABACAAEAAQACAAEAABABAAEAAQABAAIAABAAAAEAAQAAAAEAABD//wEAAQABAAEAABD+/wEAAQACAAEAABD9/wEAAQAAAAEAABD8/wEAAQABAAEAABD7/wEAAQACAAEAABD6/wEAAQABAAEAABD5/wEAAQAAAAEAABD4/wEAAQABAAIAABD3/wEAAQABAAEAABD2/wEAAQABAAEAABD1/wEAAQABAAIAABD0/wEAAQABAAAAABDz/wEAAQABAAEAABDy/wEAAQABAAIAABDx/wEAAQABAAAAABDw/wEAAQABAAIAABDv/wEAAQABAAEAABDu/wEAAQABAAAAABDt/wEAAQABAAIAABDs/wEAAQABAAEAABDr/wEAAQAAAAEAABDq/wEAAQABAAEAABDp/wEAAQACAAEAABDo/wEAAQABAAAAABDn/wEAAQABAAIAABDr/wIAAQAAAAIAABDq/wIAAQAAAAEAABDp/wIAAQABAAEAABDo/wIAAQACAAEAABDn/wIAAQACAAIAABAJAAIAAQABAAEAAAAFAAIAAQABAAEAAAAFAAMAAQAAAAIAAAAEAAIAAQAAAAIAAAAJAAMAAQACAAIAAAAKAAIAAQACAAIAAAAFAP7/AQAAAAEAAAAGAP7/AQABAAEAAAAHAP7/AQACAAEAAAAIAP7/AQAAAAEAAAAJAP7/AQABAAEAAAAGAP3/AQAAAAEAAAAHAP3/AQABAAEAAAAIAP3/AQACAAEAAAAFAP3/AQAAAAAAAAAEAP7/AQAAAAAAAAAJAP3/AQACAAAAAAAKAP7/AQACAAAAAAAGAAgAAQAAAAEAAAAHAAgAAQABAAEAAAAIAAgAAQACAAEAAAAGAAkAAQABAAEAAAAHAAkAAQACAAEAAAAIAAkAAQABAAAAAAAHAAoAAQABAAIAAAAGAAoAAQABAAIAAAAIAAoAAQACAAEAAAAGAAsAAQAAAAEAAAAHAAsAAQABAAEAAAAIAAsAAQACAAEAAAA=")
 tile_set = SubResource("TileSet_1ipe4")
+
+[node name="Fans" type="Node2D" parent="Environment"]
+position = Vector2(226, -256)
+
+[node name="Fan6" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(641, 0)
+
+[node name="Fan5" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(514, 0)
+
+[node name="Fan4" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(386, 0)
+
+[node name="Fan3" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(-128, 0)
+
+[node name="Fan2" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(2, 0)
+
+[node name="Fan" parent="Environment/Fans" instance=ExtResource("7_bolj5")]
+z_index = 5
+position = Vector2(129, 0)
 
 [node name="Decoration Floor Layer" type="TileMapLayer" parent="Environment"]
 z_index = 3
@@ -318,7 +348,7 @@ y_sort_enabled = true
 
 [node name="MoveBox1" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
-position = Vector2(2082, 30)
+position = Vector2(2083, 32)
 
 [node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
@@ -326,7 +356,7 @@ position = Vector2(1443, -31)
 
 [node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("15_subb7")]
 z_index = 5
-position = Vector2(483, 606)
+position = Vector2(483, 608)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
@@ -364,6 +394,8 @@ grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
 visible = false
+
+[node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("19_bolj5")]
 
 [node name="CameraRoot" type="Node" parent="."]
 
