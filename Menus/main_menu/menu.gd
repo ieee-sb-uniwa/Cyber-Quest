@@ -15,13 +15,13 @@ func _exit_tree():
 		$TitleMusic.queue_free()
 
 func _on_new_pressed():
-	Controller._open_scene("Newgame_Menu",-1)
+	Controller._open_menu_scene("Newgame_Menu")
 
 func _on_load_pressed():
-	Controller._open_scene("Load_Menu",-1)
+	Controller._open_menu_scene("Load_Menu")
 
 func _on_options_pressed():
-	Controller._open_scene("Options_Menu",-1)
+	Controller._open_menu_scene("Options_Menu")
 
 func _on_quit_pressed():
 	get_tree().quit();

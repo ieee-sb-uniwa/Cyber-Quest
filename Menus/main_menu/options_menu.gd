@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_backto_menu_pressed():
-	Controller._open_scene("Main_Menu",-1)
+	Controller._open_menu_scene("Main_Menu")
 
 func _on_resume_playing_pressed() -> void:
 	$"../InventoryGUI".show()

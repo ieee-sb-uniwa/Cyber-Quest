@@ -60,4 +60,4 @@ func _on_back_pressed() -> void:
 	return
 
 func _on_back_to_menu_pressed() -> void:
-	Controller._open_scene("Main_Menu",-1)
+	Controller._open_menu_scene("Main_Menu")

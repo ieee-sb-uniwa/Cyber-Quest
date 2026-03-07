@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_backto_menu_pressed():
-	Controller._open_scene("Main_Menu",-1)
+	Controller._open_menu_scene("Main_Menu")
 
 func _on_n_1_pressed() -> void:
 	var level_num = int(PlayerData.level / 10.0)
@@ -35,4 +35,11 @@ func _on_n_3_pressed() -> void:
 func _on_resume_playing_pressed() -> void:
 	$"../InventoryGUI".show()	
 	$"../../".show()
-	queue_free()	# Destroys the instanced load node
+	# Instead of queue_free, we should tell the controller we're done
+	# but for now, if it was manually instanced, we have to handle it.
+	# If it's pooled, the controller should handle it.
+	if get_meta("scene_name", "") != "":
+		# It's managed by Controller
+		Controller._move_to_pool(self)
+	else:
+		queue_free()
