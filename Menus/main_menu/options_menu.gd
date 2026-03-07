@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_backto_menu_pressed():
-	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");
+	Controller._open_scene("Main_Menu",-1)
 
 func _on_resume_playing_pressed() -> void:
 	$"../InventoryGUI".show()

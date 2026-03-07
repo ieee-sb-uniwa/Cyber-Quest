@@ -12,19 +12,18 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_backto_menu_pressed():
-	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
+	Controller._open_scene("Main_Menu",-1)
 
 func _on_n_1_pressed() -> void:
 	var level_num = int(PlayerData.level / 10.0)
 	var scene_num = PlayerData.level % 10
-	var level_path = "res://Levels/Lvl" + str(level_num, '_', scene_num, ".tscn")
-	print(level_path)
-	print(PlayerData.level)
-	print(PlayerData.inv_slot)
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
 	AudioPlayer.stop_clear()	# Use before loading level to stop menu music
-	get_tree().change_scene_to_file(level_path)
+	Controller._open_scene("Level_%d_%d" % [level_num, scene_num], PlayerData.level)
+	print("Level_%d_%d" % [level_num, scene_num])
+	print(PlayerData.level)
+	print(PlayerData.inv_slot)
 
 #! OTHER SAVE FILES -> FUTURE REFERENCE
 func _on_n_2_pressed() -> void:

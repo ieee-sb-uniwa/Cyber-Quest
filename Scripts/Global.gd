@@ -155,15 +155,15 @@ func get_player_interact_button(body: Node2D) -> String:
 	else:
 		return ""
 
-func on_new_game(player_names: Array, birthdates: Array) -> void:
-	PlayerData.player_name_1 = player_names[0]
-	PlayerData.birthdate_1 = birthdates[0]
-	PlayerData.player_name_2 = player_names[1]
-	PlayerData.birthdate_2 = birthdates[1]
-	PlayerData.inv_slot = 0
-	PlayerData.level = 11
-	isTutorial = true
-	lobby_doors_open = [true, false, true]
+# func on_new_game(player_names: Array, birthdates: Array) -> void:
+# 	PlayerData.player_name_1 = player_names[0]
+# 	PlayerData.birthdate_1 = birthdates[0]
+# 	PlayerData.player_name_2 = player_names[1]
+# 	PlayerData.birthdate_2 = birthdates[1]
+# 	PlayerData.inv_slot = 0
+# 	PlayerData.level = 11
+# 	isTutorial = true
+# 	lobby_doors_open = [true, false, true]
 	
 ## Save and Load Functions
 func load_game() -> void:

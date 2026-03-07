@@ -46,14 +46,11 @@ func _on_confirm_pressed() -> void:
 	var player_names := [player_name_1, player_name_2]
 	var birthdates := [birth_date_, birthdate_2]
 	# Set new game data
-	Global.on_new_game(player_names, birthdates)
+	Controller.on_new_game(player_names, birthdates)
 
-	# Clean up globals before switching to level scene
-	Global.before_scene_change()
-	# Save the game before starting
-	Global.save_game()
 	AudioPlayer.stop_clear()	# Use before loading level to stop menu music
-	get_tree().change_scene_to_file("res://Levels/Lvl1_1.tscn")
+	
+	Controller._open_scene("Level_1_1",11)
 
 func _on_back_pressed() -> void:
 	$CenterContainer/CenteringCon/Primary/NameIN.text =''
@@ -63,4 +60,4 @@ func _on_back_pressed() -> void:
 	return
 
 func _on_back_to_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn");
+	Controller._open_scene("Main_Menu",-1)
