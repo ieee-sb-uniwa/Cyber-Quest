@@ -3,6 +3,7 @@ class_name InteractionArea
 
 @export var action_key: String 
 @export var action_name: String
+var is_pickup_item: bool = false
 var area_label : Label
 var object_type : String
 var interaction_status:Global.INTERACTION_STATUS = Global.INTERACTION_STATUS.EMPTY
@@ -42,6 +43,11 @@ func set_label(new_text: String) -> void:
 		area_label.text = new_text
 
 func can_pickup(body: Node2D) -> bool:
+	# Non-pickup interactions (move/hide boxes) don't need inventory space
+	if not is_pickup_item:
+		return true
+	
+	# Only check inventory for actual pickup items
 	if body.is_in_group("MainPlayer") and Global.player_blocks[0] < Global.max_player_items:
 		return true
 	elif body.is_in_group("SecondPlayer") and Global.player_blocks[1] < Global.max_player_items:

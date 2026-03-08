@@ -80,6 +80,7 @@ func _input(_event):
 # ----- Initialiazation -----
 func _ready():
 	unpicked_z_index = self.z_index 
+	passArea.is_pickup_item = true  # PassBlocks require inventory space
 	set_block_sprite()
 
 func set_block_sprite():
