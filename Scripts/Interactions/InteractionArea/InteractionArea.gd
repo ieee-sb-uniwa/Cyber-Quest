@@ -4,6 +4,8 @@ class_name InteractionArea
 @export var action_key: String 
 @export var action_name: String
 var is_pickup_item: bool = false
+var is_currently_interacting: bool = false
+var occupied: bool = false
 var area_label : Label
 var object_type : String
 var interaction_status:Global.INTERACTION_STATUS = Global.INTERACTION_STATUS.EMPTY
@@ -43,7 +45,10 @@ func set_label(new_text: String) -> void:
 		area_label.text = new_text
 
 func can_pickup(body: Node2D) -> bool:
-	# Non-pickup interactions (move/hide boxes) don't need inventory space
+	# If someone is already interacting, don't show prompt to others
+	if occupied:
+		return false
+	
 	if not is_pickup_item:
 		return true
 	
