@@ -53,6 +53,12 @@ func _input(_event):
 	# Check if disabled so not to repeat pickup logic for picked up items
 	if interaction_area_is_disabled() or !passArea.monitoring:
 		return
+	
+	# Check if this is the closest interaction area
+	var closest_area = InteractionManager.get_closest_area()
+	if closest_area != passArea:
+		return
+		
 	var bodies = passArea.get_overlapping_bodies()
 	# Only check input if there is a body inside area
 	if bodies.size() == 0: 
@@ -74,6 +80,7 @@ func _input(_event):
 # ----- Initialiazation -----
 func _ready():
 	unpicked_z_index = self.z_index 
+	passArea.is_pickup_item = true  # PassBlocks require inventory space
 	set_block_sprite()
 
 func set_block_sprite():

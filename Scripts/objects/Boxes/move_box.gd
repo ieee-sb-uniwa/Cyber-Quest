@@ -204,6 +204,18 @@ func _grab(p: CharacterBody2D) -> void:
 		# Set the player's interaction state
 		if p.has_method("set_interacting_with_box"):
 			p.set_interacting_with_box(true)
+
+		# Mark all areas as occupied
+		area_left.occupied = true
+		area_right.occupied = true
+		area_up.occupied = true
+		area_down.occupied = true
+
+		InteractionManager.unregister_area(area_left)
+		InteractionManager.unregister_area(area_right)
+		InteractionManager.unregister_area(area_up)
+		InteractionManager.unregister_area(area_down)
+
 		# print("Grabbed box, side:", _get_player_side(p))
 
 func _release(p: CharacterBody2D) -> void:
@@ -215,4 +227,19 @@ func _release(p: CharacterBody2D) -> void:
 		p.reset_box_orientation()
 	if grabbers.size() == 0:
 		velocity = Vector2.ZERO
+
+		# Clear occupied flag when no one is grabbing
+		area_left.occupied = false
+		area_right.occupied = false
+		area_up.occupied = false
+		area_down.occupied = false
+
+		if nearby_players_left.size() > 0:
+			InteractionManager.register_area(area_left, nearby_players_left[0])
+		if nearby_players_right.size() > 0:
+			InteractionManager.register_area(area_right, nearby_players_right[0])
+		if nearby_players_up.size() > 0:
+			InteractionManager.register_area(area_up, nearby_players_up[0])
+		if nearby_players_down.size() > 0:
+			InteractionManager.register_area(area_down, nearby_players_down[0])
 	# print("Released box")

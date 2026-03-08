@@ -3,6 +3,9 @@ class_name InteractionArea
 
 @export var action_key: String 
 @export var action_name: String
+var is_pickup_item: bool = false
+var is_currently_interacting: bool = false
+var occupied: bool = false
 var area_label : Label
 var object_type : String
 var interaction_status:Global.INTERACTION_STATUS = Global.INTERACTION_STATUS.EMPTY
@@ -16,11 +19,12 @@ func _ready():
 
 func _on_body_entered(_body):
 	area_label = InteractionManager.get_label()
-	area_label.hide()
+	if area_label:
+		area_label.hide()
 	if interaction_status!=Global.INTERACTION_STATUS.EMPTY and  interaction_status!=Global.INTERACTION_STATUS.AVAILABLE:
 		return
 
-	if (can_pickup(_body) or (object_type != null and object_type != "" and object_type != "passdropoutzone")):
+	if (can_pickup(_body) or (object_type != null and object_type != "")):
 		InteractionManager.register_area(self, _body)
 
 func _on_body_exited(_body):
@@ -41,6 +45,14 @@ func set_label(new_text: String) -> void:
 		area_label.text = new_text
 
 func can_pickup(body: Node2D) -> bool:
+	# If someone is already interacting, don't show prompt to others
+	if occupied:
+		return false
+	
+	if not is_pickup_item:
+		return true
+	
+	# Only check inventory for actual pickup items
 	if body.is_in_group("MainPlayer") and Global.player_blocks[0] < Global.max_player_items:
 		return true
 	elif body.is_in_group("SecondPlayer") and Global.player_blocks[1] < Global.max_player_items:
