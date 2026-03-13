@@ -28,25 +28,41 @@ func _ready() -> void:
 
 
 func _get_scene_from_pool(scene_name: String) -> Node:
-	if scene_name in pooled_scenes:
-		var scene = pooled_scenes[scene_name]
+	# Return a Scene from Waiting to main leaf
+	if scene_name in pooled_scenes and pooled_scenes[scene_name].size() > 0:
+		var scene = pooled_scenes[scene_name].pop_back()  # retrieve
 		scene_pool.remove_child(scene)
-		pooled_scenes.erase(scene_name)
+		_recursive_show_and_enable(scene)
 		return scene
+	# Nothing in pool, instantiate fresh
 	var new_scene = scenes[scene_name].instantiate()
 	new_scene.set_meta("scene_name", scene_name)
 	return new_scene
 
 
 func _move_to_pool(scene: Node) -> void:
+	# Removes old scene from visible Controller Children and Moves to Pool/Waiting area
 	if scene.get_parent() != null:
 		scene.get_parent().remove_child(scene)
-	
+
 	var scene_name = scene.get_meta("scene_name", "")
 	if scene_name != "":
-		scene_pool.add_child(scene)
-		pooled_scenes[scene_name] = scene
-		_recursive_hide_and_disable(scene)
+		# If we don't have this scene in the pool yet, add it
+		if scene_name not in pooled_scenes:
+			pooled_scenes[scene_name] = []
+			pooled_scenes[scene_name].append(scene)
+			scene_pool.add_child(scene)
+			_recursive_hide_and_disable(scene)
+		else:
+
+			if scene not in pooled_scenes[scene_name]:
+
+				scene.queue_free()
+			else:
+
+				if scene.get_parent() != scene_pool:
+					scene_pool.add_child(scene)
+				_recursive_hide_and_disable(scene)
 	else:
 		scene.queue_free()
 
@@ -55,11 +71,11 @@ func _recursive_hide_and_disable(node: Node) -> void:
 	node.process_mode = PROCESS_MODE_DISABLED
 	if node is CanvasItem:
 		node.visible = false
-		node.set_deferred("visible", false) # Redundant but safe
-		if node is Control:
-			node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 	if node is CanvasLayer:
 		node.visible = false
+		node.hide() # Extra insurance for CanvasLayers
+
 	for child in node.get_children():
 		_recursive_hide_and_disable(child)
 
@@ -68,19 +84,17 @@ func _recursive_show_and_enable(node: Node) -> void:
 	node.process_mode = PROCESS_MODE_INHERIT
 	if node is CanvasItem:
 		node.visible = true
-		if node is Control:
-			# This is tricky as we don't know the original filter. 
-			# Most of our buttons/controls use MOUSE_FILTER_STOP or PASS.
-			# But if we don't restore it, they won't be clickable.
-			# For now, let's assume default for Control is STOP if it was ignored.
-			node.mouse_filter = Control.MOUSE_FILTER_STOP
+		
 	if node is CanvasLayer:
 		node.visible = true
+		node.show()
+
 	for child in node.get_children():
 		_recursive_show_and_enable(child)
 
 
 func _open_menu_scene(scene_name: String) -> void:
+	# Usable for Scenes that don't require global funcs/vars
 	assert(scene_name in scenes, "Scene '%s' not found!" % scene_name)
 	
 	if current_scene:
@@ -88,12 +102,27 @@ func _open_menu_scene(scene_name: String) -> void:
 		current_scene = null
 		
 	var new_scene = _get_scene_from_pool(scene_name)
-	add_child(new_scene)
+	if new_scene.get_parent() != self:
+		add_child(new_scene)
 	_recursive_show_and_enable(new_scene)
 	current_scene = new_scene
 
+	# This will make sure we can trigger _ready type logic on scene reentry
+	if new_scene.has_method("on_scene_shown"):
+		new_scene.on_scene_shown()
+	
+	# Fix resolution/scaling issues after scene change
+	_ensure_proper_scaling() # DOESNT WORK YET
+
+	
+func _test_all_visible(node: Node) -> void:
+	if(node.get_child_count()>0):
+		for i in node.get_children():
+			_test_all_visible(i)
+	print(node.visible == false)
 
 func _open_scene(scene_name: String, target_index: int) -> void:
+	# Main way to change scenes, interacts with Global.
 	assert(scene_name in scenes, "Scene '%s' not found!" % scene_name)
 	Global.before_scene_change()
 	Global.reset_variables()
@@ -103,13 +132,44 @@ func _open_scene(scene_name: String, target_index: int) -> void:
 		current_scene = null
 		
 	var new_scene = _get_scene_from_pool(scene_name)
-	add_child(new_scene)
+	if new_scene.get_parent() != self:
+		add_child(new_scene)
 	_recursive_show_and_enable(new_scene)
 	current_scene = new_scene
+	
+	if new_scene.has_method("on_scene_shown"):
+		new_scene.on_scene_shown()
+	
+	# Fix resolution/scaling issues after scene change
+	_ensure_proper_scaling()
 	
 	if (target_index > 0):
 		PlayerData.level = target_index
 	Global.save_game()
+
+
+func _ensure_proper_scaling() -> void:
+	# Re-apply window/stretch settings to ensure they are consistent across scenes
+	var window = get_window()
+	if window:
+		window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+		window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+		# Re-enforcing the scale factor and size
+		window.content_scale_size = Vector2i(1600, 900)
+		window.content_scale_factor = 2.5
+		
+		_recursive_update_layout(window)
+
+
+func _recursive_update_layout(node: Node) -> void:
+	if node is Control:
+		node.queue_redraw()
+		# Forcing a minimum size update can help some layouts snap to the correct size
+		if node.anchors_preset == Control.PRESET_FULL_RECT:
+			node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	
+	for child in node.get_children():
+		_recursive_update_layout(child)
 
 
 func on_new_game(player_names: Array, birthdates: Array) -> void:

@@ -7,6 +7,11 @@ func _ready():
 		$CenterVbox/VBoxContainer/N1.text = "Players: " + PlayerData.player_name_1 + " & " + PlayerData.player_name_2
 	$VBoxContainer2/BacktoMenu.grab_focus();
 
+func on_scene_shown():
+	#Called every time it enters from pool. Important, we might need to change some _ready() functions.
+	$VBoxContainer2/ResumePlaying.hide()
+	print("I was called")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

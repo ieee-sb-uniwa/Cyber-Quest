@@ -14,10 +14,11 @@ func _process(_delta: float) -> void:
 func _on_backto_menu_pressed():
 	Controller._open_menu_scene("Main_Menu")
 
-func _on_resume_playing_pressed() -> void:
-	$"../InventoryGUI".show()
-	$"../../".show()
-	queue_free()	# Destroys the instanced options node
+# func _on_resume_playing_pressed() -> void:
+# 	THIS HAS BEEN DISABLED AS IT IS OLD LOGIC
+# 	$"../InventoryGUI".show()
+# 	$"../../".show()
+# 	#queue_free() Destroys the instanced options node
 
 
 func _on_music_slider_value_changed(value:float) -> void:

@@ -88,6 +88,7 @@ theme_override_fonts/font = ExtResource("3_6xt81")
 text = "Back to Main Menu"
 
 [node name="ResumePlaying" type="Button" parent="VBoxContainer2"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6xt81")

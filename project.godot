@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cyber Quest Game"
-run/main_scene="uid://cw274023htfy1"
+run/main_scene="uid://bxdr68rdoxgw0"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -30,6 +30,7 @@ AudioPlayer="*res://Scripts/audio_player.tscn"
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale=2.5
 
 [dotnet]

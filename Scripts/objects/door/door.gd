@@ -8,7 +8,7 @@ var isOpen = false
 
 # Add these properties to configure each door instance
 @export var door_index: int = 0  # Which door this is (0, 1, 2, etc.)
-@export var target_scene: String = "res://Levels/Lvl1_2.tscn"  # Scene to load
+@export var target_scene: String = "Level_1_2"  # Scene to load
 @export var target_index: int = 12  # Next level index for lobby doors
 @export var is_terminal_unlock_door: bool = true  # Whether this door depends on terminal unlock
 
@@ -32,7 +32,7 @@ func _on_body_entered(body, area_name=""):
 			Global.isTutorial = false
 
 		# Change to the target scene
-		Global.change_scene(target_scene, target_index)
+		Controller._open_scene(target_scene, target_index)
 
 func _on_body_exited(body):
 	if body.is_in_group("Player") and isOpen:
