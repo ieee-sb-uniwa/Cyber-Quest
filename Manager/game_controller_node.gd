@@ -81,10 +81,14 @@ func _recursive_hide_and_disable(node: Node) -> void:
 
 
 func _recursive_show_and_enable(node: Node) -> void:
+	# Skip nodes that should stay hidden by design
+	if node.is_in_group("persist_hidden"):
+		return
+
 	node.process_mode = PROCESS_MODE_INHERIT
 	if node is CanvasItem:
 		node.visible = true
-		
+
 	if node is CanvasLayer:
 		node.visible = true
 		node.show()
@@ -113,6 +117,19 @@ func _open_menu_scene(scene_name: String) -> void:
 	
 	# Fix resolution/scaling issues after scene change
 	_ensure_proper_scaling() # DOESNT WORK YET
+
+func _open_overlay_menu(scene_name: String) -> Node:
+	assert(scene_name in scenes, "Scene '%s' not found!" % scene_name)
+	var new_scene = _get_scene_from_pool(scene_name)
+	if new_scene.get_parent() != self:
+		add_child(new_scene)
+	_recursive_show_and_enable(new_scene)
+	
+	if new_scene.has_method("on_scene_shown"):
+		new_scene.on_scene_shown()
+	
+	_ensure_proper_scaling()
+	return new_scene
 
 	
 func _test_all_visible(node: Node) -> void:

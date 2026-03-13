@@ -637,7 +637,7 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="PasswordUI" parent="HUD" instance=ExtResource("15_8p1af")]
+[node name="PasswordUI" parent="HUD" groups=["persist_hidden"] instance=ExtResource("15_8p1af")]
 visible = false
 
 [node name="Player" parent="." groups=["MainPlayer", "player"] instance=ExtResource("10_7skwt")]

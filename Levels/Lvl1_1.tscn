@@ -310,7 +310,7 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAlAP7/AAAAAAAAAADp//7/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_y6a7i")
 
-[node name="Platform Collision Layer" type="TileMapLayer" parent="Environment"]
+[node name="Platform Collision Layer" type="TileMapLayer" parent="Environment" groups=["persist_hidden"]]
 visible = false
 z_index = 3
 position = Vector2(1, 0)
@@ -392,7 +392,7 @@ offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
 
-[node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
+[node name="PasswordUI" parent="HUD" groups=["persist_hidden"] instance=ExtResource("18_j1jna")]
 visible = false
 
 [node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("19_bolj5")]

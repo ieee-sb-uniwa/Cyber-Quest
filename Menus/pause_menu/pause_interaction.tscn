@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://cjjhqpey7v6wl" path="res://Menus/pause_menu/pause_interaction.gd" id="1_m7uc1"]
 
 [node name="pause_interaction" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_m7uc1")

@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 
-[node name="Pop-Up" type="VBoxContainer" parent="CenterContainer"]
+[node name="Pop-Up" type="VBoxContainer" parent="CenterContainer" groups=["persist_hidden"]]
 visible = false
 visibility_layer = 4
 z_index = 1

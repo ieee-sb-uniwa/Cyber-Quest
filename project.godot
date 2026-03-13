@@ -47,6 +47,7 @@ MainPlayer="WASD player"
 player=""
 SecondPlayer=""
 MoveBox=""
+persist_hidden="Nodes that should not be visible on scene start"
 
 [input]
 

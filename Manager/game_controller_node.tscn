@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://nqn8m44i4rwy" path="res://Manager/game_controller_node.gd" id="1_y7luy"]
 
 [node name="Game Controller Node" type="Node"]
+process_mode = 3
 script = ExtResource("1_y7luy")

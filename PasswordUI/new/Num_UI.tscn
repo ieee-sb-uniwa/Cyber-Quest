@@ -189,6 +189,7 @@ keycode = 4194310
 events = [SubResource("InputEventKey_my003"), SubResource("InputEventKey_oc3bx")]
 
 [node name="NumUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

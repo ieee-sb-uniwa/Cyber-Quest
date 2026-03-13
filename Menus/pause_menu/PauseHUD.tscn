@@ -6,7 +6,7 @@
 
 [node name="PauseHud" type="Node"]
 
-[node name="Pause_menu" parent="." instance=ExtResource("1_pwggd")]
+[node name="Pause_menu" parent="." groups=["persist_hidden"] instance=ExtResource("1_pwggd")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5

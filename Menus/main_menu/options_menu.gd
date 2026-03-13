@@ -14,6 +14,25 @@ func _process(_delta: float) -> void:
 func _on_backto_menu_pressed():
 	Controller._open_menu_scene("Main_Menu")
 
+func _on_resume_playing_pressed() -> void:
+	# Used when opened from Pause Menu
+	var lvl = Controller.current_scene
+	if lvl:
+		lvl.show()
+	
+	# Find InventoryGUI in the level if possible
+	var inv = lvl.get_node_or_null("HUD/InventoryGUI")
+	if inv:
+		inv.show()
+	
+	# Find PauseMenu in the level
+	var pause_menu = lvl.get_node_or_null("HUD/PauseHud/Pause_menu")
+	if pause_menu:
+		pause_menu.show()
+		
+	# Move ourselves to pool
+	Controller._move_to_pool(self)
+
 # func _on_resume_playing_pressed() -> void:
 # 	THIS HAS BEEN DISABLED AS IT IS OLD LOGIC
 # 	$"../InventoryGUI".show()

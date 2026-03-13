@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://duqttgojm32h1"]
+[gd_scene load_steps=49 format=4 uid="uid://duqttgojm32h1"]
 
 [ext_resource type="PackedScene" uid="uid://cr2gilkvk8ca0" path="res://Scripts/objects/Fans/Fan.tscn" id="1_docje"]
 [ext_resource type="Texture2D" uid="uid://dmprgp3hoqgr1" path="res://Assets/CyberQuest_Assets/Environment/boxesNew.png" id="1_wc1b3"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="25_153ub"]
 [ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="25_n22bo"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="26_ru4mx"]
-[ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="27_c1lpr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ru4mx"]
 texture = ExtResource("1_wc1b3")
@@ -868,7 +867,7 @@ position = Vector2(794, 721)
 tile_map_data = PackedByteArray("AAAGAPn/BQAAAAEAAAAGAPr/BQAAAAEAAAAGAPv/BQAAAAEAAAAGAPz/BQAAAAEAAAAGAP3/BQAAAAEAAAAGAP7/BQAAAAEAAAAGAP//BQADAAQAAAAFAP//AAACAAAAAAAEAP//AAACAAAAAAADAP//AAACAAAAAAACAP//AAAEAAUAAAACAAAAAAAAAAEAAAACAAEAAAACAAIAAAAAAAEAAAABAAAAAAABAAEAAAACAAAAAAD+/wEAAAABAAAAAAD//wEAAAACAAAAAAD7////AAABAAAAAAD8////AAACAAAAAAD6////AAACAAAAAAD9////AAADAAUAAAD9/wAAAAADAAIAAAD9/wEAAAABAAIAAAAGAPj/BQAAAAEAAAAGAPf/BQAAAAEAAAAGAPb/BQAAAAEAAAAGAPX/BQAAAAEAAAAGAPT/BQAAAAEAAAAGAPP/BQAAAAEAAAAGAPL/BQAAAAEAAAAGAPH/BQAAAAEAAAAGAPD/BQAAAAEAAAAGAO//BQAAAAEAAAAGAO7/BQADAAMAAAD5/+//BQACAAEAAAD5//D/BQACAAEAAAD5//H/BQACAAEAAAD5//L/BQACAAEAAAD5//P/BQACAAEAAAD5//T/BQACAAEAAAD5//X/BQACAAEAAAD5//b/BQACAAEAAAD5//f/BQACAAEAAAD5//j/BQACAAEAAAD5//n/BQACAAEAAAD5//r/BQACAAEAAAD5//v/BQACAAEAAAD5//z/BQACAAEAAAD5//3/BQACAAEAAAD5//7/BQACAAEAAAD5////BQACAAQAAAD5/+7/BQACAAMAAAD6/+7/AAABAAMAAAD7/+7/AAACAAMAAAD8/+7/AAABAAMAAAD9/+7/AAACAAMAAAD+/+7/AAABAAMAAAD//+7/AAACAAMAAAAAAO7/AAABAAMAAAABAO7/AAACAAMAAAADAO7/AAACAAMAAAAEAO7/AAABAAMAAAACAO7/AAABAAMAAAAFAO7/AAACAAMAAAABAPH/AQAEAAIAAAABAPT/AQAAAAMAAAABAPP/AQADAAEAAAABAPL/AQAAAAIAAAAAAPH/AQABAAAAAAD///H/AQABAAIAAAABAPD/AQABAAMAAAD///D/AQABAAEAAAAAAPD/AQABAAAAAAABAO//AQADAAEAAAACAPD/AQACAAIAAAACAO//AQAEAAEAAAADAO//AQABAAAAAAAEAO//AQABAAAAAAAFAO//AQABAAAAAAD9//D/AQAAAAEAAAD9//H/AQABAAIAAAD+//H/AQACAAEAAAD+//P/AQACAAIAAAD+//L/AQAAAAIAAAD6//D/BAAAAAAAAAD6//H/BAAAAAEAAAADAPX/BAACAAEAAAAEAPX/BAADAAEAAAA=")
 tile_set = SubResource("TileSet_h52nx")
 
-[node name="Platform Collision Layer" type="TileMapLayer" parent="Environment"]
+[node name="Platform Collision Layer" type="TileMapLayer" parent="Environment" groups=["persist_hidden"]]
 visible = false
 z_index = 10
 position = Vector2(26, 17)
@@ -1036,6 +1035,5 @@ position = Vector2(664, 614)
 [node name="DoorToLobby" parent="." instance=ExtResource("26_ru4mx")]
 z_index = 5
 position = Vector2(618, 700)
-target_scene = ExtResource("27_c1lpr")
 target_index = 12
 disable_door_index = 2

@@ -25,9 +25,6 @@ func _ready():
 	SpawnManager.register_player(playerNum, self)
 	Global.players.append(self)
 	move_speed = Global.move_speed
-	var camera = get_tree().current_scene.get_node("CameraRoot/Camera2D")
-	if camera.has_method("assign_player"):
-		camera.assign_player(playerNum, self)
 
 
 func _exit_tree() -> void:

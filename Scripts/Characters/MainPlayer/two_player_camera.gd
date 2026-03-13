@@ -9,12 +9,17 @@ var is_cam_enabled :bool = true
 
 func _ready() -> void:
 	SpawnManager.camera_asset = self
+	await get_tree().process_frame
+	var players = get_tree().get_nodes_in_group("player")
+	for p in players:
+		if p.has_method("get") and p.get("playerNum") != null:
+			assign_player(p.playerNum, p)
+		
 func assign_player(player_num: int, node: Node2D) -> void:
 	if player_num == 1:
 		player1 = node
 	elif player_num == 2:
 		player2 = node
-		
 
 func get_camera_bounds() -> Rect2:
 	var screen_size = get_viewport_rect().size
