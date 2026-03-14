@@ -23,8 +23,8 @@ func _on_button_unpressed():
 	print(collision.disabled)
 	for player in players_on_bridge:
 			player.fall_down = true
-			player.P_collission.disabled = true
-			Global.request_respawn(player)
+			player.P_collission.set_deferred("disabled", true)
+			Global.call_deferred("request_respawn", player)
 	players_on_bridge.clear()
 
 func _on_area_body_entered(body):
