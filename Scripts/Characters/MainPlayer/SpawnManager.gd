@@ -26,6 +26,10 @@ func register_player(player_num: int, player_node: Node):
 	
 func respawn_players():
 	camera_asset.is_cam_enabled = false
+	player_1_asset.fall_down = false
+	player_1_asset.P_collission.disabled = false
+	player_2_asset.fall_down = false
+	player_2_asset.P_collission.disabled = false
 	var spawn1 = spawn_points[0][spawnIndex]
 	var spawn2 = spawn_points[1][spawnIndex]
 	print("respawning to "+str(spawn1.global_position))

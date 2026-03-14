@@ -22,6 +22,8 @@ func _on_button_unpressed():
 	set_collision(false)
 	print(collision.disabled)
 	for player in players_on_bridge:
+			player.fall_down = true
+			player.P_collission.disabled = true
 			Global.request_respawn(player)
 	players_on_bridge.clear()
 

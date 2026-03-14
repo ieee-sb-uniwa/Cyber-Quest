@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=41 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
-[ext_resource type="Script" uid="uid://kwyhqhtwmqjq" path="res://Scripts/objects/DashTutorial/DashCheck.gd" id="15_s2f44"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
+[ext_resource type="PackedScene" uid="uid://cqoofpvylk522" path="res://Scripts/objects/DashTutorial/dash_part.tscn" id="17_gvoy2"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
 [ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="18_j1jna"]
 [ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="19_bolj5"]
@@ -240,15 +240,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_bolj5")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdxtu"]
-size = Vector2(64, 184.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2f44"]
-size = Vector2(35, 188)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvoy2"]
-size = Vector2(139, 189)
-
 [node name="Lvl1_spaceship" type="Node2D"]
 process_mode = 1
 metadata/_edit_vertical_guides_ = [66.0, 195.0, 323.0, 580.0, 707.0, 835.0]
@@ -312,7 +303,7 @@ position = Vector2(129, 0)
 z_index = 3
 y_sort_enabled = true
 position = Vector2(3, 0)
-tile_map_data = PackedByteArray("AAD3/wIAAgABAAAAAAD4/wIAAgACAAAAAAD5/wIAAgABAAAAAAD6/wIAAgACAAAAAAD7/wIAAgABAAAAAAD8/wIAAgACAAAAAAD9/wIAAgABAAAAAAD+/wIAAgACAAAAAAD//wIAAgABAAAAAAAAAAIAAgACAAAAAAABAAIAAgABAAAAAAACAAIAAgACAAAAAAADAAIAAgABAAAAAAALAAIAAgACAAAAAAAMAAIAAgABAAAAAAANAAIAAgACAAAAAAAPAAIAAgACAAAAAAAQAAIAAgABAAAAAAARAAIAAgACAAAAAAASAAIAAgABAAAAAAATAAIAAgACAAAAAAAUAAIAAgABAAAAAAAVAAIAAgACAAAAAAAWAAIAAgABAAAAAAAXAAIAAgACAAAAAAAOAAIAAgABAAAAAAAYAAIAAgABAAAAAAAZAAIAAgACAAAAAAAaAAIAAgABAAAAAAAbAAIAAgACAAAAAAAcAAIAAgABAAAAAAAdAAIAAgACAAAAAAAeAAIAAgABAAAAAAAfAAIAAgACAAAAAAAgAAIAAgABAAAAAAAhAAIAAgACAAAAAAAiAAIAAgABAAAAAAAjAAIAAgADAAAAAAAjAAMAAgABAAIAAAAkAAMAAgABAAAAAAAlAAMAAgACAAAAAAAmAAMAAgABAAAAAAAnAAIAAgAAAAAAAAAnAAMAAgACAAIAAAD1/wIAAgABAAAAAAD2/wIAAgACAAAAAADz/wIAAgABAAAAAAD0/wIAAgACAAAAAADx/wIAAgABAAAAAADy/wIAAgACAAAAAADv/wIAAgABAAAAAADw/wIAAgACAAAAAADt/wIAAgACAAAAAADu/wIAAgACAAAAAADs/wIAAgABAAAAAADo/wMAAgABAAAAAADp/wMAAgABAAAAAADq/wMAAgACAAAAAADr/wIAAgAAAAAAAADn/wIAAgADAAAAAADr/wMAAgACAAIAAADn/wMAAgABAAIAAAAEAAIAAgADAAAAAAAFAAMAAgADAAAAAAAJAAMAAgAAAAAAAAAKAAIAAgAAAAAAAAAJAAQAAgACAAIAAAAKAAMAAgACAAIAAAAFAAQAAgABAAIAAAAEAAMAAgABAAIAAAA=")
+tile_map_data = PackedByteArray("AAD3/wIAAgABAAAAAAD4/wIAAgACAAAAAAD5/wIAAgABAAAAAAD6/wIAAgACAAAAAAD7/wIAAgABAAAAAAD8/wIAAgACAAAAAAD9/wIAAgABAAAAAAD+/wIAAgACAAAAAAD//wIAAgABAAAAAAAAAAIAAgACAAAAAAABAAIAAgABAAAAAAACAAIAAgACAAAAAAADAAIAAgABAAAAAAAMAAIAAgABAAAAAAANAAIAAgACAAAAAAAPAAIAAgACAAAAAAAQAAIAAgABAAAAAAARAAIAAgACAAAAAAASAAIAAgABAAAAAAATAAIAAgACAAAAAAAUAAIAAgABAAAAAAAVAAIAAgACAAAAAAAWAAIAAgABAAAAAAAXAAIAAgACAAAAAAAOAAIAAgABAAAAAAAYAAIAAgABAAAAAAAZAAIAAgACAAAAAAAaAAIAAgABAAAAAAAbAAIAAgACAAAAAAAcAAIAAgABAAAAAAAdAAIAAgACAAAAAAAeAAIAAgABAAAAAAAfAAIAAgACAAAAAAAgAAIAAgABAAAAAAAhAAIAAgACAAAAAAAiAAIAAgABAAAAAAAjAAIAAgADAAAAAAAjAAMAAgABAAIAAAAkAAMAAgABAAAAAAAlAAMAAgACAAAAAAAmAAMAAgABAAAAAAAnAAIAAgAAAAAAAAAnAAMAAgACAAIAAAD1/wIAAgABAAAAAAD2/wIAAgACAAAAAADz/wIAAgABAAAAAAD0/wIAAgACAAAAAADx/wIAAgABAAAAAADy/wIAAgACAAAAAADv/wIAAgABAAAAAADw/wIAAgACAAAAAADt/wIAAgACAAAAAADu/wIAAgACAAAAAADs/wIAAgABAAAAAADo/wMAAgABAAAAAADp/wMAAgABAAAAAADq/wMAAgACAAAAAADr/wIAAgAAAAAAAADn/wIAAgADAAAAAADr/wMAAgACAAIAAADn/wMAAgABAAIAAAAEAAIAAgADAAAAAAAFAAMAAgADAAAAAAAJAAMAAgAAAAAAAAAKAAIAAgAAAAAAAAAJAAQAAgACAAIAAAAKAAMAAgACAAIAAAAFAAQAAgABAAIAAAAEAAMAAgABAAIAAAA=")
 tile_set = SubResource("TileSet_1ipe4")
 
 [node name="Towers Layer" type="TileMapLayer" parent="Environment"]
@@ -352,33 +343,6 @@ position = Vector2(2325, 2)
 y_sort_enabled = true
 position = Vector2(483, -259)
 scale = Vector2(1.5, 1.5)
-
-[node name="DashTutorial" type="Node2D" parent="Environment"]
-position = Vector2(714, 46)
-script = ExtResource("15_s2f44")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Environment/DashTutorial"]
-collision_mask = 2
-
-[node name="Collision" type="CollisionShape2D" parent="Environment/DashTutorial/StaticBody2D"]
-position = Vector2(25, -14.75)
-shape = SubResource("RectangleShape2D_rdxtu")
-debug_color = Color(0.67077, 0.502528, 0.227106, 0.42)
-
-[node name="PlayerCheck" type="Area2D" parent="Environment/DashTutorial"]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/DashTutorial/PlayerCheck"]
-position = Vector2(26.5, -13)
-shape = SubResource("RectangleShape2D_s2f44")
-debug_color = Color(0.347929, 0.616043, 0.20112, 0.42)
-
-[node name="DashCheck" type="Area2D" parent="Environment/DashTutorial"]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/DashTutorial/DashCheck"]
-position = Vector2(24.5, -15.5)
-shape = SubResource("RectangleShape2D_gvoy2")
 
 [node name="MoveBoxes" type="Node2D" parent="Environment"]
 z_index = 5
@@ -447,7 +411,5 @@ player2 = NodePath("../../Environment/Player2")
 [node name="SpawnPoint0" parent="." instance=ExtResource("23_gvoy2")]
 position = Vector2(2259, 37)
 
-[connection signal="body_entered" from="Environment/DashTutorial/PlayerCheck" to="Environment/DashTutorial" method="_on_body_entered"]
-[connection signal="body_exited" from="Environment/DashTutorial/PlayerCheck" to="Environment/DashTutorial" method="_on_body_exited"]
-[connection signal="body_entered" from="Environment/DashTutorial/DashCheck" to="Environment/DashTutorial" method="_on_dash_check_body_entered"]
-[connection signal="body_exited" from="Environment/DashTutorial/DashCheck" to="Environment/DashTutorial" method="_on_dash_check_body_exited"]
+[node name="DashPart" parent="." instance=ExtResource("17_gvoy2")]
+position = Vector2(721, 15)

@@ -17,6 +17,7 @@ var is_interacting_with_box: bool = false
 var box_interaction_side: String = ""  # "left", "right", "up", "down"
 var last_move_orientation: Global.MOVE_ORIENTATION = Global.MOVE_ORIENTATION.DOWN  # Store last movement orientation
 var keep_box_orientation: bool = false  # Flag to keep box orientation until movement
+var fall_down : bool = false # Flag to make player fall down
 
 func _ready():
 	Global.force_respawn.connect(on_respawn)
@@ -55,6 +56,9 @@ func _physics_process(_delta):
 	
 	if movement_enabled:
 		velocity = input_direction.normalized() * move_speed
+	
+	if fall_down :
+		velocity.y += 10000 * _delta
 	
 	move_and_slide()
 	pick_new_state()

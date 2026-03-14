@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqoofpvylk522"]
+
+[ext_resource type="Script" uid="uid://kwyhqhtwmqjq" path="res://Scripts/objects/DashTutorial/DashCheck.gd" id="1_xg0d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc4n5"]
+size = Vector2(64, 184.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3trf"]
+size = Vector2(35, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11y23"]
+size = Vector2(139, 189)
+
+[node name="DashPart" type="Node2D"]
+script = ExtResource("1_xg0d5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(25, -14.75)
+shape = SubResource("RectangleShape2D_dc4n5")
+debug_color = Color(0.67077, 0.502528, 0.227106, 0.42)
+
+[node name="PlayerCheck" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCheck"]
+position = Vector2(26.5, -13)
+shape = SubResource("RectangleShape2D_r3trf")
+debug_color = Color(0.347929, 0.616043, 0.20112, 0.42)
+
+[node name="DashCheck" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashCheck"]
+top_level = true
+position = Vector2(24.5, -15.5)
+shape = SubResource("RectangleShape2D_11y23")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="PlayerCheck" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerCheck" to="." method="_on_body_exited"]
+[connection signal="body_entered" from="DashCheck" to="." method="_on_dash_check_body_entered"]
+[connection signal="body_exited" from="DashCheck" to="." method="_on_dash_check_body_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
