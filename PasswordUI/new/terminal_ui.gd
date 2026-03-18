@@ -64,7 +64,7 @@ func _ready():
 	var dob_var1 = generate_dob_variations(Global.dob1)
 	var dob_var2 = generate_dob_variations(Global.dob2)
 	Global.date_of_birth = dob_var1+dob_var2
-	# print(Global.date_of_birth) #for debugging
+	print(Global.date_of_birth) #for debugging
 
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
