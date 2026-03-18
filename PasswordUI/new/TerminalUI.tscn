@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwsxh7ax4nm1x"]
+[gd_scene load_steps=16 format=3 uid="uid://bwsxh7ax4nm1x"]
 
 [ext_resource type="Script" uid="uid://cdw60ydrrocpu" path="res://PasswordUI/new/terminal_ui.gd" id="1_ookdm"]
 [ext_resource type="Texture2D" uid="uid://dvnpss0lk48b2" path="res://Assets/UI/NewUI/Monitor.png" id="2_okdu2"]
+[ext_resource type="FontFile" uid="uid://cwmdkbnqioicu" path="res://Assets/UI/NewUI/Aka-AcidGR-Everyday-burrito.ttf" id="3_3jkiv"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="3_m4bf3"]
 [ext_resource type="Texture2D" uid="uid://c3vwi2qckgmf5" path="res://Assets/UI/NewUI/Numpad(empty).png" id="3_okdu2"]
 [ext_resource type="Texture2D" uid="uid://clalqiuscsh37" path="res://Assets/UI/NewUI/Main keyboard(empty).png" id="4_ja7o1"]
@@ -47,7 +48,7 @@ offset_top = 118.0
 offset_right = 841.0
 offset_bottom = 567.0
 theme_override_colors/default_color = Color(0.0470588, 0.772549, 0.8, 1)
-theme_override_fonts/normal_font = ExtResource("3_m4bf3")
+theme_override_fonts/normal_font = ExtResource("3_3jkiv")
 
 [node name="Primary" type="ColorRect" parent="."]
 z_index = 3
