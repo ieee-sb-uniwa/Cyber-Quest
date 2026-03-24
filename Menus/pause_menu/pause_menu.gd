@@ -1,8 +1,10 @@
 extends Control
 
-@warning_ignore("integer_division")
-@onready var lvl: Node2D = get_node("../../../") # Level_1_x
 @onready var pause_interaction: Node2D = $"../pause_interaction"
+
+# Get current level dynamically to avoid stale references
+func get_lvl() -> Node2D:
+	return Controller.current_scene
 
 
 func _on_resume_pressed():
@@ -21,16 +23,29 @@ func _on_settings_pressed():
 	var Return: Button = options_node.get_node("VBoxContainer2/ResumePlaying")
 	BacktoMenu.hide()	# Switch the Quit and Resume Buttons
 	Return.show()
-	lvl.hide()	# Hide level
+	var lvl = get_lvl()
+	if lvl:
+		lvl.hide()	# Hide level
 	$"../../InventoryGUI".hide() # Hide Inv_slots
 
 func _on_quit_pressed():
 	# Safely unpause and go back to main menu
-	if pause_interaction and pause_interaction.has_method("pausemenu"):
-		pause_interaction.pausemenu()
+	if pause_interaction and pause_interaction.paused: # ensure we unpause
+		if pause_interaction.has_method("pausemenu"):
+			pause_interaction.pausemenu()
+	
 	if get_tree().paused:
 		get_tree().paused = false
+		
 	print("[PauseMenu] quit -> unpaused and switching to Main Menu")
+	
+	# Since this menu is inside the Level, we need to hide the level manually 
+	# if Controller.current_scene isn't already pointing to it correctly,
+	# or if _open_menu_scene isn't enough to clear the screen.
+	var lvl = get_lvl()
+	if lvl:
+		lvl.hide()
+	
 	Controller._open_menu_scene("Main_Menu")
 
 # THIS WILL MAYBE USED FOR MULTI-SLOT SAVING IN THE FUTURE
@@ -50,5 +65,7 @@ func _on_load_pressed() -> void:
 	var Return: Button = load_node.get_node("VBoxContainer2/ResumePlaying")
 	BacktoMenu.hide()	# Switch the Quit and Resume Buttons
 	Return.show()
-	lvl.hide()	# Hide level
+	var lvl = get_lvl()
+	if lvl:
+		lvl.hide()	# Hide level
 	$"../../InventoryGUI".hide()	# Hide Inv_slots

@@ -101,6 +101,9 @@ func _open_menu_scene(scene_name: String) -> void:
 	# Usable for Scenes that don't require global funcs/vars
 	assert(scene_name in scenes, "Scene '%s' not found!" % scene_name)
 	
+	if get_tree().paused:
+		get_tree().paused = false
+	
 	if current_scene:
 		_move_to_pool(current_scene)
 		current_scene = null
@@ -119,6 +122,7 @@ func _open_menu_scene(scene_name: String) -> void:
 	_ensure_proper_scaling() # DOESNT WORK YET
 
 func _open_overlay_menu(scene_name: String) -> Node:
+	print(get_tree_string_pretty())
 	assert(scene_name in scenes, "Scene '%s' not found!" % scene_name)
 	var new_scene = _get_scene_from_pool(scene_name)
 	if new_scene.get_parent() != self:

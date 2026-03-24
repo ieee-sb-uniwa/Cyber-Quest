@@ -5,11 +5,8 @@ extends Node2D
 
 var paused = false 
 
-func _process(_delta):
-	if Input.is_action_just_pressed("Pause"):
-		pausemenu()
-
 func pausemenu():
+	print(get_tree_string_pretty())
 	# When in any UI, disable pausing
 	if !Global.can_pause_game:
 		return

@@ -19,6 +19,7 @@ func _ready():
 	anim_sprite.animation_finished.connect(_on_animation_finished)
 
 func _on_body_entered(body, area_name=""):
+	print(get_tree_string_pretty())
 	# player interacted with door
 	if area_name == "main_area":
 		if body.is_in_group("Player") and not isOpen:
@@ -26,12 +27,14 @@ func _on_body_entered(body, area_name=""):
 				open_door()
 	# player went inside 	
 	elif area_name == "load_area":
+		print(get_tree_string_pretty())
 		# print("Loading next level...")
 		# If this is a terminal unlock door, we are leaving tutorial
 		if is_terminal_unlock_door:		
 			Global.isTutorial = false
 
 		# Change to the target scene
+		print(get_tree_string_pretty())
 		Controller._open_scene(target_scene, target_index)
 
 func _on_body_exited(body):
