@@ -1,7 +1,5 @@
 extends Control
 
-# --------------------------------------------- Declarations ---------------------------------------------
-
 # Display Messages
 var current_input := ""
 var screen_log := ""
@@ -13,7 +11,7 @@ var label_path := "Screen/RichTextLabel1"
 var primary_label := "Primary/RichTextLabel2"
 var secondary_label := "Secondary/RichTextLabel3"
 
-# Variables for successfull unlock and checks
+# Variables for successful unlock and checks
 var input_finalized := false
 var success := false
 var message_done := false
@@ -21,42 +19,29 @@ var showing_exit_message := false
 var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
 @onready var keyboard_manager = $KeyboardContainer/KeyboardLayout
-
 @onready var shift_toggle: Button = $KeyboardContainer/ShiftToggle
 @onready var numpad_bg: Control = $KeyboardContainer/NumpadBackground
 @onready var letters_bg: Control = $KeyboardContainer/LettersBackground
 @onready var symbols_bg: Control = $KeyboardContainer/SymbolsBackground
 
-@onready var enter_button: Button = $KeyboardContainer/Enter
-@onready var backspace_button: Button = $KeyboardContainer/Backspace
-@onready var cancel_button: Button = $KeyboardContainer/Cancel
+# ADDED: Input handler for physical keyboard
+var input_handler: keyboard_input_handler
 
-var pass_check = password_validator.new()
-	
 @export var hasNum : bool = false
 @export var hasLetters : bool = false
 @export var hasSymbols : bool = true
 
-# --------------------------------------------- Ready ---------------------------------------------
 func _ready():
-
+	# ADDED: Initialize input handler
+	input_handler = keyboard_input_handler.new()
+	add_child(input_handler)
+	input_handler.key_entered.connect(_on_physical_key_pressed)
+	
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
-	# Connect keyboard manager signals
-	
-	# Load any previously discovered secondary rules
-	for key in Global.visible_sec_rules.keys():
-		if Global.visible_sec_rules[key]:
-			pass_check.set_secondary_rule_visible(key, true)
-		
-	keyboard_manager.key_pressed.connect(_on_keyboard_key_pressed)
-	
-	# Connect button signals
-	enter_button.pressed.connect(_on_confirm_pressed)
-	backspace_button.pressed.connect(_on_backspace_pressed)
-	cancel_button.pressed.connect(_on_cancel_pressed)
-	shift_toggle.toggled.connect(_on_shift_toggled)
-
-	_update_rule_displays()
+	var keyboard_node = get_node("KeyboardContainer")
+	for child in keyboard_node.get_children():
+		if child is Button:
+			child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
 
 	if is_visible_in_tree():
 		call_deferred("_on_visibility_changed")
@@ -64,7 +49,7 @@ func _ready():
 	var dob_var1 = generate_dob_variations(Global.dob1)
 	var dob_var2 = generate_dob_variations(Global.dob2)
 	Global.date_of_birth = dob_var1+dob_var2
-	print(Global.date_of_birth) #for debugging
+	# print(Global.date_of_birth) #for debugging
 
 	# Show only visible primary rules from the start
 	var primary_label_node = get_node(primary_label)
@@ -85,36 +70,54 @@ func _ready():
 	secondary_label_node.text = sec_text
 	tablet_text = sec_text
 
+	shift_toggle.toggled.connect(_on_shift_toggled)
 	setup_terminal()
-
-# --------------------------------------------- UI setup ---------------------------------------------
 
 func setup_terminal():
 
 	numpad_bg.visible = false
 	letters_bg.visible = false
 	symbols_bg.visible = false
-	shift_toggle.visible = false
-
+	#To be swapped with inventory slots
 	if hasNum:
 		keyboard_manager.setup_level_layouts(1)
+		$KeyboardContainer/ShiftToggle.visible = false
 		numpad_bg.visible = true
 		print(PlayerData.level)
 			
 	elif hasLetters:
 		keyboard_manager.setup_level_layouts(2)
+		$KeyboardContainer/ShiftToggle.visible = true
 		numpad_bg.visible = true
 		letters_bg.visible = true
-		shift_toggle.visible = true
 		print(PlayerData.level)
 			
 	elif hasSymbols:
 		keyboard_manager.setup_level_layouts(3)
+		$KeyboardContainer/ShiftToggle.visible = true
 		numpad_bg.visible = true
 		letters_bg.visible = true
-		shift_toggle.visible = true
 		symbols_bg.visible = true
 		print(PlayerData.level)
+
+# Terminal activation
+func _on_visibility_changed():
+	var label = get_node(label_path)
+
+	label.bbcode_enabled = true
+	label.scroll_active = true
+	label.clear()
+
+	screen_log = ""
+	current_input = ""
+	input_finalized = false
+
+	if !Global.terminal_unlocked:
+		call_deferred("_start_welcome_animation")
+	else:
+		showing_exit_message = true
+		call_deferred("_start_exit_animation")
+
 
 # Welcome message animation
 func _start_welcome_animation() -> void:
@@ -154,69 +157,31 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 			await get_tree().create_timer(0.016).timeout 
 			label.text = base_text + buffer
 
-func _update_display():
+# Interactions through numpad
+func _on_button_pressed(button_name: String):
+	if input_finalized:
+		return
+
+	if showing_exit_message:
+		if button_name == "KeyboardContainer/Enter":
+			_on_confirm_pressed()
+		return
+
+	if message_done:
+		match button_name:
+			"KeyboardContainer/Backspace":
+				if current_input.length() > 0:
+					current_input = current_input.substr(0, current_input.length() - 1)
+			"KeyboardContainer/Enter":
+				_on_confirm_pressed()
+				return
+			_:
+				current_input += button_name
+
 	var label = get_node(label_path)
-	var display_text = screen_log + current_input + "_"  # Add cursor
-	label.text = display_text
+	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
 
-# Terminal activation
-func _on_visibility_changed():
-	var label = get_node(label_path)
-
-	label.bbcode_enabled = true
-	label.scroll_active = true
-	label.clear()
-
-	screen_log = ""
-	current_input = ""
-	input_finalized = false
-
-	if !Global.terminal_unlocked:
-		call_deferred("_start_welcome_animation")
-	else:
-		showing_exit_message = true
-		call_deferred("_start_exit_animation")
-
-
-# --------------------------------------------- Input Functionalities ---------------------------------------------
-
-# Keyboard key pressed handler
-func _on_keyboard_key_pressed(key_value: String, _key_type: String):
-	if input_finalized:
-		return
-
-	if showing_exit_message:
-		return
-
-	if message_done:
-		# Add the key to current input
-		current_input += key_value
-		_update_display()
-
-# Backspace handler
-func _on_backspace_pressed():
-	if input_finalized:
-		return
-
-	if showing_exit_message:
-		return
-
-	if message_done and current_input.length() > 0:
-		current_input = current_input.substr(0, current_input.length() - 1)
-		_update_display()
-
-# Cancel (X) handler - clears entire line
-func _on_cancel_pressed():
-	if input_finalized:
-		return
-
-	if showing_exit_message:
-		return
-
-	if message_done:
-		current_input = ""
-		_update_display()
 
 # Checking validity
 func _on_confirm_pressed():
@@ -240,39 +205,7 @@ func _on_confirm_pressed():
 	else:
 		_successful_unlock()
 
-func _on_shift_toggled(button_pressed: bool):
-	keyboard_manager.toggle_uppercase(button_pressed)
-
-# Confirm works upon all Enter buttons and on-screen confirm button
-func _input(event):
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
-		_successful_unlock()
-	
-func _user_input(event):
-	if input_finalized or showing_exit_message:
-		return
-	
-	if event is InputEventKey and event.pressed:
-		# Handle hardware keyboard input
-		if event.keycode == KEY_ENTER or event.keycode == KEY_KP_ENTER:
-			_on_confirm_pressed()
-		elif event.keycode == KEY_BACKSPACE:
-			_on_backspace_pressed()
-		elif event.keycode == KEY_ESCAPE:
-			_on_cancel_pressed()
-		elif event.keycode == KEY_SHIFT:
-			# Toggle shift
-			shift_toggle.button_pressed = !shift_toggle.button_pressed
-			_on_shift_toggled(shift_toggle.button_pressed)
-		else:
-			# Convert keycode to character for regular keys
-			var character = event.as_text()
-			if character.length() == 1:  # Single character
-				current_input += character
-				_update_display()
-
-# --------------------------------------------- Rule-based Functionalities ---------------------------------------------
-
+		
 # DOB variations function
 func generate_dob_variations(dob_str: String) -> Array:
 	var parts = dob_str.split("/") #Assuming dob is in format 07/02/2008
@@ -310,70 +243,63 @@ func generate_dob_variations(dob_str: String) -> Array:
 
 	return variations
 
-# On screen feedback after checks
+func _on_shift_toggled(button_pressed: bool):
+	keyboard_manager.is_uppercase = button_pressed
+
+# On screen feedback after check
 func _generate_rule_feedback() -> String:
 	var password := current_input
 	var feedback := "> " + password + "\n"
-	
-	# Check rules using password_validator.gd
-	var validation_result = pass_check.validate_password(password, hasNum, hasLetters, hasSymbols)
-	
-	# For rules to appear on the screen upon error
-	var primary_errors = []
-	var secondary_errors = []
-	
-	for rule_key in validation_result["primary_errors"]:
-		if rule_key in Global.pri_rules:
-			primary_errors.append(Global.pri_rules[rule_key])
-	
-	for rule_key in validation_result["secondary_errors"]:
-		if rule_key in Global.sec_rules:
-			secondary_errors.append(Global.sec_rules[rule_key])
-	
-	# Update Global with discovered secondary rules
-	for key in Global.visible_sec_rules.keys():
-		Global.visible_sec_rules[key] = pass_check.visible_sec_rules.get(key, false)
-	
-	# Update rule displays
-	_update_rule_displays()
-	
-	var all_errors = primary_errors + secondary_errors
-	
+
+	# Primary rules check
+	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")" #turns date_of_birth array to regex
+	var prule1_failed = _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$")  # no DOB
+	var prule2_failed = password.length() < 8  # length >= 8
+
+	# Secondary rules check
+	var srule1_failed = _rule_breach_regex(password, "^(?!.*(\\d)\\1).*$")  # no same digits in a row
+	var srule2_failed = _rule_breach_regex(password, "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$")  # no sequences
+
+	var errors := []
+
+	# Primary rules violation gets shown on terminal
+	if prule1_failed:
+		errors.append(Global.pri_rules["prule1"])
+	if prule2_failed:
+		errors.append(Global.pri_rules["prule2"])
+
+	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
+	if srule1_failed:
+		errors.append(Global.sec_rules["srule1"])
+		Global.visible_sec_rules["srule1"] = true
+	if srule2_failed:
+		errors.append(Global.sec_rules["srule2"])
+		Global.visible_sec_rules["srule2"] = true
+
+	# Tablet update after secondary rule failure
+	var info_label = get_node(secondary_label)
+	var sec_text = "Χρήσιμες Πληροφορίες:\n"
+	for key in Global.sec_rules.keys():
+		if Global.visible_sec_rules[key]:
+			sec_text += "\n" + Global.sec_rules[key] + "\n"
+	info_label.text = sec_text
+	tablet_text = sec_text
+
 	# Feedback on terminal (colorized)
-	if all_errors.size() == 0:
+	if errors.size() == 0:
 		feedback += "[color=0cc5cc]Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
 		success = true
 	else:
-		for error in all_errors:
+		for error in errors:
 			feedback += "[color=ef6e2f]" + error + "\n[/color]"
 		feedback += "Εισάγετε νέο κωδικό:\n> "
-	
+
 	return feedback
 
-func _update_rule_displays():
-	# Update "dialogue" box for primary rules
-	var primary_label_node = get_node(primary_label)
-	var primary_text = "Βασικοί Κανόνες:\n\n"
-	
-	# Shows specific primary rules per level
-	var validation_result = pass_check.validate_password("", hasNum, hasLetters, hasSymbols)
-	
-	for rule_key in validation_result["primary_rules_to_show"]:
-		if rule_key in Global.pri_rules:
-			primary_text += Global.pri_rules[rule_key] + "\n\n"
-	
-	primary_label_node.text = primary_text
-	
-	# Update secondary rules tablet
-	var info_label = get_node(secondary_label)
-	var sec_text = "Χρήσιμες Πληροφορίες:\n"
-	
-	for rule_key in validation_result["secondary_rules_to_show"]:
-		if rule_key in Global.sec_rules:
-			sec_text += "\n" + Global.sec_rules[rule_key] + "\n"
-	
-	info_label.text = sec_text
-	tablet_text = sec_text
+# Confirm works upon all Enter buttons and on-screen confirm button
+func _input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
+		_successful_unlock()
 	
 # Success maintains the terminal unlocked on next interactions
 func _successful_unlock():
@@ -381,3 +307,37 @@ func _successful_unlock():
 	Global.terminal_unlocked = true
 	get_parent().visible = false
 	Global.can_pause_game = true
+
+# Regex validation
+func _rule_breach_regex(password: String, pattern: String) -> bool:
+	var regex := RegEx.new()
+	if regex.compile(pattern) != OK:
+		return true
+	return regex.search(password) == null
+
+# ADDED: Handle physical keyboard input
+func _on_physical_key_pressed(key_value: String, key_type: String):
+	if input_finalized:
+		return
+	
+	if showing_exit_message:
+		if key_value == "✔":
+			_on_confirm_pressed()
+		return
+	
+	if message_done:
+		match key_value:
+			"X":
+				if current_input.length() > 0:
+					current_input = current_input.substr(0, current_input.length() - 1)
+			"Cancel":
+				current_input = ""
+			"✔":
+				_on_confirm_pressed()
+				return
+			_:
+				current_input += key_value
+	
+	var label = get_node(label_path)
+	label.text = screen_log + current_input
+	label.scroll_to_line(label.get_line_count() - 1)

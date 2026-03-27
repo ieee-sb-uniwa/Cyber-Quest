@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bwsxh7ax4nm1x"]
+[gd_scene load_steps=17 format=3 uid="uid://bwsxh7ax4nm1x"]
 
 [ext_resource type="Script" uid="uid://cdw60ydrrocpu" path="res://PasswordUI/new/terminal_ui.gd" id="1_ookdm"]
 [ext_resource type="Texture2D" uid="uid://dvnpss0lk48b2" path="res://Assets/UI/NewUI/Monitor.png" id="2_okdu2"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="3_m4bf3"]
 [ext_resource type="Texture2D" uid="uid://c3vwi2qckgmf5" path="res://Assets/UI/NewUI/Numpad(empty).png" id="3_okdu2"]
 [ext_resource type="Texture2D" uid="uid://clalqiuscsh37" path="res://Assets/UI/NewUI/Main keyboard(empty).png" id="4_ja7o1"]
+[ext_resource type="Texture2D" uid="uid://8wqe6jjxmqc3" path="res://Assets/UI/NewUI/Tablet.png" id="5_epyed"]
 [ext_resource type="Texture2D" uid="uid://bnyk6jbe64ige" path="res://Assets/UI/NewUI/Add-on Keyboard(empty).png" id="5_okdu2"]
 [ext_resource type="PackedScene" uid="uid://b5nrd1h3teqrb" path="res://PasswordUI/new/KeyLetter.tscn" id="7_3jkiv"]
 [ext_resource type="Texture2D" uid="uid://crelkutf0a4l8" path="res://Assets/UI/NewUI/Shift.png" id="7_m4bf3"]
@@ -68,22 +69,24 @@ offset_right = 450.0
 offset_bottom = 204.0
 theme_override_fonts/normal_font = ExtResource("3_m4bf3")
 
-[node name="Secondary" type="ColorRect" parent="."]
+[node name="Secondary" type="TextureRect" parent="."]
 z_index = 3
 y_sort_enabled = true
 layout_mode = 0
-offset_left = 968.5
-offset_top = 271.0
-offset_right = 1445.5
-offset_bottom = 824.0
-color = Color(0.408329, 0.408329, 0.408329, 1)
+offset_left = 928.0
+offset_top = 355.5
+offset_right = 1585.0
+offset_bottom = 882.5
+texture = ExtResource("5_epyed")
+expand_mode = 1
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Secondary"]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 19.0
-offset_right = 457.0
-offset_bottom = 536.0
+offset_left = 60.0
+offset_top = 77.0
+offset_right = 502.0
+offset_bottom = 379.0
+theme_override_colors/default_color = Color(0.20871, 0.20871, 0.20871, 1)
 theme_override_fonts/normal_font = ExtResource("3_m4bf3")
 
 [node name="KeyboardContainer" type="Control" parent="."]
