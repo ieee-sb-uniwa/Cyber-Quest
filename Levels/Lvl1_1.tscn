@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://dbwnkhhmg5c7n"]
+[gd_scene load_steps=46 format=4 uid="uid://dbwnkhhmg5c7n"]
 
 [ext_resource type="Texture2D" uid="uid://buvrpnqede6tk" path="res://Assets/CyberQuest_Assets/Environment/spaceshipWithoutWalkway.png" id="1_1ipe4"]
 [ext_resource type="PackedScene" uid="uid://d055khlg5bjcj" path="res://Scripts/Characters/MainPlayer/player.tscn" id="1_85jq7"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bhrdf8vsy40kt" path="res://Menus/pause_menu/PauseHUD.tscn" id="10_cjydo"]
 [ext_resource type="PackedScene" uid="uid://bvh6co44shed1" path="res://HUD/scenes/inventory_gui.tscn" id="10_inv01"]
 [ext_resource type="PackedScene" uid="uid://bmvqrqjgvfwqm" path="res://Scripts/objects/door/Door.tscn" id="11_1lo17"]
-[ext_resource type="Texture2D" uid="uid://yenrnnm205s0" path="res://Assets/CyberQuest_Assets/Environment/fenceTilemap.png" id="11_s2f44"]
 [ext_resource type="PackedScene" uid="uid://ceia7dab75hev" path="res://Scripts/objects/Terminal/Terminal.tscn" id="13_ksftt"]
 [ext_resource type="PackedScene" uid="uid://bs5hh8rgdnfr5" path="res://Scripts/objects/PassBlock/PassBlock.tscn" id="14_4vqe8"]
 [ext_resource type="Script" uid="uid://kwyhqhtwmqjq" path="res://Scripts/objects/DashTutorial/DashCheck.gd" id="15_s2f44"]
@@ -251,97 +250,11 @@ texture_region_size = Vector2i(64, 64)
 11:0/0 = 0
 11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 1.94348, -32, -32, 32, 32, -2.34708, 32)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gvoy2"]
-resource_name = "Collision Fences"
-texture = ExtResource("11_s2f44")
-texture_region_size = Vector2i(64, 64)
-0:0/next_alternative_id = 2
-0:0/0 = 0
-0:0/0/y_sort_origin = -31
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, 4.03747, 4.01823, 32, 32, 32)
-0:0/1 = 1
-0:0/1/y_sort_origin = 31
-1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 4.12028, 32, 4.15211, 32, 32, -32, 32)
-0:1/0 = 0
-0:1/0/y_sort_origin = -31
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.023, -32, -32, 4.00556, -32, 32, -29.0048, 32, -28.9427, 29.9229, 32, -31.0517, 32, -32)
-0:2/0 = 0
-0:2/0/y_sort_origin = 50
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, -29.1025, 32, -28.9951, -32)
-2:2/0 = 0
-2:2/0/y_sort_origin = 50
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, 29.1025, 32, 28.9951, -32)
-0:3/0 = 0
-0:3/0/y_sort_origin = 50
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, -32, 32, -29.1025, 32, -28.9951, -32)
-2:3/0 = 0
-2:3/0/y_sort_origin = 50
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(32, -32, 32, 32, 29.1025, 32, 28.9951, -32)
-2:4/next_alternative_id = 2
-2:4/0 = 0
-2:4/0/y_sort_origin = -32
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.023, -32, -32, 4.00556, -32, 32, -29.0048, 32, -28.9427, 29.9229, 32, -31.0517, 32, -32)
-2:4/1 = 1
-2:4/1/y_sort_origin = 31
-1:4/0 = 0
-1:4/0/y_sort_origin = 31
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 4.12028, 32, 4.15211, 32, 32, -32, 32)
-0:4/next_alternative_id = 2
-0:4/0 = 0
-0:4/0/y_sort_origin = -32
-0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.023, -32, 32, 4.00556, 32, 32, 29.0048, 32, 28.9427, 29.9229, -32, -31.0517, -32, -32)
-0:4/1 = 1
-0:4/1/y_sort_origin = 31
-2:1/next_alternative_id = 2
-2:1/0 = 0
-2:1/0/y_sort_origin = -31
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.023, -32, 32, 4.00556, 32, 32, 29.0048, 32, 28.9427, 29.9229, -32, -31.0517, -32, -32)
-2:0/next_alternative_id = 2
-2:0/0 = 0
-2:0/0/y_sort_origin = -31
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 4.03747, -4.01823, 32, -32, 32)
-2:0/1 = 1
-2:0/1/y_sort_origin = 31
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ly0ed"]
-resource_name = "No collision fences"
-texture = ExtResource("11_s2f44")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
-0:3/0/y_sort_origin = 10
-2:3/0 = 0
-2:3/0/y_sort_origin = 10
-1:4/0 = 0
-1:4/0/y_sort_origin = 31
-2:4/0 = 0
-2:4/0/y_sort_origin = -32
-0:4/0 = 0
-0:4/0/y_sort_origin = -32
-
 [sub_resource type="TileSet" id="TileSet_subb7"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_bolj5")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdxtu"]
-size = Vector2(64, 184.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2f44"]
-size = Vector2(35, 188)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvoy2"]
-size = Vector2(139, 189)
-sources/1 = SubResource("TileSetAtlasSource_gvoy2")
-sources/2 = SubResource("TileSetAtlasSource_ly0ed")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6a7i"]
 texture = ExtResource("4_mhy3o")
@@ -369,6 +282,15 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_y6a7i")
 sources/1 = SubResource("TileSetAtlasSource_8xicj")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rdxtu"]
+size = Vector2(64, 184.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2f44"]
+size = Vector2(35, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvoy2"]
+size = Vector2(139, 189)
 
 [node name="Lvl1_spaceship" type="Node2D"]
 process_mode = 1
@@ -442,7 +364,6 @@ y_sort_enabled = true
 position = Vector2(3, 0)
 tile_map_data = PackedByteArray("AAD3/wIAAgABAAAAAAD4/wIAAgACAAAAAAD5/wIAAgABAAAAAAD6/wIAAgACAAAAAAD7/wIAAgABAAAAAAD8/wIAAgACAAAAAAD9/wIAAgABAAAAAAD+/wIAAgACAAAAAAD//wIAAgABAAAAAAAAAAIAAgACAAAAAAABAAIAAgABAAAAAAACAAIAAgACAAAAAAAMAAIAAgABAAAAAAANAAIAAgACAAAAAAAPAAIAAgACAAAAAAAQAAIAAgABAAAAAAARAAIAAgACAAAAAAASAAIAAgABAAAAAAATAAIAAgACAAAAAAAUAAIAAgABAAAAAAAVAAIAAgACAAAAAAAWAAIAAgABAAAAAAAXAAIAAgACAAAAAAAOAAIAAgABAAAAAAAYAAIAAgABAAAAAAAZAAIAAgACAAAAAAAaAAIAAgABAAAAAAAbAAIAAgACAAAAAAAcAAIAAgABAAAAAAAdAAIAAgACAAAAAAAeAAIAAgABAAAAAAAfAAIAAgACAAAAAAAgAAIAAgABAAAAAAAhAAIAAgACAAAAAAAiAAIAAgABAAAAAAAjAAIAAgADAAAAAAAjAAMAAgABAAIAAAAkAAMAAgABAAAAAAAlAAMAAgACAAAAAAAmAAMAAgABAAAAAAAnAAIAAgAAAAAAAAAnAAMAAgACAAIAAAD1/wIAAgABAAAAAAD2/wIAAgACAAAAAADz/wIAAgABAAAAAAD0/wIAAgACAAAAAADx/wIAAgABAAAAAADy/wIAAgACAAAAAADv/wIAAgABAAAAAADw/wIAAgACAAAAAADt/wIAAgACAAAAAADu/wIAAgACAAAAAADs/wIAAgABAAAAAADo/wMAAgABAAAAAADp/wMAAgABAAAAAADq/wMAAgACAAAAAADr/wIAAgAAAAAAAADn/wIAAgADAAAAAADr/wMAAgACAAIAAADn/wMAAgABAAIAAAAEAAIAAgADAAAAAAAFAAMAAgADAAAAAAAJAAMAAgAAAAAAAAAKAAIAAgAAAAAAAAAJAAQAAgACAAIAAAAKAAMAAgACAAIAAAAFAAQAAgABAAIAAAAEAAMAAgABAAIAAAAMAP//BAAAAAEAAAAMAAAABAAAAAEAAAAMAAEABAAAAAEAAAAKAAEABAACAAEAAAAKAAAABAACAAEAAAACAP//BAACAAEAAAACAAAABAACAAEAAAACAAEABAACAAEAAAAEAAEABAAAAAEAAAAEAP//BAAAAAEAAAAEAAAABAAAAAEAAAAKAP//BAACAAEAAAA=")
 tile_set = SubResource("TileSet_1ipe4")
-metadata/_edit_group_ = true
 
 [node name="Towers Layer" type="TileMapLayer" parent="Environment"]
 z_index = 10
