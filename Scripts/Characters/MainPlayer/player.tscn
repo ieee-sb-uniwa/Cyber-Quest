@@ -230,7 +230,6 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l57x5"]
 radius = 12.0
-height = 42.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0c3b"]
 radius = 12.0
@@ -263,7 +262,7 @@ position = Vector2(0, -12)
 gizmo_extents = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 6)
+position = Vector2(-1, 17)
 shape = SubResource("CapsuleShape2D_l57x5")
 
 [node name="Hitbox" type="Area2D" parent="."]

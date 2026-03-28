@@ -1,24 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceia7dab75hev"]
+[gd_scene load_steps=6 format=3 uid="uid://ceia7dab75hev"]
 
 [ext_resource type="Script" uid="uid://dcsvyx471ln0p" path="res://Scripts/objects/Terminal/terminal.gd" id="1_jdmvx"]
-[ext_resource type="Texture2D" uid="uid://m1fbxwmb44va" path="res://Assets/CyberQuest_Assets/Environment/terminal.png" id="1_o2cfe"]
+[ext_resource type="Texture2D" uid="uid://ec5olr5wqepj" path="res://Assets/CyberQuest_Assets/Environment/Terminal-Sprite.png" id="2_003jv"]
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_003jv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_003jv"]
+size = Vector2(64, 55)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cawe"]
 radius = 43.9318
 
-[node name="Terminal" type="Node2D"]
+[node name="Terminal" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -13.76)
 script = ExtResource("1_jdmvx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
-texture = ExtResource("1_o2cfe")
+texture = ExtResource("2_003jv")
+offset = Vector2(0, -41.41)
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -8.74)
+shape = SubResource("RectangleShape2D_003jv")
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_003jv")]
+y_sort_enabled = true
+position = Vector2(0, -13.76)
 collision_layer = 32
 collision_mask = 2
 action_name = "το ανοίξεις"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+y_sort_enabled = true
+position = Vector2(0, -13.76)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_0cawe")

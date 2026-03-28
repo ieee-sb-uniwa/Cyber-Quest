@@ -28,25 +28,43 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kikdx"]
 texture = ExtResource("9_r215s")
-texture_region_size = Vector2i(128, 128)
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
 2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
 2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
+3:0/0 = 0
+4:0/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:2/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+1:4/0 = 0
+3:5/0 = 0
+2:5/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+4:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mh0kb"]
 texture = ExtResource("8_r215s")
@@ -776,7 +794,7 @@ tile_set = SubResource("TileSet_qe24u")
 [node name="Floor Decoration Layer" type="TileMapLayer" parent="Environment"]
 z_index = 2
 position = Vector2(1467, 409)
-tile_map_data = PackedByteArray("AAD8//H/AAACAAAAAAD6//H/AAABAAIAAAAEAPH/AAABAAEAAAAGAPP/AAABAAIAAAADAPP/AAACAAAAAAADAPj/AAABAAIAAAAEAPj/AAACAAAAAAD7//v/AAABAAEAAAD4//j/AAABAAEAAAD4//f/AAACAAEAAAD5//j/AAACAAIAAAD7//b/AAABAAIAAAAHAPv/AAABAAIAAAAHAPz/AAACAAEAAAADAPv/AAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//H/AAACAAEAAAD6//H/AAABAAMAAAAEAPH/AAADAAQAAAAGAPP/AAABAAUAAAADAPj/AAAAAAMAAAAEAPj/AAACAAUAAAD7//v/AAABAAEAAAD4//j/AAABAAEAAAD4//f/AAABAAAAAAD5//j/AAACAAMAAAD7//b/AAAAAAEAAAADAPv/AAACAAEAAAD7//X/AAAAAAAAAAD5//f/AAACAAIAAAADAPf/AAAAAAIAAAAEAPf/AAACAAQAAAAEAPL/AAADAAUAAAAGAPL/AAABAAQAAAD8//D/AAACAAAAAAD6//D/AAABAAIAAAADAPr/AAACAAAAAAAHAPv/AAADAAMAAAAHAPr/AAADAAIAAAAIAP7/AAAEAAMAAAAIAP3/AAAEAAIAAAD7//r/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_a60cf")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Environment"]
@@ -803,36 +821,50 @@ position = Vector2(349, -112)
 z_index = 5
 position = Vector2(-351, -747)
 
+[node name="Player" parent="Environment/NavigationRegion2D" groups=["MainPlayer", "player"] instance=ExtResource("11_7k02s")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-98, 132)
+
+[node name="Player2" parent="Environment/NavigationRegion2D" groups=["SecondPlayer", "player"] instance=ExtResource("11_7k02s")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(-58, 131)
+playerNum = 2
+
 [node name="HideBoxes" type="Node" parent="Environment/NavigationRegion2D"]
 
+[node name="HideBox7" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1434, 94)
+
 [node name="HideBox" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(927, 249)
+z_index = 10
+y_sort_enabled = true
+position = Vector2(923.05, 250)
 
 [node name="HideBox2" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(1175, -71)
+z_index = 10
+y_sort_enabled = true
+position = Vector2(1179, -70)
 
 [node name="HideBox3" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(988, -513)
+z_index = 10
+y_sort_enabled = true
+position = Vector2(987, -516)
 
 [node name="HideBox4" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(2010, -391)
+z_index = 10
+position = Vector2(2011, -390)
 
 [node name="HideBox5" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(1883, -199)
+z_index = 10
+position = Vector2(1883, -197)
 
 [node name="HideBox6" parent="Environment/NavigationRegion2D/HideBoxes" instance=ExtResource("12_kikdx")]
-position = Vector2(1752, 256)
-
-[node name="Player" parent="Environment" groups=["MainPlayer", "player"] instance=ExtResource("11_7k02s")]
 z_index = 10
-y_sort_enabled = true
-position = Vector2(1433, 280)
-
-[node name="Player2" parent="Environment" groups=["SecondPlayer", "player"] instance=ExtResource("11_7k02s")]
-z_index = 10
-y_sort_enabled = true
-position = Vector2(1473, 279)
-playerNum = 2
+position = Vector2(1755, 253)
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
 
@@ -894,7 +926,7 @@ position = Vector2(2008, -522)
 
 [node name="MoveBox2" parent="Environment/MoveBoxes" instance=ExtResource("17_3d45e")]
 z_index = 5
-position = Vector2(1116, 251)
+position = Vector2(1114.14, 249)
 
 [node name="MoveBox3" parent="Environment/MoveBoxes" instance=ExtResource("17_3d45e")]
 z_index = 5
@@ -929,8 +961,8 @@ grow_vertical = 0
 position = Vector2(1472, 4)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("14_vwuue")
-player1 = NodePath("../../Environment/Player")
-player2 = NodePath("../../Environment/Player2")
+player1 = NodePath("../../Environment/NavigationRegion2D/Player")
+player2 = NodePath("../../Environment/NavigationRegion2D/Player2")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -972,7 +1004,6 @@ shape = SubResource("RectangleShape2D_vwt3a")
 position = Vector2(1087, 182)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Room05Collision"]
-position = Vector2(-4.5, 3.5)
 shape = SubResource("RectangleShape2D_vwt3a")
 
 [node name="Room06Collision" type="Area2D" parent="Enemies"]
