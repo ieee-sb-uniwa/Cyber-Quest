@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @export var itemHolder : ItemHolder
 @export var playerNum: int = 1
+@onready var walking_sfx: AudioStreamPlayer2D = $Walking_SFX
+
 var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
@@ -55,6 +57,7 @@ func _physics_process(_delta):
 func pick_new_state():
 	var is_moving = velocity != Vector2.ZERO
 	var animation_name = ""
+	
 	
 	if is_moving:
 		match move_orientation:

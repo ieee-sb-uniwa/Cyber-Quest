@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://br5hx6ox76t82"]
+[gd_scene load_steps=12 format=3 uid="uid://cwtwfov8o1dyq"]
 
-[ext_resource type="Script" uid="uid://db8n6hgpeugb5" path="res://Dialogues/Level_Dialogues/Balloons/example_balloons/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://c1xw2cs8144v0" path="res://Dialogues/Level_Dialogues/Balloons/example_balloons/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 
@@ -135,7 +135,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Portrairt" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Portrait" type="TextureRect" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
@@ -143,6 +143,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 30
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

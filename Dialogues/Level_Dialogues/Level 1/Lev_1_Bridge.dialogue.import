@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cqp08s5hmaq78"
+path="res://.godot/imported/Lev_1_Bridge.dialogue-52e944af438ab2cc8622c7473d86f7fd.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level_Dialogues/Level 1/Lev_1_Bridge.dialogue"
+dest_files=["res://.godot/imported/Lev_1_Bridge.dialogue-52e944af438ab2cc8622c7473d86f7fd.tres"]
+
+[params]
+
+defaults=true
