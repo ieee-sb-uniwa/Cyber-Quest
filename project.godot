@@ -30,7 +30,7 @@ AudioPlayer="*res://Scripts/audio_player.tscn"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://Dialogues/Level_Dialogues/Balloons/example_balloons/balloon.tscn"
+runtime/balloon_path="res://Dialogues/Balloons/balloon.tscn"
 
 [display]
 

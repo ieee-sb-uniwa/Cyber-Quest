@@ -20,7 +20,10 @@ func _process(_delta):
 					area.set_label("Μάζεψε όλα τα μπλοκ για να το ανοίξεις!")
 					
 func _open_terminal():
-	get_tree().paused = true
-	var password_ui = get_tree().current_scene.get_node("HUD/PasswordUI")
+	var tree := get_tree()
+	if tree == null:
+		return
+	tree.paused = true
+	var password_ui = tree.current_scene.get_node("HUD/PasswordUI")
 	password_ui.visible = true
 	Global.can_pause_game = false

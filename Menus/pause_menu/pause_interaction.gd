@@ -13,13 +13,18 @@ func pausemenu():
 	# When in any UI, disable pausing
 	if !Global.can_pause_game:
 		return
+	if not is_inside_tree():
+		return
+	var tree := get_tree()
+	if tree == null:
+		return
 	if paused: # Unpause
 		pause_menu.hide()
 		pause_button.show()
-		get_tree().paused = false 
+		tree.paused = false 
 		paused = false
 	else:
 		pause_menu.show()
 		pause_button.hide()
-		get_tree().paused = true
+		tree.paused = true
 		paused = true

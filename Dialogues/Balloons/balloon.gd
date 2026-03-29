@@ -91,7 +91,7 @@ func _ready() -> void:
 		start()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_instance_valid(dialogue_line):
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
 
@@ -135,7 +135,7 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-	var portrait_path: String = "res://Characters/%s.png" % dialogue_line.character
+	var portrait_path: String = "res://Dialogues/Character_Sprites/%s.png" % dialogue_line.character
 	if ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
 	else:

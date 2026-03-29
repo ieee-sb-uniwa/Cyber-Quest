@@ -17,8 +17,9 @@ func _on_settings_pressed():
 	if pause_interaction and pause_interaction.has_method("pausemenu"):
 		pause_interaction.pausemenu()
 	# Ensure tree is unpaused before scene switch
-	if get_tree().paused:
-		get_tree().paused = false
+	var tree := get_tree()
+	if tree != null and tree.paused:
+		tree.paused = false
 	print("[PauseMenu] settings -> unpaused and switching to Options")
 	var options_instance = options_scene.instantiate()	# Create Options Menu
 	lvl.hide()	# Hide level
@@ -34,10 +35,12 @@ func _on_quit_pressed():
 	# Safely unpause and go back to main menu
 	if pause_interaction and pause_interaction.has_method("pausemenu"):
 		pause_interaction.pausemenu()
-	if get_tree().paused:
-		get_tree().paused = false
+	var tree := get_tree()
+	if tree != null and tree.paused:
+		tree.paused = false
 	print("[PauseMenu] quit -> unpaused and switching to Main Menu")
-	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
+	if tree != null:
+		tree.call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
 
 # THIS WILL MAYBE USED FOR MULTI-SLOT SAVING IN THE FUTURE
 func _on_save_pressed() -> void:
@@ -48,20 +51,19 @@ func _on_load_pressed() -> void:
 	# Safely unpause before opening the Load menu
 	if pause_interaction and pause_interaction.has_method("pausemenu"):
 		pause_interaction.pausemenu()
-	if get_tree().paused:
-		get_tree().paused = false
+	var tree := get_tree()
+	if tree != null and tree.paused:
+		tree.paused = false
 	print("[PauseMenu] load -> unpaused and switching to Load Menu")
-	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn")
+	if tree != null:
+		tree.call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn")
 	
 func _on_restart_pressed(): 
-	get_tree().change_scene_to_file("res://Menus/main_menu/Menu.tscn")
-	pause_interaction.pausemenu()
-	var load_instance = load_scene.instantiate()	# Create Load Menu
-	lvl.hide()	# Hide level
-	get_parent().add_sibling(load_instance)	# Add the Load Menu as sibling
-	var BacktoMenu: Button = $"../../LoadMenu/VBoxContainer2/BacktoMenu"
-	var Return: Button = $"../../LoadMenu/VBoxContainer2/ResumePlaying"
-	BacktoMenu.hide()	# Switch the Quit and Resume Buttons
-	Return.show()
-	$"../../InventoryGUI".hide()	# Hide Inv_slots
-	#get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn") ## Unused
+	# Unpause first, then switch scene. Avoid touching old-scene nodes afterwards.
+	if pause_interaction and pause_interaction.has_method("pausemenu"):
+		pause_interaction.pausemenu()
+	var tree := get_tree()
+	if tree != null and tree.paused:
+		tree.paused = false
+	if tree != null:
+		tree.call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://htt6ee2qaaht"
-path="res://.godot/imported/Ρομποτάκιος.png-2e3e442a3886fb20a441c45ab1a517cc.ctex"
+uid="uid://b55xaqs48qqna"
+path="res://.godot/imported/Ρομποτάκιος.png-826c5a145b8edef9024b30502d7f7d24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Ρομποτάκιος.png"
-dest_files=["res://.godot/imported/Ρομποτάκιος.png-2e3e442a3886fb20a441c45ab1a517cc.ctex"]
+source_file="res://Dialogues/Character_Sprites/Ρομποτάκιος.png"
+dest_files=["res://.godot/imported/Ρομποτάκιος.png-826c5a145b8edef9024b30502d7f7d24.ctex"]
 
 [params]
 
