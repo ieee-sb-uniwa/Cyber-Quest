@@ -256,7 +256,9 @@ func _input(event):
 
 # Success maintains the terminal unlocked on next interactions
 func _successful_unlock():
-	get_tree().paused = false
+	var tree := get_tree()
+	if tree != null:
+		tree.paused = false
 	Global.terminal_unlocked = true
 	get_parent().visible = false
 	Global.can_pause_game = true

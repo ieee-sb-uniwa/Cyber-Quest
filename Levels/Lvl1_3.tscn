@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://ujqijqnpc1am"]
+[gd_scene load_steps=49 format=4 uid="uid://ujqijqnpc1am"]
 
 [ext_resource type="Texture2D" uid="uid://dxf7gl3kivtry" path="res://Assets/CyberQuest_Assets/Environment/wallTop.png" id="1_lb1hv"]
 [ext_resource type="Texture2D" uid="uid://bj01ua047lde3" path="res://Assets/CyberQuest_Assets/Environment/pipes_tilemap.png" id="2_rw06k"]
@@ -25,6 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="20_fnej0"]
 [ext_resource type="PackedScene" uid="uid://bgmi0fox44as8" path="res://Scripts/objects/door/DoorToLobby.tscn" id="21_h2y18"]
 [ext_resource type="PackedScene" uid="uid://bx0a4c0nphj70" path="res://Levels/Lvl1_2.tscn" id="22_fd52h"]
+[ext_resource type="AudioStream" uid="uid://drj7u2khskkm7" path="res://Sounds/Level1_BGM.mp3" id="24_mh0kb"]
+[ext_resource type="PackedScene" uid="uid://csrq1j1uisabv" path="res://Scripts/objects/Button/button.tscn" id="25_8rcyw"]
+[ext_resource type="PackedScene" uid="uid://b6mnhntvijhb0" path="res://Dialogues/Dialogue_Area/dialogue_area.tscn" id="26_vk5yo"]
+[ext_resource type="Resource" uid="uid://chu7l3scv6r5s" path="res://Dialogues/Level_Dialogues/Level 1/Lev_1_tutorial.dialogue" id="27_2kphj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kikdx"]
 texture = ExtResource("9_r215s")
@@ -757,6 +761,9 @@ sources/6 = SubResource("TileSetAtlasSource_b6um8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vwt3a"]
 size = Vector2(383, 189)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lec1l"]
+radius = 52.6708
+
 [node name="Lvl1_storage" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
@@ -991,3 +998,29 @@ z_index = 2
 position = Vector2(1319, 402)
 target_scene = ExtResource("22_fd52h")
 target_index = 12
+
+[node name="Level1_3_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_mh0kb")
+volume_db = -25.0
+autoplay = true
+bus = &"Music"
+
+[node name="Button" parent="." instance=ExtResource("25_8rcyw")]
+position = Vector2(1377, 190)
+
+[node name="scene_start" parent="." instance=ExtResource("26_vk5yo")]
+process_mode = 3
+z_index = 25
+position = Vector2(1535, 148)
+scale = Vector2(1.5, 1.5)
+collision_mask = 2
+dialogue_resource = ExtResource("27_2kphj")
+dialogue_start = "tutorial_start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scene_start"]
+process_mode = 3
+position = Vector2(2.0504e-05, -4.76837e-06)
+shape = SubResource("CircleShape2D_lec1l")
+debug_color = Color(0.682353, 0.117647, 0, 0.396078)
+
+[connection signal="body_entered" from="scene_start" to="scene_start" method="_on_body_entered"]

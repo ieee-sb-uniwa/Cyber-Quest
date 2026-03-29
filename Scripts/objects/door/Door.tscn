@@ -1,7 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://bmvqrqjgvfwqm"]
+[gd_scene load_steps=44 format=3 uid="uid://bmvqrqjgvfwqm"]
 
 [ext_resource type="Script" uid="uid://rjh6ux0rifwj" path="res://Scripts/objects/door/door.gd" id="1_iex6k"]
 [ext_resource type="Texture2D" uid="uid://b80nj1xvld1b0" path="res://Assets/CyberQuest_Assets/Environment/Animations/External_door_spritesheet.png" id="2_wuacp"]
+[ext_resource type="AudioStream" uid="uid://hpb4j37ivlnu" path="res://Sounds/objects_SFX/door/Door_open_ (pitch -3.00 - tempo 120).mp3" id="3_yjfxq"]
+[ext_resource type="AudioStream" uid="uid://csibrqj2b6cxu" path="res://Sounds/objects_SFX/door/Door_close_ (pitch -3.00 - tempo 120).mp3" id="4_jvfnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpo7h"]
 size = Vector2(59, 82)
@@ -309,3 +311,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LoadArea"]
 position = Vector2(0, -26)
 shape = SubResource("RectangleShape2D_wuacp")
+
+[node name="Door_Open_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yjfxq")
+bus = &"SFX"
+
+[node name="Door_Clpse_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_jvfnp")
+bus = &"SFX"

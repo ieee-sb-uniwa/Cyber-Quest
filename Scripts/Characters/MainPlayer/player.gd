@@ -2,10 +2,13 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var P_collission = $CollisionShape2D
+@onready var dialogue_finder: Area2D = $Dialogue_Direction/Dialogue_Finder
 @export var inventory: Inventory
 @onready var hitbox = $Hitbox
 @export var itemHolder : ItemHolder
 @export var playerNum: int = 1
+@onready var walking_sfx: AudioStreamPlayer2D = $Walking_SFX
+
 var is_hidden:bool = false
 var move_speed = 5
 var last_animation_look_location : Vector2 = Vector2(0,0)
@@ -64,6 +67,7 @@ func _physics_process(_delta):
 func pick_new_state():
 	var is_moving = velocity != Vector2.ZERO
 	var animation_name = ""
+	
 	
 	# If we're keeping box orientation, use the appropriate animation
 	if keep_box_orientation and box_interaction_side != "":
@@ -165,6 +169,13 @@ func set_interacting_with_box(interacting: bool):
 func is_interacting() -> bool:
 	var action_name = "Interact_p" + str(playerNum)
 	return Input.is_action_pressed(action_name)
+
+func _unhandled_input(_event: InputEvent) -> void: # Για διάλογο
+	if Input.is_action_just_pressed("Dialogue_Find"): #Βλέπει αμα μπορεί να εκτελέση το διάλογο εφόσον υπάρχει το σωστό area
+		var dialogue = dialogue_finder.get_overlapping_areas()
+		if dialogue.size() > 0:
+			dialogue[0].action()
+			return
 
 func update_animation_parameters(move_input : Vector2):
 	# If we're keeping box orientation, don't update based on movement
