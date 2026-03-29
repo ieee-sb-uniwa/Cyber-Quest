@@ -4,6 +4,8 @@ extends Node2D
 @export var dash_movement:float = 700
 @export var dash_duration:float = 0.5
 @export var cooldown_time:float = 1.0
+@onready var dash_sfx: AudioStreamPlayer2D = $"../Dash_SFX"
+
 
 var _is_dashing = false
 var _cooldown_timer = 0.0
@@ -27,6 +29,7 @@ func _physics_process(_delta):
 func start_dash():
 	if _cooldown_timer <= 0 and not _is_dashing:
 		# print("dashing...")
+		dash_sfx.play()
 		var input_direction:Vector2 = player.get_movement_inputs()
 		var dash_calculation
 		if input_direction.x!=0 || input_direction.y != 0:

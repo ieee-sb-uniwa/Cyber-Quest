@@ -1,10 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://d055khlg5bjcj"]
+[gd_scene load_steps=39 format=3 uid="uid://d055khlg5bjcj"]
 
 [ext_resource type="Script" uid="uid://croxmnqu7e1ma" path="res://Scripts/Characters/MainPlayer/player.gd" id="1_4ie1l"]
 [ext_resource type="Resource" uid="uid://dma603ealk0bv" path="res://HUD/Scripts_Resources/Player_Inventory.tres" id="2_a2323"]
 [ext_resource type="Texture2D" uid="uid://cgmd2t4xkcff8" path="res://Assets/CyberQuest_Assets/Characters/Astronaut Player.png" id="3_l57x5"]
 [ext_resource type="Script" uid="uid://hdvmg1xobrfi" path="res://Scripts/Characters/MainPlayer/ItemHolder.gd" id="4_e0c3b"]
 [ext_resource type="Script" uid="uid://wve5rumyumhi" path="res://Scripts/Characters/MainPlayer/dash.gd" id="5_l57x5"]
+[ext_resource type="AudioStream" uid="uid://b2c0xkfqyywyc" path="res://Sounds/Player_SFX/Dash_75sp_(-1pitch).mp3" id="6_1q1um"]
+[ext_resource type="AudioStream" uid="uid://c6sp755r5mbk" path="res://Sounds/Player_SFX/WALKING_5sp_(-5pitch).mp3" id="7_qx8td"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l57x5"]
 atlas = ExtResource("3_l57x5")
@@ -294,3 +296,14 @@ collision_mask = 64
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_l57x5")
 debug_color = Color(0.6, 0.0901961, 0, 0.145098)
+
+[node name="SFX_Player" type="Node" parent="."]
+
+[node name="Dash_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1q1um")
+bus = &"SFX"
+
+[node name="Walking_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qx8td")
+volume_db = -5.0
+bus = &"SFX"

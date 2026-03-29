@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://egf5unoyo02w"
+path="res://.godot/imported/Lev_1_lobby.dialogue-83d2ce96a73be5cec9fa0bb1e8f8aab2.tres"
+
+[deps]
+
+source_file="res://Dialogues/Level_Dialogues/Level 1/Lev_1_lobby.dialogue"
+dest_files=["res://.godot/imported/Lev_1_lobby.dialogue-83d2ce96a73be5cec9fa0bb1e8f8aab2.tres"]
+
+[params]
+
+defaults=true

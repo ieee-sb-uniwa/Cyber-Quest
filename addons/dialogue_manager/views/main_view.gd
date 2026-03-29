@@ -6,7 +6,8 @@ const OPEN_OPEN = 100
 const OPEN_QUICK = 101
 const OPEN_CLEAR = 102
 
-const TRANSLATIONS_GENERATE_LINE_IDS = 100
+const TRANSLATIONS_GENERATE_LINE_IDS_FOR_PROJECT = 100
+const TRANSLATIONS_GENERATE_LINE_IDS_FOR_FILE = 101
 const TRANSLATIONS_SAVE_CHARACTERS_TO_CSV = 201
 const TRANSLATIONS_SAVE_TO_CSV = 202
 const TRANSLATIONS_IMPORT_FROM_CSV = 203
@@ -48,6 +49,8 @@ signal confirmation_closed()
 @onready var build_error_dialog: AcceptDialog = $BuildErrorDialog
 @onready var close_confirmation_dialog: ConfirmationDialog = $CloseConfirmationDialog
 @onready var updated_dialog: AcceptDialog = $UpdatedDialog
+@onready var generate_static_ids_confirmation_dialog: ConfirmationDialog = $GenerateStaticIdsConfirmationDialog
+
 
 # Toolbar
 @onready var new_button: Button = %NewButton
@@ -131,19 +134,15 @@ var open_buffers: Dictionary = {}
 # Which thing are we exporting translations for?
 var translation_source: TranslationSource = TranslationSource.Lines
 
-var plugin: EditorPlugin
-
 
 func _ready() -> void:
-	plugin = Engine.get_meta("DialogueManagerPlugin")
-
 	apply_theme()
 
 	# Start with nothing open
 	self.current_file_path = ""
 
 	# Set up the update checker
-	version_label.text = "v%s" % plugin.get_version()
+	version_label.text = "v%s" % DMPlugin.get_version()
 	update_button.on_before_refresh = func on_before_refresh():
 		# Save everything
 		DMSettings.set_user_value("just_refreshed", {
@@ -189,7 +188,7 @@ func _ready() -> void:
 	errors_dialog.dialog_text = DMConstants.translate(&"errors_in_script")
 
 	# Update the buffer if a file was modified externally (retains undo step)
-	Engine.get_meta("DMCache").file_content_changed.connect(_on_cache_file_content_changed)
+	DMPlugin.instance.cache_file_content_changed.connect(_on_cache_file_content_changed)
 
 	EditorInterface.get_file_system_dock().files_moved.connect(_on_files_moved)
 
@@ -205,7 +204,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not visible: return
 
 	if event is InputEventKey and event.is_pressed():
-		var shortcut: String = plugin.get_editor_shortcut(event)
+		var shortcut: String = DMPlugin.get_editor_shortcut(event)
 		match shortcut:
 			"close_file":
 				get_viewport().set_input_as_handled()
@@ -223,6 +222,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func apply_changes() -> void:
 	save_files()
+
+
+# Check if any open files have unsaved changes.
+func count_unsaved_files() -> int:
+	var count: int = 0
+	for buffer in open_buffers.values():
+		if buffer.text != buffer.pristine_text:
+			count += 1
+	return count
 
 
 # Load back to the previous buffer regardless of if it was actually saved
@@ -288,7 +296,7 @@ func open_file(path: String) -> void:
 
 
 func quick_open() -> void:
-	quick_open_files_list.files = Engine.get_meta("DMCache").get_files()
+	quick_open_files_list.files = DMCache.get_files()
 	quick_open_dialog.popup_centered()
 	quick_open_files_list.focus_filter()
 
@@ -308,7 +316,7 @@ func save_files() -> void:
 		save_file(path, false)
 
 	if saved_files.size() > 0:
-		Engine.get_meta("DMCache").mark_files_for_reimport(saved_files)
+		DMCache.mark_files_for_reimport(saved_files)
 
 
 # Save a file
@@ -364,13 +372,13 @@ func remove_file_from_open_buffers(path: String) -> void:
 
 # Apply theme colors and icons to the UI
 func apply_theme() -> void:
-	if is_instance_valid(plugin) and is_instance_valid(code_edit):
+	if is_instance_valid(code_edit):
 		var scale: float = EditorInterface.get_editor_scale()
 		var editor_settings = EditorInterface.get_editor_settings()
 		code_edit.theme_overrides = {
 			scale = scale,
 
-			background_color = editor_settings.get_setting("text_editor/theme/highlighting/background_color"),
+			background_color = Color(editor_settings.get_setting("interface/theme/base_color").blend(editor_settings.get_setting("text_editor/theme/highlighting/background_color")), 1),
 			current_line_color = editor_settings.get_setting("text_editor/theme/highlighting/current_line_color"),
 			error_line_color = editor_settings.get_setting("text_editor/theme/highlighting/mark_color"),
 
@@ -454,7 +462,8 @@ func apply_theme() -> void:
 		# Set up the translations menu
 		popup = translations_button.get_popup()
 		popup.clear()
-		popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids"), TRANSLATIONS_GENERATE_LINE_IDS)
+		popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_file"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_FILE)
+		popup.add_icon_item(get_theme_icon("Translation", "EditorIcons"), DMConstants.translate(&"generate_line_ids_for_project"), TRANSLATIONS_GENERATE_LINE_IDS_FOR_PROJECT)
 		popup.add_separator()
 		popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_characters_to_csv"), TRANSLATIONS_SAVE_CHARACTERS_TO_CSV)
 		popup.add_icon_item(get_theme_icon("FileList", "EditorIcons"), DMConstants.translate(&"save_to_csv"), TRANSLATIONS_SAVE_TO_CSV)
@@ -469,7 +478,13 @@ func apply_theme() -> void:
 		import_dialog.min_size = Vector2(600, 500) * scale
 
 
-### Helpers
+#region Helpers
+
+
+# Move the cursor to a given title in the dialogue editor
+func go_to_title(title: String, create_if_none: bool = false) -> void:
+	code_edit.go_to_title(title, create_if_none)
+	code_edit.grab_focus()
 
 
 # Refresh the open menu with the latest files
@@ -520,12 +535,10 @@ func show_build_error_dialog() -> void:
 
 # Generate translation line IDs for any line that doesn't already have one
 func generate_translations_keys() -> void:
-	var cursor: Vector2 = code_edit.get_cursor()
-	var scroll_vertical = code_edit.scroll_vertical
-	code_edit.text = DMTranslationUtilities.generate_translation_keys(code_edit.text)
-	code_edit.set_cursor(cursor)
-	code_edit.scroll_vertical = scroll_vertical
-	_on_code_edit_text_changed()
+	generate_static_ids_confirmation_dialog.title = DMConstants.translate("generate_ids.warning_title")
+	generate_static_ids_confirmation_dialog.dialog_text = DMConstants.translate("generate_ids.warning_text")
+	generate_static_ids_confirmation_dialog.ok_button_text = DMConstants.translate("generate_ids.ok_button")
+	generate_static_ids_confirmation_dialog.popup_centered()
 
 
 # Add a translation file to the project settings
@@ -587,7 +600,9 @@ func run_test_scene(from_key: String) -> void:
 	EditorInterface.play_custom_scene(test_scene_path)
 
 
-### Signals
+#endregion
+
+#region Signals
 
 
 func _on_files_moved(old_file: String, new_file: String) -> void:
@@ -667,7 +682,10 @@ func _on_insert_button_menu_id_pressed(id: int) -> void:
 
 func _on_translations_button_menu_id_pressed(id: int) -> void:
 	match id:
-		TRANSLATIONS_GENERATE_LINE_IDS:
+		TRANSLATIONS_GENERATE_LINE_IDS_FOR_FILE:
+			code_edit.text = DMTranslationUtilities.generate_static_line_ids_for_text(code_edit.text, current_file_path)
+			
+		TRANSLATIONS_GENERATE_LINE_IDS_FOR_PROJECT:
 			generate_translations_keys()
 
 		TRANSLATIONS_SAVE_CHARACTERS_TO_CSV:
@@ -760,7 +778,7 @@ func _on_save_all_button_pressed() -> void:
 
 
 func _on_find_in_files_button_pressed() -> void:
-	plugin.show_find_in_dialogue()
+	DMPlugin.show_find_in_dialogue()
 
 
 func _on_code_edit_text_changed() -> void:
@@ -790,8 +808,7 @@ func _on_code_edit_error_clicked(line_number: int) -> void:
 
 
 func _on_title_list_title_selected(title: String) -> void:
-	code_edit.go_to_title(title)
-	code_edit.grab_focus()
+	go_to_title(title)
 
 
 func _on_parse_timer_timeout() -> void:
@@ -821,7 +838,7 @@ func _on_search_and_replace_close_requested() -> void:
 
 func _on_test_button_pressed() -> void:
 	save_file(current_file_path, false)
-	Engine.get_meta("DMCache").reimport_files([current_file_path])
+	DMCache.reimport_files([current_file_path])
 
 	if errors_panel.errors.size() > 0:
 		errors_dialog.popup_centered()
@@ -852,7 +869,7 @@ func _on_support_button_pressed() -> void:
 
 
 func _on_docs_button_pressed() -> void:
-	OS.shell_open("https://github.com/nathanhoad/godot_dialogue_manager")
+	OS.shell_open("https://github.com/nathanhoad/godot_dialogue_manager/tree/v3.x")
 
 
 func _on_files_list_file_popup_menu_requested(at_position: Vector2) -> void:
@@ -867,7 +884,7 @@ func _on_files_list_file_middle_clicked(path: String):
 func _on_files_popup_menu_about_to_popup() -> void:
 	files_popup_menu.clear()
 
-	var shortcuts: Dictionary = plugin.get_editor_shortcuts()
+	var shortcuts: Dictionary = DMPlugin.get_editor_shortcuts()
 
 	files_popup_menu.add_item(DMConstants.translate(&"buffer.save"), ITEM_SAVE, OS.find_keycode_from_string(shortcuts.get("save")[0].as_text_keycode()))
 	files_popup_menu.add_item(DMConstants.translate(&"buffer.save_as"), ITEM_SAVE_AS)
@@ -945,3 +962,24 @@ func _on_banner_quick_open_pressed() -> void:
 
 func _on_banner_examples_pressed() -> void:
 	OS.shell_open("https://itch.io/c/5226650/godot-dialogue-manager-example-projects")
+
+
+func _on_generate_static_ids_confirmation_dialog_confirmed() -> void:
+	save_files()
+
+	var cursor: Vector2 = code_edit.get_cursor()
+	var scroll_vertical = code_edit.scroll_vertical
+	DMTranslationUtilities.generate_static_line_ids_for_project()
+	for file_path: String in open_buffers:
+		var buffer: Dictionary = open_buffers.get(file_path)
+		buffer.text = FileAccess.get_file_as_string(file_path)
+		buffer.pristine_text = buffer.text
+
+		if file_path == current_file_path:
+			code_edit.text = buffer.text
+	code_edit.set_cursor(cursor)
+	code_edit.scroll_vertical = scroll_vertical
+	_on_code_edit_text_changed()
+
+
+#endregion

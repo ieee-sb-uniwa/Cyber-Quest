@@ -3,37 +3,29 @@ class_name DMTranslationUtilities extends RefCounted
 
 
 ## Generate translation keys from some text.
-static func generate_translation_keys(text: String) -> String:
+static func generate_static_line_ids_for_project() -> void:
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	rng.randomize()
 
+	for file_path: String in DMCache.get_files():
+		var text: String = FileAccess.get_file_as_string(file_path)
+		
+		text = generate_static_line_ids_for_text(text, file_path)
+		
+		var file: FileAccess = FileAccess.open(file_path, FileAccess.WRITE)
+		file.store_string(text)
+		file.close()
+
+
+## Generate static line IDs for some text.
+static func generate_static_line_ids_for_text(text: String, file_path: String) -> String:
 	var lines: PackedStringArray = text.split("\n")
-
-	var key_regex = RegEx.new()
-	key_regex.compile("\\[ID:(?<key>.*?)\\]")
-
 	var compiled_lines: Dictionary = DMCompiler.compile_string(text, "").lines
 
-	# Make list of known keys
-	var known_keys = {}
-	for i in range(0, lines.size()):
-		var line = lines[i]
-		var found = key_regex.search(line)
-		if found:
-			var translatable_text: String = ""
-			var l = line.replace(found.strings[0], "").strip_edges().strip_edges()
-			if l.begins_with("- "):
-				translatable_text = DMCompiler.extract_translatable_string(l)
-			elif ":" in l:
-				translatable_text = l.split(":")[1]
-			else:
-				translatable_text = l
-			known_keys[found.strings[found.names.get("key")]] = translatable_text
-
 	# Add in any that are missing
-	for i in lines.size():
-		var line = lines[i]
-		var l = line.strip_edges()
+	for i: int in lines.size():
+		var line: String = lines[i]
+		var l: String = line.strip_edges()
 
 		if not [DMConstants.TYPE_DIALOGUE, DMConstants.TYPE_RESPONSE].has(DMCompiler.get_line_type(l)): continue
 		if not compiled_lines.has(str(i)): continue
@@ -46,37 +38,21 @@ static func generate_translation_keys(text: String) -> String:
 		else:
 			translatable_text = l.substr(l.find(":") + 1)
 
-		var key: String = ""
-		if known_keys.values().has(translatable_text):
-			key = known_keys.find_key(translatable_text)
-		else:
-			var regex: DMCompilerRegEx = DMCompilerRegEx.new()
-			if DMSettings.get_setting(DMSettings.USE_UUID_ONLY_FOR_IDS, false):
-				# Generate UUID only
-				var uuid = str(randi() % 1000000).sha1_text().substr(0, 12)
-				key = uuid.to_upper()
-			else:
-				# Generate text prefix + hash
-				var prefix_length = DMSettings.get_setting(DMSettings.AUTO_GENERATED_ID_PREFIX_LENGTH, 30)
-				key = regex.ALPHA_NUMERIC.sub(translatable_text.strip_edges(), "_", true).substr(0, prefix_length)
-				if key.begins_with("_"):
-					key = key.substr(1)
-				if key.ends_with("_"):
-					key = key.substr(0, key.length() - 1)
-
-				# Make sure key is unique
-				var hashed_key: String = key + "_" + str(randi() % 1000000).sha1_text().substr(0, 6)
-				while hashed_key in known_keys and translatable_text != known_keys.get(hashed_key):
-					hashed_key = key + "_" + str(randi() % 1000000).sha1_text().substr(0, 6)
-				key = hashed_key.to_upper()
-
+		var key: String = _generate_id(file_path)
+		while key in DMCache.known_static_ids:
+			key = _generate_id(file_path)
 		line = line.replace("\\n", "!NEWLINE!")
 		translatable_text = translatable_text.replace("\n", "!NEWLINE!")
 		lines[i] = line.replace(translatable_text, translatable_text + " [ID:%s]" % [key]).replace("!NEWLINE!", "\\n")
 
-		known_keys[key] = translatable_text
+		DMCache.known_static_ids[key] = file_path
 
 	return "\n".join(lines)
+
+
+## Get a random-ish ID for a line.
+static func _generate_id(file_path: String) -> String:
+	return (file_path.sha1_text().substr(0, 6) + "_" + str(randi() % 1000000).sha1_text().substr(0, 6)).to_upper()
 
 
 ## Export dialogue and responses to CSV.
@@ -171,7 +147,7 @@ static func export_translations_to_csv(to_path: String, text: String, dialogue_p
 		if character_column > -1:
 			line_to_save[character_column] = "(response)" if line.type == DMConstants.TYPE_RESPONSE else line.character
 		if notes_column > -1:
-			line_to_save[notes_column] = line.notes
+			line_to_save[notes_column] = line.get("notes", "")
 
 		lines_to_save.append(line_to_save)
 

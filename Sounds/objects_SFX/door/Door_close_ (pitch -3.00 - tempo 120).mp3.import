@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csibrqj2b6cxu"
+path="res://.godot/imported/Door_close_ (pitch -3.00 - tempo 120).mp3-15d7381e37e94c709a4483fbfbae49ac.mp3str"
+
+[deps]
+
+source_file="res://Sounds/objects_SFX/door/Door_close_ (pitch -3.00 - tempo 120).mp3"
+dest_files=["res://.godot/imported/Door_close_ (pitch -3.00 - tempo 120).mp3-15d7381e37e94c709a4483fbfbae49ac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

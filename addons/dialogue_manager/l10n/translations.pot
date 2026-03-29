@@ -98,7 +98,19 @@ msgstr ""
 msgid "insert.end_dialogue"
 msgstr ""
 
-msgid "generate_line_ids"
+msgid "generate_line_ids_for_project"
+msgstr ""
+
+msgid "generate_line_ids_for_file"
+msgstr ""
+
+msgid "generate_ids.warning_title"
+msgstr ""
+
+msgid "generate_ids.warning_text"
+msgstr ""
+
+msgid "generate_ids.ok_button"
 msgstr ""
 
 msgid "use_uuid_only_for_ids"
@@ -123,6 +135,9 @@ msgid "confirm_close.save"
 msgstr ""
 
 msgid "confirm_close.discard"
+msgstr ""
+
+msgid "confirm_n_unsaved_files"
 msgstr ""
 
 msgid "buffer.save"

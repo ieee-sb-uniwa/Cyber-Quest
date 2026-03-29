@@ -17,11 +17,11 @@ var GOTO_REGEX: RegEx = RegEx.create_from_string("=><? (?<goto>.*)")
 var INLINE_RANDOM_REGEX: RegEx = RegEx.create_from_string("\\[\\[(?<options>.*?)\\]\\]")
 var INLINE_CONDITIONALS_REGEX: RegEx = RegEx.create_from_string("\\[if (?<condition>.+?)\\](?<body>.*?)\\[\\/if\\]")
 
+var IMAGE_TAGS_REGEX: RegEx = RegEx.create_from_string("\\[img.*?\\](?<path>.+?)\\[\\/img\\]")
+
 var TAGS_REGEX: RegEx = RegEx.create_from_string("\\[#(?<tags>.*?)\\]")
 
 var REPLACEMENTS_REGEX: RegEx = RegEx.create_from_string("{{(.*?)}}")
-
-var ALPHA_NUMERIC: RegEx = RegEx.create_from_string("[^a-zA-Z0-9\\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Cyrillic}]+")
 
 var TOKEN_DEFINITIONS: Dictionary = {
 	DMConstants.TOKEN_FUNCTION: RegEx.create_from_string("^[a-zA-Z_\\p{Emoji_Presentation}\\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Cyrillic}][a-zA-Z_0-9\\p{Emoji_Presentation}\\p{Han}\\p{Katakana}\\p{Hiragana}\\p{Cyrillic}]*\\("),
