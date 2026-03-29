@@ -47,6 +47,8 @@ func unlock_inventory_for_level(level: int):
 func sync_with_player_data():
 	var player_data = get_node("/root/PlayerData")  # Adjust path as needed
 	if player_data:
+		# Clear inventory
+		clear_inventory()
 		for i in range(1, player_data.inv_slot + 1):
 			if i <= LEVEL_TO_KEYBOARD.size():
 				unlock_inventory_for_level(i)
