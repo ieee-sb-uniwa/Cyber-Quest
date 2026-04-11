@@ -58,6 +58,14 @@ func _drop_and_disable_passblocks(body : Node2D):
 	
 	# Drop items at the dropout zone position (isDelivered=true)
 	body.clear_all_items(Vector2(global_position.x, global_position.y-25))
+
+	# Update global counters so the player can pick up new blocks
+	var count = items_to_drop.size()
+	Global.blocks_picked -= count
+	if body.is_in_group("MainPlayer"):
+		Global.player_blocks[0] -= count
+	elif body.is_in_group("SecondPlayer"):
+		Global.player_blocks[1] -= count
 	
 	# print("After clear_all_items, player has ", body.get_all_items().size(), " items")
 	
