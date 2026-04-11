@@ -185,13 +185,13 @@ func save_game() -> void:
 	saveData.save_game()
 	
 func get_visible_pri_rules_text() -> String:
-	var text := "Ακολούθηε του παρακάτω κανόνες\n"
+	var text = ""
 	if terminal_ui_part.num:
 		for i in range(1, 3):
-			text += "\n•" + pri_rules["prule" + str(i)]["text"]
+			text += pri_rules["prule" + str(i)]["text"]
 	elif terminal_ui_part.letters:
 		for i in range(3, 7):
-			text += "\n• " + pri_rules["prule" + str(i)]["text"]
+			text += "\n" + pri_rules["prule" + str(i)]["text"]
 	elif terminal_ui_part.symbols:
-		text += "\n• " + pri_rules["prule7"]["text"]
+		text += "\n" + pri_rules["prule7"]["text"]
 	return text
