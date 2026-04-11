@@ -188,10 +188,10 @@ func get_visible_pri_rules_text() -> String:
 	var text = ""
 	if terminal_ui_part.num:
 		for i in range(1, 3):
-			text += pri_rules["prule" + str(i)]["text"]
+			text += pri_rules["prule" + str(i)]["text"] + "\n"
 	elif terminal_ui_part.letters:
 		for i in range(3, 7):
-			text += "\n" + pri_rules["prule" + str(i)]["text"]
+			text += pri_rules["prule" + str(i)]["text"] + "\n"
 	elif terminal_ui_part.symbols:
-		text += "\n" + pri_rules["prule7"]["text"]
+		text += pri_rules["prule7"]["text"]
 	return text

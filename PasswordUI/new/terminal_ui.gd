@@ -117,6 +117,9 @@ func setup_terminal():
 
 # Terminal activation
 func _on_visibility_changed():
+	if not is_visible_in_tree():
+		input_handler.reset_modifiers()
+		return
 	var label = get_node(terminal_label)
 
 	label.bbcode_enabled = true
@@ -174,6 +177,8 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 
 # Interactions through numpad
 func _on_button_pressed(button_name: String):
+	if not is_visible_in_tree():
+		return
 	if input_finalized:
 		return
 
@@ -276,6 +281,8 @@ func _on_shift_toggled(button_pressed: bool):
 
 # Confirm works upon all Enter buttons and on-screen confirm button
 func _input(event):
+	if not is_visible_in_tree():
+		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
 		_successful_unlock()
 	
@@ -304,6 +311,8 @@ func _is_character_allowed(character: String) -> bool:
 
 # ADDED: Handle physical keyboard input
 func _on_physical_key_pressed(key_value: String, _key_type: String):
+	if not is_visible_in_tree():
+		return
 	if input_finalized:
 		return
 	

@@ -33,6 +33,10 @@ const SHIFTED_SYMBOLS = {
 }
 
 func _input(event):
+	if not get_parent().is_visible_in_tree():
+		return
+	if get_parent().hasNum:
+		return
 	if event is InputEventKey and event.pressed:
 		# Track shift key state
 		if event.keycode == KEY_SHIFT:

@@ -474,6 +474,8 @@ grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
 visible = false
+hasNum = true
+hasSymbols = false
 
 [node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("19_bolj5")]
 
