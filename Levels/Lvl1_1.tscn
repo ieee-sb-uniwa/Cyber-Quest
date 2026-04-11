@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://kwyhqhtwmqjq" path="res://Scripts/objects/DashTutorial/DashCheck.gd" id="15_s2f44"]
 [ext_resource type="PackedScene" uid="uid://d13em5756fc6e" path="res://Scripts/objects/Boxes/move_box.tscn" id="15_subb7"]
 [ext_resource type="PackedScene" uid="uid://xy7gn3icim7w" path="res://Scripts/objects/PassBlock/PassDropoutZone.tscn" id="18_1lo17"]
-[ext_resource type="PackedScene" uid="uid://r21wg5i6yxvu" path="res://PasswordUI/new/Num_UI.tscn" id="18_j1jna"]
+[ext_resource type="PackedScene" uid="uid://bwsxh7ax4nm1x" path="res://PasswordUI/new/TerminalUI.tscn" id="18_j1jna"]
 [ext_resource type="PackedScene" uid="uid://blsr6rr0bjrhk" path="res://HUD/scenes/PassblockCounter.tscn" id="19_bolj5"]
 [ext_resource type="AudioStream" uid="uid://drj7u2khskkm7" path="res://Sounds/Level1_BGM.mp3" id="22_s2f44"]
 [ext_resource type="PackedScene" uid="uid://byupai31xjffa" path="res://Scripts/Characters/MainPlayer/spawn_point.tscn" id="23_gvoy2"]
@@ -474,6 +474,8 @@ grow_vertical = 0
 
 [node name="PasswordUI" parent="HUD" instance=ExtResource("18_j1jna")]
 visible = false
+hasNum = true
+hasSymbols = false
 
 [node name="PassblockCounter_tscn" parent="HUD" instance=ExtResource("19_bolj5")]
 

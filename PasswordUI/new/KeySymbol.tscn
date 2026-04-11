@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckv28cidycc32"]
+
+[ext_resource type="Texture2D" uid="uid://c7mptf2exqjwh" path="res://Assets/UI/NewUI/Empty Key_symbols.png" id="1_5iv1b"]
+[ext_resource type="Script" uid="uid://bbtip8ksaspj6" path="res://PasswordUI/new/key_letter.gd" id="2_y1203"]
+[ext_resource type="FontFile" uid="uid://cwmdkbnqioicu" path="res://Assets/UI/NewUI/Aka-AcidGR-Everyday-burrito.ttf" id="3_y1203"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5iv1b"]
+
+[node name="KeySymbol" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5iv1b")
+icon = ExtResource("1_5iv1b")
+flat = true
+script = ExtResource("2_y1203")
+
+[node name="KeyLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 41.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("3_y1203")

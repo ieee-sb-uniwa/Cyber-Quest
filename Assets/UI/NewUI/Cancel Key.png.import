@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f1qm3ya6n0ys"
-path="res://.godot/imported/Screenshot.png-d465504d9ed6966a5d882e3be16fa394.ctex"
+uid="uid://bt1dt17u5hbdk"
+path="res://.godot/imported/Cancel Key.png-c5fb557228b0bc0ea317105a6710b056.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Onscreen-Keyboard/Screenshot.png"
-dest_files=["res://.godot/imported/Screenshot.png-d465504d9ed6966a5d882e3be16fa394.ctex"]
+source_file="res://Assets/UI/NewUI/Cancel Key.png"
+dest_files=["res://.godot/imported/Cancel Key.png-c5fb557228b0bc0ea317105a6710b056.ctex"]
 
 [params]
 

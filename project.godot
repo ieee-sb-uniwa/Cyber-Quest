@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cyber Quest Game"
-run/main_scene="uid://btssi2ymkf40y"
+run/main_scene="uid://bwsxh7ax4nm1x"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SpawnManager="*res://Scripts/Characters/MainPlayer/SpawnManager.gd"
 PlayerData="*res://Menus/main_menu/PlayerData.gd"
 AudioPlayer="*res://Scripts/audio_player.tscn"
+KeyboardLayouts="*res://PasswordUI/new/keyboard_layouts.gd"
 
 [dialogue_manager]
 
