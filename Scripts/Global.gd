@@ -19,8 +19,15 @@ var isTutorial: bool
 var canExitLevel: bool = false
 var can_pause_game: bool = true
 
-var lobby_doors_open: Array 
+var lobby_doors_open: Array
 var terminal_unlocked: bool = false
+
+# Keyboard mode for the current terminal
+var terminal_ui_part := {
+	"num": false,
+	"letters": false,
+	"symbols": false,
+}
 
 enum MOVE_ORIENTATION {LEFT, RIGHT, UP, DOWN, EMPTY}
 enum INTERACTION_STATUS{AVAILABLE, INTERACTED, OCCUPIED, EMPTY}
@@ -36,39 +43,21 @@ var user1 := "" # Player name 1
 var user2 := "" # Player name 2
 var date_of_birth : Array = []
 var pri_rules := {
-	"prule1": "Μην βάλεις την ημερομηνία γέννησής σου.",
-	"prule2": "Μήκος κωδικού τουλάχιστον 8 ψηφία.",
-	"prule3": "Μην βάλεις το όνομά σου.",
-	"prule4": "Βάλε τουλάχιστον ένα κεφαλαίο γράμμα.",
-	"prule5": "Βάλε τουλάχιστον ένα πεζό γράμμα.",
-	"prule6": "Βάλε τουλάχιστον έναν αριθμό.",
-	"prule7": "Βάλε τουλάχιστον ένα ειδικό σύμβολο."
+	"prule1": {"text": "Μην βάλεις την ημερομηνία γέννησής σου.", "visible": false},
+	"prule2": {"text": "Μήκος κωδικού τουλάχιστον 8 ψηφία.", "visible": false},
+	"prule3": {"text": "Μην βάλεις το όνομά σου.", "visible": false},
+	"prule4": {"text": "Βάλε τουλάχιστον ένα κεφαλαίο γράμμα.", "visible": false},
+	"prule5": {"text": "Βάλε τουλάχιστον ένα πεζό γράμμα.", "visible": false},
+	"prule6": {"text": "Βάλε τουλάχιστον έναν αριθμό.", "visible": false},
+	"prule7": {"text": "Βάλε τουλάχιστον ένα ειδικό σύμβολο.", "visible": false},
 }
 var sec_rules := {
-	"srule1": "2 συνεχόμενα νούμερα να μην είναι ίδια.",
-	"srule2": "2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα.",
-	"srule3": "2 συνεχόμενα γράμματα να μην είναι ίδια.",
-	"srule4": "2 συνεχόμενα γράμματα να μην είναι σε σειρά.",
-	"srule5": "Να μην υπάρχουν 3 συνεχόμενοι αριθμοί.",
-	"srule6": "Να μην υπάρχουν 3 συνεχόμενα ειδικά σύμβολα."
-}
-var visible_pri_rules := {
-	"prule1": false,
-	"prule2": false,
-	"prule3": false,
-	"prule4": false,
-	"prule5": false,
-	"prule6": false,
-	"prule7": false
-}
-
-var visible_sec_rules := {
-	"srule1": false,
-	"srule2": false,
-	"srule3": false,
-	"srule4": false,
-	"srule5": false,
-	"srule6": false
+	"srule1": {"text": "2 συνεχόμενα νούμερα να μην είναι ίδια.", "visible": false},
+	"srule2": {"text": "2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα.", "visible": false},
+	"srule3": {"text": "2 συνεχόμενα γράμματα να μην είναι ίδια.", "visible": false},
+	"srule4": {"text": "2 συνεχόμενα γράμματα να μην είναι σε σειρά.", "visible": false},
+	"srule5": {"text": "Να μην υπάρχουν 3 συνεχόμενοι αριθμοί.", "visible": false},
+	"srule6": {"text": "Να μην υπάρχουν 3 συνεχόμενα ειδικά σύμβολα.", "visible": false},
 }
 
 func _ready():
@@ -192,3 +181,10 @@ func load_game() -> void:
 
 func save_game() -> void:
 	saveData.save_game()
+	
+func get_visible_pri_rules_text() -> String:
+	var text := "Βασικοί Κανόνες:\n"
+	for key in pri_rules.keys():
+		if pri_rules[key]["visible"]:
+			text += "\n• " + pri_rules[key]["text"]
+	return text

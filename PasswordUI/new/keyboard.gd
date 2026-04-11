@@ -40,12 +40,12 @@ func _ready():
 	var secondary_label_node = get_node(secondary_label)
 	var sec_text = "Χρήσιμες Πληροφορίες:\n\n"
 
-	Global.visible_pri_rules["prule1"]=true
-	Global.visible_pri_rules["prule2"]=true
+	Global.pri_rules["prule1"]["visible"] = true
+	Global.pri_rules["prule2"]["visible"] = true
 
 	for key in Global.pri_rules.keys():
-		if Global.visible_pri_rules[key]:
-			text += Global.pri_rules[key] + "\n\n"
+		if Global.pri_rules[key]["visible"]:
+			text += Global.pri_rules[key]["text"] + "\n\n"
 
 	primary_label_node.text = text
 	
@@ -215,24 +215,24 @@ func _generate_rule_feedback() -> String:
 
 	# Primary rules violation gets shown on terminal
 	if prule1_failed:
-		errors.append(Global.pri_rules["prule1"])
+		errors.append(Global.pri_rules["prule1"]["text"])
 	if prule2_failed:
-		errors.append(Global.pri_rules["prule2"])
+		errors.append(Global.pri_rules["prule2"]["text"])
 
 	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
 	if srule1_failed:
-		errors.append(Global.sec_rules["srule1"])
-		Global.visible_sec_rules["srule1"] = true
+		errors.append(Global.sec_rules["srule1"]["text"])
+		Global.sec_rules["srule1"]["visible"] = true
 	if srule2_failed:
-		errors.append(Global.sec_rules["srule2"])
-		Global.visible_sec_rules["srule2"] = true
+		errors.append(Global.sec_rules["srule2"]["text"])
+		Global.sec_rules["srule2"]["visible"] = true
 
 	# Tablet update after secondary rule failure
 	var info_label = get_node(secondary_label)
 	var sec_text = "Χρήσιμες Πληροφορίες:\n"
 	for key in Global.sec_rules.keys():
-		if Global.visible_sec_rules[key]:
-			sec_text += "\n" + Global.sec_rules[key] + "\n"
+		if Global.sec_rules[key]["visible"]:
+			sec_text += "\n" + Global.sec_rules[key]["text"] + "\n"
 	info_label.text = sec_text
 	tablet_text = sec_text
 

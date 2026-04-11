@@ -6,9 +6,8 @@ var screen_log := ""
 var welcome := "Καλώς Ήρθατε!\nΕισάγετε κωδικό:\n>"
 var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.\n"
 
-# Paths label- terminal, primary- basic rules, secondary- extra rules
+# Paths label- terminal, secondary- extra rules
 var label_path := "Screen/RichTextLabel1"
-var primary_label := "Primary/RichTextLabel2"
 var secondary_label := "Secondary/RichTextLabel3"
 
 # Variables for successful unlock and checks
@@ -30,8 +29,14 @@ var input_handler: keyboard_input_handler
 @export var hasNum : bool = false
 @export var hasLetters : bool = false
 @export var hasSymbols : bool = true
+@export var rules_dialogue: DialogueResource
+@onready var balloon_node = $DialogueBalloon
 
 func _ready():
+	Global.terminal_ui_part["num"] = hasNum
+	Global.terminal_ui_part["letters"] = hasLetters
+	Global.terminal_ui_part["symbols"] = hasSymbols
+
 	# ADDED: Initialize input handler
 	input_handler = keyboard_input_handler.new()
 	add_child(input_handler)
@@ -49,26 +54,16 @@ func _ready():
 	var dob_var1 = generate_dob_variations(Global.dob1)
 	var dob_var2 = generate_dob_variations(Global.dob2)
 	Global.date_of_birth = dob_var1+dob_var2
-	# print(Global.date_of_birth) #for debugging
-
-	# Show only visible primary rules from the start
-	var primary_label_node = get_node(primary_label)
-	var text = "Βασικοί Κανόνες:\n\n"
 
 	var secondary_label_node = get_node(secondary_label)
 	var sec_text = "Χρήσιμες Πληροφορίες:\n\n"
-
-	Global.visible_pri_rules["prule1"]=true
-	Global.visible_pri_rules["prule2"]=true
-
-	for key in Global.pri_rules.keys():
-		if Global.visible_pri_rules[key]:
-			text += Global.pri_rules[key] + "\n\n"
-
-	primary_label_node.text = text
-	
 	secondary_label_node.text = sec_text
 	tablet_text = sec_text
+
+	Global.pri_rules["prule1"]["visible"] = true
+	Global.pri_rules["prule2"]["visible"] = true
+	if is_instance_valid(rules_dialogue):
+		balloon_node.start(rules_dialogue, "show_rules", [])
 
 	shift_toggle.toggled.connect(_on_shift_toggled)
 	setup_terminal()
@@ -173,6 +168,8 @@ func _on_button_pressed(button_name: String):
 				if current_input.length() > 0:
 					current_input = current_input.substr(0, current_input.length() - 1)
 			"KeyboardContainer/Enter":
+				if current_input.is_empty():
+					return
 				_on_confirm_pressed()
 				return
 			_:
@@ -264,24 +261,24 @@ func _generate_rule_feedback() -> String:
 
 	# Primary rules violation gets shown on terminal
 	if prule1_failed:
-		errors.append(Global.pri_rules["prule1"])
+		errors.append(Global.pri_rules["prule1"]["text"])
 	if prule2_failed:
-		errors.append(Global.pri_rules["prule2"])
+		errors.append(Global.pri_rules["prule2"]["text"])
 
 	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
 	if srule1_failed:
-		errors.append(Global.sec_rules["srule1"])
-		Global.visible_sec_rules["srule1"] = true
+		errors.append(Global.sec_rules["srule1"]["text"])
+		Global.sec_rules["srule1"]["visible"] = true
 	if srule2_failed:
-		errors.append(Global.sec_rules["srule2"])
-		Global.visible_sec_rules["srule2"] = true
+		errors.append(Global.sec_rules["srule2"]["text"])
+		Global.sec_rules["srule2"]["visible"] = true
 
 	# Tablet update after secondary rule failure
 	var info_label = get_node(secondary_label)
 	var sec_text = "Χρήσιμες Πληροφορίες:\n"
 	for key in Global.sec_rules.keys():
-		if Global.visible_sec_rules[key]:
-			sec_text += "\n" + Global.sec_rules[key] + "\n"
+		if Global.sec_rules[key]["visible"]:
+			sec_text += "\n" + Global.sec_rules[key]["text"] + "\n"
 	info_label.text = sec_text
 	tablet_text = sec_text
 
@@ -316,7 +313,7 @@ func _rule_breach_regex(password: String, pattern: String) -> bool:
 	return regex.search(password) == null
 
 # ADDED: Handle physical keyboard input
-func _on_physical_key_pressed(key_value: String, key_type: String):
+func _on_physical_key_pressed(key_value: String, _key_type: String):
 	if input_finalized:
 		return
 	
@@ -333,6 +330,8 @@ func _on_physical_key_pressed(key_value: String, key_type: String):
 			"Cancel":
 				current_input = ""
 			"✔":
+				if current_input.is_empty():
+					return
 				_on_confirm_pressed()
 				return
 			_:
