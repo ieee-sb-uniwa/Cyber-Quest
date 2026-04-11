@@ -1,7 +1,7 @@
 # PasswordValidator.gd
 extends RefCounted
 
-class_name password_validatorold
+class_name PasswordValidatorOld
 
 # Variables to track discovered secondary rules
 var visible_sec_rules: Dictionary = {
