@@ -32,8 +32,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_ookdm")
-hasNum = true
-hasSymbols = false
 rules_dialogue = ExtResource("2_dq1b1")
 
 [node name="Screen" type="TextureRect" parent="."]
@@ -52,7 +50,7 @@ offset_left = 52.0
 offset_top = 118.0
 offset_right = 841.0
 offset_bottom = 567.0
-theme_override_colors/default_color = Color(0.0470588, 0.772549, 0.8, 1)
+theme_override_colors/default_color = Color(0.152941, 0.760784, 0.854902, 1)
 theme_override_fonts/normal_font = ExtResource("3_3jkiv")
 
 [node name="DialogueBalloon" parent="." instance=ExtResource("11_baloon")]

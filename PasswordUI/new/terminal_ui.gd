@@ -7,15 +7,14 @@ var welcome := "Καλώς Ήρθατε!\nΕισάγετε κωδικό:\n>"
 var exit_msg := "Το τερματικό έχει ήδη ξεκλειδωθεί.\nΠατήστε Enter για έξοδο.\n"
 
 # Paths label- terminal, secondary- extra rules
-var label_path := "Screen/RichTextLabel1"
-var secondary_label := "Secondary/RichTextLabel3"
+var terminal_label := "Screen/RichTextLabel1"
+var tablet_label := "Secondary/RichTextLabel3"
 
 # Variables for successful unlock and checks
 var input_finalized := false
 var success := false
 var message_done := false
 var showing_exit_message := false
-var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 
 @onready var keyboard_manager = $KeyboardContainer/KeyboardLayout
 @onready var shift_toggle: Button = $KeyboardContainer/ShiftToggle
@@ -23,8 +22,8 @@ var tablet_text = "Χρήσιμες Πληροφορίες:\n"
 @onready var letters_bg: Control = $KeyboardContainer/LettersBackground
 @onready var symbols_bg: Control = $KeyboardContainer/SymbolsBackground
 
-# ADDED: Input handler for physical keyboard
 var input_handler: keyboard_input_handler
+var password_validator: PasswordValidator
 
 @export var hasNum : bool = false
 @export var hasLetters : bool = false
@@ -33,11 +32,17 @@ var input_handler: keyboard_input_handler
 @onready var balloon_node = $DialogueBalloon
 
 func _ready():
+	# Initialize password validator
+	password_validator = PasswordValidator.new()
+	
+	# Initialize global data
 	Global.terminal_ui_part["num"] = hasNum
 	Global.terminal_ui_part["letters"] = hasLetters
 	Global.terminal_ui_part["symbols"] = hasSymbols
+	Global.date_of_birth = generate_dob_variations(Global.dob1) + generate_dob_variations(Global.dob2)
+	Global.usernames = [Global.user1.to_lower(), Global.user2.to_lower()]
 
-	# ADDED: Initialize input handler
+	# Initialize input handler
 	input_handler = keyboard_input_handler.new()
 	add_child(input_handler)
 	input_handler.key_entered.connect(_on_physical_key_pressed)
@@ -48,56 +53,71 @@ func _ready():
 		if child is Button:
 			child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
 
+	shift_toggle.toggled.connect(_on_shift_toggled)
+
 	if is_visible_in_tree():
 		call_deferred("_on_visibility_changed")
 
-	var dob_var1 = generate_dob_variations(Global.dob1)
-	var dob_var2 = generate_dob_variations(Global.dob2)
-	Global.date_of_birth = dob_var1+dob_var2
-
-	var secondary_label_node = get_node(secondary_label)
-	var sec_text = "Χρήσιμες Πληροφορίες:\n\n"
-	secondary_label_node.text = sec_text
-	tablet_text = sec_text
-
-	Global.pri_rules["prule1"]["visible"] = true
-	Global.pri_rules["prule2"]["visible"] = true
 	if is_instance_valid(rules_dialogue):
 		balloon_node.start(rules_dialogue, "show_rules", [])
-
-	shift_toggle.toggled.connect(_on_shift_toggled)
+		
 	setup_terminal()
+	setup_tablet()
+	
+
+func setup_tablet():
+	var info_label = get_node(tablet_label)
+	var text = "Κύριοι Κανόνες:\n"
+	var range_end = 3 if hasLetters else 8 if hasSymbols else 1
+	for i in range(1, range_end):
+		var rule = Global.pri_rules["prule" + str(i)]
+		if rule["visible"]:
+			text += "\n• " + rule["text"]	
+
+	if text == "Κύριοι Κανόνες:\n":
+		text = ""
+	else:
+		text += "\n\n"
+
+	text += "Δευτερεύοντοι Κανόνες:\n"
+	for key in Global.sec_rules:
+		var rule = Global.sec_rules[key]
+		if rule["visible"]:
+			text += "\n• " + rule["text"]
+
+	info_label.text = text
+
 
 func setup_terminal():
 
-	numpad_bg.visible = false
+	# True for all parts
+	numpad_bg.visible = true
 	letters_bg.visible = false
 	symbols_bg.visible = false
-	#To be swapped with inventory slots
+
 	if hasNum:
 		keyboard_manager.setup_level_layouts(1)
 		$KeyboardContainer/ShiftToggle.visible = false
-		numpad_bg.visible = true
-		print(PlayerData.level)
-			
+		$KeyboardContainer/ShiftToggle.disabled = true
 	elif hasLetters:
 		keyboard_manager.setup_level_layouts(2)
 		$KeyboardContainer/ShiftToggle.visible = true
-		numpad_bg.visible = true
+		$KeyboardContainer/ShiftToggle.disabled = false
 		letters_bg.visible = true
-		print(PlayerData.level)
-			
+		for i in range(1, 6):
+			Global.pri_rules["prule" + str(i)]["visible"] = true
 	elif hasSymbols:
 		keyboard_manager.setup_level_layouts(3)
 		$KeyboardContainer/ShiftToggle.visible = true
-		numpad_bg.visible = true
+		$KeyboardContainer/ShiftToggle.disabled = false
 		letters_bg.visible = true
 		symbols_bg.visible = true
-		print(PlayerData.level)
+		for i in range(1, 7):
+			Global.pri_rules["prule" + str(i)]["visible"] = true
 
 # Terminal activation
 func _on_visibility_changed():
-	var label = get_node(label_path)
+	var label = get_node(terminal_label)
 
 	label.bbcode_enabled = true
 	label.scroll_active = true
@@ -116,7 +136,7 @@ func _on_visibility_changed():
 
 # Welcome message animation
 func _start_welcome_animation() -> void:
-	var label = get_node(label_path)
+	var label = get_node(terminal_label)
 
 	await _type_text_animation(welcome, label, true)
 	screen_log = welcome
@@ -126,7 +146,7 @@ func _start_welcome_animation() -> void:
 # Exit message animation
 func _start_exit_animation() -> void:
 	message_done = false
-	var label = get_node(label_path)
+	var label = get_node(terminal_label)
 	label.text = ""
 
 	await _type_text_animation(exit_msg, label, true)
@@ -173,9 +193,11 @@ func _on_button_pressed(button_name: String):
 				_on_confirm_pressed()
 				return
 			_:
-				current_input += button_name
+				var keyboard_char = button_name.trim_prefix("KeyboardContainer/")
+				if _is_character_allowed(keyboard_char):
+					current_input += keyboard_char
 
-	var label = get_node(label_path)
+	var label = get_node(terminal_label)
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
 
@@ -190,10 +212,16 @@ func _on_confirm_pressed():
 		return
 
 	if not success:
-		var feedback := _generate_rule_feedback()
+		var validation_result = password_validator.generate_rule_feedback(current_input, hasNum, hasLetters, hasSymbols)
+		var feedback = validation_result[0]
+		success = validation_result[1]
+		
 		screen_log += current_input + "\n" + feedback
+		
+		# Update tablet with visible rules
+		setup_tablet()
 
-		var label = get_node(label_path)
+		var label = get_node(terminal_label)
 		label.text = screen_log
 		label.scroll_to_line(label.get_line_count() - 1)
 
@@ -201,6 +229,7 @@ func _on_confirm_pressed():
 		input_finalized = false
 	else:
 		_successful_unlock()
+
 
 		
 # DOB variations function
@@ -241,57 +270,9 @@ func generate_dob_variations(dob_str: String) -> Array:
 	return variations
 
 func _on_shift_toggled(button_pressed: bool):
+	if hasNum:
+		return
 	keyboard_manager.is_uppercase = button_pressed
-
-# On screen feedback after check
-func _generate_rule_feedback() -> String:
-	var password := current_input
-	var feedback := "> " + password + "\n"
-
-	# Primary rules check
-	var dob_pattern = "(" + String(",").join(Global.date_of_birth).replace(",", "|") + ")" #turns date_of_birth array to regex
-	var prule1_failed = _rule_breach_regex(password, "^(?!.*" + dob_pattern + ").*$")  # no DOB
-	var prule2_failed = password.length() < 8  # length >= 8
-
-	# Secondary rules check
-	var srule1_failed = _rule_breach_regex(password, "^(?!.*(\\d)\\1).*$")  # no same digits in a row
-	var srule2_failed = _rule_breach_regex(password, "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$")  # no sequences
-
-	var errors := []
-
-	# Primary rules violation gets shown on terminal
-	if prule1_failed:
-		errors.append(Global.pri_rules["prule1"]["text"])
-	if prule2_failed:
-		errors.append(Global.pri_rules["prule2"]["text"])
-
-	# Secondary rules get shown on terminal and are revealed in secondary tablet only after failure
-	if srule1_failed:
-		errors.append(Global.sec_rules["srule1"]["text"])
-		Global.sec_rules["srule1"]["visible"] = true
-	if srule2_failed:
-		errors.append(Global.sec_rules["srule2"]["text"])
-		Global.sec_rules["srule2"]["visible"] = true
-
-	# Tablet update after secondary rule failure
-	var info_label = get_node(secondary_label)
-	var sec_text = "Χρήσιμες Πληροφορίες:\n"
-	for key in Global.sec_rules.keys():
-		if Global.sec_rules[key]["visible"]:
-			sec_text += "\n" + Global.sec_rules[key]["text"] + "\n"
-	info_label.text = sec_text
-	tablet_text = sec_text
-
-	# Feedback on terminal (colorized)
-	if errors.size() == 0:
-		feedback += "[color=0cc5cc]Ο κωδικός είναι έγκυρος! Πατήστε Enter για έξοδο.[/color]\n"
-		success = true
-	else:
-		for error in errors:
-			feedback += "[color=ef6e2f]" + error + "\n[/color]"
-		feedback += "Εισάγετε νέο κωδικό:\n> "
-
-	return feedback
 
 # Confirm works upon all Enter buttons and on-screen confirm button
 func _input(event):
@@ -305,12 +286,21 @@ func _successful_unlock():
 	get_parent().visible = false
 	Global.can_pause_game = true
 
-# Regex validation
-func _rule_breach_regex(password: String, pattern: String) -> bool:
-	var regex := RegEx.new()
-	if regex.compile(pattern) != OK:
+# Character input filtering
+func _is_character_allowed(character: String) -> bool:
+	if character.length() == 0:
+		return false
+		
+	if hasNum:
+		# Only numbers allowed (0-9)
+		return character >= "0" and character <= "9"
+	elif hasLetters:
+		# Numbers and letters allowed
+		var c = character.to_lower()
+		return (character >= "0" and character <= "9") or (c >= "a" and c <= "z")
+	else:
+		# All characters allowed (symbols mode)
 		return true
-	return regex.search(password) == null
 
 # ADDED: Handle physical keyboard input
 func _on_physical_key_pressed(key_value: String, _key_type: String):
@@ -335,8 +325,9 @@ func _on_physical_key_pressed(key_value: String, _key_type: String):
 				_on_confirm_pressed()
 				return
 			_:
-				current_input += key_value
+				if _is_character_allowed(key_value):
+					current_input += key_value
 	
-	var label = get_node(label_path)
+	var label = get_node(terminal_label)
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)

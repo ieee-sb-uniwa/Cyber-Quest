@@ -42,22 +42,23 @@ var dob2 := "" # Player date of birth 2
 var user1 := "" # Player name 1
 var user2 := "" # Player name 2
 var date_of_birth : Array = []
+var usernames : Array = []
 var pri_rules := {
-	"prule1": {"text": "Μην βάλεις την ημερομηνία γέννησής σου.", "visible": false},
-	"prule2": {"text": "Μήκος κωδικού τουλάχιστον 8 ψηφία.", "visible": false},
-	"prule3": {"text": "Μην βάλεις το όνομά σου.", "visible": false},
-	"prule4": {"text": "Βάλε τουλάχιστον ένα κεφαλαίο γράμμα.", "visible": false},
-	"prule5": {"text": "Βάλε τουλάχιστον ένα πεζό γράμμα.", "visible": false},
-	"prule6": {"text": "Βάλε τουλάχιστον έναν αριθμό.", "visible": false},
-	"prule7": {"text": "Βάλε τουλάχιστον ένα ειδικό σύμβολο.", "visible": false},
+	"prule1": {"text": "Μην βάλεις την ημερομηνία γέννησής σου.", "visible": false, "regex": ""}, 
+	"prule2": {"text": "Μήκος κωδικού τουλάχιστον 8 ψηφία.", "visible": false, "regex": "^.{8,}$"},
+	"prule3": {"text": "Μην βάλεις το όνομά σου.", "visible": false, "regex": ""},
+	"prule4": {"text": "Βάλε τουλάχιστον ένα κεφαλαίο γράμμα.", "visible": false, "regex": "^(?=.*[A-Z]).*$"},
+	"prule5": {"text": "Βάλε τουλάχιστον ένα πεζό γράμμα.", "visible": false, "regex": "^(?=.*[a-z]).*$"},
+	"prule6": {"text": "Βάλε τουλάχιστον έναν αριθμό.", "visible": false, "regex": "^(?=.*[0-9]).*$"},
+	"prule7": {"text": "Βάλε τουλάχιστον ένα ειδικό σύμβολο.", "visible": false, "regex": "^(?=.*[@#€&*:;!?_\\-\\$%]).*$"},
 }
 var sec_rules := {
-	"srule1": {"text": "2 συνεχόμενα νούμερα να μην είναι ίδια.", "visible": false},
-	"srule2": {"text": "2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα.", "visible": false},
-	"srule3": {"text": "2 συνεχόμενα γράμματα να μην είναι ίδια.", "visible": false},
-	"srule4": {"text": "2 συνεχόμενα γράμματα να μην είναι σε σειρά.", "visible": false},
-	"srule5": {"text": "Να μην υπάρχουν 3 συνεχόμενοι αριθμοί.", "visible": false},
-	"srule6": {"text": "Να μην υπάρχουν 3 συνεχόμενα ειδικά σύμβολα.", "visible": false},
+	"srule1": {"text": "2 συνεχόμενα νούμερα να μην είναι ίδια.", "visible": false, "regex": "^(?!.*(\\d)\\1).*$"},
+	"srule2": {"text": "2 συνεχόμενα νούμερα να μην είναι σε σειρά ή αντίστροφα.", "visible": false, "regex": "^(?!.*(01|12|23|34|45|56|67|78|89|98|87|76|65|54|43|32|21|10)).*$"},
+	"srule3": {"text": "2 συνεχόμενα γράμματα να μην είναι ίδια.", "visible": false, "regex": "^(?!.*([a-zA-Z])\\1).*$"},
+	"srule4": {"text": "2 συνεχόμενα γράμματα να μην είναι σε σειρά.", "visible": false, "regex": "^(?!.*(ab|bc|cd|de|ef|fg|gh|hi|ij|jk|kl|lm|mn|no|op|pq|qr|rs|st|tu|uv|vw|wx|xy|yz|AB|BC|CD|DE|EF|FG|GH|HI|IJ|JK|KL|LM|MN|NO|OP|PQ|QR|RS|ST|TU|UV|VW|WX|XY|YZ)).*$"},
+	"srule5": {"text": "Να μην υπάρχουν 3 συνεχόμενοι αριθμοί.", "visible": false, "regex": "^(?!.*\\d{3}).*$"},
+	"srule6": {"text": "Να μην υπάρχουν 3 συνεχόμενα ειδικά σύμβολα.", "visible": false, "regex": "^(?!.*([@#€&*:;!?_\\-\\$%])\\1\\1).*$"},
 }
 
 func _ready():
@@ -162,6 +163,7 @@ func on_new_game(player_names: Array, birthdates: Array) -> void:
 	PlayerData.birthdate_1 = birthdates[0]
 	PlayerData.player_name_2 = player_names[1]
 	PlayerData.birthdate_2 = birthdates[1]
+	user1 = player_names[0]
 	PlayerData.inv_slot = 0
 	PlayerData.level = 11
 	isTutorial = true
@@ -183,8 +185,13 @@ func save_game() -> void:
 	saveData.save_game()
 	
 func get_visible_pri_rules_text() -> String:
-	var text := "Βασικοί Κανόνες:\n"
-	for key in pri_rules.keys():
-		if pri_rules[key]["visible"]:
-			text += "\n• " + pri_rules[key]["text"]
+	var text := "Ακολούθηε του παρακάτω κανόνες\n"
+	if terminal_ui_part.num:
+		for i in range(1, 3):
+			text += "\n•" + pri_rules["prule" + str(i)]["text"]
+	elif terminal_ui_part.letters:
+		for i in range(3, 7):
+			text += "\n• " + pri_rules["prule" + str(i)]["text"]
+	elif terminal_ui_part.symbols:
+		text += "\n• " + pri_rules["prule7"]["text"]
 	return text
