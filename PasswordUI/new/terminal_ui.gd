@@ -139,6 +139,10 @@ func setup_tablet():
 			text += "\n• " + rule["text"]
 
 	info_label.text = text
+	
+	info_label.scroll_active = true
+	info_label.get_v_scroll_bar().modulate = Color(1, 1, 1, 0)  # Transparent scroll bar
+	info_label.get_v_scroll_bar().mouse_default_cursor_shape = Control.CURSOR_ARROW
 
 
 func setup_terminal():
