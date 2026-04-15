@@ -70,15 +70,15 @@ var qwerty_upper_layout = {
 		},
 		{
 			"keys": [
+				{"display": "", "value": "", "type": "spacer"},
+				{"display": "", "value": "", "type": "spacer"},
 				{"display": "Z", "value": "Z", "type": "letter"},
 				{"display": "X", "value": "X", "type": "letter"},
 				{"display": "C", "value": "C", "type": "letter"},
 				{"display": "V", "value": "V", "type": "letter"},
 				{"display": "B", "value": "B", "type": "letter"},
 				{"display": "N", "value": "N", "type": "letter"},
-				{"display": "M", "value": "M", "type": "letter"},
-				{"display": "", "value": "", "type": "spacer"},
-				{"display": "", "value": "", "type": "spacer"},
+				{"display": "M", "value": "M", "type": "letter"}
 			],
 			"key_count": 9
 		}

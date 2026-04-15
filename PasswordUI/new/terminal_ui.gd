@@ -319,17 +319,41 @@ func _on_shift_toggled(button_pressed: bool):
 	if hasNum:
 		return
 	
-	# Sync caps lock with button state
+	# Update input handler state
 	while input_handler.is_shift_active() != button_pressed:
 		input_handler.toggle_caps_lock()
 	
-	# Just update the keyboard manager's state - DON'T recreate keys
+	# Update the keyboard manager's state
 	keyboard_manager.is_uppercase = button_pressed
 	
-	# Update the display of existing letter keys
-	_update_letter_keys_case(button_pressed)
+	# Directly update all letter button texts in the scene
+	_update_all_letter_buttons(button_pressed)
 	
-	print("Shift toggled - Caps Lock: ", button_pressed)
+	# ALSO update the keyboard manager's internal layout (for any future keys)
+	keyboard_manager.toggle_uppercase(button_pressed)
+
+
+func _update_all_letter_buttons(uppercase: bool):
+	# Find all buttons in the keyboard containers
+	var all_buttons = []
+	_get_all_buttons($KeyboardContainer, all_buttons)
+	
+	for button in all_buttons:
+		var text = button.text
+		# Only change letters (a-z or A-Z)
+		if text.length() == 1:
+			var is_letter = (text >= "a" and text <= "z") or (text >= "A" and text <= "Z")
+			if is_letter:
+				if uppercase:
+					button.text = text.to_upper()
+				else:
+					button.text = text.to_lower()
+
+func _get_all_buttons(node: Node, result_array: Array):
+	for child in node.get_children():
+		if child is Button:
+			result_array.append(child)
+		_get_all_buttons(child, result_array)
 
 # New function to update letter keys without recreating them
 func _update_letter_keys_case(uppercase: bool):
