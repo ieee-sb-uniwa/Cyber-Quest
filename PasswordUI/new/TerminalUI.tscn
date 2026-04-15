@@ -135,6 +135,8 @@ offset_top = 670.0
 offset_right = 166.5
 offset_bottom = 733.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_m4bf3")
+toggle_mode = true
+action_mode = 0
 icon = ExtResource("7_m4bf3")
 flat = true
 

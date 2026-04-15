@@ -129,6 +129,20 @@ func _create_keys_from_rows(layout_data: Dictionary, container: Control, positio
 
 		current_y += row_height
 
+
+func update_letter_case(uppercase: bool):
+	is_uppercase = uppercase
+	
+	# Update all existing letter keys without recreating them
+	for key in current_keys:
+		if key.get_parent() == letter_container and key.has_method("update_display"):
+			# If your key scene has an update_display method
+			if uppercase:
+				key.key_display = key.key_value.to_upper()
+			else:
+				key.key_display = key.key_value.to_lower()
+			key.text = key.key_display
+
 func _create_keys_from_grid(layout_data: Dictionary, container: Control, position_offset: Vector2):
 	var key_size_to_use = letter_key_size
 	var key_spacing_to_use = letter_key_spacing

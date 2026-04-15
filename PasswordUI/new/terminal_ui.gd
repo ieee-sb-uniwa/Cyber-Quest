@@ -48,11 +48,13 @@ func _ready():
 	input_handler.key_entered.connect(_on_physical_key_pressed)
 	
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
-	var keyboard_node = get_node("KeyboardContainer")
-	for child in keyboard_node.get_children():
-		if child is Button:
-			child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
-
+	
+	# Connect to keyboard_manager's signal for letter/number/symbol keys
+	keyboard_manager.key_pressed.connect(_on_keyboard_key_pressed)
+	
+	# Connect action buttons directly (Enter, Backspace, Cancel)
+	_connect_action_buttons()
+	
 	shift_toggle.toggled.connect(_on_shift_toggled)
 
 	if is_visible_in_tree():
@@ -64,6 +66,54 @@ func _ready():
 	setup_terminal()
 	setup_tablet()
 	
+
+func _connect_action_buttons():
+	# Find Enter button
+	var enter_btn = $KeyboardContainer/Enter
+	if enter_btn:
+		enter_btn.pressed.connect(_on_enter_pressed)
+	
+	# Find Backspace button
+	var backspace_btn = $KeyboardContainer/Backspace
+	if backspace_btn:
+		backspace_btn.pressed.connect(_on_backspace_pressed)
+	
+	# Find Cancel button
+	var cancel_btn = $KeyboardContainer/Cancel
+	if cancel_btn:
+		cancel_btn.pressed.connect(_on_cancel_pressed)
+
+func _on_enter_pressed():
+	if current_input.is_empty():
+		return
+	_on_confirm_pressed()
+
+# Handle Backspace button press
+func _on_backspace_pressed():
+	if current_input.length() > 0:
+		current_input = current_input.substr(0, current_input.length() - 1)
+		var label = get_node(terminal_label)
+		label.text = screen_log + current_input
+		label.scroll_to_line(label.get_line_count() - 1)
+
+# Handle Cancel button press
+func _on_cancel_pressed():
+	current_input = ""
+	var label = get_node(terminal_label)
+	label.text = screen_log + current_input
+	label.scroll_to_line(label.get_line_count() - 1)
+	
+
+func _connect_all_buttons(node: Node):
+	for child in node.get_children():
+		if child is Button:
+			# Don't double-connect the shift toggle (it has its own signal)
+			if child != shift_toggle:
+				if not child.pressed.is_connected(Callable(self, "_on_button_pressed").bind(child.name)):
+					child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
+		# Recursively check children
+		_connect_all_buttons(child)
+
 
 func setup_tablet():
 	var info_label = get_node(tablet_label)
@@ -175,33 +225,24 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 			await get_tree().create_timer(0.016).timeout 
 			label.text = base_text + buffer
 
-# Interactions through numpad
-func _on_button_pressed(button_name: String):
+func _on_keyboard_key_pressed(key_value: String, key_type: String):
 	if not is_visible_in_tree():
 		return
 	if input_finalized:
 		return
-
+	
 	if showing_exit_message:
-		if button_name == "KeyboardContainer/Enter":
-			_on_confirm_pressed()
 		return
-
+	
 	if message_done:
-		match button_name:
-			"KeyboardContainer/Backspace":
-				if current_input.length() > 0:
-					current_input = current_input.substr(0, current_input.length() - 1)
-			"KeyboardContainer/Enter":
-				if current_input.is_empty():
-					return
-				_on_confirm_pressed()
-				return
-			_:
-				var keyboard_char = button_name.trim_prefix("KeyboardContainer/")
-				if _is_character_allowed(keyboard_char):
-					current_input += keyboard_char
-
+		# Apply shift/caps lock to the character if it's a letter
+		var final_char = key_value
+		if key_type == "letter" and input_handler and input_handler.is_shift_active():
+			final_char = key_value.to_upper()
+		
+		if _is_character_allowed(final_char):
+			current_input += final_char
+	
 	var label = get_node(terminal_label)
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
@@ -277,7 +318,39 @@ func generate_dob_variations(dob_str: String) -> Array:
 func _on_shift_toggled(button_pressed: bool):
 	if hasNum:
 		return
+	
+	# Sync caps lock with button state
+	while input_handler.is_shift_active() != button_pressed:
+		input_handler.toggle_caps_lock()
+	
+	# Just update the keyboard manager's state - DON'T recreate keys
 	keyboard_manager.is_uppercase = button_pressed
+	
+	# Update the display of existing letter keys
+	_update_letter_keys_case(button_pressed)
+	
+	print("Shift toggled - Caps Lock: ", button_pressed)
+
+# New function to update letter keys without recreating them
+func _update_letter_keys_case(uppercase: bool):
+	# Find all letter buttons and update their text
+	var containers = [numpad_bg, letters_bg, symbols_bg]
+	for container in containers:
+		if container:
+			_update_buttons_in_container(container, uppercase)
+
+func _update_buttons_in_container(container: Control, uppercase: bool):
+	for child in container.get_children():
+		if child is Button:
+			var current_text = child.text
+			# Only update letters (a-z, A-Z)
+			if current_text.length() == 1 and current_text.to_lower() != current_text.to_upper():
+				if uppercase:
+					child.text = current_text.to_upper()
+				else:
+					child.text = current_text.to_lower()
+		# Recursively check children
+		_update_buttons_in_container(child, uppercase)
 
 # Confirm works upon all Enter buttons and on-screen confirm button
 func _input(event):
@@ -302,9 +375,19 @@ func _is_character_allowed(character: String) -> bool:
 		# Only numbers allowed (0-9)
 		return character >= "0" and character <= "9"
 	elif hasLetters:
-		# Numbers and letters allowed
+		# Numbers and letters allowed (both lowercase and uppercase)
 		var c = character.to_lower()
-		return (character >= "0" and character <= "9") or (c >= "a" and c <= "z")
+		# Check if it's a number or a letter (a-z)
+		var is_letter = (c >= "a" and c <= "z")
+		var is_number = (character >= "0" and character <= "9")
+		
+		# If shift is active, allow both cases of letters
+		if keyboard_manager.is_uppercase:
+			# Allow both uppercase and lowercase letters
+			return is_number or (character >= "A" and character <= "Z") or (character >= "a" and character <= "z")
+		else:
+			# Only allow lowercase letters
+			return is_number or (character >= "a" and character <= "z")
 	else:
 		# All characters allowed (symbols mode)
 		return true
