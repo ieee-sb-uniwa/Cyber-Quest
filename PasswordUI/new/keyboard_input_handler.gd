@@ -3,14 +3,13 @@ extends Node
 class_name keyboard_input_handler
 
 signal key_entered(key_value: String, key_type: String)
+signal shift_pressed()
 
-# Track caps lock as a TOGGLE (like Caps Lock)
+#caps lock and shift for the same button (keep the toggled state as caps_lock)
 var caps_lock: bool = false
-
-# Track if shift key is currently pressed (for momentary symbols on number row)
 var shift_key_pressed: bool = false
 
-# Mapping for shifted symbols (when shift key is physically held down)
+# Mapping for shifted symbols (when shift key physically held down)
 const SHIFTED_SYMBOLS = {
 	KEY_1: "!",
 	KEY_2: "@",
@@ -38,23 +37,23 @@ func _input(event):
 	if not event is InputEventKey:
 		return
 	
-	# Track physical shift key state (both press and release)
+	# Physical shift key state
 	if event.keycode == KEY_SHIFT:
 		shift_key_pressed = event.pressed
-		# Also toggle caps lock when shift is pressed (like a toggle)
 		if event.pressed:
 			caps_lock = !caps_lock
-			print("Physical shift toggled - Caps Lock: ", caps_lock)  # Debug line
+			shift_pressed.emit() 
+			print("Physical shift toggled - Caps Lock: ", caps_lock)  # For debugging
 		return
 	
-	# Only process on key press (not release)
+	# Process on key PRESS
 	if not event.pressed:
 		return
 
 	# Toggle Caps Lock when pressed
 	if event.keycode == KEY_CAPSLOCK:
 		caps_lock = !caps_lock
-		print("Caps Lock pressed - Caps Lock: ", caps_lock)  # Debug line
+		print("Caps Lock pressed - Caps Lock: ", caps_lock)  # For debugging
 		return
 
 	match event.keycode:
@@ -72,18 +71,18 @@ func _input(event):
 				key_entered.emit(character, "key")
 
 func _get_character_from_event(event: InputEventKey) -> String:
-	# For letters: Caps Lock toggles case
+	# For letters: Caps Lock toggles upper/lowercase
 	if event.keycode >= KEY_A and event.keycode <= KEY_Z:
 		var letter = char(event.keycode)
 		return letter.to_upper() if caps_lock else letter.to_lower()
 
-	# Number row: SHIFT KEY (momentary) produces symbols
+	# For symbols: Shift produces symbols while held down
 	if event.keycode >= KEY_0 and event.keycode <= KEY_9:
 		if shift_key_pressed:
 			return SHIFTED_SYMBOLS.get(event.keycode, "")
 		return char(event.keycode)
 
-	# Numpad numbers: always numbers, never affected by shift
+	# For numpads: Never affected by shift
 	if event.keycode >= KEY_KP_0 and event.keycode <= KEY_KP_9:
 		return str(event.keycode - KEY_KP_0)
 
@@ -95,7 +94,7 @@ func _get_character_from_event(event: InputEventKey) -> String:
 		KEY_KP_DIVIDE:   return "/"
 		KEY_KP_PERIOD:   return "."
 
-	# Symbols: SHIFT KEY (momentary) produces shifted symbols
+	# For symbols: Shift produces symbols while held down
 	if shift_key_pressed:
 		return SHIFTED_SYMBOLS.get(event.keycode, "")
 	
@@ -113,16 +112,16 @@ func _get_character_from_event(event: InputEventKey) -> String:
 
 	return ""
 
-# For the on-screen shift button to check current state
+# On-screen shift button to check current state
 func is_shift_active() -> bool:
 	return caps_lock
 
-# Toggle caps lock (called by on-screen shift button)
+# Toggle (called by on-screen shift button)
 func toggle_caps_lock():
 	caps_lock = !caps_lock
 	print("On-screen shift toggled - Caps Lock: ", caps_lock)  # Debug line
 
-# Reset modifier states when terminal closes
+# Reset when terminal closes
 func reset_modifiers():
 	caps_lock = false
 	shift_key_pressed = false

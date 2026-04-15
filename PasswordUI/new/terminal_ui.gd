@@ -46,13 +46,14 @@ func _ready():
 	input_handler = keyboard_input_handler.new()
 	add_child(input_handler)
 	input_handler.key_entered.connect(_on_physical_key_pressed)
+	input_handler.shift_pressed.connect(_on_physical_shift_pressed)
 	
 	self.connect("visibility_changed", Callable(self, "_on_visibility_changed"))
 	
-	# Connect to keyboard_manager's signal for letter/number/symbol keys
+	# Connect to keyboard_manager's signal for all keys
 	keyboard_manager.key_pressed.connect(_on_keyboard_key_pressed)
 	
-	# Connect action buttons directly (Enter, Backspace, Cancel)
+	# Connect action buttons (Enter, Backspace, Cancel)
 	_connect_action_buttons()
 	
 	shift_toggle.toggled.connect(_on_shift_toggled)
@@ -65,30 +66,33 @@ func _ready():
 		
 	setup_terminal()
 	setup_tablet()
-	
+
 
 func _connect_action_buttons():
 	# Find Enter button
 	var enter_btn = $KeyboardContainer/Enter
 	if enter_btn:
 		enter_btn.pressed.connect(_on_enter_pressed)
-	
+
+
 	# Find Backspace button
 	var backspace_btn = $KeyboardContainer/Backspace
 	if backspace_btn:
 		backspace_btn.pressed.connect(_on_backspace_pressed)
-	
+
+
 	# Find Cancel button
 	var cancel_btn = $KeyboardContainer/Cancel
 	if cancel_btn:
 		cancel_btn.pressed.connect(_on_cancel_pressed)
+
 
 func _on_enter_pressed():
 	if current_input.is_empty():
 		return
 	_on_confirm_pressed()
 
-# Handle Backspace button press
+
 func _on_backspace_pressed():
 	if current_input.length() > 0:
 		current_input = current_input.substr(0, current_input.length() - 1)
@@ -96,18 +100,17 @@ func _on_backspace_pressed():
 		label.text = screen_log + current_input
 		label.scroll_to_line(label.get_line_count() - 1)
 
-# Handle Cancel button press
+
 func _on_cancel_pressed():
 	current_input = ""
 	var label = get_node(terminal_label)
 	label.text = screen_log + current_input
 	label.scroll_to_line(label.get_line_count() - 1)
-	
+
 
 func _connect_all_buttons(node: Node):
 	for child in node.get_children():
 		if child is Button:
-			# Don't double-connect the shift toggle (it has its own signal)
 			if child != shift_toggle:
 				if not child.pressed.is_connected(Callable(self, "_on_button_pressed").bind(child.name)):
 					child.pressed.connect(Callable(self, "_on_button_pressed").bind(child.name))
@@ -164,6 +167,7 @@ func setup_terminal():
 		symbols_bg.visible = true
 		for i in range(1, 7):
 			Global.pri_rules["prule" + str(i)]["visible"] = true
+
 
 # Terminal activation
 func _on_visibility_changed():
@@ -225,6 +229,7 @@ func _type_text_animation(text_to_type: String, label: RichTextLabel, clear_firs
 			await get_tree().create_timer(0.016).timeout 
 			label.text = base_text + buffer
 
+
 func _on_keyboard_key_pressed(key_value: String, key_type: String):
 	if not is_visible_in_tree():
 		return
@@ -235,7 +240,7 @@ func _on_keyboard_key_pressed(key_value: String, key_type: String):
 		return
 	
 	if message_done:
-		# Apply shift/caps lock to the character if it's a letter
+		# Apply shift to the character if it's a letter
 		var final_char = key_value
 		if key_type == "letter" and input_handler and input_handler.is_shift_active():
 			final_char = key_value.to_upper()
@@ -277,7 +282,6 @@ func _on_confirm_pressed():
 		_successful_unlock()
 
 
-		
 # DOB variations function
 func generate_dob_variations(dob_str: String) -> Array:
 	var parts = dob_str.split("/") #Assuming dob is in format 07/02/2008
@@ -315,6 +319,7 @@ func generate_dob_variations(dob_str: String) -> Array:
 
 	return variations
 
+
 func _on_shift_toggled(button_pressed: bool):
 	if hasNum:
 		return
@@ -329,8 +334,13 @@ func _on_shift_toggled(button_pressed: bool):
 	# Directly update all letter button texts in the scene
 	_update_all_letter_buttons(button_pressed)
 	
-	# ALSO update the keyboard manager's internal layout (for any future keys)
+	# Update keyboard manager's internal layout (for future keys)
 	keyboard_manager.toggle_uppercase(button_pressed)
+
+
+func _on_physical_shift_pressed():
+	# Toggle the on-screen shift
+	shift_toggle.button_pressed = !shift_toggle.button_pressed
 
 
 func _update_all_letter_buttons(uppercase: bool):
@@ -349,19 +359,21 @@ func _update_all_letter_buttons(uppercase: bool):
 				else:
 					button.text = text.to_lower()
 
+
 func _get_all_buttons(node: Node, result_array: Array):
 	for child in node.get_children():
 		if child is Button:
 			result_array.append(child)
 		_get_all_buttons(child, result_array)
 
-# New function to update letter keys without recreating them
+
+# Letter font update to caps
 func _update_letter_keys_case(uppercase: bool):
-	# Find all letter buttons and update their text
 	var containers = [numpad_bg, letters_bg, symbols_bg]
 	for container in containers:
 		if container:
 			_update_buttons_in_container(container, uppercase)
+
 
 func _update_buttons_in_container(container: Control, uppercase: bool):
 	for child in container.get_children():
@@ -376,19 +388,22 @@ func _update_buttons_in_container(container: Control, uppercase: bool):
 		# Recursively check children
 		_update_buttons_in_container(child, uppercase)
 
-# Confirm works upon all Enter buttons and on-screen confirm button
+
+# Confirm button functionality
 func _input(event):
 	if not is_visible_in_tree():
 		return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and success:
 		_successful_unlock()
-	
+
+
 # Success maintains the terminal unlocked on next interactions
 func _successful_unlock():
 	get_tree().paused = false
 	Global.terminal_unlocked = true
 	get_parent().visible = false
 	Global.can_pause_game = true
+
 
 # Character input filtering
 func _is_character_allowed(character: String) -> bool:
@@ -400,9 +415,7 @@ func _is_character_allowed(character: String) -> bool:
 		return character >= "0" and character <= "9"
 	elif hasLetters:
 		# Numbers and letters allowed (both lowercase and uppercase)
-		var c = character.to_lower()
 		# Check if it's a number or a letter (a-z)
-		var is_letter = (c >= "a" and c <= "z")
 		var is_number = (character >= "0" and character <= "9")
 		
 		# If shift is active, allow both cases of letters
@@ -416,7 +429,8 @@ func _is_character_allowed(character: String) -> bool:
 		# All characters allowed (symbols mode)
 		return true
 
-# ADDED: Handle physical keyboard input
+
+# Physical keyboard input
 func _on_physical_key_pressed(key_value: String, _key_type: String):
 	if not is_visible_in_tree():
 		return
