@@ -34,6 +34,7 @@ grow_vertical = 2
 script = ExtResource("1_ew2db")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
 offset_right = 1337.0
@@ -42,6 +43,7 @@ texture = ExtResource("2_7b6is")
 
 [node name="Tablet" type="TextureRect" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 100.0
 offset_top = 35.0
 offset_right = 1623.0

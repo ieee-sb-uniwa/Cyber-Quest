@@ -8,6 +8,7 @@ bg_color = Color(0.737255, 0.878431, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_biyvh"]
 font = ExtResource("2_qlkwv")
+font_size = 12
 
 [node name="PassblockCounter_tscn" type="Control"]
 layout_mode = 3

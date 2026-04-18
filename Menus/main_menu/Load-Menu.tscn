@@ -21,6 +21,7 @@ script = ExtResource("1_ulsya")
 
 [node name="Tablet" type="TextureRect" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = 100.0
 offset_top = 35.0
 offset_right = 1623.0
@@ -29,6 +30,7 @@ scale = Vector2(0.43, 0.384)
 texture = ExtResource("3_74j3v")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1338.0
 offset_bottom = 669.0
 texture = ExtResource("4_nymrk")
