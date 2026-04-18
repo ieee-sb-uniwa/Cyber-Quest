@@ -1,6 +1,6 @@
 extends Node
 @onready var passblock_progress : ProgressBar = $PassblockProgressBar
-@onready var progress_label : Label = $PassblockProgressBar/CountLabel
+@onready var progress_label : RichTextLabel = $PassblockProgressBar/CountLabel
 
 func _ready():
 	Global.passblock_count_changed.connect(update_text)

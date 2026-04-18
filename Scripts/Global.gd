@@ -1,5 +1,8 @@
 extends Node
 
+signal passblock_count_changed()
+signal force_respawn(player)
+
 # PassBlock global variables
 var passblock_count : int = 0
 var blocks_picked : int = 0
@@ -76,7 +79,7 @@ func reset_variables() -> void:
 	player_blocks = [0, 0]
 	dropped_passblocks.clear()
 	passblock_count = 0;
-	emit_signal("passblock_count_changed")
+	passblock_count_changed.emit()
 	Hide_status = 1
 	terminal_unlocked = false
 	canExitLevel = false
@@ -115,26 +118,22 @@ func can_access_terminal() -> bool:
 	# print("Current Inv Slot: ", PlayerData.inv_slot, " Required Slot: ", required_slot)
 	return PlayerData.inv_slot >= required_slot
 
-signal passblock_count_changed()
 ## PassBlock Functions
 func add_passblock(passblock: Node) -> void:
 	dropped_passblocks.append(passblock)
-	passblock_count += 1;
-	emit_signal("passblock_count_changed")
 	# print("Passblocks in level: ", passblocks_in_level.size())
 	if dropped_passblocks.size() == passblocks_in_level.size():
 		# print("All passblocks collected!")
 		canExitLevel = true
 		update_inv()
 
-signal force_respawn(player)
 var players_to_respawn: Array = []
 ## Respawn player if fallen out of bridge or fallen (general)
 func request_respawn(player):
 	if players_to_respawn.has(player):
 		return
 	players_to_respawn.append(player)
-	emit_signal("force_respawn", player)
+	force_respawn.emit(player)
 
 ## Remove "dead" player from players to be respawned
 func clear_players():

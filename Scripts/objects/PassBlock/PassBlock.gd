@@ -47,7 +47,8 @@ func pick_block(body: Node2D):
 		Global.player_blocks[1] += 1
 	if body.has_method("add_item_to_holder"):
 		body.add_item_to_holder(self)
-	Global.add_passblock(self)
+	Global.passblock_count += 1;
+	Global.passblock_count_changed.emit()
 
 # ------- "Interact" button logic ------- 				
 func _input(_event):
