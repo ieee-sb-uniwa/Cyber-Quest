@@ -1,15 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://bma6r210yning"]
 
-[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="1_jt2b4"]
 [ext_resource type="Script" uid="uid://dm3rhkw1k7n4q" path="res://Menus/main_menu/options_menu.gd" id="1_vbrj0"]
-[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="3_ivwdi"]
-[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="4_glnao"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_x0w3x"]
-font = ExtResource("3_ivwdi")
+[ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="2_x0w3x"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="3_jj3pi"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="5_x0w3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jj3pi"]
-font = ExtResource("3_ivwdi")
+font = ExtResource("5_x0w3x")
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0w3x"]
+font = ExtResource("5_x0w3x")
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [node name="Options Menu" type="Control"]
 layout_mode = 3
@@ -20,78 +22,85 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vbrj0")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Tablet" type="TextureRect" parent="."]
+z_index = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_jt2b4")
+offset_left = 100.0
+offset_top = 35.0
+offset_right = 1623.0
+offset_bottom = 1236.0
+scale = Vector2(0.43, 0.384)
+texture = ExtResource("2_x0w3x")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -31.0
-offset_top = 20.0
-offset_right = 31.0
-offset_bottom = 43.0
-grow_horizontal = 2
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1338.0
+offset_bottom = 669.0
+texture = ExtResource("3_jj3pi")
 
-[node name="Master" type="Label" parent="VBoxContainer"]
-visible = false
+[node name="Sliders" type="VBoxContainer" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 299.0
+offset_top = 126.0
+offset_right = 479.0
+offset_bottom = 248.0
+
+[node name="Music" type="Label" parent="Sliders"]
 layout_mode = 2
-text = "Master Volume"
-label_settings = SubResource("LabelSettings_x0w3x")
-
-[node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-value = 100.0
-
-[node name="Music" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "Music Volume"
+text = "Music"
 label_settings = SubResource("LabelSettings_jj3pi")
+horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer"]
+[node name="MusicSlider" type="HSlider" parent="Sliders"]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Sound" type="Label" parent="VBoxContainer"]
-visible = false
+[node name="Master" type="Label" parent="Sliders"]
 layout_mode = 2
-text = "Sound Effects Volume"
-label_settings = SubResource("LabelSettings_jj3pi")
+text = "Master"
+label_settings = SubResource("LabelSettings_x0w3x")
+horizontal_alignment = 1
 
-[node name="SoundsSlider" type="HSlider" parent="VBoxContainer"]
-visible = false
+[node name="MasterSlider" type="HSlider" parent="Sliders"]
 layout_mode = 2
 value = 100.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -30.0
-offset_right = 237.0
-offset_bottom = 10.0
-grow_vertical = 0
-
-[node name="BacktoMenu" type="Button" parent="VBoxContainer2"]
+[node name="VFX" type="Label" parent="Sliders"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_glnao")
-text = "Back to Main menu"
+text = "VFX"
+label_settings = SubResource("LabelSettings_jj3pi")
+horizontal_alignment = 1
 
-[node name="ResumePlaying" type="Button" parent="VBoxContainer2"]
+[node name="VFXSlider" type="HSlider" parent="Sliders"]
+layout_mode = 2
+value = 100.0
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 337.0
+offset_top = 335.0
+offset_right = 437.0
+offset_bottom = 358.0
+alignment = 1
+
+[node name="BacktoMenu" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_x0w3x")
+theme_override_font_sizes/font_size = 14
+text = "Πίσω"
+
+[node name="ResumePlaying" type="Button" parent="Buttons"]
 visible = false
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_glnao")
-text = "Resume Playing"
+theme_override_fonts/font = ExtResource("5_x0w3x")
+text = "Συνέχεια"
 
-[connection signal="value_changed" from="VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer2/ResumePlaying" to="." method="_on_resume_playing_pressed"]
+[connection signal="value_changed" from="Sliders/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="Buttons/BacktoMenu" to="." method="_on_backto_menu_pressed"]
+[connection signal="pressed" from="Buttons/ResumePlaying" to="." method="_on_resume_playing_pressed"]

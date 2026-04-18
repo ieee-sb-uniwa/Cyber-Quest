@@ -4,12 +4,14 @@ extends Control
 func _ready():
 	var canLoad = Global.saveData.load_game()
 	if canLoad:
-		$CenterVbox/VBoxContainer/N1.text = "Players: " + PlayerData.player_name_1 + " & " + PlayerData.player_name_2
-	$VBoxContainer2/BacktoMenu.grab_focus();
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+		$SaveFiles/Profiles/N1.text = PlayerData.player_name_1 + " & " + PlayerData.player_name_2
+	$Buttons/BacktoMenu.grab_focus();
+	if $SaveFiles/Profiles/N2.text == "":
+		$SaveFiles/Profiles/P2.hide()
+		$SaveFiles/Profiles/N2.hide()
+	if $SaveFiles/Profiles/N3.text == "":
+		$SaveFiles/Profiles/P3.hide()
+		$SaveFiles/Profiles/N3.hide()
 
 func _on_backto_menu_pressed():
 	get_tree().call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
@@ -18,9 +20,6 @@ func _on_n_1_pressed() -> void:
 	var level_num = int(PlayerData.level / 10.0)
 	var scene_num = PlayerData.level % 10
 	var level_path = "res://Levels/Lvl" + str(level_num, '_', scene_num, ".tscn")
-	print(level_path)
-	print(PlayerData.level)
-	print(PlayerData.inv_slot)
 	# Clean up globals before switching to level scene
 	Global.before_scene_change()
 	AudioPlayer.stop_clear()	# Use before loading level to stop menu music

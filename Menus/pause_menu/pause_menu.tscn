@@ -16,10 +16,10 @@ metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 258.0
-offset_top = 177.0
-offset_right = 436.0
-offset_bottom = 278.0
+offset_left = 309.6
+offset_top = 212.4
+offset_right = 523.2
+offset_bottom = 333.6
 metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]

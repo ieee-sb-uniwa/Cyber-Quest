@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpcdm8wbnixrl"
-path="res://.godot/imported/8.png-ddcacb54f572d4c2fa8d5801db888955.ctex"
+uid="uid://6xy0hx2nkg3f"
+path="res://.godot/imported/Tablet.png-8c70231091c4bb6c1b5c1613e63bb3b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Keys 2/Numbers/8.png"
-dest_files=["res://.godot/imported/8.png-ddcacb54f572d4c2fa8d5801db888955.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png"
+dest_files=["res://.godot/imported/Tablet.png-8c70231091c4bb6c1b5c1613e63bb3b8.ctex"]
 
 [params]
 

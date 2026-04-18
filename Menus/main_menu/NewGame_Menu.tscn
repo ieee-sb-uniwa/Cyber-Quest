@@ -1,61 +1,63 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3gvyrc74be7l"]
 
 [ext_resource type="Script" uid="uid://cy3sgsqw8pyuh" path="res://Menus/main_menu/new_game_menu.gd" id="1_ew2db"]
-[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="1_nckv1"]
-[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="3_0rnba"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="2_7b6is"]
+[ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="3_7b6is"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="4_7b6is"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cqa1j"]
-font = ExtResource("3_0rnba")
-font_size = 20
+font = ExtResource("4_7b6is")
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0rnba"]
-font = ExtResource("3_0rnba")
-font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_ew2db"]
-font = ExtResource("3_0rnba")
-font_size = 36
+font = ExtResource("4_7b6is")
+font_size = 32
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b6is"]
-font = ExtResource("3_0rnba")
-font_size = 14
+font = ExtResource("4_7b6is")
+font_size = 22
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_078hh"]
-font = ExtResource("3_0rnba")
-font_size = 14
+font = ExtResource("4_7b6is")
+font_size = 22
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [node name="NewGameMenu" type="Control"]
-custom_minimum_size = Vector2(1600, 900)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_ew2db")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_nckv1")
-stretch_mode = 6
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1337.0
+offset_bottom = 668.0
+texture = ExtResource("2_7b6is")
+
+[node name="Tablet" type="TextureRect" parent="."]
+z_index = 1
+offset_left = 100.0
+offset_top = 35.0
+offset_right = 1623.0
+offset_bottom = 1236.0
+scale = Vector2(0.43, 0.384)
+texture = ExtResource("3_7b6is")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 z_index = 1
 clip_contents = true
-custom_minimum_size = Vector2(1600, 900)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 291.0
+offset_top = 105.0
+offset_right = 695.0
+offset_bottom = 493.0
+scale = Vector2(0.5, 0.5)
 mouse_filter = 0
 
 [node name="Pop-Up" type="VBoxContainer" parent="CenterContainer"]
@@ -79,127 +81,77 @@ label_settings = SubResource("LabelSettings_cqa1j")
 autowrap_mode = 2
 
 [node name="Back" type="Button" parent="CenterContainer/Pop-Up"]
-custom_minimum_size = Vector2(300, 50)
+custom_minimum_size = Vector2(250, 45)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7b6is")
 text = "Πίσω"
 
-[node name="CenteringCon" type="VBoxContainer" parent="CenterContainer"]
+[node name="Menu" type="VBoxContainer" parent="CenterContainer"]
 visibility_layer = 4
 z_index = 1
 custom_minimum_size = Vector2(350, 388)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/CenteringCon"]
-custom_minimum_size = Vector2(155, 74)
+[node name="PlayerLabel" type="Label" parent="CenterContainer/Menu"]
 layout_mode = 2
-size_flags_vertical = 4
-alignment = 1
-
-[node name="PlayerLabel" type="Label" parent="CenterContainer/CenteringCon/VBoxContainer"]
-layout_mode = 2
-text = "PLAYER"
+text = "Παίκτης 1"
 label_settings = SubResource("LabelSettings_0rnba")
+horizontal_alignment = 1
 
-[node name="PlayerCount" type="Label" parent="CenterContainer/CenteringCon/VBoxContainer"]
+[node name="InputForm" type="VBoxContainer" parent="CenterContainer/Menu"]
 layout_mode = 2
-text = "1"
-label_settings = SubResource("LabelSettings_ew2db")
+theme_override_constants/separation = 20
 
-[node name="Primary" type="ColorRect" parent="CenterContainer/CenteringCon"]
-custom_minimum_size = Vector2(350, 300)
+[node name="Name" type="Label" parent="CenterContainer/Menu/InputForm"]
 layout_mode = 2
-size_flags_vertical = 6
-focus_neighbor_bottom = NodePath("../VBoxContainer")
-mouse_filter = 1
-color = Color(0, 0.0641931, 0.208981, 1)
-
-[node name="Name" type="Label" parent="CenterContainer/CenteringCon/Primary"]
-custom_minimum_size = Vector2(104.55, 68.873)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.066
-anchor_top = 0.091
-anchor_right = 0.256
-anchor_bottom = 0.244
-offset_left = -0.129999
-offset_top = -0.019001
-offset_right = -0.0800018
-offset_bottom = 0.0039978
-text = "Όνομα:"
+text = "Όνομα"
 label_settings = SubResource("LabelSettings_7b6is")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NameIN" type="LineEdit" parent="CenterContainer/CenteringCon/Primary"]
-custom_minimum_size = Vector2(250, 45)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.266
-anchor_top = 0.081
-anchor_right = 0.954
-anchor_bottom = 0.23
-offset_left = -13.1
-offset_top = 16.071
-offset_right = -3.89999
-offset_bottom = 23.821
-
-[node name="Date" type="Label" parent="CenterContainer/CenteringCon/Primary"]
-custom_minimum_size = Vector2(320.835, 68.873)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.197
-anchor_top = 0.268
-anchor_right = 0.78
-anchor_bottom = 0.421
-offset_left = 31.05
-offset_top = -0.012001
-offset_right = 147.835
-offset_bottom = 30.611
-text = "Ημερομηνία Γέννησης:"
-label_settings = SubResource("LabelSettings_078hh")
-vertical_alignment = 1
-
-[node name="DateIN" type="LineEdit" parent="CenterContainer/CenteringCon/Primary"]
+[node name="NameIN" type="LineEdit" parent="CenterContainer/Menu/InputForm"]
 custom_minimum_size = Vector2(200, 45)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.197
-anchor_top = 0.431
-anchor_right = 0.885
-anchor_bottom = 0.579
-offset_left = -8.95
-offset_top = 2.921
-offset_right = 20.25
-offset_bottom = 10.921
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7b6is")
+alignment = 1
+context_menu_enabled = false
+
+[node name="Date" type="Label" parent="CenterContainer/Menu/InputForm"]
+layout_mode = 2
+text = "Ημερομηνία Γέννησης"
+label_settings = SubResource("LabelSettings_078hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DateIN" type="LineEdit" parent="CenterContainer/Menu/InputForm"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7b6is")
 placeholder_text = "ΗΜ/ΜΜ/ΧΧΧΧ"
 alignment = 1
 
-[node name="Confirm" type="Button" parent="CenterContainer/CenteringCon/Primary"]
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.197
-anchor_top = 0.718
-anchor_right = 0.823
-anchor_bottom = 0.866
-offset_left = 31.05
-offset_top = 0.5
-offset_right = -38.05
-offset_bottom = 13.5
-text = "Έτοιμο"
+[node name="Buttons" type="HBoxContainer" parent="CenterContainer/Menu"]
+layout_mode = 2
 
-[node name="BackToMenu" type="Button" parent="CenterContainer/CenteringCon"]
-custom_minimum_size = Vector2(350, 25)
+[node name="BackToMenu" type="Button" parent="CenterContainer/Menu/Buttons"]
+custom_minimum_size = Vector2(200, 45)
 layout_mode = 2
 size_flags_vertical = 3
-text = "Back to Main Menu"
+theme_override_fonts/font = ExtResource("4_7b6is")
+theme_override_font_sizes/font_size = 18
+text = "Πίσω
+"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(800, 450)
-zoom = Vector2(0.75, 0.75)
+[node name="Confirm" type="Button" parent="CenterContainer/Menu/Buttons"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_7b6is")
+theme_override_font_sizes/font_size = 18
+text = "Συνέχεια"
 
 [connection signal="pressed" from="CenterContainer/Pop-Up/Back" to="." method="_on_back_pressed"]
-[connection signal="text_submitted" from="CenterContainer/CenteringCon/Primary/NameIN" to="." method="_on_name_in_text_submitted"]
-[connection signal="pressed" from="CenterContainer/CenteringCon/Primary/Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="pressed" from="CenterContainer/CenteringCon/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="text_submitted" from="CenterContainer/Menu/InputForm/NameIN" to="." method="_on_name_in_text_submitted"]
+[connection signal="pressed" from="CenterContainer/Menu/Buttons/BackToMenu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/Menu/Buttons/Confirm" to="." method="_on_confirm_pressed"]

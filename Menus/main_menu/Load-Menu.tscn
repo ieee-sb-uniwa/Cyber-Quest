@@ -1,13 +1,14 @@
 [gd_scene load_steps=6 format=3 uid="uid://cugf7rdpr7euj"]
 
 [ext_resource type="Script" uid="uid://ncyp8fx8jit" path="res://Menus/main_menu/load_menu.gd" id="1_ulsya"]
-[ext_resource type="FontFile" uid="uid://bo6qgplhcjgyt" path="res://Assets/web_safety_assets/fonts/PixelOperator8-Bold.ttf" id="2_ccrfn"]
-[ext_resource type="Texture2D" uid="uid://bv51q7vdfnfoc" path="res://Assets/web_safety_assets/Backgrounds/Stars.png" id="2_kmes4"]
-[ext_resource type="FontFile" uid="uid://dh1kjfg0cw8fd" path="res://Assets/web_safety_assets/fonts/PixelOperator8.ttf" id="3_6xt81"]
+[ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="3_74j3v"]
+[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="4_nymrk"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="5_58xyn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sjlji"]
-font = ExtResource("2_ccrfn")
-font_size = 24
+font = ExtResource("5_58xyn")
+font_size = 18
+font_color = Color(0.243137, 0.239216, 0.403922, 1)
 
 [node name="LoadMenu" type="Control"]
 layout_mode = 3
@@ -18,83 +19,96 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ulsya")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Tablet" type="TextureRect" parent="."]
+z_index = 1
+offset_left = 100.0
+offset_top = 35.0
+offset_right = 1623.0
+offset_bottom = 1236.0
+scale = Vector2(0.43, 0.384)
+texture = ExtResource("3_74j3v")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1338.0
+offset_bottom = 669.0
+texture = ExtResource("4_nymrk")
+
+[node name="SaveFiles" type="VBoxContainer" parent="."]
+z_index = 3
 layout_mode = 0
-offset_right = 768.0
-offset_bottom = 384.0
-texture = ExtResource("2_kmes4")
+offset_left = 294.0
+offset_top = 111.0
+offset_right = 494.0
+offset_bottom = 311.0
+theme_override_constants/separation = 15
 
-[node name="CenterVbox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -58.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 43.0
-grow_horizontal = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterVbox"]
+[node name="Profiles" type="VBoxContainer" parent="SaveFiles"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="P1" type="Label" parent="CenterVbox/VBoxContainer"]
+[node name="P1" type="Label" parent="SaveFiles/Profiles"]
 layout_mode = 2
-text = "Profile 1"
+text = "Παιχνίδι"
 label_settings = SubResource("LabelSettings_sjlji")
+horizontal_alignment = 1
 
-[node name="N1" type="Button" parent="CenterVbox/VBoxContainer"]
+[node name="N1" type="Button" parent="SaveFiles/Profiles"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Name:"
+theme_override_fonts/font = ExtResource("5_58xyn")
+theme_override_font_sizes/font_size = 14
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterVbox"]
+[node name="P2" type="Label" parent="SaveFiles/Profiles"]
 layout_mode = 2
-
-[node name="P2" type="Label" parent="CenterVbox/VBoxContainer2"]
-layout_mode = 2
-text = "Profile 2"
+text = "Παιχνίδι 2"
 label_settings = SubResource("LabelSettings_sjlji")
+horizontal_alignment = 1
 
-[node name="N2" type="Button" parent="CenterVbox/VBoxContainer2"]
+[node name="N2" type="Button" parent="SaveFiles/Profiles"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Name:"
+theme_override_fonts/font = ExtResource("5_58xyn")
+theme_override_font_sizes/font_size = 14
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterVbox"]
+[node name="P3" type="Label" parent="SaveFiles/Profiles"]
 layout_mode = 2
-
-[node name="P3" type="Label" parent="CenterVbox/VBoxContainer3"]
-layout_mode = 2
-text = "Profile 2"
+text = "Παιχνίδι 3"
 label_settings = SubResource("LabelSettings_sjlji")
+horizontal_alignment = 1
 
-[node name="N3" type="Button" parent="CenterVbox/VBoxContainer3"]
+[node name="N3" type="Button" parent="SaveFiles/Profiles"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-text = "Name:"
+theme_override_fonts/font = ExtResource("5_58xyn")
+theme_override_font_sizes/font_size = 14
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -30.0
-offset_right = 237.0
-offset_bottom = 10.0
-grow_vertical = 0
+[node name="Buttons" type="HBoxContainer" parent="."]
+z_index = 10
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 0
+offset_left = 331.0
+offset_top = 337.0
+offset_right = 446.0
+offset_bottom = 360.0
+alignment = 1
 
-[node name="BacktoMenu" type="Button" parent="VBoxContainer2"]
+[node name="BacktoMenu" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6xt81")
-text = "Back to Main Menu"
+theme_override_fonts/font = ExtResource("5_58xyn")
+theme_override_font_sizes/font_size = 14
+text = "Πίσω"
 
-[node name="ResumePlaying" type="Button" parent="VBoxContainer2"]
+[node name="ResumePlaying" type="Button" parent="Buttons"]
 visible = false
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6xt81")
-text = "Resume Playing"
+theme_override_fonts/font = ExtResource("5_58xyn")
+theme_override_font_sizes/font_size = 16
+text = "Συνέχεια"
 
-[connection signal="pressed" from="CenterVbox/VBoxContainer/N1" to="." method="_on_n_1_pressed"]
-[connection signal="pressed" from="CenterVbox/VBoxContainer2/N2" to="." method="_on_n_2_pressed"]
-[connection signal="pressed" from="CenterVbox/VBoxContainer3/N3" to="." method="_on_n_3_pressed"]
-[connection signal="pressed" from="VBoxContainer2/BacktoMenu" to="." method="_on_backto_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer2/ResumePlaying" to="." method="_on_resume_playing_pressed"]
+[connection signal="pressed" from="SaveFiles/Profiles/N1" to="." method="_on_n_1_pressed"]
+[connection signal="pressed" from="SaveFiles/Profiles/N2" to="." method="_on_n_2_pressed"]
+[connection signal="pressed" from="SaveFiles/Profiles/N3" to="." method="_on_n_3_pressed"]
+[connection signal="pressed" from="Buttons/BacktoMenu" to="." method="_on_backto_menu_pressed"]
+[connection signal="pressed" from="Buttons/ResumePlaying" to="." method="_on_resume_playing_pressed"]
