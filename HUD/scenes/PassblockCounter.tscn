@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://blsr6rr0bjrhk"]
+[gd_scene load_steps=5 format=3 uid="uid://blsr6rr0bjrhk"]
 
 [ext_resource type="Script" uid="uid://m2t8m585ge26" path="res://HUD/Scripts_Resources/passblock_counter.gd" id="1_biyvh"]
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="2_qlkwv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlkwv"]
+bg_color = Color(0.737255, 0.878431, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_biyvh"]
+font = ExtResource("2_qlkwv")
 
 [node name="PassblockCounter_tscn" type="Control"]
 layout_mode = 3
@@ -9,7 +16,31 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_biyvh")
 
-[node name="PassblockCounterText" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PassblockProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 24.0
+size_flags_horizontal = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_qlkwv")
+show_percentage = false
+
+[node name="CountLabel" type="Label" parent="PassblockProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -9.0
+offset_right = 54.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/0"
+label_settings = SubResource("LabelSettings_biyvh")
+horizontal_alignment = 1
+vertical_alignment = 1
