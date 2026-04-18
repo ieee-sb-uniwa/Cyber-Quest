@@ -25,7 +25,7 @@ InteractionManager="*res://Scripts/Interactions/InteractionManager/InteractionMa
 Global="*res://Scripts/Global.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 SpawnManager="*res://Scripts/Characters/MainPlayer/SpawnManager.gd"
-PlayerData="*res://Menus/main_menu/PlayerData.gd"
+PlayerData="*res://Resources/PlayerData.gd"
 AudioPlayer="*res://Scripts/audio_player.tscn"
 KeyboardLayouts="*res://PasswordUI/new/keyboard_layouts.gd"
 

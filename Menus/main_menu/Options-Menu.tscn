@@ -45,6 +45,7 @@ offset_left = 299.0
 offset_top = 126.0
 offset_right = 479.0
 offset_bottom = 248.0
+theme_override_constants/separation = 10
 
 [node name="Music" type="Label" parent="Sliders"]
 layout_mode = 2

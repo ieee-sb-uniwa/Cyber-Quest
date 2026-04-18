@@ -20,12 +20,12 @@ func _on_settings_pressed():
 	var tree := get_tree()
 	if tree != null and tree.paused:
 		tree.paused = false
-	print("[PauseMenu] settings -> unpaused and switching to Options")
+	# print("[PauseMenu] settings -> unpaused and switching to Options")
 	var options_instance = options_scene.instantiate()	# Create Options Menu
 	lvl.hide()	# Hide level
 	get_parent().add_sibling(options_instance)	# Add the Options Menu as sibling
-	var BacktoMenu: Button = $"../../Options Menu/VBoxContainer2/BacktoMenu"
-	var Return: Button = $"../../Options Menu/VBoxContainer2/ResumePlaying"
+	var BacktoMenu: Button = $"../../Options Menu/Buttons/BacktoMenu"
+	var Return: Button = $"../../Options Menu/Buttons/ResumePlaying"
 	BacktoMenu.hide()	# Switch the Quit and Resume Buttons
 	Return.show()
 	$"../../InventoryGUI".hide() # Hide Inv_slots
@@ -38,7 +38,7 @@ func _on_quit_pressed():
 	var tree := get_tree()
 	if tree != null and tree.paused:
 		tree.paused = false
-	print("[PauseMenu] quit -> unpaused and switching to Main Menu")
+	# print("[PauseMenu] quit -> unpaused and switching to Main Menu")
 	if tree != null:
 		tree.call_deferred("change_scene_to_file", "res://Menus/main_menu/Menu.tscn")
 
@@ -54,7 +54,7 @@ func _on_load_pressed() -> void:
 	var tree := get_tree()
 	if tree != null and tree.paused:
 		tree.paused = false
-	print("[PauseMenu] load -> unpaused and switching to Load Menu")
+	# print("[PauseMenu] load -> unpaused and switching to Load Menu")
 	if tree != null:
 		tree.call_deferred("change_scene_to_file", "res://Menus/main_menu/Load-Menu.tscn")
 	
