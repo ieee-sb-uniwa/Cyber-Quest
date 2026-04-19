@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dm3rhkw1k7n4q" path="res://Menus/main_menu/options_menu.gd" id="1_vbrj0"]
 [ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="2_x0w3x"]
-[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="3_jj3pi"]
+[ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="3_ivwdi"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="5_x0w3x"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jj3pi"]
@@ -34,9 +34,11 @@ texture = ExtResource("2_x0w3x")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1338.0
-offset_bottom = 669.0
-texture = ExtResource("3_jj3pi")
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1433.0
+offset_bottom = 727.0
+texture = ExtResource("3_ivwdi")
 
 [node name="Sliders" type="VBoxContainer" parent="."]
 z_index = 2
@@ -82,17 +84,18 @@ value = 100.0
 [node name="Buttons" type="HBoxContainer" parent="."]
 z_index = 10
 layout_mode = 0
-offset_left = 337.0
-offset_top = 335.0
-offset_right = 437.0
-offset_bottom = 358.0
+offset_left = 336.0
+offset_top = 337.0
+offset_right = 439.0
+offset_bottom = 361.0
 alignment = 1
 
 [node name="BacktoMenu" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("5_x0w3x")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Πίσω"
 
 [node name="ResumePlaying" type="Button" parent="Buttons"]

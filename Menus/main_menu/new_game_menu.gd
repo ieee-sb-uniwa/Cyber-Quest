@@ -7,13 +7,13 @@ var player_name_2: String
 var birth_date_: String
 var birthdate_2: String
 
-@onready var name_input: LineEdit = $CenterContainer/Menu/InputForm/NameIN
-@onready var date_input: LineEdit = $CenterContainer/Menu/InputForm/DateIN
-@onready var menu_container: Control = $CenterContainer/Menu
-@onready var popup: Control = $"CenterContainer/Pop-Up"
-@onready var error_label: Label = $"CenterContainer/Pop-Up/ErrorLabel"
-@onready var player_label: Label = $CenterContainer/Menu/PlayerLabel
-@onready var confirm_button: Button = $CenterContainer/Menu/Buttons/Confirm
+@onready var name_input: LineEdit = $Forms/Menu/InputForm/NameIN
+@onready var date_input: LineEdit = $Forms/Menu/InputForm/DateIN
+@onready var menu_container: Control = $Forms/Menu
+@onready var popup: Control = $"Forms/Pop-Up"
+@onready var error_label: Label = $"Forms/Pop-Up/ErrorLabel"
+@onready var player_label: Label = $PlayerLabel
+@onready var confirm_button: Button = $Forms/Menu/Buttons/Confirm
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

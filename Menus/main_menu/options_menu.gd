@@ -1,7 +1,6 @@
 extends Control;
 
 func _ready():
-	$Buttons/BacktoMenu.grab_focus();
 	$Sliders/MusicSlider.value = db_to_linear(AudioPlayer.music_vol)
 
 func _on_backto_menu_pressed():

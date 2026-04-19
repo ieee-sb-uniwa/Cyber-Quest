@@ -2,7 +2,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Buttons/New.grab_focus();
 	AudioPlayer.play_music_menu(AudioPlayer.music_vol)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

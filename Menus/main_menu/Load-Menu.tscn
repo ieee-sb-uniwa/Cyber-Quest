@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ncyp8fx8jit" path="res://Menus/main_menu/load_menu.gd" id="1_ulsya"]
 [ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="3_74j3v"]
-[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="4_nymrk"]
+[ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="3_sjlji"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="5_58xyn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sjlji"]
@@ -31,9 +31,11 @@ texture = ExtResource("3_74j3v")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1338.0
-offset_bottom = 669.0
-texture = ExtResource("4_nymrk")
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1433.0
+offset_bottom = 727.0
+texture = ExtResource("3_sjlji")
 
 [node name="SaveFiles" type="VBoxContainer" parent="."]
 z_index = 3
@@ -88,17 +90,18 @@ theme_override_font_sizes/font_size = 14
 z_index = 10
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 0
-offset_left = 331.0
+offset_left = 330.0
 offset_top = 337.0
-offset_right = 446.0
-offset_bottom = 360.0
+offset_right = 445.0
+offset_bottom = 361.0
 alignment = 1
 
 [node name="BacktoMenu" type="Button" parent="Buttons"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(102, 24)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = ExtResource("5_58xyn")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 text = "Πίσω"
 
 [node name="ResumePlaying" type="Button" parent="Buttons"]

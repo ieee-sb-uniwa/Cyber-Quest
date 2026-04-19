@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bjwfi83g5xfvp" path="res://Menus/main_menu/menu.gd" id="1_e7t8g"]
 [ext_resource type="Texture2D" uid="uid://drkg5rvu41j1m" path="res://Assets/CyberQuest_Assets/Backgrounds/Cyber_Quest_logo.png" id="3_5t2ou"]
 [ext_resource type="Texture2D" uid="uid://6xy0hx2nkg3f" path="res://Assets/CyberQuest_Assets/Backgrounds/Tablet.png" id="3_vpjr0"]
-[ext_resource type="Texture2D" uid="uid://boikhve4cbhu2" path="res://Assets/CyberQuest_Assets/Backgrounds/background.png" id="4_v5u5d"]
+[ext_resource type="Texture2D" uid="uid://dfppqkkoyxpcs" path="res://Assets/CyberQuest_Assets/Backgrounds/spaceBackround.png" id="4_v5u5d"]
 [ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="6_6mphd"]
 
 [node name="Menu" type="Control"]
@@ -38,8 +38,10 @@ texture = ExtResource("3_vpjr0")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1338.0
-offset_bottom = 669.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1433.0
+offset_bottom = 727.0
 texture = ExtResource("4_v5u5d")
 
 [node name="Buttons" type="VBoxContainer" parent="."]
