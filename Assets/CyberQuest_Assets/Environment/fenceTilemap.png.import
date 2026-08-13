@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnpss0lk48b2"
-path="res://.godot/imported/Monitor.png-1d2e8bc058f8191c5e154f33eecf04a2.ctex"
+uid="uid://yenrnnm205s0"
+path="res://.godot/imported/fenceTilemap.png-9c69b40e6897bacccc24b0c8b257efa7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/NewUI/Monitor.png"
-dest_files=["res://.godot/imported/Monitor.png-1d2e8bc058f8191c5e154f33eecf04a2.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Environment/fenceTilemap.png"
+dest_files=["res://.godot/imported/fenceTilemap.png-9c69b40e6897bacccc24b0c8b257efa7.ctex"]
 
 [params]
 

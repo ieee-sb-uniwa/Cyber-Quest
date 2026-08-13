@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnpss0lk48b2"
-path="res://.godot/imported/Monitor.png-1d2e8bc058f8191c5e154f33eecf04a2.ctex"
+uid="uid://ec5olr5wqepj"
+path="res://.godot/imported/Terminal-Sprite.png-cb623f631750c566567bd8e46b319d1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/NewUI/Monitor.png"
-dest_files=["res://.godot/imported/Monitor.png-1d2e8bc058f8191c5e154f33eecf04a2.ctex"]
+source_file="res://Assets/CyberQuest_Assets/Environment/Terminal-Sprite.png"
+dest_files=["res://.godot/imported/Terminal-Sprite.png-cb623f631750c566567bd8e46b319d1b.ctex"]
 
 [params]
 
