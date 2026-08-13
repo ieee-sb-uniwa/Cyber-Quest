@@ -99,7 +99,6 @@ alignment = 1
 [node name="BacktoMenu" type="Button" parent="Buttons"]
 custom_minimum_size = Vector2(102, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_fonts/font = ExtResource("5_58xyn")
 theme_override_font_sizes/font_size = 10
 text = "Πίσω"
