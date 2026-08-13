@@ -48,6 +48,7 @@ position = Vector2(-0.189, -33)
 scale = Vector2(1.02358, 1)
 sprite_frames = SubResource("SpriteFrames_gvxd7")
 animation = &"Open-close"
+autoplay = "Open-close"
 frame = 1
 frame_progress = 1.0
 
