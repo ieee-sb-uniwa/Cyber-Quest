@@ -6,17 +6,25 @@
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_0cd8l")
 
-[node name="Label" type="Label" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
 z_index = 999
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -112.0
-offset_right = 112.0
-offset_bottom = 29.0
+offset_left = -150.0
+offset_top = 30.0
+offset_right = 150.0
+offset_bottom = 80.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.16446, 0.16446, 0.16446, 1)
-theme_override_colors/font_outline_color = Color(0.17881, 0.17881, 0.17881, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("2_bo8fs")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
+text = "sss"
 horizontal_alignment = 1
