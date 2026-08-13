@@ -9,7 +9,7 @@ var active_areas: Array = []
 var can_interact: bool = true
 
 func _ready():
-	label = $Label
+	label = $HUD/Label
 
 # Getter method to access the label (returns null if not available)
 func get_label() -> Label:
@@ -40,7 +40,6 @@ func get_closest_area() -> InteractionArea:
 func register_area(area: InteractionArea, body: Node2D):
 	active_areas.push_back(area) # adds area to available areas
 	curr_player = body
-	# Don't need to update label here, _process will handle it
 
 func unregister_area(area: InteractionArea) -> void:
 	var index = active_areas.find(area)
@@ -66,13 +65,4 @@ func show_action_label(area: InteractionArea) -> void:
 		if curr_player and is_instance_valid(curr_player):
 			btn = Global.get_player_interact_button(curr_player)
 		l.text = "Πάτα " + btn + " για να " + area.action_name
-		l.global_position = area.global_position
-		l.global_position.y -= 36
-		# Guard label size access
-		if l.has_method("get_size"):
-			l.global_position.x -= l.size.x / 2
-		else:
-			# best-effort: try to access size property if present
-			if "size" in l:
-				l.global_position.x -= l.size.x / 2
 		l.show()

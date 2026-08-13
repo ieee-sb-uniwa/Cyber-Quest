@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ctx0ia8728eav"]
+
+[ext_resource type="FontFile" uid="uid://cg4qhtd52v1su" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.ttf" id="1_x8o3h"]
+
+[resource]
+font = ExtResource("1_x8o3h")
+font_color = Color(0.243137, 0.239216, 0.403922, 1)

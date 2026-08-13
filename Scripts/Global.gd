@@ -155,7 +155,7 @@ func get_player_interact_button(body: Node2D) -> String:
 	if body.is_in_group("MainPlayer"):
 		return "[E]"
 	elif body.is_in_group("SecondPlayer"):
-		return "[.]"
+		return "[" + Settings.get_p2_interact_key_text() + "]"
 	else:
 		return ""
 
