@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dqnv35yjekdne" path="res://Scripts/Interactions/InteractionArea/InteractionArea.tscn" id="3_blx0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic8sa"]
-size = Vector2(58, 52)
+size = Vector2(65, 35)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mh5ec"]
 atlas = ExtResource("2_xtm5w")
@@ -40,7 +40,7 @@ script = ExtResource("1_pegqg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 4)
+position = Vector2(-0.5, 13.5)
 shape = SubResource("RectangleShape2D_ic8sa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -69,10 +69,12 @@ collision_mask = 536870914
 action_name = "hide/unhide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+visible = false
 visibility_layer = 2
 shape = SubResource("CircleShape2D_p2jdm")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 22.5
+z_index = 10
+radius = 35.0
 affect_navigation_mesh = true
 avoidance_layers = 16
