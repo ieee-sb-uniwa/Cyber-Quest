@@ -91,7 +91,7 @@ theme_override_colors/font_color = Color(0.243137, 0.239216, 0.403922, 1)
 theme_override_colors/font_focus_color = Color(0.243137, 0.239216, 0.403922, 1)
 theme_override_colors/font_pressed_color = Color(0.638582, 0.665868, 0.789723, 1)
 theme_override_font_sizes/font_size = 16
-text = "NumPad"
+text = "NumPad Controls"
 alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="."]

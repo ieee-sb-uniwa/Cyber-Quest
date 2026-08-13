@@ -54,3 +54,20 @@ func save_settings() -> void:
 	config.load(CONFIG_PATH)
 	config.set_value("controls", "p2_scheme", p2_control_scheme)
 	config.save(CONFIG_PATH)
+
+# Getters for display
+
+func get_p2_move_keys_text() -> String:
+	if p2_control_scheme == SCHEME_NUMPAD:
+		return "8, 4, 6, 5 (Numpad)"
+	return "I, J, L, K"
+
+func get_p2_interact_key_text() -> String:
+	if p2_control_scheme == SCHEME_NUMPAD:
+		return "0 (Numpad)"
+	return "N"
+
+func get_p2_dash_key_text() -> String:
+	if p2_control_scheme == SCHEME_NUMPAD:
+		return "Enter (Numpad)"
+	return "M"
