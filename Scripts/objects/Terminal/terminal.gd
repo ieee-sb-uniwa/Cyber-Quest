@@ -1,9 +1,17 @@
 extends Node2D
 @onready var area: Area2D = $InteractionArea
+@onready var terminal_sprite = $Sprite2D
+@export var terminal_index: int = 0
 
 func _ready():
 	area.set_object_type("terminal")
 	area.interaction_status = Global.INTERACTION_STATUS.AVAILABLE
+	if terminal_index == 0:
+		terminal_sprite.set_frame(0)
+	elif terminal_index == 2:
+		terminal_sprite.set_frame(2)
+	elif terminal_index == 3:
+		terminal_sprite.set_frame(3)
 
 func _process(_delta):
 	# Check if this is the closest interaction area
