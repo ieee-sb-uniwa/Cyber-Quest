@@ -908,12 +908,12 @@ position = Vector2(-607, -543)
 [node name="Player" parent="Environment/NavigationRegion2D" groups=["MainPlayer", "player"] instance=ExtResource("11_7k02s")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(162, -285)
+position = Vector2(3, 115)
 
 [node name="Player2" parent="Environment/NavigationRegion2D" groups=["SecondPlayer", "player"] instance=ExtResource("11_7k02s")]
 z_index = 10
 y_sort_enabled = true
-position = Vector2(-76, 59)
+position = Vector2(-129, 115)
 playerNum = 2
 
 [node name="PassBlocks" type="Node2D" parent="Environment"]
