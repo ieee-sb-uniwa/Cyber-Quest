@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjov5sqiy5oa"]
+[gd_scene load_steps=3 format=3 uid="uid://brjov5sqiy5oa"]
 
 [ext_resource type="Script" uid="uid://bpfnafak0bx75" path="res://Menus/pause_menu/pause_button.gd" id="1_eatam"]
+[ext_resource type="FontFile" uid="uid://dmtat1vljibt6" path="res://Assets/CyberQuest_Assets/Fonts/AC-Everyday_unicode.otf" id="2_ieqdv"]
 
 [node name="Pause_button" type="Control"]
 layout_mode = 3
@@ -11,16 +12,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eatam")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 43.0
-offset_bottom = 31.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Pause" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="Pause" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ieqdv")
 text = "..."
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
