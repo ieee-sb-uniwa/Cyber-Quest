@@ -248,7 +248,7 @@ scale = Vector2(0.832, 0.6)
 texture = ExtResource("2_rm7rt")
 hframes = 4
 vframes = 4
-frame = 11
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -295,7 +295,7 @@ polygon = PackedVector2Array(-12.4264, -21.4762, -9.78456, -32.0711, -6.63142, -
 
 [node name="Polygon2D" type="Polygon2D" parent="detection_zone/Cone"]
 modulate = Color(1, 1, 1, 0.525)
-color = Color(0.976043, 0.284845, 0.245648, 1)
+color = Color(0.33563, 0.593126, 0.815673, 0.415686)
 polygon = PackedVector2Array(1.03839, 0, -6.63142, -39.2298, -9.78456, -32.0711, -12.4264, -21.4762, -13.7047, -12.0267, -14.3126, -1.1454, -13.7899, 12.0267, -12.1707, 23.4806, -9.78456, 32.0711, -6.71664, 39.2298)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -314,6 +314,7 @@ debug_use_custom = true
 debug_path_custom_color = Color(0.0784314, 0.54902, 0.0117647, 0.419608)
 
 [node name="chase_range" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 input_pickable = false
