@@ -31,25 +31,41 @@
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ru4mx"]
 texture = ExtResource("1_wc1b3")
-texture_region_size = Vector2i(128, 128)
+texture_region_size = Vector2i(64, 128)
 0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 32)
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
-2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 32)
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 32)
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
-2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
 0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, 32)
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.7804, -30.1307, 29.6052, -29.6052, 29.6052, 29.7804, -29.6052, 30.3059)
 1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, 32)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28.0795, -21.7328, 28.4641, -21.7328, 28.4641, 29.6181, -28.0795, 29.4258)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, 32)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, 32)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, 32)
+4:1/0 = 0
+4:1/0/texture_origin = Vector2i(0, 32)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, 32)
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, 32)
 2:2/0 = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.6372, -13.7251, 21.9602, -13.8866, 21.9602, 30.3567, -21.6372, 30.3567)
+2:2/0/texture_origin = Vector2i(0, 32)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1lpr"]
 texture = ExtResource("2_vgwca")
